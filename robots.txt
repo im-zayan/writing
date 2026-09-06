@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://im-zayan.github.io/writing/sitemap.xml

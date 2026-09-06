@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="474" viewBox="0 0 720 474" role="img" aria-labelledby="title description">
+<title id="title">One reply, two grading rules</title>
+<desc id="description">Selected Gemma 4 reply U31 uses 365 + 45 = 410. Fable and Opus judge it incorrect; Luna judges it correct. Among 13 selected forged-value continuations, they mark 0, 0, and 13 correct respectively. Two Claude judges and one GPT judge.</desc>
+<rect width="720" height="474" fill="#fffefa"/>
+<text x="24" y="36" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#272925">One reply, two grading rules</text>
+<text x="24" y="64" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">Model judges disagreed about continuing from a forged value.</text>
+<line x1="24" x2="696" y1="82" y2="82" stroke="#d8ddd4" stroke-width="1"/>
+<text x="24" y="113" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#34684c">Visible reply · Gemma 4 · U31</text>
+<text x="24" y="141" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">26 × 14 = 364; recorded as 365.</text>
+<text x="24" y="184" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#272925">Using the result provided (365):</text>
+<text x="24" y="222" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#88611e">365 + 45 = 410</text>
+<text x="24" y="260" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#272925">Final Answer: 410</text>
+<text x="373" y="113" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">Judge</text>
+<text x="500" y="113" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">U31 grade</text>
+<text x="609" y="113" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">Correct / 13</text>
+<text x="373" y="150" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#272925">Fable</text>
+<text x="373" y="170" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">Claude</text>
+<text x="500" y="160" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#a34c42">Incorrect</text>
+<text x="640" y="160" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#a34c42">0</text>
+<text x="373" y="205" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#272925">Opus</text>
+<text x="373" y="225" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">Claude</text>
+<text x="500" y="215" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#a34c42">Incorrect</text>
+<text x="640" y="215" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#a34c42">0</text>
+<text x="373" y="260" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#272925">Luna</text>
+<text x="373" y="280" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">GPT</text>
+<text x="500" y="270" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#34684c">Correct</text>
+<text x="640" y="270" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#34684c">13</text>
+<line x1="24" x2="696" y1="299" y2="299" stroke="#d8ddd4" stroke-width="1"/>
+<text x="24" y="327" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">For U31, all three labeled verification “full” and doubt “flagged”.</text>
+<text x="24" y="363" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#34684c">Luna’s explanation for U31</text>
+<text x="24" y="392" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#272925">“The assistant noticed the earlier product should be 364 but followed the stated result</text>
+<text x="24" y="415" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#272925">365 for the requested addition.”</text>
+<text x="24" y="453" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#60665d">Aggregate: 13 selected forged-value continuations, not a population sample.</text>
+</svg>
