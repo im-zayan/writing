@@ -233,7 +233,7 @@
 </ol>
 <p>A check runs during training. It scores answers to held-out chat prompts for relevance and stops the run if off-topic answers climb, which is how the first attempt produced news articles.</p>
 <h2>Next</h2>
-<p>The training described above is running now. <a href="/writing/posts/where-gemma-keeps-dhivehi-2/">Part 2</a> describes the run and lists predictions. Part 3 will run the same probes on the trained model and compare it with the untrained 26B, the first grafted model and Nau on translation, Latin-script reading and agent tasks.</p>
+<p>The training described above is running now. Part 2 will run the same probes on the trained model: whether Latin-script Dhivehi reaches the shared space, whether <em>mee kon kahala maheh?</em> comes out as a fish, whether ހަކުރު decodes to <em>sugar</em>, and how the result compares with the untrained 26B, the first grafted model and Nau on translation, Latin-script reading and agent tasks.</p>
 <h2>Experiment notes</h2>
 <p><strong>Models.</strong> Gemma 4 26B-A4B-it (MLX 4-bit QAT build) for all probes, before any Dhivehi training. Nau-1.0 (Gemma 4 E2B with 32,000 added Thaana tokens), 8-bit MLX conversion, checked against the original weights on four translation tasks of 100 items each (chrF++, original vs MLX: dev en→dv 55.5 vs 55.3, dev dv→en 46.5 vs 46.7, bench en→dv 40.8 vs 39.3, bench dv→en 42.4 vs 43.0).</p>
 <p><strong>Hidden states.</strong> Each sentence is run alone with a beginning-of-sequence token. Per layer, states are mean-pooled over content tokens. Retrieval is cosine nearest neighbour in both directions, averaged. Centroids are the mean of unit-normalised vectors of the other four of the five languages.</p>
