@@ -8,7 +8,7 @@
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
 <main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 1</h1><p class="post-meta"><time datetime="2026-10-05">October 5, 2026</time><span aria-hidden="true"> · </span>12 min read</p></header><article><div class="summary"><p><strong>Summary.</strong> I tried to teach Gemma 4 Dhivehi by grafting a Dhivehi vocabulary onto it and fine-tuning. The model passed my agent tests and then answered a question about black holes with a news article about COVID. Before trying again on a larger model, I probed how Gemma 4 26B-A4B connects languages internally. Its middle layers hold a shared space where the same sentence in English, Hindi, Arabic, Russian and Japanese lands in nearly the same place. Dhivehi written in Thaana reaches that space, loosely (cosine 0.74 to the shared centroid, against about 0.92 for the big languages). Dhivehi written in Latin letters, the way most Maldivians type it, gets only partway, and only when it is written the way people actually talk. Across nineteen languages, whether romanised text reaches the shared space depended both on how well the model knows the language and, at least as much, on the script. So the next model gets its new language wired into the shared space first, and is taught to talk afterwards.</p></div>
-<h2>Two scripts, one language</h2>
+<h2>Dhivehi</h2>
 <p>Dhivehi is the language of the Maldives. Its formal script, Thaana, is written right to left; each consonant carries an explicit vowel sign. Most people also write Dhivehi in Latin letters, mixed with English, especially in chat:</p>
 <blockquote>
 <p>kihineh? miadhu kon kame kuranee?</p>
@@ -109,8 +109,8 @@
 </tr>
 </tbody></table>
 <p><em>Table 1. Centroid retrieval accuracy, 13-way (chance 0.08). Plain Gemma 4 26B-A4B, before any Dhivehi training.</em></p>
-<p>From layer 4 to about layer 25, the five languages agree completely. Hindi written in Latin letters, the way people text it, agrees too. The first layers sort by spelling and script; the last layers turn back toward a specific output.</p>
-<p>Thaana Dhivehi reaches the shared space at layers 7–10, though not tightly: its cosine to the centroid for &quot;Which month is this?&quot; was 0.74 at layer 10, against 0.92 for English and Hindi. That gap is the number I most want Part 2 to move.</p>
+<p>From layer 4 to about layer 25, the five languages agree completely. Hindi written in Latin letters, the way people text it, agrees too. The first layers sort by spelling and script; the last layers turn back toward a specific output. This matches earlier findings that multilingual models keep meaning in a shared middle space (<a href="https://arxiv.org/abs/2402.10588">Wendler et al. 2024</a>; <a href="https://arxiv.org/abs/2411.04986">Wu et al. 2025</a>; <a href="https://arxiv.org/abs/2411.08745">Dumas et al. 2025</a>).</p>
+<p>Thaana Dhivehi reaches the shared space at layers 7–10, though not tightly: its cosine to the centroid for &quot;Which month is this?&quot; was 0.74 at layer 10, against 0.92 for English and Hindi.</p>
 <p>The Latin column above stays near chance. Those sentences are readable Latin Dhivehi, built word by word from the most common human spellings, but they follow the formal written wording of the Thaana version (&quot;thayyaarukuraneeeve&quot;) rather than how people talk. So I typed twelve of the sentences myself, the way I would text them, and repeated the test (the football sentence is left out, so this is 12-way):</p>
 <table>
 <thead>
@@ -159,9 +159,9 @@
 </tr>
 </tbody></table>
 <p><em>Table 2. Centroid retrieval, 12-way (chance 0.08). Mean cosine margin over the other sentences at layer 10: Thaana +0.156, constructed Latin +0.022, my Latin +0.058, Hinglish +0.229.</em></p>
-<p>How the sentence is written matters. &quot;Aharenge mamma eba mireyah geyga kakka&quot; (my mother is cooking dinner at home) has no English words and finds its own sentence at layer 10; the constructed &quot;manma geygai reyganduge keun thayyaarukuraneeeve&quot; does not. Some of my versions also use English loanwords (homework, city, phone), which helps, so this is not a pure spelling comparison. Conversational Latin Dhivehi gets about halfway there. It is still far behind Thaana and far behind Hinglish, which the model treats exactly like Hindi.</p>
+<p>Maybe it really depends on how the sentence is written. &quot;Aharenge mamma eba mireyah geyga kakka&quot; (my mother is cooking dinner at home) has no English words and finds its own sentence at layer 10; the constructed &quot;manma geygai reyganduge keun thayyaarukuraneeeve&quot; does not. Some of my versions also use English loanwords (homework, city, phone), which helps, so this is not a pure spelling comparison. Conversational Latin Dhivehi gets about halfway there. It is still far behind Thaana and far behind Hinglish, which the model treats exactly like Hindi.</p>
 <p>A larger check, with less natural text, uses 200 human-written transliteration pairs (mostly news headlines, held out from all training). Latin↔Thaana retrieval there was 5.5% at the middle layers (200-way, chance 0.5%), with a peak of 26.5% at layer 2, where the model is still matching surface form.</p>
-<h2>A fish, a month</h2>
+<h2>Homographs</h2>
 <p>Dhivehi މަސް (<em>mas</em>) means both &quot;fish&quot; and &quot;month&quot;. A logit lens passes each layer&#39;s hidden state at a word through the model&#39;s output layer and reads off the tokens it would predict. In &quot;My mother cooked fish curry for lunch&quot;, translated into Dhivehi, the state at މަސް decodes at layer 25 to:</p>
 <blockquote>
 <p>fish · Fish · fishing · मछली · 鱼</p>
@@ -233,7 +233,7 @@
 </ol>
 <p>A check runs during training. It scores answers to held-out chat prompts for relevance and stops the run if off-topic answers climb, which is how the first attempt produced news articles.</p>
 <h2>Next</h2>
-<p>The training described above is running now. Part 2 will run the same probes on the trained model: whether Latin-script Dhivehi reaches the shared space, whether <em>mee kon kahala maheh?</em> comes out as a fish, whether ހަކުރު decodes to <em>sugar</em>, and how the result compares with the untrained 26B, the first grafted model and Nau on translation, Latin-script reading and agent tasks.</p>
+<p>The training described above is running now. <a href="/writing/posts/where-gemma-keeps-dhivehi-2/">Part 2</a> describes the run and lists predictions. Part 3 will run the same probes on the trained model and compare it with the untrained 26B, the first grafted model and Nau on translation, Latin-script reading and agent tasks.</p>
 <h2>Experiment notes</h2>
 <p><strong>Models.</strong> Gemma 4 26B-A4B-it (MLX 4-bit QAT build) for all probes, before any Dhivehi training. Nau-1.0 (Gemma 4 E2B with 32,000 added Thaana tokens), 8-bit MLX conversion, checked against the original weights on four translation tasks of 100 items each (chrF++, original vs MLX: dev en→dv 55.5 vs 55.3, dev dv→en 46.5 vs 46.7, bench en→dv 40.8 vs 39.3, bench dv→en 42.4 vs 43.0).</p>
 <p><strong>Hidden states.</strong> Each sentence is run alone with a beginning-of-sequence token. Per layer, states are mean-pooled over content tokens. Retrieval is cosine nearest neighbour in both directions, averaged. Centroids are the mean of unit-normalised vectors of the other four of the five languages.</p>
