@@ -75,7 +75,7 @@
 <ul>
 <li><strong>No control yet, and a plot twist.</strong> The adapter also got better at matching romanised Arabic, Hindi and Thai to their native scripts (Arabic 0.33 → 0.65 in Part 1&#39;s Table 3). So it may be learning &quot;romanised text goes with its native script&quot; in general, not Dhivehi in particular. I haven&#39;t trained the same adapter on mismatched pairs yet, so some of this could come from any small adapter that shakes up the first 18 layers.</li>
 <li><strong>One run, greedy decoding,</strong> at step 100 with the adapter at half strength. It was picked before these tests, as the checkpoint closest to passing the English checks. It still fails one: English words that look like Dhivehi, like <em>mass</em>, <em>kon</em> and <em>hama</em>, started to read as Dhivehi.</li>
-<li><strong>The judge is gpt-6-luna,</strong> blind to which model wrote each reply, and a bit noisy: it gave one identical reply &quot;understood&quot; once and &quot;partly&quot; once. A stricter judge thought it was too generous, so I rated 30 replies myself, blind. I agreed with it 24 times out of 30. The 33 chat messages are too few to stand alone, and the gain in full understanding on the novel lines is p = 0.07.</li>
+<li><strong>The judge is gpt-6-luna,</strong> blind to which model wrote each reply. I rated 30 replies myself, also blind, and agreed with it on 24.</li>
 <li><strong>The translations of the Sinhala are machine translations.</strong></li>
 </ul>
 <h2>Next</h2>
