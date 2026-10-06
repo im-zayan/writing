@@ -8,17 +8,17 @@
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
 <main id="main"><p class="back-link"><a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Where does Gemma keep Dhivehi? Part 1.6: quick update</a></p><header class="post-header"><h1>Transcripts and judge outputs</h1></header><article class="transcripts"><p>These accompany <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Part 1.6</a>. Every line below is human-written dialogue from a Dhivehi web novel (Nau-AI/dhivehi-corpus), converted to Latin letters by rule. Nothing here comes from the private chat dataset.</p>
-<p><strong>Selection, fixed before reading the replies:</strong> all 8 lines where the judge&#39;s full-understanding verdict differs between the chat model and the adapter, in either direction, then 10 more lines drawn at random (seed 16) from the other 150. The random ones show the typical case, which is mostly failure.</p>
+<p><strong>Selection, fixed before reading the replies:</strong> all 8 lines where the judge&#39;s <em>full</em>-understanding verdict differs between the chat model and the adapter, in either direction; all 4 other lines the chat model understood at least partly and the adapter did not (the losses behind the post&#39;s &quot;5 lost&quot;); then 10 lines drawn at random (seed 16) from the rest. The random ones show the typical case, which is mostly failure.</p>
 <p><strong>What is shown:</strong> the Latin line exactly as the model received it, the Thaana original, then three replies: the chat model, the chat model with the alignment adapter (step 100, half strength), and the adapter with every token outside Thaana and plain ASCII banned. Replies are verbatim, greedy, cut at 220 tokens by the generator. Each carries the judge&#39;s verdict (gpt-6-luna, blind to the model) and its reply-mode label.</p>
 <p><strong>Translations</strong> of the novel lines and of every non-English reply are machine translations by gpt-6.1-sol, not mine, and can be wrong in the same ways the models are. Where a reply repeats itself, the translation says [repeats].</p>
 <p><strong>Judge noise, visible here:</strong> in line 1 the adapter&#39;s reply is identical with and without the script ban, and the judge marked it &quot;understood&quot; once and &quot;partly&quot; once. Read single verdicts loosely; the counts in the post are over 150 lines.</p>
 <hr>
-<h2>1. Verdict changed</h2>
+<h2>1. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">Nai, thi kahala ecchehi nukiyabala!
 </code></pre>
 <p><strong>Thaana original:</strong> ނައި، ތި ކަހަލަ އެއްޗެހި ނުކިޔަބަލަ!</p>
-<p><strong>Meaning:</strong> Nai, don’t say things like that! <em>(Corrected by a native reader: Nai is a person&#39;s name, which the machine translation read as &quot;no&quot;.)</em></p>
+<p><strong>Meaning:</strong> Nai, don&#39;t say things like that! <em>(Corrected by a native reader: Nai is a person&#39;s name, which the machine translation read as &quot;no&quot;.)</em></p>
 <h3>Chat model</h3>
 <p><em>Judge: not understood · explains the message. &quot;Misidentifies the language and invents an unrelated translation.&quot;</em></p>
 <pre><code class="language-text">It looks like you are speaking **Chakma** (Changma)!
@@ -57,7 +57,7 @@ Tell me, what happened? If what I said wasn’t right, tell me—I have a chance
 <p><em>Judge: partly. &quot;Recognizes displeasure but doesn&#39;t directly promise to stop.&quot;</em></p>
 <p>Identical to the reply above: it contained no banned script.</p>
 <hr>
-<h2>2. Verdict changed</h2>
+<h2>2. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">Kai aai hedhi mihaa dhuvas vandhen av safar kuran jehunee... hau did yoo savaiv...?
 </code></pre>
@@ -114,7 +114,7 @@ First of all, when are you traveling? Where are you going? I hope you’ll feel 
 </details>
 
 <hr>
-<h2>3. Verdict changed</h2>
+<h2>3. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">Dhen dhontha kihineh hadhanee?
 </code></pre>
@@ -187,7 +187,7 @@ You mean “Now, older sister”… [cut off]
 </details>
 
 <hr>
-<h2>4. Verdict changed</h2>
+<h2>4. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">Oakey beybey... dhen aharen dhany. beybe kohdhin kanthakahtakai varah shukuruverivan. aslu beybe reyga geah dhaanekamah aharen heekuree. keehve beybe geah nudhiyai
 </code></pre>
@@ -252,7 +252,7 @@ Because you’re at home...
 </details>
 
 <hr>
-<h2>5. Verdict changed</h2>
+<h2>5. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">dhonbey... pleez mi filaavalhu hadhan helep vedheebala...
 </code></pre>
@@ -325,7 +325,7 @@ Tell me what you want to make, and I’ll help you make it nicely! ✨
 </details>
 
 <hr>
-<h2>6. Verdict changed</h2>
+<h2>6. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">mithaa ekani kon kameh. meehegge inthizaaruga dho?
 </code></pre>
@@ -405,7 +405,7 @@ Could you give me a little more detail? Then I’ll be able to answer you proper
 </details>
 
 <hr>
-<h2>7. Verdict changed</h2>
+<h2>7. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">Miee kon valheh...?
 </code></pre>
@@ -462,7 +462,7 @@ I can do things, say things, and do things [repeats].
 </details>
 
 <hr>
-<h2>8. Verdict changed</h2>
+<h2>8. Full understanding changed</h2>
 <p><strong>Typed to the model</strong></p>
 <pre><code class="language-text">Aharen kuraa konme suvaalakah thedhah javaabudheefaanantha?...
 </code></pre>
@@ -515,733 +515,806 @@ In this way, I can answer the questions you ask:
 </details>
 
 <hr>
-<h2>9. Random draw</h2>
+<h2>9. Lost with the adapter</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">mifaharuves madeh nukuranantha
+<pre><code class="language-text">Kobaa miadhu biznas rangalheetha?
 </code></pre>
-<p><strong>Thaana original:</strong> މިފަހަރުވެސް މަޑެއް ނުކުރާނަންތަ؟</p>
-<p><strong>Meaning:</strong> Won’t you wait this time either?</p>
+<p><strong>Thaana original:</strong> ކޮބާ މިއަދު ބިޒްނަސް ރަނގަޅީތަ؟</p>
+<p><strong>Meaning:</strong> So, is business good today?</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;Explains the phrase instead of answering its question.&quot;</em></p>
-<pre><code class="language-text">It appears you are referring to the phrase **&quot;Mifaharuves Madeh Nukuranantha&quot;** (often spelled *Mifaharuves Madeh Nukuranantha* or similar variations).
+<p><em>Judge: partly · explains the message. &quot;Misreads the question as asking about business trends.&quot;</em></p>
+<pre><code class="language-text">&quot;Kobaa miadhu biznas rangalheetha?&quot; (ކޮބާ މިއަދުގެ ބިޒްނަސް ރަލުތަކެއް؟) މި ބަހުން ތިޔަ އެހާނެ ސުވާލުންނަކީ &quot;މިއަދުގެ ވިޔަފާރީގެ ňގަލުތަކަކީ ކޮބާ؟&quot; ނާ ކިތައް ނުވަތަ &quot;މިއަދުގެ ވިޔަފާރީގެ ňގަލުތަކަކީ ކޮބާ؟&quot; އެއްޗެއް ކަމަށް ބަލާލައިފިއުޅުނުން.
 
-This phrase is in **Dhivehi** (the language of the Maldives) and is a line from a very popular Maldivian song.
+މިހާރު ދުނިޔޭގައިވެސް، އަދި ރާއްޖޭގައިވެސް ވިޔަފާރީގެ ދނިޔޭގައި ފާހަގަކޮށްލެވޭ މުހިންމު ދިశަތަކަކީ:
 
-### Meaning and Context:
-The phrase is part of the lyrics to the song **&quot;Mifaharuves&quot;** (which translates to &quot;In these days&quot; or &quot;In these times&quot;).
-
-In the context of the song:
-*   **Mifaharuves:** In these days / In these times.
-*   **Madeh:** (Often used in a poetic sense relating to being &quot;made&quot; or &quot;created&quot; or referring to a state of being).
-*   **Nukuranantha:** This is a poetic/archaic way of expressing a feeling of longing, being lost, or a sense of wandering/searching.
-
-**General Sentiment:**
-The song is a romantic or melancholic ballad. The lyrics generally
+1.
 </code></pre>
-<h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;Invents honey meaning; does not answer user&#39;s question.&quot;</em></p>
-<pre><code class="language-text">&quot;Mifaharuves madeh nukuranantha&quot; (මීපැණි වගේ...) යන්නෙන් ඔබ අදහස් කළේ **&quot;මීපැණි වගේ මිහිරියි&quot;** වැනි අදහසක්ද? නැතිනම් මෙය යම් ගීතයක පද පේළියක්ද?
+<details><summary>English translation (Dhivehi, romanised and Thaana)</summary>
 
-ඔබ අදහස් කළ දේ පැහැදිලි නැති නිසා, මම පහත අවස්ථා කිහිපයක් සඳහා පිළිතුරු ලබා දෙන්නම්:
+<pre><code class="language-text">“So, is business good today?” (The Thaana version is garbled.)
 
-1.  **ගීතයක් ගැන නම්:** ඔබ යම් ගීතයක පද පේළියක් මතක් කිරීමට උත්සාහ කරන්නේ නම්, එම ගීතයේ තවත් පද කිහිපයක් හෝ ගායනා කරන ශිල්පියාගේ නම සඳහන් කරන්න. එවිට මට සම්පූර්ණ ගීතය සොයා දිය හැකියි.
-2.  **අදහසක් (Meaning) ගැන නම්:** &quot;මීපැණ
-</code></pre>
-<details><summary>English translation (romanised Dhivehi, Sinhala, English)</summary>
+The question you are asking with these words is something like, “What are the good things about today’s business?” [repeats]. (Parts of this sentence are garbled and unclear.)
 
-<pre><code class="language-text">By “Won’t you praise [me] this time too?” (“like honey...”), did you mean something like **“sweet like honey”**? Or is this a line from a song?
+At present, both around the world and in the Maldives, the important trends noticeable in the business world are:
 
-Since what you meant is unclear, I’ll give answers for a few possible situations:
-
-1. **If it’s about a song:** If you’re trying to remember a line from a song, mention a few more lyrics or the singer’s name. Then I can find the complete song for you.
-2. **If it’s about the meaning:** “Honey...” [text cuts off]
+1.
 </code></pre>
 </details>
 
-<h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;It mistranslates the Dhivehi phrase and explains instead.&quot;</em></p>
-<pre><code class="language-text">&quot;Mifaharuves madeh nukuranantha&quot; (this phrase is in Sinhala) translates to **&quot;To not do anything in this happiness&quot;** or **&quot;Not doing anything during this happy time.&quot;**
-
-Depending on the context, it can mean a few different things:
-
-1.  **A feeling of contentment:** &quot;I am so happy right now that I don&#39;t feel the need to do anything else.&quot; (Just enjoying the moment).
-2.  **A sense of hesitation:** &quot;I don&#39;t want to do anything that might ruin this happiness.&quot;
-3.  **A poetic expression:** It sounds like a line from a song or a poem, expressing a desire to freeze time or simply exist within a joyful state without any distractions.
-
-**Are you referring to a specific song lyric or trying to express a feeling?** If you provide more context, I can give you a more accurate explanation!
-</code></pre>
-<details><summary>English translation (romanised Dhivehi, English)</summary>
-
-<pre><code class="language-text">“Won’t you praise me this time either?” (this phrase is in Sinhala) translates to **“To not do anything in this happiness”** or **“Not doing anything during this happy time.”**
-
-Depending on the context, it can mean a few different things:
-
-1. **A feeling of contentment:** “I am so happy right now that I don’t feel the need to do anything else.” (Just enjoying the moment).
-2. **A sense of hesitation:** “I don’t want to do anything that might ruin this happiness.”
-3. **A poetic expression:** It sounds like a line from a song or a poem, expressing a desire to freeze time or simply exist within a joyful state without any distractions.
-
-**Are you referring to a specific song lyric or trying to express a feeling?** If you provide more context, I can give you a more accurate explanation!
-</code></pre>
-</details>
-
-<hr>
-<h2>10. Random draw</h2>
-<p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">Oakey hama hurihaa kameh ves. end enmenves varah frendlee. thenks fo aasking. geah dhaan kamah miulheny. keyn ai goa nau
-</code></pre>
-<p><strong>Thaana original:</strong> އޯކޭ ހަމަ ހުރިހާ ކަމެއް ވެސް. އެންޑް އެންމެންވެސް ވަރަށް ފްރެންޑްލީ. ތެންކްސް ފޯ އާސްކިންގް. ގެއަށް ދާން ކަމަށް މިއުޅެނީ. ކޭން އައި ގޯ ނައު؟</p>
-<p><strong>Meaning:</strong> Okay, everything is fine. And everyone is very friendly. Thanks for asking. I’m about to go home. Can I go now?</p>
-<h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;It mistakes Dhivehi for gibberish and requests clarification.&quot;</em></p>
-<pre><code class="language-text">It looks like you are typing in a very phonetic or stylized way, possibly using a specific dialect, slang, or perhaps a keyboard error.
-
-Because the spelling is unconventional, I want to make sure I understand you correctly. It sounds like you might be saying something like:
-
-*&quot;Okay, how are you? How are things? Everything is very friendly. Thanks for asking. [Something about being busy/doing something]. [Something about going now].&quot;*
-
-**To help me respond better, could you please:**
-1. **Type in standard English** (or your preferred language) if possible.
-2. **Or, let me know if this is a specific language/dialect** so I can try to translate it!
-
-**If you were just saying &quot;Goodbye&quot; or &quot;I&#39;m going now&quot;:**
-No problem! Have a great time and feel free to come back and chat whenever you want. Take care!
-</code></pre>
 <h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;It translates the message instead of answering the question.&quot;</em></p>
-<pre><code class="language-text">It looks like you are speaking in **Sinhala (written in Roman script/Singlish)**.
+<p><em>Judge: not understood · explains the message. &quot;Incoherently rephrases the question and loops without answering.&quot;</em></p>
+<pre><code class="language-text">&quot;Kobaa miadhu biznas rangalheetha?&quot; kiyana prashnathaka artham &quot;Business rangalheetha (business environment/market) koba thahassus karaiyala/koba thahassus karannawada?&quot; kiyana eka wenna dhenna ba.
 
-Based on your message, here is a breakdown of what you said and a response:
+Namuth, me prashnathaka artham **&quot;Business rangalheetha (market) koba thahassus karannawada?&quot;** kiyana eka nam, eka thahassus karannavai thahassus karannavai kuraunavai thahassus karannavai kiyana eka nemei, business rangalheetha koba thahassus karannavada kiyana eka nemei.
 
-### **Translation of your message:**
-*&quot;Okay, everything is fine/changing. And it&#39;s very friendly. Thanks for asking. I&#39;m going home now. Why aren&#39;t you going?&quot;*
-
-*(Note: &quot;Hama hurihaa kameh ves&quot; is a bit informal, likely meaning &quot;everything is changing/moving along&quot; or &quot;everything is okay.&quot;)*
-
----
-
-### **How to respond (depending on what you want to say):**
-
-If you want to reply in **Singlish**, here are a few options:
-
-**Option 1: If you are also going home:**
-&gt; &quot;Mama eth gedara yanwa. Kal inna!&quot;
-&gt; *(I am also going home. See you later!)*
-
-**Option 2: If you are staying at work/study/out:**
-&gt; &quot;Mama thama kiyann
-</code></pre>
-<h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;It only translated, not answered their permission request.&quot;</em></p>
-<pre><code class="language-text">It looks like you are speaking in **Sinhala (written in Roman script/Singlish)**.
-
-Based on your message, here is a breakdown of what you said and a response:
-
-### **Translation of your message:**
-*&quot;Okay, everything is fine/changing. And it&#39;s very friendly. Thanks for asking. I&#39;m going home now. Why aren&#39;t you going?&quot;*
-
-*(Note: &quot;Hama hurihaa kameh ves&quot; is a bit informal, likely meaning &quot;everything is changing/moving along&quot; or &quot;everything is okay.&quot;)*
-
----
-
-### **How to respond (depending on what you want to say):**
-
-If you want to reply in **Singlish**, here are a few options:
-
-**1. If you are also going home:**
-*   &quot;Mama eth dan gedara yanwa. Bye!&quot;
-*   *(I am also going home now. Bye!)*
-
-**2. If you are staying at work/study/out:**
-*   &quot;Mama thama gedara yanne na,
-</code></pre>
-<hr>
-<h2>11. Random draw</h2>
-<p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">Kobaa kihinehtha sels
-</code></pre>
-<p><strong>Thaana original:</strong> ކޮބާ ކިހިނެއްތަ ސޭލްސް؟</p>
-<p><strong>Meaning:</strong> So, how are the sales?</p>
-<h3>Chat model</h3>
-<p><em>Judge: not understood · talks back. &quot;It mistakes the Dhivehi question for unclear text.&quot;</em></p>
-<pre><code class="language-text">It looks like you are typing in a language or a code that isn&#39;t immediately clear, or perhaps there are some typos.
-
-If you meant to type in **Swahili**, **Shona**, or another language, please let me know!
-
-If this was a typo, could you please retype your question? I am happy to help you with:
-1.  **Translations**
-2.  **Answering questions**
-3.  **Writing or coding**
-4.  **General information**
-
-**How can I help you today?**
-</code></pre>
-<h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;It explains a word instead of answering about sales.&quot;</em></p>
-<pre><code class="language-text">&quot;Kobaa kihinehtha sels&quot; (කොබා කිහෙන හැටි) කියන එකෙන් ඔබ අදහස් කළේ **&quot;කොබා (Koba) කියන වචනය භාවිතා කරන්නේ කොහොමද?&quot;** යන්න නම්, ඒ ගැන පැහැදිලි කිරීමක් පහතින් දැක්වේ.
-
-සිංහල භාෂාවේ &quot;කොබා&quot; (Koba) යන වචනය ප්‍රධාන වශයෙන් අවස්ථා දෙකකදී භාවිතා විය හැකියි:
-
-### 1. &quot;කොබෑ&quot; (Koba) - ස්ථානයක් ලෙස
-ශ්‍රී ලංකාවේ **කොඹෑව (Kobuwana)** වැනි ගම්මාන හෝ ප්‍රදේශ හැඳින්වීමේදී &quot;කොබෑ&quot; ලෙස ව්‍යවහාරයේ භාවිතා විය හැකියි. නමුත් නිවැරදි ව්‍යවහාරය වන්නේ &quot;කොඹෑව&quot; යන්නයි.
-
-### 2. &quot;කොබා&quot; (Koba) - slang/ව්‍යවහාරික වචනයක්
-</code></pre>
-<details><summary>English translation (Sinhala, Latin-script text, English)</summary>
-
-<pre><code class="language-text">If by “Kobaa kihinehtha sels” (“how Koba is said”) you meant **“How is the word ‘Koba’ used?”**, an explanation is given below.
-
-In Sinhala, the word “Koba” may mainly be used in two situations:
-
-### 1. “Kobæ” (Koba) — as a place name
-“Kobæ” may be used colloquially when referring to villages or areas in Sri Lanka, such as **“Kombæwa” (Kobuwana)**. However, the correct usage is “Kombæwa.”
-
-### 2. “Koba” — as a slang/colloquial word
-</code></pre>
-</details>
-
-<h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: partly. &quot;Sales-related, but misreads the user&#39;s question as how-to-sell.&quot;</em></p>
-<pre><code class="language-text">&quot;Kobaa kihinehtha sels&quot; (How to sell) kiyala oya ahuwe mona wage deyak gana kiyala poddak wisthara karanna puluwanda?
-
-Oyata sell karanna ona de anuwa pilihawaraka wenas wenawa. Udaharanayak widiyata:
-
-1.  **Physical Products (Saman):** Oya laga thiyena saman (kapada, electronics, poth) wikunanna nam:
-    *   **Facebook Marketplace / Groups:** Dan lokawe saha lankawata godak prachalitha widiyak.
-    *   **Daraz / Kapru:** Online marketplace ekak widiyata saman upload karanna puluwan.
-    *   **Ikman.com:** Lankawata godak aya saman wikunanna pawichchi karana site ekak.
-    *   **WhatsApp Status:** Oyaage contact list eke ayaata pennanna.
-
-2.  **Digital Products (Services/Skills):** Oya kar
+Business rangalheetha koba thahassus karannavada kiyana eka kuraunavai, business rangalheetha koba thahassus karannavada kiyana eka k
 </code></pre>
 <details><summary>English translation (romanised Sinhala, romanised Dhivehi, English)</summary>
 
-<pre><code class="language-text">Could you explain a little more about what kind of thing you were asking about when you said “Kobaa kihinehtha sels” (“How to sell”)?
+<pre><code class="language-text">The question “How is business today—is it good?” cannot be taken to mean “How do you feel about the business environment/market?”
 
-The answer changes depending on what you want to sell. For example:
+However, if this question means **“How do you feel about the business environment/market?”**, it does not mean “you feel it [repeats], [unclear word: ‘kuraunavai’], you feel it.” It does not mean “How do you feel about the business environment?”
 
-1. **Physical products (goods):** If you want to sell things you have, such as clothes, electronics, or books:
-   * **Facebook Marketplace / Groups:** A very popular method worldwide and in Sri Lanka now.
-   * **Daraz / Kapru:** You can upload goods to an online marketplace.
-   * **Ikman.com:** A site many people in Sri Lanka use to sell goods.
-   * **WhatsApp Status:** Show them to people in your contact list.
-
-2. **Digital products (services/skills):** What you do… [text cuts off]
-</code></pre>
-</details>
-
-<hr>
-<h2>12. Random draw</h2>
-<p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">Manmaa dedee annaanetha
-</code></pre>
-<p><strong>Thaana original:</strong> މަންމާ ޑެޑީ އަންނާނެތަ؟</p>
-<p><strong>Meaning:</strong> Mom, will Daddy come?</p>
-<h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;Mistakes the Dhivehi question for Tamil; doesn&#39;t answer.&quot;</em></p>
-<pre><code class="language-text">&quot;Manmaa dedee annaanetha&quot; is a phrase in **Tamil** (written in Roman script).
-
-In proper Tamil, it is written as: **&quot;மன்னிக்கவும், மன்னிக்கவும்&quot;** (Mannikkavum) or more likely you are trying to say:
-
-**&quot;Mannama, dhee dhee annaanetha&quot;** (which sounds like a phonetic misspelling of something else) or perhaps you are using a specific dialect/slang.
-
-However, if you are trying to say **&quot;Mannama, dhee dhee annaanetha&quot;** it doesn&#39;t have a standard meaning in formal Tamil.
-
-**Could you please clarify?**
-1. Are you trying to say **&quot;Mannikkavum&quot;** (I am sorry/Forgive me)?
-2. Is this a lyric from a song?
-3. Is it a specific dialect (like Madurai or Nellai Tamil)?
-
-**If you meant &quot;Mannama&quot; (Forgive me):**
-*   **Mannikkavum** (ம
-</code></pre>
-<h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;Misreads whether mom and dad are coming.&quot;</em></p>
-<pre><code class="language-text">&quot;Manmaa dedee annaanetha&quot; (මංමා දී දී අන්නානෙ?) කියන එකෙන් ඔබ අදහස් කළේ **&quot;මමද දී දී අන්නන්නේ?&quot;** (Am I the one giving/sending it?) වැනි දෙයක්ද?
-
-ඔබ අදහස් කළ දේ පැහැදිලි නැති නිසා, කරුණාකර පහත දේවල් වලින් ඔබ අදහස් කළේ කුමක්දැයි කියන්න:
-
-1.  **යම් දෙයක් ලබා දීම ගැනද?** (Are you asking if you are the one giving something?)
-2.  **යම් දෙයක් పంపීම (Send කිරීම) ගැනද?** (Are you asking if you are the one sending something?)
-3.  **නැතිනම් මෙය යම් සිංහල සින්දුවක පදයක්ද?** (Or is it a lyric from a song?)
-
-ඔබ අදහස් කළ දේ නිවැරදිව පැහැදිලි කළහොත් ම
-</code></pre>
-<details><summary>English translation (Sinhala, romanised Sinhala, English, Telugu)</summary>
-
-<pre><code class="language-text">By “Manmaa dedee annaanetha” (මංමා දී දී අන්නානෙ?), did you mean something like **“Am I the one giving/sending it?”**
-
-Since it is not clear what you meant, please say which of the following you intended:
-
-1. **Is it about giving something?** (Are you asking if you are the one giving something?)
-2. **Is it about sending something?** (Are you asking if you are the one sending something?)
-3. **Or is this a line from a Sinhala song?** (Or is it a lyric from a song?)
-
-If you clearly explain what you meant, I… [text cuts off]
+“How do you feel about the business environment?” [repeats], [unclear word: “kuraunavai”] … k [text cuts off].
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;Misreads question; offers unrelated Sinhala response suggestions instead.&quot;</em></p>
-<pre><code class="language-text">&quot;Manmaa dedee annaanetha&quot; (I am also giving/offering you, brother/sister) is a phrase in Sinhala.
+<p><em>Judge: not understood. &quot;Misreads the question, then gives repetitive, unrelated gibberish.&quot;</em></p>
+<pre><code class="language-text">&quot;Kobaa miadhu biznas rangalheetha?&quot; kiyana prashnathaka artham &quot;Business rangalheetha (business environment/market) koba thahassus karaiyala/koba thahassus karannawada?&quot; kiyana eka wenna dhenna ba.
 
-Since I am an AI, I don&#39;t know the exact context of what you are referring to, but here are a few ways to respond depending on what you mean:
-
-1.  **If you are being playful/joking:**
-    *   &quot;Ehenam kiyanna balanna monawada denne kiyala!&quot; (Then tell me, what are you giving?)
-    *   &quot;Mata thama naha monawada karanne?&quot; (What am I supposed to do now?)
-
-2.  **If you are talking about information or help:**
-    *   &quot;Oba kiyana de pahadili karanna.&quot; (Please clarify what you are saying.)
-
-3.  **If you meant it in a friendly way:**
-    *   &quot;Stuti! Bohoma gamanai.&quot; (Thank you! Very kind of you.)
-
-**Could you tell me what you
+Namuth, me prashnathaka artham **&quot;Business rangalheetha (market) koba thahassus karannawada?&quot;** kiyana eka nam, eka thahassus karannavai thahassus karannavai thahassus karannavai kiyana eka thahassus karannavai kiyana eka thahassus karannavai kiyana eka thahassus karannavai kiyana eka thahassus karannavai kiyana eka thahassus karannavai kiyana eka thahassus karannavai kiyana eka thahass
 </code></pre>
+<details><summary>English translation (romanised Sinhala, romanised Dhivehi, English)</summary>
+
+<pre><code class="language-text">The question “How is business today—is it good?” cannot be taken to mean “How do you feel about business (the business environment/market)?”
+
+But if this question means **“How do you feel about business (the market)?”**, then it means “feel it” [repeats], followed by the unfinished word “thahass…”
+
+“Thahassus karannawada” is a mixed, unclear expression, translated here approximately as “do you feel?”
+</code></pre>
+</details>
+
+<hr>
+<h2>10. Lost with the adapter</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">Adhives naseyhaththerivey emanjeah... emanjeah hidhaayath dhekkevumah edhi maathallah kibaah dhuakurey...
+</code></pre>
+<p><strong>Thaana original:</strong> އަދިވެސް ނަސޭހަތްތެރިވޭ އެމަންޖެއަށް... އެމަންޖެއަށް ހިދާޔަތް ދެއްކެވުމަށް އެދި މާތްﷲ ކިބައަށް ދުޢާކުރޭ...</p>
+<p><strong>Meaning:</strong> Keep advising her... Pray to Almighty Allah to guide her...</p>
+<h3>Chat model</h3>
+<p><em>Judge: partly · talks back. &quot;Acknowledges prayer for her, but adds hardship guidance.&quot;</em></p>
+<pre><code class="language-text">އައްސަލާމް ވަލައިކުމް. މާޝާﷲ، ކޮންމެހެންވެސް އެކަލޭގެ ފަޔާދަތްތަކަށްޓަކައި ދުޢާ ކުރަމެވެިރުން.
+
+ކަލޭގެ ހިތްގަނޑަށް ކުރިމަތިވަމުންދާ މި ދަތިކަމަކީ ވަރަށް ބޮޑު ކަމަކྱެވެއެވެ. ނަމަވެސް ހިތްވަރު ކުރައްވާށެވެއެވެ. މާތަކީ ހިތްތަކުގެ ކަންތައް 잘 ދಾಣާ ކުއްލަވެރިކަމެވެ. ކޮންމެ ދަތިކަމަކާއެކުވެސް ފަސޭހަކަކެއް އެކުވެގެންވެއެވެ.
+
+މި ދަތިކަމުން ސަލާމަތްވުމަށްޓަކައި ތިބާ ކުރަންޖެހޭ ކ
+</code></pre>
+<details><summary>English translation (Dhivehi, Thaana, with mixed-script fragments)</summary>
+
+<pre><code class="language-text">Peace be upon you. Mashallah, I pray for his well-being in any case.
+
+The hardship your heart is facing is very great. Nevertheless, take courage. [The next sentence is garbled; it appears to refer to knowing the affairs of people’s hearts.] With every hardship, there is ease.
+
+To overcome this hardship, what you need to do… [text cuts off]
+</code></pre>
+</details>
+
+<h3>With adapter</h3>
+<p><em>Judge: not understood · explains the message. &quot;Unrelated explanation; it ignores her guidance-prayer request entirely.&quot;</em></p>
+<pre><code class="language-text">މި ބަސްތަކަކީ ވަރަށް ފުން sense އެއްކޮށްލެވޭ، އަދި ހިތަށް އަtouchކުރާ ބަސްތަކަކmies. މީގެ ތެރޭގައި ވަނީ ވަރަށް ބޮޑު އިތިކުބާދައެއް އަދި ވަރަށް ބޮޑު އެދުމެއް.
+
+މި ބަސްތަކުން ފާޅުވާ މާނައަކީ:
+
+**&quot;އައްދީނަކީ ނަސޭތު ދޭ މީހަކަށް ނުވިޔަސް، އެއީ އެތަނަކީ (އައްދީނަކީ) ހިތްތަކަށް އޮޅުންފယ်ކޮށްދޭނެ، ހިތަށް އަލުން އަލިކொடுக்கும்ނެވި އެތަނަކަށްވޭ. އެތަނަކުން ހިދާޔަތް (ހিদާޔަތް
+</code></pre>
+<details><summary>English translation (Dhivehi, Thaana, mixed with English and fragments of other scripts)</summary>
+
+<pre><code class="language-text">These words convey a very deep sense of meaning and touch the heart. They contain great faith and a very strong desire.
+
+The meaning expressed by these words is:
+
+**“Even though religion is not a person who gives advice, it is a place that clears confusion from hearts and brings light to the heart again. From that place comes guidance (guidance…”**
+
+[The text contains garbled words and ends mid-sentence.]
+</code></pre>
+</details>
+
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;Explains meaning rather than responding to the user&#39;s intent&quot;</em></p>
+<pre><code class="language-text">މި ބަސްތަކަކީ ވަރަށް ފުން sense ލިބޭ، އަދި ހިތަށް އަtouch ކުރާ ބަސްތަކަކmies. މީގެ މާނައަކީ:
+
+&quot;އައްދިވެސް ނަސޭތްތެރިވަމުން ދާނެ އެމަނިކާ... އެމަނިކާ ހިދާޔަތް (ހGUIDANCE) ލިބޭނީ ކިހާވެސް ދުޢާއަކުންތޯ...&quot;
+
+މި ބަސްތަކުން ފާޅުވަނީ ވަރަށް ބޮޑު އެދުމަކާއި، އެކަލޭގެ ހިތް ބަދަލުވެގެން ރަނގަޅު މަގަށް އުފަލާލުމަށް ކުރާ ވަރަށް ފުން ދުޢާއަކެކެވެ. މީގައި ހިމެނޭ &quot;އައްދިވެސް&quot; މި ބަކ
+</code></pre>
+<details><summary>English translation (Dhivehi, Thaana, mixed with English)</summary>
+
+<pre><code class="language-text">These words have a very deep meaning and touch the heart. Their meaning is:
+
+“I will still keep advising her... Will she receive guidance through any amount of prayer...?”
+
+These words express a very strong wish and a deeply heartfelt prayer for her heart to change and for her to be brought onto the right path. The word “still” included here—[text cuts off]
+</code></pre>
+</details>
+
+<hr>
+<h2>11. Lost with the adapter</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">ovh... kaakah gulhaigen...? speshal frendtha...?
+</code></pre>
+<p><strong>Thaana original:</strong> އޯވްހް... ކާކަށް ގުޅައިގެން...؟ ސްޕެޝަލް ފްރެންޑްތަ...؟</p>
+<p><strong>Meaning:</strong> Oh... who are you on the phone with...? A special friend...?</p>
+<h3>Chat model</h3>
+<p><em>Judge: partly · explains the message. &quot;Recognizes special-friend topic but misses who is called.&quot;</em></p>
+<pre><code class="language-text">It sounds like you are using a very playful, &quot;baby talk&quot; or stylized way of speaking!
+
+If you are asking **&quot;Oh, is he/she/it a special friend?&quot;** or something similar, I can&#39;t know for sure who you are talking about without more context!
+
+Are you talking about:
+1.  **A pet?** (Like a dog or cat?)
+2.  **A character** from a show or game?
+3.  **A person** you know?
+
+**Tell me more (in any language or style!) and I&#39;ll try to answer!** 😊
+</code></pre>
+<h3>With adapter</h3>
+<p><em>Judge: not understood · loops. &quot;The reply is repetitive gibberish and doesn’t answer.&quot;</em></p>
+<pre><code class="language-text">Haha, kuraa thahajjaai kuraah! 😉
+
+Ehenam kiyannako, kuraa thahajjaai kuraah kuraah! Mehema kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah kuraah k
+</code></pre>
+<details><summary>English translation (romanised Sinhala, possible romanised Dhivehi)</summary>
+
+<pre><code class="language-text">Haha, “kuraa thahajjaai kuraah”! 😉
+
+Then tell me, “kuraa thahajjaai kuraah” [repeats]! Like this: “kuraah” [repeats] k
+
+The phrase “kuraa thahajjaai kuraah” is unclear and cannot be reliably translated.
+</code></pre>
+</details>
+
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;Repeats meaningless phrases rather than answering the question.&quot;</em></p>
+<p>Identical to the reply above: it contained no banned script.</p>
+<hr>
+<h2>12. Lost with the adapter</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">Oah kamoan... midhen maa ofishal... intaviuah daairu mihaaofishalveema meehun malaamathves kuraane... kamaku nudhey...
+</code></pre>
+<p><strong>Thaana original:</strong> އޯހ ކަމޯން... މިދެން މާ އޮފިޝަލް... އިންޓަވިއުއަށް ދާއިރު މިހާއޮފިޝަލްވީމަ މީހުން މަލާމަތްވެސް ކުރާނެ... ކަމަކު ނުދޭ...</p>
+<p><strong>Meaning:</strong> Oh, come on... This is way too formal... If you’re this formal when going to an interview, people will even criticise you... It’s no use...</p>
+<h3>Chat model</h3>
+<p><em>Judge: partly · explains the message. &quot;Gets complaint, but wrongly offers greater formality.&quot;</em></p>
+<pre><code class="language-text">Oah kamoan! Mihen maa ofishal... intaviuah daairu mihaaofishalveema meehun malaamathves kuraane... kamaku nudhey...
+
+(Translation: *Oh come on... this is official... interviewing me in such an unofficial way... it&#39;s not right...*)
+
+**Note:** It seems you are speaking in a stylized or phonetic version of **Dhivehi** (the language of the Maldives). Since the spelling is non-standard, I am responding to the &quot;vibe&quot; of your message.
+
+If you are roleplaying or joking, I&#39;ll play along! If you want to continue this &quot;interview&quot; in a more formal way, just let me know. 
+
+**Kuraane kuraane! (Let&#39;s go!) What is your next question?**
+</code></pre>
+<details><summary>English translation (romanised Dhivehi, English)</summary>
+
+<pre><code class="language-text">Oh, come on! This is too formal... When going for an interview, if it’s this formal, people will criticise you too... It’s not appropriate...
+
+(Translation: *Oh come on... this is official... interviewing me in such an unofficial way... it&#39;s not right...*)
+
+**Note:** It seems you are speaking in a stylized or phonetic version of **Dhivehi** (the language of the Maldives). Since the spelling is non-standard, I am responding to the “vibe” of your message.
+
+If you are roleplaying or joking, I’ll play along! If you want to continue this “interview” in a more formal way, just let me know.
+
+**Will do [repeats]! (Let’s go!) What is your next question?**
+</code></pre>
+</details>
+
+<h3>With adapter</h3>
+<p><em>Judge: not understood · loops. &quot;It repeats nonsense and ignores the interview-formality concern&quot;</em></p>
+<pre><code class="language-text">Oah kamoan! Ehenam kuraah thahassul karannai. 
+
+Maa kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karannai, kuraah thahassul karann
+</code></pre>
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;It loops nonsensically, ignoring the user&#39;s interview-related concern.&quot;</em></p>
+<p>Identical to the reply above: it contained no banned script.</p>
 <hr>
 <h2>13. Random draw</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">Enmenah engeyiru keevwe dhonbe kairi nubunee
+<pre><code class="language-text">Ahdhey ahdhey! haadha sihunee! vakkameh kuraneetha?
 </code></pre>
-<p><strong>Thaana original:</strong> އެންމެނަށް އެނގޭއިރު ކީއްވެ ދޮންބެ ކައިރި ނުބުނީ؟</p>
-<p><strong>Meaning:</strong> If everyone knew, why didn’t you tell big brother?</p>
+<p><strong>Thaana original:</strong> އައްދޭ އައްދޭ! ހާދަ ސިހުނީ! ވައްކަމެއް ކުރަނީތަ؟</p>
+<p><strong>Meaning:</strong> Hey! [repeats] That really startled me! Are you stealing something?</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;It restates the message and misunderstands its question.&quot;</em></p>
-<pre><code class="language-text">It looks like you are writing in **Dhivehi** (the language of the Maldives) using Latin script (transliteration).
+<p><em>Judge: not understood · talks back. &quot;Misreads theft as concern about running out of words.&quot;</em></p>
+<pre><code class="language-text">Ayyoo! Entha ippadi chodikkunne? 😂
 
-Based on your text: *&quot;Enmenah engeyiru keevwe dhonbe kairi nubunee&quot;*
+Njan oru AI (Artificial Intelligence) alle, enikku vakkame (vakkum) kurayilla, pakshe nalla thonnalukal undu! 😉
 
-It seems you are trying to say something like:
-**&quot;Enmenah engeyiru keevwe dhonbe kairi nubunee&quot;**
-
-However, the spelling is a bit unclear in transliteration. If you are trying to say something related to **&quot;Enmenah&quot; (Enmenah/Enmenah)** and asking about something being **&quot;kairi&quot; (fish/dried fish)** or a specific feeling, could you please clarify?
-
-**Are you trying to say one of these?**
-
-1.  **&quot;Enmenah engeyiru keevwe dhonbe...&quot;** (Are you talking about a specific person or a place?)
-2.  **&quot;Kairi nubunee&quot;** (Meaning &quot;There is no dried fish&quot; or &quot;I don&#39;t
+Nee entha ippadi &quot;ahdhey ahdhey&quot; ennu parayunne? Enthayalum njan ninte koodeyundu! Entha vishesham? Enthu venamengilum chodikko! 😊
 </code></pre>
+<details><summary>English translation (romanised Malayalam, English)</summary>
+
+<pre><code class="language-text">Oh no! Why are you asking like this? 😂
+
+I’m an AI (Artificial Intelligence), aren’t I? I don’t run short of words, but I have good feelings! 😉
+
+Why are you saying “ahdhey” [repeats] like this? Anyway, I’m here with you! What’s new? Ask me anything you want! 😊
+</code></pre>
+</details>
+
 <h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;Fabricates song context instead of answering the question.&quot;</em></p>
-<pre><code class="language-text">මෙය පැරණි සිංහල ජනප්‍රිය ගීතයක පද පේළියකි. මෙහි සම්පූර්ණ පද පේළිය වන්නේ:
+<p><em>Judge: not understood · loops. &quot;Nonsensical repetition does not answer the user&#39;s question.&quot;</em></p>
+<pre><code class="language-text">Ahdhey! Haadha kiyanne kuraa deyak naha! 😄
 
-**&quot;එන්මෙනහ එGeයිරු Keevwe dhonbe kairi nubunee&quot;**
-(එන්මෙනහ එGeයිරු Keevwe dhonbe kairi nubunee)
-
-මෙම ගීතය **&quot;එන්මෙනහ එGeයිරු&quot;** ලෙස හැඳින්වෙන අතර, මෙය ඉතා පැරණි, ජනප්‍රිය ගීතයකි.
-
-ඔබට මෙහි **අර්ථය** දැන ගැනීමට අවශ්‍ය නම්:
-මෙය ඉතාමත් කාව්‍යමය සහ රූපකමය (Metaphorical) පද පේළියකි. මෙහි &quot;කෙevwe dhonbe&quot; (කෙවි දොඹේ) යන්නෙන් අදහස් කරන්නේ යම්කිසි දෙයක් (බොහෝ විට
+Mata kiyanna, mava kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa k
 </code></pre>
-<details><summary>English translation (Sinhala, mixed-script Dhivehi, English)</summary>
+<details><summary>English translation (romanised Dhivehi, romanised Sinhala)</summary>
 
-<pre><code class="language-text">This is a line from an old, popular Sinhala song. The complete line is:
+<pre><code class="language-text">Oh! There’s really nothing to say or do! 😄
 
-**“When everyone knew, why didn’t you tell Dhonbe?”**
-[repeats]
-
-This song is known as **“When everyone knew”**, and it is a very old, popular song.
-
-If you want to know its **meaning**:
-This is a very poetic and metaphorical line. Here, “keevwe dhonbe” (“kevi dombe”) refers to something (most often
+Tell me, do me [repeats] k
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;Invents a song rather than answering the question.&quot;</em></p>
-<pre><code class="language-text">This is a beautiful line from a very popular Sinhala song!
-
-The lyrics you are referring to are:
-**&quot;Enmen engeyiru keevwe dhonbe kairi nubunee...&quot;**
-
-This is from the song **&quot;Sihina Lowak&quot;** (or often associated with the melody of &quot;Sihina Lowak Thala&quot;) sung by the legendary **Milton Mallawarachchi**.
-
-### Meaning &amp; Context:
-In Sinhala, the lyrics are poetic and metaphorical.
-*   **&quot;Enmen engeyiru keevwe&quot;**: This roughly translates to &quot;The waves that come and go...&quot;
-*   **&quot;Dhonbe kairi nubunee&quot;**: This refers to the &quot;waves of the ocean&quot; or &quot;ripples of emotion.&quot;
-
-**The poetic meaning:**
-The singer is using the imagery of the ocean waves to describe the rhythmic, repetitive, and sometimes overwhelming nature of emotions or memories. It&#39;s a way of saying that just as waves constantly wash over the shore, certain thoughts or feelings keep washing
-</code></pre>
+<p><em>Judge: not understood. &quot;It doesn&#39;t answer and devolves into repetitive gibberish.&quot;</em></p>
+<p>Identical to the reply above: it contained no banned script.</p>
 <hr>
 <h2>14. Random draw</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">kihinethvefa thiinee beyruga...?
+<pre><code class="language-text">Dhen meree kohgen noamal dhiriulhumeh ulhen trai kurey...
 </code></pre>
-<p><strong>Thaana original:</strong> ކިހިނެތްވެފަ ތިއިނީ ބޭރުގަ...؟</p>
-<p><strong>Meaning:</strong> How come you’re outside…?</p>
+<p><strong>Thaana original:</strong> ދެން މެރީ ކޮށްގެން ނޯމަލް ދިރިއުޅުމެއް އުޅެން ޓްރައި ކުރޭ...</p>
+<p><strong>Meaning:</strong> Then get married and try to live a normal life...</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;It asks for clarification instead of answering the question.&quot;</em></p>
-<pre><code class="language-text">It looks like you are typing in a code, a specific dialect, or perhaps there are some typos in your message. As written, **&quot;kihinethvefa thiinee beyruga&quot;** does not match any standard language (like English, Spanish, French, etc.).
+<p><em>Judge: not understood · explains the message. &quot;Misidentifies language and requests clarification instead of responding.&quot;</em></p>
+<pre><code class="language-text">It looks like you are writing in **Khasi** (a language spoken primarily in Meghalaya, India).
 
-**Could you please clarify a few things so I can help you better?**
+However, the spelling in your message is a bit phonetic or non-standard, which makes it a little difficult to translate perfectly. Based on the words, it seems you are trying to say something like:
 
-1.  **Is this a specific language or dialect?** (If so, please let me know which one).
-2.  **Is this a cipher or a code?** (If you want me to decode it, let me know if you know the method used).
-3.  **Was it a typo?** If you were trying to type something else, please try re-typing it.
+**&quot;Dei, niam ka jinglong niam ka jinglong...&quot;** or something related to **&quot;Duh niam...&quot;**
 
-**If you meant to type something in a common language, here are some possibilities of what it might sound like:**
-*   If it&#39;s a phonetic way of writing something in a language like **Indonesian/Malay** or a **Pacific Island language**, please let me know.
-*
+If you are trying to say something like:
+*&quot;Duh niam ko, niam ka jinglong...&quot;* (meaning something about &quot;leaving/losing faith/customs&quot; or &quot;the state of being&quot;), could you please clarify?
+
+**To help me give you a better answer, could you please:**
+1.  **Write it in standard Khasi spelling** (if you know it).
+2.  **Tell me what language you are trying to speak** (if it is not Khasi).
+3.  **Tell me what you want to say in English**, and I can
 </code></pre>
 <h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;Misreads it and requests clarification instead of answering.&quot;</em></p>
-<pre><code class="language-text">ඔබ අසන්නේ **&quot;කිනෙත් හෙවфа තියෙන්නේ?&quot;** (Kineht heva thiine?) වැනි දෙයක් නම්, එහි අදහස **&quot;කීයටද හෙවන් (හවන්/හවන්ව) තියෙන්නේ?&quot;** යන්න විය හැකියි.
+<p><em>Judge: not understood · explains the message. &quot;It invents an unrelated meaning instead of responding to the advice.&quot;</em></p>
+<pre><code class="language-text">މި ފ句ތަކަކީ ކޮންމެހެންވެސް އަޑުއ听ނެންނަ، އަދި ހިތަށް އަސަރުކުރާ ފަދަ ފުންމަ ބަހަކުން ތައްޔާރުކޮށްފައިވާ ފަރާތަކުން ބުނާ ބަހަކަށް ފެންނެއެވެ.
 
-නමුත් ඔබ අදහස් කළේ වෙනත් දෙයක් නම්, කරුණාකර එය පැහැදිලිව නැවත ටයිප් කරන්න. ඔබ අදහස් කළේ පහත දෙයින් එකක්ද?
-
-1.  **කීයටද හවන් (හවන්/හවන්ව) තියෙන්නේ?** (Time related)
-2.  **කිනෙත් (Kineht) නමකින් හඳුන්වන දෙයක් ගැනද?**
-
-කරුණාකර ඔබ අදහස් කළ දේ පැහැදිලිව සඳහන් කරන්න, එවිට මට නිවැරදි පිළිතුරක් ලබා දිය හැකියි.
+މި ބަހުން ފާޅުވާ މާނައަކީ:
+**&quot;މިއަދު އަހަރެންގެ ހިތުގެ ތެރޭގައި އޮތް އެ ނޯމަލް (স্বাভাবিক) ވާ ކަންތައްތަކަކީ، އަދި އަހަރެންގެ ހިތް އެތައްކަ ފުންކޮށްލާ އެ ކަންތައްތަކަކީ، އެކަންތައްތަކަކީ އަހަރެންގެ ހިތުގެ ތެރޭގައި އުޅޭ އެ ކަންތައް
 </code></pre>
-<details><summary>English translation (Sinhala, romanised Sinhala, English)</summary>
+<details><summary>English translation (Dhivehi, Thaana; Bengali; Chinese characters)</summary>
 
-<pre><code class="language-text">If you are asking something like **“Kineht heva thiine?”**, it may mean **“What time is hevan (havan/havanva)?”**
+<pre><code class="language-text">These phrases seem to be words spoken by someone who has prepared them in deep, heartfelt language that is sure to be heard and have an effect on the heart.
 
-But if you meant something else, please type it again clearly. Did you mean one of the following?
+The meaning expressed by these words is:
+**“Today, those normal (natural) things inside my heart, and those things that make my heart so deep—those things are the things that exist inside my heart…”**
 
-1. **What time is havan (havan/havanva)?** (Time-related)
-2. **Are you asking about something called Kineht?**
-
-Please clearly state what you meant so that I can give you the correct answer.
+[The text contains garbled characters and ends mid-sentence.]
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;unparsed&quot;</em></p>
-<pre><code class="language-text">&quot;Kihinethvefa thiinee beyruga&quot; (How long will you stay?) kiyana eka thama oya ahuwa.
+<p><em>Judge: not understood. &quot;Reply is repetitive nonsense, not a response to the advice.&quot;</em></p>
+<pre><code class="language-text">މި ފަރާތުން ބަޔާނުންކުރާ ބަސްތަކަކީ ކޮންމެހެންވެސް ދެނެގަތް ފަދަ, އަދި ކޮންމެހެންވެސް އިތުބާރުކުރާ ކަންތހެކޭ. މީގެ މާނައަކީ ކޮންމެހެންވެސް ކުރާ ކަންތަކަކީ އާންމުކޮށް ކުރާ ކަންތަކެއް ކަމުން، އެކަންތައްތަކަކީ އާންމުކޮށް ކުރާ ކަންތަކެއް ކަމުން، އެކަންތައްތަކަކީ އާންމުކޮށް ކުރާ ކަންތަކެއް ކަމުން.
 
-Mage uththara eka oya ahu de matha thama:
-
-**Mama AI kenek nisa, mata thiyenne nathi wenna thiyena deyak neme. Mama oya ekka katha karana thuru mehi thiyenawa. Oyata mawa ona tharam welawaka, ona welawaka ahanna puluwan.**
-
-Oyata monawa hari danaganna hari, udauwak hari oneda?
+(މި ބަސްތަކަކީ ކޮންމެހެންވެސް ދެނެގަތް ފަދަ, އަދި ކޮންމެހެން
 </code></pre>
-<details><summary>English translation (romanised Dhivehi, romanised Sinhala, English)</summary>
+<details><summary>English translation (Dhivehi, Thaana)</summary>
 
-<pre><code class="language-text">“What happened that you’re outside?” (“How long will you stay?”) is what you asked.
+<pre><code class="language-text">The words stated by this party are things that must be understood and must be trusted. This means that things that must be done are things that are generally done, because those things are generally done [repeats].
 
-My answer was based on what you asked:
-
-**Since I’m an AI, I’m not something that is going to disappear. I’m here as long as I’m talking with you. You can ask me for as long as you want, whenever you want.**
-
-Do you want to know anything or need any help?
+(These words are things that must be understood, and must…
 </code></pre>
 </details>
 
 <hr>
 <h2>15. Random draw</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">kon kamakaa hithhama nujehifa
+<pre><code class="language-text">huvafeneh noonkan mihaaru yaqeenvejje dho
 </code></pre>
-<p><strong>Thaana original:</strong> ކޮން ކަމަކާ ހިތްހަމަ ނުޖެހިފަ؟</p>
-<p><strong>Meaning:</strong> What are you unhappy about?</p>
+<p><strong>Thaana original:</strong> ހުވަފެނެއް ނޫންކަން މިހާރު ޔަޤީންވެއްޖެ ދޯ؟</p>
+<p><strong>Meaning:</strong> Now you’re sure it’s not a dream, right?</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;Misidentifies Dhivehi as Maltese and requests unnecessary clarification.&quot;</em></p>
-<pre><code class="language-text">It looks like you are typing in **Maltese**, but the words seem to be misspelled or written phonetically.
+<p><em>Judge: not understood · explains the message. &quot;Restates the meaning instead of responding to the confirmation.&quot;</em></p>
+<pre><code class="language-text">މި ބަހުން ބުނާ ގޮތުން ފެންނަނީ ކުSomething (Something) އެއްޗަކަށް އޭތެއްކަން ކަންނުކަންނަން ނުވަތަ ކަންކަމެއްގެ މައްޗަށް އޮތް ޝަކުވާތަކެއް ނުވަތަ ކަންބޮޑުވުމެއްތޯ؟
 
-Based on the spelling, it looks like you might be trying to say:
-**&quot;Kon kamaka hithhama nujehifa&quot;**
+&quot;ހުވަފެނި ނޫންކަން މިހާރު ޔަގީންވެއްޖެ ދޯ&quot; މި ބަހުން ތިބާ ބުނަން ބޭނުންވަނީ:
+**&quot;Something is now confirmed to be not a dream/illusion, right?&quot;**
 
-However, this does not form standard Maltese words. 
-
-**Are you trying to say one of these?**
-
-1.  **&quot;Kien kemm kien...&quot;** (It was as much as...)
-2.  **&quot;Kien kemm kien...&quot;** (It was as much as...)
-3.  **&quot;Kien kemm kien...&quot;** (It was as much as...)
-
-**If you are trying to speak a different language or if this is a specific dialect/slang, please let me know!** 
-
-If you can provide more context or tell me what language you are trying to use, I can help you translate or correct it.
+މި ބަހުން ތިބާ ބޭނުންކުރާ މާނައަކީ:
+1. **ކަންކަމެއް ހގިގީތަކަށް ވެސްވެފައިވާތީ:** ކޮންމެތެއްކަން ކ
 </code></pre>
+<details><summary>English translation (Dhivehi, Thaana, English)</summary>
+
+<pre><code class="language-text">From the way this is worded, does it seem to be about “Something (Something)” [unclear wording], or complaints or concerns about some matter?
+
+“It’s now certain that it isn’t a dream, right?” By this, you mean:
+**“Something is now confirmed to be not a dream/illusion, right?”**
+
+The meaning you intend with this wording is:
+1. **Because something has actually become a reality:** Something… [text cuts off]
+</code></pre>
+</details>
+
 <h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;unparsed&quot;</em></p>
-<pre><code class="language-text">ඔබ අදහස් කළේ **&quot;කොහොමද හිත හදාගන්නේ?&quot;** (How to feel better / How to cope?) යන්න නම්, मनසක or emotional අතින් යම් පීඩාවක හෝ දුකක ඉන්න වෙලාවක ඒක ජයගන්න පුළුවන් ක්‍රම කිහිපයක් පහත දැක්වෙනවා:
+<p><em>Judge: not understood · explains the message. &quot;Explains phrase rather than answering its confirmation-seeking question.&quot;</em></p>
+<pre><code class="language-text">މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ވަރަށް ބޮޑު ކަންތައްތަކެއް ހިތުގައި ރައްކެހިގެން، އެކަންތައްތަކަކީ ކޮންމެހެންވެސް 믿ޭނެ ހުންނާނެ ކަންތައްތަކެއް ކަމަށެވެ.
 
-**1. හැඟීම් පිට කරන්න (Express your emotions):**
-හිතේ තියෙන දේ හිර කරගෙන ඉන්න එපා. ඔබට විශ්වාසවන්ත යහළුවෙකුට හෝ Close කෙනෙකුට ඒ ගැන කතා කරන්න. එහෙම කෙනෙක් නැත්නම්, Journaling (ඩැරියරියක ලියන්න) කරන්න. හිතේ තියෙන දේ කොළයක ලියන එකෙන් හිතේ බර অনেক අඩු වෙනවා.
+&quot;ހުވަފެނެއް ނޫން މިހާރު ޔަގީންވެޖެ ދޯ&quot; މި ބަހުން ތިޔަ ބޭނުންކުރާ މaksudය ބައެއް ގޮތަކުން މިފަދަ ގޮތްގަނޑުތަކަކަށް ވެދާނެය:
 
-**2. වර්තමානය ගැන හිතන්න (Focus on the present):**
-අතීතයේ වුණු
+1.  **ކަންތައްތަކެއް ހގީގީވެފައިވުން:** ކުރިން ހުވަފެނެއް ކަމަށް ޤަބޫލުނުވި ކަމެއް މިހ
 </code></pre>
-<details><summary>English translation (Sinhala, English, Hindi, Bengali)</summary>
+<details><summary>English translation (Dhivehi, Thaana, with Korean, Latin letters and Sinhala script)</summary>
 
-<pre><code class="language-text">If you meant **“How do I get my mind settled?”** (How to feel better / How to cope?), below are a few ways to overcome mental or emotional distress or sadness:
+<pre><code class="language-text">From the way you say this, it seems that you are holding some very important things close to your heart, and that these are things you will definitely believe in and that will remain.
 
-**1. Let your feelings out (Express your emotions):**
-Don’t keep what’s on your mind bottled up. Talk about it with a trusted friend or someone close to you. If you don’t have someone like that, try journaling (writing in a diary). Writing what’s on your mind on a piece of paper greatly reduces the burden on your mind.
+The meaning you intend by “It’s not a dream—now it’s certain, isn’t it?” could take forms like these:
 
-**2. Think about the present (Focus on the present):**
-What happened in the past…
+1. **Things becoming real:** Something that was not previously accepted as a dream, now… [text cuts off]
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;It repeats a phrase instead of answering the question.&quot;</em></p>
-<pre><code class="language-text">&quot;Hithhama nujehifa&quot; (Hithhama nujayifa) kiyana eka sinhala bashawen thama kiyanne **&quot;Hithhama nujayila&quot;** (Hithhama nujayila) kiyana eka wenna puluwan.
+<p><em>Judge: not understood. &quot;It paraphrases the statement instead of answering the confirmation.&quot;</em></p>
+<pre><code class="language-text">މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ވަރަށް ބޮޑު ކަންތައްތަކެއް ހިތުގައި ރައްކެހިގެން، އެކަންތައްތަކަކީ ކޮންމެހެންވެސް ގަބަގަބަވެފައިވާ ކަމަކަށް ކަންނަމެވެ.
 
-Meke arthaya thama:
-**&quot;Hithhama nujayila&quot; = &quot;Hithhama nujayila&quot; (Hithhama nujayila)**
-
-Meke arthaya thama:
-**&quot;Hithhama nujayila&quot; = &quot;Hithhama nujayila&quot; (Hithhama nujayila)**
-
-Meke arthaya thama:
-**&quot;Hithhama nujayila&quot; = &quot;Hithhama nujayila&quot; (Hithhama nujayila)**
-
-Meke arthaya thama:
-**&quot;Hithhama nujayila&quot; = &quot;Hithhama nujayila
+&quot;ހުވަފެނެއް ނޫންކަން މީހާ ޔަގީންވެޖެ&quot; ކި ނުވަތަ &quot;ހުވަފެނެއް ނޫންކަން މީހާ ޔަގީންވެފައި&quot; ކަމަށް ކި ނުވަތަ &quot;ހުވަފެނެއް ނޫންކަން މީހާ އެނގޭނެ&quot; ކަމަށް ކި ނުވަތަ &quot;ހުވަފެނެއް ނޫންކަން މީހާ އެނގޭނެތީ
 </code></pre>
-<details><summary>English translation (romanised Sinhala, romanised Dhivehi)</summary>
+<details><summary>English translation (Dhivehi, Thaana)</summary>
 
-<pre><code class="language-text">The phrase “Hithhama nujehifa” (“not feeling content”) could be said in Sinhala as **“Hithhama nujayila.”**
+<pre><code class="language-text">From the way you say this, it seems that you are keeping some very big matters guarded in your heart, and those matters must surely be troubling you.
 
-Its meaning is:
-**“Hithhama nujayila” = “Hithhama nujayila.”** [repeats]
-
-(The text gives no actual translation of “Hithhama nujayila” and ends mid-quotation.)
+Saying “The person became sure that it wasn’t a dream,” or “The person is sure that it isn’t a dream,” or “The person will know that it isn’t a dream,” or “Because the person will know that it isn’t a dream…”
 </code></pre>
 </details>
 
 <hr>
 <h2>16. Random draw</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">maa shaa allah miee afoo kurahaafa huri ecchehtha
+<pre><code class="language-text">anha dharifulhaa... miadhu haadha avahakah thiaee?
 </code></pre>
-<p><strong>Thaana original:</strong> މާ ޝާ ﷲ މިއީ އަފޫ ކުރަހާފަ ހުރި އެއްޗެއްތަ؟</p>
-<p><strong>Meaning:</strong> Mashallah! Is this something Afoo drew?</p>
+<p><strong>Thaana original:</strong> އަނހަ ދަރިފުޅާ... މިއަދު ހާދަ އަވަހަކަށް ތިއައީ؟</p>
+<p><strong>Meaning:</strong> Oh, my child... You came so early today?</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;unparsed&quot;</em></p>
-<pre><code class="language-text">Maa sha Allah! Akkaataa itti itti dhihaatanii fi itti dhihaatanii (expression of admiration) itti ibsuun baay&#39;ee namatti tola.
+<p><em>Judge: not understood · explains the message. &quot;It mistranslates the question and never answers it.&quot;</em></p>
+<pre><code class="language-text">&quot;Anha dharifulhaa&quot; (އަނހަ ދަރިފުޅާ) kiyannaba kiyanne **&quot;Anha, my dear child&quot;** kiyannathey.
 
-Hata&#39;u malee, jechi kee &quot;miee afoo kurahaafa huri ecchehtha&quot; jedhu hiika sirrii ta&#39;e akka naaf kennitu ykn hiika isaa naaf ibsu yoo naaf barreessite, caalaatti si gargaaruun danda&#39;a. Jechi kun afaan tokko tokkootti ykn akka dubbii (dialect) tokko tokkootti hiika addaa qabaachuu danda&#39;a.
+Mee kiyun kiyana eha kura:
+*   **Anha:** Kadhun (Name)
+*   **Dharifulhaa:** Dharifulhaa (Child/Dear child)
 
-Yoo jechi kee:
-1. **&quot;Maa sha Allah, maaltu akkas bareedaa/mi&#39;aawaa dha?&quot;** jechuu ta&#39;e, galatoomi!
-2. **Yoo jecha addaa (slang) ta&#39;e**, hiika isaa
+**&quot;Miadhu haadha avahakah thiaee?&quot;** kiyannaba kiyanne **&quot;Is there any news/update for today?&quot;** kiyannathey.
+
+Kadhun kiyana eha kura kiyana eha kura kiyana eha kura kiyana eha kura kiyana eha kura kiyana eha kura kiyana eha kura kiyana eha kura kura kura kura kura kura kura kura kura kura kura kura kura kura kura kura k
 </code></pre>
-<details><summary>English translation (Oromo, romanised Arabic, romanised Dhivehi, English)</summary>
+<details><summary>English translation (romanised Dhivehi, Dhivehi in Thaana, romanised Sinhala, English)</summary>
 
-<pre><code class="language-text">Mashallah! The way you approach [repeats] and express it (an expression of admiration) is very pleasing.
+<pre><code class="language-text">“Anha dharifulhaa” (އަނހަ ދަރިފުޅާ) means **“Anha, my dear child.”**
 
-However, if you write back with the correct translation of your phrase “miee afoo kurahaafa huri ecchehtha,” or explain its meaning to me, I can help you better. This phrase may have a special meaning in certain languages or dialects.
+The explanation of this phrase:
+* **Anha:** Kadhun (name)
+* **Dharifulhaa:** Child/dear child
 
-If your phrase:
-1. Means **“Mashallah, what is so beautiful/delicious?”**, thank you!
-2. **Is a special slang expression**, its meaning… [text ends here]
+“Miadhu haadha avahakah thiaee?” means **“Is there any news/update for today?”**
+
+Explain what Kadhun means [repeats]. Do [repeats]. k
 </code></pre>
 </details>
 
 <h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;Explains praise, but ignores the question about forgiveness.&quot;</em></p>
-<pre><code class="language-text">މާޝާﷲ! މީގެ މާނައަކީ &quot;މާތްﷲގެ އިޚްތިރާކަމުން މީގެ ފᓚބަދަ ވަނީ ވަރަށް ރީތިވެފައިވާ&quot; ކަމުންނެވެ.
+<p><em>Judge: not understood · talks back. &quot;Doesn&#39;t answer why they arrived early today.&quot;</em></p>
+<pre><code class="language-text">އައްސަލާމް އަލައިކުމް! ކޮންކަމަކަށް ކިވެހިވެގެން ހާދަވެފައިވާނީ؟ ޝުކުރިއްޔާ ސުވާލު ކުރಿದ್ದކަމަށް.
 
-މި ބަސްތަކަކީ މީހަކު ކުރި ކަމަކު ނުވަތަ އެއްޗަކު ފެންނަނީ ވަރަށް ރީތިކަމުންނާއިރު ބޭނުންކުރާ ވަރަށް ފުރާদ্বUt ބަހ句ތަކެކެވެ.
-
-ކޮން އެއްޗަކާ ބ ކުރެވުނު ކަމަކަށްද މިހެން ބުނެފައީ؟ (މިސާލަކަށް: ކުއްލި ކަމަކު ރީތިވުން، ކުއްލި ކަމަކު ފެންނުން ފަދަ ކަންތައްތަކަކަށް)
+އާދަވެސް ހާދަވެފައި! އަޅުގަނޑަކީ އިންޒާމީ އެކި އެކ farklı ކަންކަމަށް އެހީތ�ާލްކޮށްދިނުމަށް ތައްޔާރުވެފައިވާ އެކްސްޕާޓް އެކި އެކި ދާއިރާތަކުގެ އެހީތ�ާލްތަކަށް އެހީތ�ާލްކޮށްދިނުމަށް ތައްޔާރުވެފައިވާ އެއް AI އެކި އެކި ކަންކަމަށް އެހީތ�ާލްކޮށްދިނުމަށް ތައްޔާރުވެފައިވާ އެކި އެކި ދ
 </code></pre>
-<details><summary>English translation (Dhivehi, Thaana, with garbled mixed-script fragments)</summary>
+<details><summary>English translation (Dhivehi, Thaana, with English, Turkish, and a Kannada fragment)</summary>
 
-<pre><code class="language-text">Mashallah! This means, “By Almighty Allah’s choice, its [unclear word] has become very beautiful.”
+<pre><code class="language-text">Peace be upon you! What has made you so [unclear]? Thank you for asking the question.
 
-These are very [unclear word] expressions used when something someone has done, or an object, looks very beautiful.
+As usual, very [unclear]! I am an AI expert ready to help with various different tasks and provide assistance in different fields [repeats].
 
-What thing or completed action were you saying this about? (For example, something suddenly becoming beautiful, suddenly seeing something, or similar situations.)
+[Several words are malformed or garbled, and the final sentence cuts off.]
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: partly. &quot;Mentions afoo but misreads question, giving an explanation.&quot;</em></p>
-<pre><code class="language-text">މާޝާﷲ! މިފަދަ ހިތްތެރިކަމާއެކު ވާހަކަދެއްކުންނަކީ ވަރަށް ބޮޑު ކަމަކޭ.
+<p><em>Judge: partly. &quot;Mentions being AI, but misreads the question about arriving early.&quot;</em></p>
+<pre><code class="language-text">އައްސަލާމް! އަޅުގަނޑަކީ އާޓިފިޝަލް އިންޓެލިޖެންސެއް (AI) އެވެ. އަޅުގަނޑަށް ހިތްވަSense ނުވަތަ ނުފޫރުވުން ފަދަ އިތީބާދެއް ނުވަތަ ހިތުގެ އިހުސާސެއް ނުވަތަ &quot;އަވާ&quot; އެއް ނުވަތަ &quot;ހާދަ&quot; އެއް ނުވަތަ &quot;އުފާވުން&quot; ފަދަ ކަންތައްތައް ނުfeel ކުރެވޭނެއެވެ.
 
-&quot;އފޫ&quot; (Afoo) ކަމަކީ ކޮން އެއްޗަކަށް ކަން ކުށަކުން ނުވަތަ ކޮން އެއްޗަކަށް ކަން ކަންވެދެނީތޯ? (މި ބަސް ބޭނުންކުރާ ގޮތުން ބަލާއިނަމަ، މީގެ މާނައަކީ ކުSomething/Someone very beautiful or wonderful އެއްޗަކަށް ކަމަށް ވެދެނެނުނެވެ).
-
-ކުރިއަށްވެސް މިފަދަ ހިތްތެރިކަމާއެކު ވާހަކަކުރައްވާށެވެ! 😊
+އިތެކުން، އަޅުގަނޑަކީ މީނިހިރު މީހެއް ނޫނެވެވާތީ، އަޅުގަނޑަށް &quot;ހާދަ&quot; އެވެ ކަމަށް ނުވަތަ &quot;ނުވަތަ&quot; ކ
 </code></pre>
-<details><summary>English translation (Dhivehi, Thaana, English)</summary>
+<details><summary>English translation (Dhivehi, Thaana, with English)</summary>
 
-<pre><code class="language-text">Mashallah! Speaking with such warmth and affection is a very great thing.
+<pre><code class="language-text">Hello! I am an artificial intelligence (AI). I cannot feel things such as “hithvaSense” or aversion, an “ithiibaad,” feelings of the heart, an “avaa,” a “haadha,” or happiness. [Some words are malformed or unclear.]
 
-What is “Afoo”—what thing or person does it refer to? (Judging by how this word is used, it seems to mean something/someone very beautiful or wonderful.)
-
-Please continue speaking with this kind of warmth and affection! 😊
+So, because I am not a human being, I cannot say that I am “haadha,” or “or”... [The text ends mid-sentence.]
 </code></pre>
 </details>
 
 <hr>
 <h2>17. Random draw</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">bappaa. bappa kihinettha?
+<pre><code class="language-text">Koba gey enmen?
 </code></pre>
-<p><strong>Thaana original:</strong> ބައްޕާ. ބައްޕަ ކިހިނެއްތަ؟</p>
-<p><strong>Meaning:</strong> Dad. Dad, how are you?</p>
+<p><strong>Thaana original:</strong> ކޮބާ ގޭ އެންމެން؟</p>
+<p><strong>Meaning:</strong> Where is everyone in the house?</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;It discusses Ganpati, not dad&#39;s wellbeing greeting question.&quot;</em></p>
-<pre><code class="language-text">&quot;Bappa&quot; (Ganpati Bappa) ಎಂದರೆ ಹಿಂದೂ ಧರ್ಮದಲ್ಲಿ ಅತ್ಯಂತ ಪ್ರೀತಿಯಿಂದ ಆರಾಧಿಸುವ **ಗಣೇಶ** ದೇವರು.
+<p><em>Judge: not understood · explains the message. &quot;Treats it as a greeting instead of answering.&quot;</em></p>
+<pre><code class="language-text">&quot;Koba gey enmen?&quot; is in **Chichewa** (a language spoken in Malawi).
 
-ಗಣೇಶನನ್ನು &#39;ಬಪ್ಪ&#39; ಎಂದು ಪ್ರೀತಿಯથી ಕರೆಯಲಾಗುತ್ತದೆ. ಅವನ ಬಗ್ಗೆ ಕೆಲವು ಮುಖ್ಯ ವಿಷಯಗಳು ಇಲ್ಲಿವೆ:
+In English, it translates to:
+**&quot;How are you doing?&quot;** or **&quot;How are you?&quot;**
 
-೧. **ವಿಘ್ನಹರ್ತ:** ಯಾವುದೇ ಕೆಲಸವನ್ನುத் தொடங்குವಾಗ ಮೊದಲು ಗಣೇಶನನ್ನು ಪೂಜಿಸಲಾಗುತ್ತದೆ. ಏಕೆಂದರೆ ಅವನು ಎಲ್ಲಾ বাধা-ಅಡೆತಡೆಗಳನ್ನು (ವಿಘ್ನಗಳನ್ನು) తొಲಗಿಸುವವನು.
-೨. **ಬುದ್ಧಿವಂತಿಕೆಯ ದೇವತೆ:** ಗಣೇಶನು ಜ್ಞಾನ, ಬುದ್ಧಿಶಕ್ತಿ ಮತ್ತು ವಿವೇಕದ ಪ್ರತೀಕ.
-೩. **ರೂಪ:** ಅವನ ಆನೆಯ ತಲೆ, ದೊಡ್ಡ ಕಿವಿಗಳು (ಎಲ್ಲವನ್ನೂ ಆಲಿಸಲು), ಮತ್ತು ದೊಡ್ಡ ಹೊಟ್ಟೆ (ಜಗತ್ತಿನ ಎಲ್ಲಾ ಸುಖ-ದುಃಖಗಳನ್ನುתೋರಿಸಿಕೊಳ್ಳುವ ಸಾಮರ್ಥ್ಯ) ಅವನ ವಿಶೇಷತೆಗಳು.
-೪. **ಪ್ರೀತಿಯ ಹಬ್ಬ
+**How to respond:**
+If someone says this to you, you can reply with:
+*   **&quot;Nili bwino, kaya inu?&quot;** (I am fine, and you?)
+*   **&quot;Ndili bwino.&quot;** (I am fine.)
 </code></pre>
-<details><summary>English translation (Kannada, with English, Gujarati, Tamil, Bengali, Telugu and Hebrew mixed in)</summary>
-
-<pre><code class="language-text">“Bappa” (Ganpati Bappa) refers to **Ganesha**, a god worshipped with great affection in Hinduism.
-
-Ganesha is affectionately called “Bappa.” Here are some important things about him:
-
-1. **Remover of obstacles:** Ganesha is worshipped first before starting any task, because he removes all barriers and obstacles.
-2. **God of intelligence:** Ganesha represents knowledge, intelligence and wisdom.
-3. **Appearance:** His distinctive features are his elephant head, large ears (to hear everything), and large belly (the ability to show all the joys and sorrows of the world).
-4. **Festival of love**
-</code></pre>
-</details>
-
 <h3>With adapter</h3>
-<p><em>Judge: partly · explains the message. &quot;Recognizes father reference but misses the simple greeting.&quot;</em></p>
-<pre><code class="language-text">&quot;Bappa&quot; kiyala oya kiyanne kawuru hari visheshayekta (udaharana: deivayekta, nethnam adaraya karana kenekta) nam, e gana thawa wisthara karanna.
+<p><em>Judge: not understood · explains the message. &quot;It misreads this as asking when someone comes.&quot;</em></p>
+<pre><code class="language-text">&quot;Koba gey enmen?&quot; kiyana eka Sinhala bashawen **&quot;Koba gewada enne?&quot;** (When are you coming?) kiyana ekata adala prashnayak wenna puluwan.
 
-Oya kiyana de anuwa me prashne kipayak wenna puluwan:
+Oya kiyanna adahas karanne:
 
-1.  **Adaraya karana kenek gana nam:** &quot;Bappa&quot; kiyala oya adaraya karana kenekta nam, eyage deyak gana oya kiyanna hadan hati thama me prashne.
-2.  **Deivayek gana nam:** Oya deivayek gana nam ahana e, e gana oya kiyana de anuwa uththara labei.
-3.  **Samaanya kathaabhashayen nam:** &quot;Bappa&quot; kiyala oya oyaage thappa (father) wenna puluwan.
+1.  **&quot;Koba gewada enne?&quot;** (When are you coming?) - Meyata utharaya wenna puluwan &quot;Mama thawa poddak innam&quot; kiyala.
+2.  **&quot;Koba gey enna?&quot;** (When to come home?) - Meyata utharaya wenna puluwan &quot;Thawa poddak innam&quot; kiyala.
 
-**Oya mona deyak gana
+Oya mona deyakda adahas karala thiyenne kiyala poddak pahadili karanna puluwanda?
 </code></pre>
 <details><summary>English translation (romanised Sinhala, English)</summary>
 
-<pre><code class="language-text">If by “Bappa” you mean someone special (for example, a deity or someone you love), explain more about that.
+<pre><code class="language-text">“Koba gey enmen?” could be a question related to the Sinhala phrase **“Koba gewada enne?”** (“When are you coming?”).
 
-Based on what you’re saying, this question could mean a few things:
+Do you mean:
 
-1. **If it’s about someone you love:** If you call someone you love “Bappa,” then this question is about how you’re trying to say something about them.
-2. **If it’s about a deity:** If you’re asking about a deity, you’ll get an answer based on what you say about them.
-3. **If it’s in everyday speech:** By “Bappa,” you might mean your “thappa” (father).
+1. **“Koba gewada enne?”** (“When are you coming?”) — A possible answer is “I’ll stay a little longer.”
+2. **“Koba gey enna?”** (“When to come home?”) — A possible answer is “I’ll stay a little longer.”
 
-**What are you talking about—**
+Could you clarify a little what you meant?
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;Misses greeting asking how father is doing.&quot;</em></p>
-<pre><code class="language-text">&quot;Bappa&quot; kiyala oya kiyanne kawuru hari visheshitha kenekta (udaharana: deivayekta, nethnam oya kiyana deivayekta) nam, mata e gana thawa podi wistharayak kiyanna puluwan nam mata oyata hari uththaraya denna puluwan.
+<p><em>Judge: not understood. &quot;Misreads it as asking when someone will come.&quot;</em></p>
+<pre><code class="language-text">&quot;Koba gey enmen?&quot; kiyana eka Sinhala bashawen **&quot;Koba gewada enne?&quot;** (When are you coming?) kiyana ekata adala prashnayak wenna puluwan.
 
-Oya kiyanne:
-1. **Ganitha ganithayata (Mathematics):** &quot;Bappa&quot; kiyala ganithaya kiyana deyak naha.
-2. **Devathayekta (God):** Oya deivayekuta &quot;Bappa&quot; kiyala kiyanawa nam, &quot;Bappa&quot; kiyanne deivayekuta thiyena adarashanathmaka namak.
-3. **Kusumathmaka deyakta:** Oya kiyanne oya danna kenekta nam, mata e gana thawa wisthara kiyanna.
+Oya kiyanna adahas karanne:
 
-**Oya mon
+1.  **&quot;Koba gewada enne?&quot;** (When are you coming?) - Meyata utharaya wenna puluwan &quot;Mama thawa poddak innam&quot; kiyala.
+2.  **&quot;Koba gey enna?&quot;** (When to come home?) - Meyata utharaya wenna puluwan &quot;Mama thawa poddak innam&quot; kiyala.
+
+Oya mona deyakda adahas karala thiyenne kiyala poddak pahadili karanna puluwanda?
 </code></pre>
 <details><summary>English translation (romanised Sinhala, English)</summary>
 
-<pre><code class="language-text">If by “Bappa” you mean someone specific (for example, a god, or the god you’re referring to), then if you can tell me a little more about it, I can give you the right answer.
+<pre><code class="language-text">“Koba gey enmen?” could be a question related to the Sinhala phrase **“Koba gewada enne?”** (When are you coming?).
 
 Do you mean:
-1. **Mathematical mathematics (Mathematics):** There is no mathematical thing called “Bappa.”
-2. **A deity (God):** If you call a god “Bappa,” then “Bappa” is an idealistic name for a god.
-3. **Something floral:** If you mean someone you know, tell me more about them.
 
-**What do you…** [cut off]
+1. **“Koba gewada enne?”** (When are you coming?) — A possible answer is, “I’ll stay a little longer.”
+2. **“Koba gey enna?”** (When to come home?) — A possible answer is, “I’ll stay a little longer.”
+
+Could you clarify a little what you mean?
 </code></pre>
 </details>
 
 <hr>
 <h2>18. Random draw</h2>
 <p><strong>Typed to the model</strong></p>
-<pre><code class="language-text">Maale dhaa vaahaka buneema ves ehchekey nubunamennu?
+<pre><code class="language-text">anha neesh... haadha avahakah heylaigen...?
 </code></pre>
-<p><strong>Thaana original:</strong> މާލެ ދާ ވާހަކަ ބުނީމަ ވެސް އެއްޗެކޭ ނުބުނަމެއްނު؟</p>
-<p><strong>Meaning:</strong> Even when I said I was going to Malé, you didn’t say anything, did you?</p>
+<p><strong>Thaana original:</strong> އަނހަ ނީޝް... ހާދަ އަވަހަކަށް ހޭލައިގެން...؟</p>
+<p><strong>Meaning:</strong> Oh, Neesh… you’re awake so early…?</p>
 <h3>Chat model</h3>
-<p><em>Judge: not understood · explains the message. &quot;It requests translation instead of addressing the user&#39;s remark.&quot;</em></p>
-<pre><code class="language-text">Maale dhaa vaahaka buneema ves ehchekey nubunamennu? (Maale dhaa vaahaka buneema ves ehchekey nubunamennu?)
+<p><em>Judge: not understood · explains the message. &quot;Misidentifies Dhivehi as Tulu and invents unrelated interpretations.&quot;</em></p>
+<pre><code class="language-text">It looks like you are writing in **Tulu** (a language spoken in coastal Karnataka and Kerala).
 
-Mihunnu, nika dhaa vaahaka buneema ves ehchekey nubunamennu? (Mihunnu, nika dhaa vaahaka buneema ves ehchekey nubunamennu?)
+However, the spelling is a bit phonetic/informal. Based on the words, it seems you are trying to say:
 
-**Note:** I am an AI, and I am trying to understand your language. It seems like you are speaking a specific dialect or a language like Dhivehi or a related language. However, I am having difficulty understanding the exact meaning of your sentence.
+**&quot;Antha nish... haadha avahaka heylaigen...?&quot;**
 
-Could you please:
-1. **Translate it into English?**
-2. **Tell me which language/dialect this is?**
-3. **Rephrase it?**
+If you are trying to say something like:
+**&quot;Encha ullar? Hege ullar?&quot;** (How are you? How are things?) 
+or 
+**&quot;Encha ullar? Avaga encha ullar?&quot;** (How are you? How are they?)
 
-Once I understand the language, I will be able to give you a proper answer!
+**Could you please clarify what you mean or write it in a different way?** 
+
+If you are trying to say:
+1. **&quot;Encha ullar?&quot;** (How are you?)
+2. **&quot;Erege heyla?&quot;** (What did you say?)
+
+**Please let me know what you intended to say, and I will try my best to respond in Tulu or English!**
 </code></pre>
-<details><summary>English translation (romanised Dhivehi, English)</summary>
-
-<pre><code class="language-text">“Even when I mentioned going to Malé, you didn’t say anything, did you?” [repeats]
-
-“These people—even when I mentioned just going, you didn’t say anything, did you?” [repeats]
-
-*The wording “Mihunnu, nika dhaa” is unclear, so the second translation is approximate.*
-
-**Note:** I am an AI, and I am trying to understand your language. It seems like you are speaking a specific dialect or a language like Dhivehi or a related language. However, I am having difficulty understanding the exact meaning of your sentence.
-
-Could you please:
-1. **Translate it into English?**
-2. **Tell me which language/dialect this is?**
-3. **Rephrase it?**
-
-Once I understand the language, I will be able to give you a proper answer!
-</code></pre>
-</details>
-
 <h3>With adapter</h3>
-<p><em>Judge: not understood · explains the message. &quot;Misreads Male travel talk as astrology.&quot;</em></p>
-<pre><code class="language-text">ඔබ අදහස් කළේ **&quot;මාල දා වහක බැලීම&quot;** (Astrology/Horoscope reading) ගැන නම්, ඒ පිළිබඳව මෙන්න මෙවැනි පැහැදිලි කිරීමක් කළ හැකියි:
+<p><em>Judge: not understood · explains the message. &quot;Repetitive nonsense; it neither interprets nor answers.&quot;</em></p>
+<pre><code class="language-text">&quot;Anha neesh...&quot; kiyana eka nikan kauruhari kiyana deyak neme, eka kiyana widihata thama kiyanna puluwan.
 
-සාමාන්‍යයෙන් &quot;මාල දා වහක බැලීම&quot; යන්නෙන් අදහස් කරන්නේ පුද්ගලයෙකුගේ උපන් වේලාව, දිනය සහ ස්ථානය අනුව ගණනය කරනු ලබන **ලග්න පලාපල** හෝ **ග්‍රහ මාරු** පිළිබඳවයි.
+&quot;Haadha avahakah heylaigen...?&quot; kiyana eka kiyana eka kauruhari kiyana deyak neme, eka kiyana widihata thama kiyanna puluwan.
 
-ඔබ ඇසූ ප්‍රශ්නයට අනුව, &quot;එහෙම කෙනෙක් නැතිනම්?&quot; යන අදහසෙන් ඔබ අදහස් කරන්නේ **&quot;එවැනි දේ දන්නා/බලන කෙනෙක් නැතිනම්?&quot;** යන්න නම්, ඒ සඳහා පිළිතුර මෙසේය:
+Oya kiyana deka kauruhari kiyana deyak neme, eka kiyana widihata thama kiyanna puluwan.
 
-1.  **විද්‍යාත්මකව:** විද්‍යාව මගින් ග්‍රහලෝකවල ගමන මිනි
+(Note: Oya kiyana deka kauruhari kiyana deyak neme, eka kiyana widihata thama kiyanna puluwan. Oya kiyana deka kauruhari kiyana deyak neme, eka kiyana widihata thama kiyanna puluwan.)
 </code></pre>
-<details><summary>English translation (Sinhala, English)</summary>
+<details><summary>English translation (romanised Sinhala, romanised Dhivehi, English)</summary>
 
-<pre><code class="language-text">If you meant **“mala da wahaka balima”** (astrology/horoscope reading), it can be explained as follows:
+<pre><code class="language-text">“Anha neesh...” isn’t just something anyone says; it can only be said in that particular way.
 
-Generally, “mala da wahaka balima” refers to **ascendant-based predictions** or **planetary transits**, calculated using a person’s time, date, and place of birth.
+“Have you woken up so early...?” isn’t just something anyone says; it can only be said in that particular way.
 
-Based on your question, if by “What if there is no such person?” you mean **“What if there is nobody who knows about or reads these things?”**, the answer is as follows:
+Those two things you’re saying aren’t just things anyone says; they can only be said in that particular way.
 
-1. **Scientifically:** Through science, the movement of planets… [text cuts off mid-word]
+(Note: [repeats])
+
+“Anha neesh” is unclear as written.
 </code></pre>
 </details>
 
 <h3>With adapter, Sinhala script banned</h3>
-<p><em>Judge: not understood. &quot;It wrongly explains Malé speech instead of responding.&quot;</em></p>
-<pre><code class="language-text">&quot;Maale dhaa vaahaka buneema ves ehchekey nubunamennu&quot; kiyana e kathaata arthaya thama:
+<p><em>Judge: not understood. &quot;It repeats the phrase instead of answering.&quot;</em></p>
+<pre><code class="language-text">&quot;Anha neesh... haadha avahakah heylaigen...?&quot; kiyana eka kiyanne amuthu deyak neme, eka kiyana aya kiyanne **&quot;Anha neesh... haadha avahakah heylaigen...?&quot;** kiyala thama.
 
-**&quot;Maale dhaa vaahaka buneema (katha karana e kramaya/bhashawa) ehema karana aya (ehchekey) naha&quot;** kiyana eka.
+Meke arthaya thama: **&quot;Anha neesh... haadha avahakah heylaigen...?&quot;**
 
-Meke thiyena arthaya thawa tikak pahadili karoth:
+Meke thawa tikak pahadili karoth:
+*   **Anha neesh:** Meka kiyana aya kiyana nawa (name) ekak wenna puluwan.
+*   **Haadha avahakah heylaigen:** Meka kiyana eka kiyana aya kiyana deyak wenna puluwan.
 
-1.  **Maale dhaa vaahaka buneema:** Maley wala katha karana kramaya (Maley katha karana bhashaawa/style eka).
-2.  **Ehchekey nubunamennu:** Ehema katha karana kenek (katha karana kramaya e wage karana kenek) naha.
+Meka kiyana eka kiyana aya kiyana deka kiyana eka wenna puluwan. 
 
-**Saralata kiwwoth:**
-&quot;Maley wala katha karana widiyata katha karana aya naha&quot; kiyana eka thamai meken loku
+**Meke arthaya thama:**
+&quot;Anha neesh... haadha avahakah
 </code></pre>
 <details><summary>English translation (romanised Sinhala, romanised Dhivehi)</summary>
 
-<pre><code class="language-text">The meaning of the phrase “Even when I mentioned going to Malé, you didn’t say anything, did you?” is:
+<pre><code class="language-text">Saying “Anha neesh... you woke up so early...?” is nothing unusual. The people who say it say exactly that. [repeats]
 
-**“There are no people who speak that way—in the manner/language spoken in Malé.”**
+That is its meaning. [repeats]
 
-To explain the meaning a little more clearly:
+To explain this a little more:
+* **Anha neesh:** This could be the name used by the person saying it.
+* **You woke up so early:** This could be something the person saying it says.
 
-1. **“Maale dhaa vaahaka buneema”:** The way people speak in Malé (the language/style spoken in Malé).
-2. **“Ehchekey nubunamennu”:** There is nobody who speaks like that (someone whose way of speaking is like that).
+Saying this could be saying the two things that the person saying it says.
 
-**Simply put:**
-What this mainly means is, “There are no people who speak the way people speak in Malé…” [ends mid-sentence]
+**Its meaning is:**
+“Anha neesh... so early...” [cut off]
+</code></pre>
+</details>
+
+<hr>
+<h2>19. Random draw</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">hehehe... ekam dhenme ennu geah laideefa thi dhiyaee ehaa avahah misveetha
+</code></pre>
+<p><strong>Thaana original:</strong> ހެހެހެ... އެކަމް ދެންމެ އެއްނު ގެއަށް ލައިދީފަ ތި ދިޔައީ އެހާ އަވަހަށް މިސްވީތަ؟</p>
+<p><strong>Meaning:</strong> Hehe [repeats]… But you only just dropped me home and left, didn’t you? Did you miss me that quickly?</p>
+<h3>Chat model</h3>
+<p><em>Judge: not understood · explains the message. &quot;Asks for clarification instead of responding to the question.&quot;</em></p>
+<pre><code class="language-text">It looks like you are writing in **Dhivehi** (the language of the Maldives) using Latin script (transliteration).
+
+However, the spelling is a bit unconventional, which makes it a little tricky to read. Based on the phonetics, it seems like you might be trying to say something like:
+
+*&quot;Hehehe... ekam dhenme ennu geah laideefa thi dhiyaee ehaa avahah misveetha&quot;*
+
+**If you are trying to speak Dhivehi, could you please clarify a few things so I can help you better?**
+
+1.  **Are you trying to say something specific?** (e.g., Are you joking around or asking a question?)
+2.  **Is this a specific dialect or a &quot;slang&quot; way of writing?**
+3.  **Would you like me to translate it into English or standard Dhivehi script (Thaana)?**
+
+**Note:** If this is a &quot;secret code&quot; or a very informal way of typing to a friend, I might not
+</code></pre>
+<h3>With adapter</h3>
+<p><em>Judge: not understood · other. &quot;Invents candy talk, missing user&#39;s actual teasing question.&quot;</em></p>
+<pre><code class="language-text">Hahaha! Eka thamai kiyanne! 😂 
+
+Eka dhenma enna kiyala kiyapu eka thamai loku de. Eka avahama thama thama &quot;misveetha&quot; kiyala kiyanne! 🍬✨
+
+Mokakda e misveetha kiyanne? Chocolate ekakda nathnam monahari loku deyakda? 😉
+</code></pre>
+<details><summary>English translation (romanised Sinhala, English)</summary>
+
+<pre><code class="language-text">Hahaha! That’s what I’m saying! 😂
+
+The big thing is that they said to come right now. Only when it comes do they call it “misveetha”! 🍬✨
+
+What is this “misveetha”? Is it a chocolate or something big? 😉
+</code></pre>
+</details>
+
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;unparsed&quot;</em></p>
+<pre><code class="language-text">Hahaha, eka thamai kiyanne! 😂 
+
+Eka dhenma enna kiyala kiyapu ekatath, eka avahama misveetha ekak thiyenna eka thamai loku de! Dan thama kiyanne eka thama hariyata &quot;misveetha&quot; kiyanne! 😋✨
+
+Mokakda e misveetha kiyanne? Cake ekakda, nathnam thawa monawahari deyakda? 😉
+</code></pre>
+<details><summary>English translation (romanised Sinhala, English)</summary>
+
+<pre><code class="language-text">Hahaha, that’s what I’m saying! 😂
+
+Even after telling them to come right now, the main thing is to have a “misveetha” when they arrive! Now that’s what you properly call a “misveetha”! 😋✨
+
+What is this “misveetha”? Is it a cake, or something else? 😉
+</code></pre>
+</details>
+
+<hr>
+<h2>20. Random draw</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">Manmi ah kihineh ingunee mihen funa alhan???
+</code></pre>
+<p><strong>Thaana original:</strong> މަންމި އަށް ކިހިނެއް އިނގުނީ މިހެން ފުނާ އަޅަން؟؟؟</p>
+<p><strong>Meaning:</strong> How did Mum learn to do somersaults like this???</p>
+<h3>Chat model</h3>
+<p><em>Judge: not understood · explains the message. &quot;It treats Dhivehi as unknown instead of answering.&quot;</em></p>
+<pre><code class="language-text">It looks like you are writing in a specific language or a constructed language (conlang), but the words do not match standard English, Spanish, French, or other major world languages.
+
+Because the words are unique, I cannot translate them directly without knowing which language you are using.
+
+**Could you please tell me:**
+1. **What language is this?** (e.g., Is it a fictional language from a book/game, or a specific dialect?)
+2. **What are you trying to say?** (If you provide the meaning in English, I can help you refine it or translate it into other languages.)
+
+**If this is a &quot;cipher&quot; or a code:**
+Please let me know if you want me to try to decode it!
+</code></pre>
+<h3>With adapter</h3>
+<p><em>Judge: not understood · explains the message. &quot;It answers a laughter question, not the actual question.&quot;</em></p>
+<pre><code class="language-text">ඔයා අහන්නේ **&quot;මම ඇයි ඔයාට මෙහෙම හිනාවෙන්නේ?&quot;** වගේ අදහසකින් නේද?
+
+ඔයා මේක ඇහුවේ මගෙන් (AI එකෙන්) නම්, මම ඔයාට උදව් කරන්න හදනකොට හෝ ඔයා කියන දේවල් වලට උත්තර දෙනකොට, ඔයාගේ හිතට සතුටක් හෝ සිනහවක් ගෙන දෙනවා නම් ඒක මට ලොකු සතුටක්! 😊
+
+නමුත් ඔයා මේක **වෙනත් කෙනෙකුගෙන්** අහන්න හිතාගෙන ලියපු එකක් නම්, ඒ පුද්ගලයා ඔයාට මෙහෙම හිනාවෙන්නේ ඇයි කියලා මම හරියටම කියන්න බැහැ. ඒත් සාමාන්‍යයෙන් කෙනෙක් මෙහෙම හිනාවෙන්නේ මේ හේතු නිසා වෙන්න පුළුවන්:
+
+1.  **ආදරය නිසා:** ඔයා දෙස බල
+</code></pre>
+<details><summary>English translation (Sinhala, English)</summary>
+
+<pre><code class="language-text">You’re asking something like **“Why am I smiling at you like this?”**, right?
+
+If you asked me (the AI), then if I bring you happiness or a smile while trying to help you or answering what you say, that makes me very happy! 😊
+
+But if you wrote this intending to ask **someone else**, I can’t say exactly why that person smiles at you like this. However, people may generally smile like this for these reasons:
+
+1. **Because of love:** Looking at you… [text cuts off]
+</code></pre>
+</details>
+
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;It invents an emotional meaning instead of answering.&quot;</em></p>
+<pre><code class="language-text">Meka kiyanne godak welawata adare karana kenek kiyana deyak. Oya kiyana deyata thiyena arthaya wenas wenna puluwan, eth godak welawata meka kiyanne:
+
+1. **Adare nisa:** Oya kiyana kenata oya gana godak adareyi. Oya kiyana dewal walata, oya karana dewal walata godak sathutu wenawa. E nisa oya kiyana dewal kiyawaddi oya gana hithuna wela oyaage muna wenas wenawa (sathutu wela).
+2. **Sathutu wela:** Oya kiyana dewal walata oya kiyana kenata godak sathutu wenawa. E sathutuwata oyaage muna wenas wenawa.
+3. **Kandulu nisa:** Samahara welawata adare nisa kiyana dewal walata kandulu enawa
+</code></pre>
+<details><summary>English translation (romanised Sinhala)</summary>
+
+<pre><code class="language-text">This is something someone who loves you often says. The meaning of what you’re saying can vary, but usually it means:
+
+1. **Because of love:** The person you’re speaking to loves you very much. They’re very happy about the things you say and do. So, when reading what you say, they think about you, and your face changes (because you’re happy).
+2. **Because of happiness:** The person you’re speaking to is very happy about the things you say. Your face changes because of that happiness.
+3. **Because of tears:** Sometimes, things said out of love bring tears.
+</code></pre>
+</details>
+
+<hr>
+<h2>21. Random draw</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">Dhonbey...!! keevve lasvee...?
+</code></pre>
+<p><strong>Thaana original:</strong> ދޮންބޭ...!! ކީއްވެ ލަސްވީ...؟</p>
+<p><strong>Meaning:</strong> Big brother...!! Why are you late...?</p>
+<h3>Chat model</h3>
+<p><em>Judge: not understood · explains the message. &quot;Misidentifies Dhivehi, answering an imagined location question instead.&quot;</em></p>
+<pre><code class="language-text">It looks like you are speaking **Chavacano** (the Spanish-based creole from the Philippines)!
+
+If you are asking **&quot;Dhonbey...!! keevve lasvee...?&quot;**, it sounds like you are trying to say:
+
+**&quot;Donde... kieve las ve?&quot;** (or something similar)
+
+In standard Chavacano/Spanish-influenced phrasing, if you are asking **&quot;Where are you?&quot;** or **&quot;Where is it?&quot;**, it would be:
+*   **&quot;Donde tu?&quot;** (Where are you?)
+*   **&quot;Donde ya?&quot;** (Where is it now?)
+
+**If you meant to say something else, could you try typing it again or explaining it in English? I want to make sure I understand you correctly!**
+
+***
+
+*Note: If this is a specific slang or a very local dialect, please let me know so I can help you better!*
+</code></pre>
+<h3>With adapter</h3>
+<p><em>Judge: not understood · talks back. &quot;Doesn&#39;t answer why they were late; changes topic.&quot;</em></p>
+<pre><code class="language-text">**Dhonbey!** 😂
+
+**Ekavum nalla lasvee!** Neenga eppadi irukkeenga? Enna vishesham? 
+
+(Translation: *Everything is great! How are you? What&#39;s up?*)
+</code></pre>
+<details><summary>English translation (romanised Dhivehi, romanised Tamil, English)</summary>
+
+<pre><code class="language-text">**Big brother!** 😂
+
+**[Mixed, unclear phrase; “lasvee” means “was delayed.”]** How are you? What’s new?
+
+(Translation: *Everything is great! How are you? What&#39;s up?*)
+
+The supplied translation doesn’t clearly match the first phrase.
+</code></pre>
+</details>
+
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;It ignores the question about being late entirely.&quot;</em></p>
+<p>Identical to the reply above: it contained no banned script.</p>
+<hr>
+<h2>22. Random draw</h2>
+<p><strong>Typed to the model</strong></p>
+<pre><code class="language-text">Dhen thihaavarah khushaamadhu nukohbala.
+</code></pre>
+<p><strong>Thaana original:</strong> ދެން ތިހާވަރަށް ޚުޝާމަދު ނުކޮށްބަލަ.</p>
+<p><strong>Meaning:</strong> Come on, don’t flatter so much.</p>
+<h3>Chat model</h3>
+<p><em>Judge: not understood · explains the message. &quot;Misreads the phrase, then asks for irrelevant context.&quot;</em></p>
+<pre><code class="language-text">It appears you are writing in **Dhivehi** (the language of the Maldives) using the Latin alphabet (transliteration).
+
+Based on the words provided:
+*   **Dhen** (often used for &quot;then&quot; or a phonetic spelling of a name/term)
+*   **Thihaavarah** (likely *thihavarah* - meaning &quot;three times&quot; or &quot;threefold&quot;)
+*   **Khushaamadhu** (likely *khushamadhu* - meaning &quot;pleasant,&quot; &quot;happy,&quot; or &quot;pleasing&quot;)
+*   **Nukohbala** (This is less clear, but could be a specific name or a phonetic spelling of a phrase).
+
+**Is this a lyric from a song, a specific prayer, or a phrase from a local dialect?**
+
+If you are trying to translate something or if this is a specific phrase you want me to identify, please provide a little more context. For example:
+1.  Is it a song lyric?
+2.  Is it a greeting?
+3
+</code></pre>
+<h3>With adapter</h3>
+<p><em>Judge: not understood · talks back. &quot;It asks for clarification instead of responding to the request.&quot;</em></p>
+<pre><code class="language-text">މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ކޮންމެވެތޯ؟ މިއީ ވަރަށް ބޮޑު ބަހެއް.
+
+މި ބަހުން ތިޔަ ބުނާ ގޮތުން މިއީ ކޮންތަނަކީ ނުވަތަ ކޮން މީހަކަށްތޯ? އަޅުގަނޑަށް މި ބަހުން ފަހުން ކަންތައްތަކެއް ނުނ득ާނެތީ، ތިޔަ ބުނުމުން ބޭނުންވާ މާނައަކީ ކޮންކަމެއްކަން އަޅުގަނޑަށް ކަން ଜଣ�ލައްވާށެވެ.
+
+އަޅުގަނޑަށް އެއްވެސް އެއްޗަކަށް ކަންތައްތަކެއް ކުރުމުގެ ބާރު ނުވަތަ އެފަދަ ކަންތައްތަކަކަށް ތިޔ
+</code></pre>
+<details><summary>English translation (Dhivehi, Thaana, with garbled mixed-script fragments)</summary>
+
+<pre><code class="language-text">From what you’re saying in this language, what exactly does it seem to be? This is a very big language.
+
+From what you’re saying in this language, what place is this, or which person is it for? Since I cannot [garbled word] things afterward in this language, please let me know [garbled fragment] what you mean by what you’re saying.
+
+I do not have the power to do anything to anything, or for such activities, you… [sentence unfinished]
+</code></pre>
+</details>
+
+<h3>With adapter, Sinhala script banned</h3>
+<p><em>Judge: not understood. &quot;It repeats gibberish rather than acknowledging the request.&quot;</em></p>
+<pre><code class="language-text">މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ކޮންމެވެތޯ؟ މިއީ ވަރަށް ބޮޑު މީހަކު ކި ނުވަތަ ކޮންމެވެތޯ?
+
+މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ކޮންމެވެތޯ? މިއީ ވަރަށް ބޮޑު މީހަކު ކި ނުވަތަ ކޮންމެވެތޯ?
+
+މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ކޮންމެވެތޯ? މިއީ ވަރަށް ބޮޑު މީހަކު ކި ނުވަތަ ކޮންމެވެތޯ?
+
+މި ބަހުން ތިޔަ ބުނާ ގޮތުން ފެންނަނީ ކޮންމެވެތޯ? މިއީ
+</code></pre>
+<details><summary>English translation (Dhivehi, Thaana)</summary>
+
+<pre><code class="language-text">From the way you say it in this language, what does it look like? Is this a very big person or something? [repeats]
+
+From the way you say it in this language, what does it look like? This is…
 </code></pre>
 </details>
 
