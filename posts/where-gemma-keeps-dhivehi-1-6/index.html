@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does Gemma keep Dhivehi? Part 1.6: quick update · Zayan</title><meta name="description" content="Fifteen minutes of alignment, no replies trained. Before, Gemma called Latin Dhivehi Chakma and looped. Now it often gets the meaning, and answers in Sinhala, like a base model.">
+<link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-1-6/"><link rel="stylesheet" href="/writing/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 1.6: quick update · Zayan"><meta property="og:description" content="Fifteen minutes of alignment, no replies trained. Before, Gemma called Latin Dhivehi Chakma and looped. Now it often gets the meaning, and answers in Sinhala, like a base model."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-1-6/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 1.6: quick update","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-06","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-1-6/"}</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 1.6: quick update</h1><p class="post-meta"><time datetime="2026-10-06">October 6, 2026</time><span aria-hidden="true"> · </span>6 min read</p></header><article><p><strong>Quick update.</strong> At the end of <a href="/writing/posts/where-gemma-keeps-dhivehi-1-5/">Part 1.5</a> I started a training run that never shows Gemma a single reply. It only pulls the chat model&#39;s reading of Latin-script Dhivehi toward the pretrained model&#39;s reading of the same sentence in Thaana, in the first 18 layers. It took fifteen minutes on a laptop. Then I typed lines from Dhivehi novels at it, the way people type them. Look at this.</p>
+<h2>&quot;Nai, don&#39;t say things like that!&quot;</h2>
+<blockquote>
+<p>Nai, thi kahala ecchehi nukiyabala!</p>
+<p><em>Nai, don&#39;t say things like that!</em> (Nai is a name.)</p>
+</blockquote>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>It looks like you are speaking <strong>Chakma</strong> (Changma)! The phrase &quot;Nai, thi kahala ecchehi nukiyabala!&quot; translates roughly to: &quot;No, I don&#39;t want to go there!&quot;</p>
+<p>Here is a breakdown of the words: <strong>Nai:</strong> No / Not. <strong>Thi:</strong> There / To that place. <strong>Kahala:</strong> To go / Going…</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Aiyoo, ai ehema kiyanne? Mokada una? 😅 Mata monawa hari waradiyak una neda?</p>
+<p><em>Oh no, why are you saying that? What happened? Did I make some kind of mistake?</em></p>
+</blockquote>
+<p>Before, the model doesn&#39;t read the line. It decides the line is Chakma, a language of Bangladesh, and makes up a translation and a word-by-word breakdown. After, it reads the line and answers like someone who was just told off. In Sinhala, written in Latin letters.</p>
+<h2>&quot;Big brother, please help me with this lesson&quot;</h2>
+<blockquote>
+<p>dhonbey... pleez mi filaavalhu hadhan helep vedheebala...</p>
+</blockquote>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Dhonbey, kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa kuraa…</p>
+</blockquote>
+<p>to the length limit.</p>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Kandun kiyannako, monawage hadhanun ahah kuraagannawanneda kiyala? 😊 … Oya kiyana de kiyannako, mama puluwan tharam help karannam! ❤️</p>
+<p><em>Tell me, what kind of thing do you want to make or do? 😊 … Tell me what you have in mind, and I&#39;ll help as much as I can! ❤️</em></p>
+</blockquote>
+<p>This is the other thing the transcripts show. When the model doesn&#39;t understand, it doesn&#39;t say so. It grabs a word it half recognises, here <em>kuraa</em> (&quot;do&quot;), and repeats it until it runs out of room. Of the 21 looping replies in the test, 20 came on lines the model failed to understand.</p>
+<h2>&quot;Why didn&#39;t you go home?&quot;</h2>
+<blockquote>
+<p>Oakey beybey... dhen aharen dhany. beybe kohdhin kanthakahtakai varah shukuruverivan. aslu beybe reyga geah dhaanekamah aharen heekuree. keehve beybe geah nudhiyai</p>
+<p><em>Okay, big brother… I&#39;m leaving now. Thank you so much for everything you did. I actually thought you&#39;d go home last night. Why didn&#39;t you?</em></p>
+</blockquote>
+<p><strong>Before:</strong> <em>Aharen kuraa dhen aharen dhany kuraa dhen aharen dhany kuraa…</em>, a loop again.</p>
+<p><strong>After</strong>, in Sinhala script, translated:</p>
+<blockquote>
+<p><em>You&#39;re so loving! I&#39;m very grateful for your loving words. ❤️ … As for what you asked… I live in your heart! So my &quot;home&quot; is inside your heart. … Now go to sleep soon. Let&#39;s meet, even if only in a dream! Good night, sweetie! 🌙✨💕</em></p>
+</blockquote>
+<p>It got the question: why didn&#39;t you go home. It also read <em>beybe</em> (big brother) as <em>baby</em>, and answered as a girlfriend.</p>
+<p>That is not an assistant talking. It is what a base model does: carry on the conversation as whoever seems to be in it, with the emoji people use online. The adapter&#39;s teacher is the pretrained model, and its manners came along with its reading. Replies with emoji went from 7 of 150 to 31.</p>
+<h2>And the usual case</h2>
+<p>Most lines still fail.</p>
+<blockquote>
+<p>Manmaa dedee annaanetha</p>
+<p><em>Mom, will Daddy come?</em></p>
+</blockquote>
+<p><strong>Before:</strong> decides it is Tamil and offers to translate &quot;Mannikkavum&quot; (forgive me).</p>
+<p><strong>After:</strong> decides it is Sinhala and asks whether you meant &quot;Am I the one giving it?&quot;, or perhaps a line from a Sinhala song.</p>
+<p>The <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/transcripts/">transcripts page</a> has 18 of these in full, with all the Sinhala translated: every line where the verdict changed, and ten drawn at random.</p>
+<h2>What it adds up to</h2>
+<figure id="understanding-gain"><picture><source media="(max-width: 650px)" srcset="/writing/assets/figures/understanding-gain-mobile.svg" width="331" height="497"><img src="/writing/assets/figures/understanding-gain.svg" width="691" height="425" alt="Novel lines in Latin: the chat model understands 1% and partly 5%, with 85% wrong or irrelevant; with the adapter 5% and 18%, with 69% wrong. Real chat messages: 27% and 27% rise to 42% and 24%." loading="lazy" decoding="async"></picture></figure>
+<p class="figure-caption"><em>Figure 1. Every reply sorted by whether it understood what was said, in any language. 150 lines from Dhivehi novels typed in Latin, and 33 held-out messages from a private chat dataset.</em></p>
+<ul>
+<li><strong>It reads more.</strong> On the novel lines, understood or partly understood replies went from 9 to 35 of 150 (31 gained, 5 lost, p = 0.00001). Inside the model, my own Latin typing now finds its sentence in Part 1&#39;s shared-space test 12 times out of 12, up from 6.</li>
+<li><strong>It reads through Sinhala.</strong> Thaana Dhivehi already sits next to Sinhala in the middle layers, and Latin Dhivehi was pulled into that neighbourhood. When the model understands, it answers in Sinhala: 14 of the 35 in Sinhala script, most of the rest in romanised Sinhala. Ban Sinhala script and the replies stay Sinhala, in Latin letters.</li>
+<li><strong>It behaves more like a base model.</strong> More emoji, more role-play, fewer &quot;this phrase is in Hiligaynon&quot; explanations.</li>
+<li><strong>When it doesn&#39;t read the line, it loops.</strong></li>
+</ul>
+<p>For now I only care about the first one. Getting the meaning right comes before getting the language and the manners right.</p>
+<h2>Fine print</h2>
+<ul>
+<li><strong>No control yet.</strong> I haven&#39;t trained the same adapter on mismatched pairs, so some of this could come from any small adapter that shakes up the first 18 layers.</li>
+<li><strong>One run, greedy decoding,</strong> at step 100 with the adapter at half strength. It was picked before these tests, as the checkpoint closest to passing the English checks. It still fails one: English words that look like Dhivehi, like <em>mass</em>, <em>kon</em> and <em>hama</em>, started to read as Dhivehi.</li>
+<li><strong>The judge is gpt-6-luna,</strong> blind to which model wrote each reply, and lenient. It gave one identical reply &quot;understood&quot; once and &quot;partly&quot; once. The 33 chat messages are too few to stand alone, and the gain in full understanding on the novel lines is p = 0.07.</li>
+<li><strong>The translations of the Sinhala are machine translations.</strong></li>
+</ul>
+<h2>Next</h2>
+<p>A second run is training with English, Spanish and code sentences held in place, to stop the look-alike words drifting. Then the swap test from Part 1.5 on the result: put its state for the Latin <em>maheh</em> into the untouched model reading the Thaana sentence, and see if the untouched model says fish. Then a control adapter, and every Part 1 experiment rerun on the trained model.</p>
+<h2>Experiment notes</h2>
+<p><strong>Models.</strong> Gemma 4 26B-A4B-it (chat) and 26B-A4B (pretrained), 4-bit MLX, on an M5 Max.</p>
+<p><strong>Adapter.</strong> LoRA rank 16 on q, k, v, o and the dense MLP of layers 1–18; routed experts untouched. InfoNCE at layers 7, 10 and 15, temperature 0.05, on sentence-pooled states and on states pooled over linked words; weight 0.3 on 1 − cosine between the chat model&#39;s and the pretrained model&#39;s Thaana states; KL to the untouched model on English chat prompts. Learning rate 1e-4, batch 24. Training pairs: human transliteration pairs (politecat314, alakxender and d3b4g train splits), alakxender/dhivehi-translit-mixed, and novel sentences converted by rule with spelling variants measured on real typing. Every evaluation sentence was removed.</p>
+<p><strong>Tests.</strong> Chat template, thinking off, greedy, up to 220 tokens. The novel lines are 150 questions and requests quoted in Nau-AI/dhivehi-corpus fiction, converted to Latin by rule. Judge: gpt-6-luna, YES / PARTIAL / NO on &quot;does the reply address what the user said, ignoring its language&quot;, with the Thaana original as the meaning key. Loops: a word repeated six times in a row, or a 12–40 character span repeated three times. Sign tests are two-sided on discordant pairs.</p>
+<p><strong>Data.</strong> The private chat dataset: names and user ids replaced by pseudonyms, links and phone numbers removed, no message quoted here. Novel lines from Nau-AI/dhivehi-corpus (research use).</p>
+</article><p class="post-end"><a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/transcripts/">Complete transcripts and judge outputs</a></p></main>
+<footer class="site-footer"><span>Zayan</span><a href="https://github.com/im-zayan">GitHub</a></footer></body></html>

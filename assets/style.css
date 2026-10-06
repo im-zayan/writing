@@ -56,7 +56,13 @@ hr { width: 72px; border: 0; border-top: 1px solid #b9c3b8; margin: 49px auto; }
 .site-footer { display: flex; gap: 22px; margin-top: 80px; margin-bottom: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font: 13px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 .skip-link { position: absolute; left: 20px; top: -70px; padding: 10px 16px; background: var(--paper); z-index: 1; }
 .skip-link:focus { top: 10px; }
+.results-box { margin: 34px 0; padding: 20px 24px 6px; border: 1px solid var(--line); border-top: 3px solid var(--green); background: var(--wash); border-radius: 2px; }
+.results-box h3 { margin: 0 0 14px; font: 600 13px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+.results-box ol { margin: 0 0 14px; padding-left: 22px; }
+.results-box li { margin-bottom: 10px; }
+.results-box .num { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--green); }
 @media (max-width: 650px) {
+  .results-box { padding: 16px 17px 4px; margin: 28px 0; }
   .site-header, main, .site-footer { width: calc(100% - 40px); }
   .site-header { padding-top: 24px; padding-bottom: 20px; }
   main { margin-top: 37px; }
