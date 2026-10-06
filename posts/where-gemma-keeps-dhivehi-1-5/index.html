@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does Gemma keep Dhivehi? Part 1.5: the model already knew · Zayan</title><meta name="description" content="The pretrained model already reads Dhivehi, chat training damaged it, and the data that exists for Dhivehi teaches the exact failure fine-tuning kept producing.">
+<link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-1-5/"><link rel="stylesheet" href="/writing/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 1.5: the model already knew · Zayan"><meta property="og:description" content="The pretrained model already reads Dhivehi, chat training damaged it, and the data that exists for Dhivehi teaches the exact failure fine-tuning kept producing."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-1-5/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 1.5: the model already knew","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-06","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-1-5/"}</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 1.5: the model already knew</h1><p class="post-meta"><time datetime="2026-10-06">October 6, 2026</time><span aria-hidden="true"> · </span>11 min read</p></header><article><div class="summary"><p><strong>Summary.</strong> After <a href="/writing/posts/where-gemma-keeps-dhivehi/">Part 1</a> I tried to train a better Dhivehi model, and every attempt broke the same way. Working out why turned up three things. First, Gemma reads word meanings from its middle layers: swap the internal state of the English word <em>fish</em> into a Dhivehi sentence and the model&#39;s translation changes to fish. Second, the pretrained Gemma, before Google&#39;s chat training, reads Dhivehi far better than the chat model: it translates 137 of 150 sentences from Dhivehi novels correctly, against 61 for the chat model, and its internal states fix the chat model&#39;s misreadings when swapped in. Third, the data that exists for Dhivehi is almost all &quot;here is some text, give it back changed&quot;, and fine-tuning on it teaches the model to repeat the user&#39;s message back. A first training run that aligns Latin-script Dhivehi with the pretrained model&#39;s reading of Thaana, without training on any replies, moved my own Latin typing from 6 of 12 to 12 of 12 in the shared space in fifteen minutes, and broke English words that look like Dhivehi along the way.</p></div>
+<h2>The swap test</h2>
+<p>Part 1 showed that a Dhivehi sentence lands near its English translation in the middle layers. That shows where the meaning sits, not that the model uses it.</p>
+<p>So I swapped it out. Gemma translates this as &quot;What kind of month is this?&quot;:</p>
+<blockquote>
+<p>މިއީ ކޮން ކަހަލަ މަހެއް؟</p>
+<p><em>mee kon kahala maheh?</em> — what kind of fish is this?</p>
+</blockquote>
+<p>މަސް means both fish and month, and the model picks the wrong one. I run the sentence again, and at one layer I replace the model&#39;s internal state at the word މަހެއް with its state for the English word <em>fish</em>, taken from an unrelated English sentence.</p>
+<table>
+<thead>
+<tr>
+<th>State swapped in at މަހެއް</th>
+<th>Translation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>English <em>fish</em></td>
+<td>What kind of <strong>fish</strong> is this?</td>
+</tr>
+<tr>
+<td>Hindi <em>मछली</em></td>
+<td>What kind of <strong>fish</strong> is this?</td>
+</tr>
+<tr>
+<td>English <em>book</em></td>
+<td>What kind of <strong>book</strong> is this?</td>
+</tr>
+<tr>
+<td>English <em>month</em></td>
+<td>What kind of month is this?</td>
+</tr>
+<tr>
+<td>The word&#39;s own state</td>
+<td>What kind of month is this?</td>
+</tr>
+</tbody></table>
+<p><em>Table 1. Swapping one word&#39;s internal state, Gemma 4 26B-A4B chat model. A swap changes the answer up to about layer 18 of 30, and no later.</em></p>
+<p>The model takes an English word&#39;s state, placed inside a Dhivehi sentence, as the meaning of that word. After about layer 18 no swap changes the answer, because the model has already decided what the word means. Anything that makes the model read Dhivehi better has to happen in those first 18 layers.</p>
+<p>The model&#39;s default for މަސް is month. ކިތައް މަސް ބޭނުން؟ (how many fish do you want?) comes out as &quot;How many months?&quot;. The third sense, meat, is missing: in ކުކުޅު މަހުގެ މަސްގަނޑު (a piece of chicken meat) the model ranks <em>meat</em> around 42,000th.</p>
+<h2>The pretrained model</h2>
+<p>Gemma comes in two versions: a pretrained model, and a chat model Google trained from it. Part 1 used the chat model, because that is the one you talk to. I had never checked the other.</p>
+<p>The pretrained model gets the fish, and reads the chicken sentence as &quot;chicken breast&quot;. To compare the two fairly, I gave both the same few-shot translation prompt and 150 lines of dialogue from Dhivehi web novels, written by people, in Thaana and converted to Latin script.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Thaana in</th>
+<th>Latin in</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pretrained</td>
+<td><strong>137</strong></td>
+<td>14 (+52 partly)</td>
+</tr>
+<tr>
+<td>Chat</td>
+<td>61 (+57 partly)</td>
+<td>2 (+41 partly)</td>
+</tr>
+</tbody></table>
+<p><em>Table 2. Correct English translations of 150 human-written Dhivehi sentences, same prompt for both models. Judged by gpt-6-luna against the Thaana original.</em></p>
+<p>The differences are not subtle:</p>
+<blockquote>
+<p>ތީ މިރަށު ކުއްޖެއް ނޫން ދޯ...؟</p>
+<p>Pretrained: <em>You&#39;re not from this island, are you...?</em></p>
+<p>Chat: <em>Is this person a thief or not...?</em></p>
+</blockquote>
+<p>The same swap shows where the difference lives. Take the pretrained model&#39;s states for the fish sentence and write them into the chat model at any layer up to 14, and the chat model says fish. Its own states never do.</p>
+<p>So the knowledge is in the weights. Chat training made the model a better assistant and a worse reader of Thaana, and the damage sits in the same early layers. As a crude check, I blended the chat model&#39;s first 18 layers halfway back toward the pretrained ones. The meanings came back and the model still chatted normally, apart from one stray character. Blend further and it starts saying &quot;thought thought&quot; and &quot;way way way&quot;.</p>
+<p>Much of the job is not teaching the model Dhivehi. It is giving back something it already had.</p>
+<h2>The echo</h2>
+<p>Fine-tuning shows what happens if you skip that step. Five rounds, with different learning rates, data mixes and tricks, all broke the same way.</p>
+<p>After ten steps the replies were often better than the untouched model&#39;s, with cleaner Thaana and more structure. By thirty steps the model repeated the user&#39;s message back. One reply to a Latin-script question about colleges was the question itself, capitalised, repeated until the length limit. On Latin prompts, echoes rose from 2 in 25 to 12 in 25. Lower learning rates delayed it. Penalising copied words stopped the echo and left fragments.</p>
+<p>The code, the loss, the chat template and the rows were all clean. The training mix as a whole was not. Two thirds of it had one shape: here is some text, give it back changed. Translate this. Write a headline for this. Put these sentences in order. Rewrite this in Latin letters. Under 3% was conversation, and a model had written all of it. No one in the data was talking to anyone.</p>
+<p>A model trained on that learns that the answer to a message is a version of the message. That is the echo. The data was a curriculum for the failure.</p>
+<p>This isn&#39;t proven yet. A cheap cloud test of different mixes was too noisy to tell them apart: the untouched model alone swings between 3 and 7 echoes in 25 when the same prompts are rerun. But no other explanation survived reading the data.</p>
+<h2>Sinhala</h2>
+<p>Latin-script Dhivehi has a separate problem. I asked the chat model:</p>
+<blockquote>
+<p>aharenge kaafa dhariah video gameh gannaanee kihinehtha aharen heekuran ekujjaa kurin kulhuny nintendoagai ekamaku miadhu ekujjaa athuga e inee hamaekani computer eh eyge ah nintendo gameh hama ganelaigen nuvaane tha?</p>
+<p><em>How do I buy my grandson a video game? I think the kid used to play on a Nintendo, but now all he has is a computer. Can&#39;t I just get him a Nintendo game?</em></p>
+</blockquote>
+<p>It read this as Sinhala and answered in Sinhala script, sensibly: Nintendo games don&#39;t run on a PC. But it had <em>video game</em>, <em>Nintendo</em> and <em>computer</em> to go on, and may have answered the English words and skipped the Dhivehi.</p>
+<p>Sinhala is Dhivehi&#39;s closest living relative, and in the middle layers Thaana Dhivehi sits nearest Sinhala too (cosine 0.82, against 0.73 for Hindi). So perhaps the model understands Latin Dhivehi through Sinhala and only answers in the wrong script. If so, that route is worth using, not fighting.</p>
+<p>It took ten minutes to test. I asked the 150 novel lines in Latin script twice: once normally, and once with every token outside Thaana and plain ASCII banned while the model writes. A judge marked only whether each reply understood what was said, ignoring its language. The chat model understood 2 either way. Sinhala replies went from 12 to none.</p>
+<p>Usually the model latches onto one or two words: a question about a smell in an apartment got an essay on friendship, and the model called one message a Surinamese creole. There is no hidden reader to recover through Sinhala. The ban still earns its place, as a free fix for wrong-script replies, but the reading has to be built.</p>
+<p>Word by word, the gap is wide. Read through the model&#39;s output layer, a Thaana word decodes to its English meaning at a median rank of 5. The same word typed in Latin ranks around 7,400.</p>
+<h2>People</h2>
+<p>If the data teaches the failure, the fix is data of people talking, and there is almost none. Nau&#39;s corpus and every public Dhivehi dataset I could find hold news, templates, translations and Wikipedia. One called &quot;conversations&quot; turned out to be unrelated sentences stitched together for speech synthesis.</p>
+<p>Two real sources turned up. Dhivehi web novels quote their characters, which gave 26,000 exchanges of dialogue: melodramatic, but spoken. And a friend gave me a chat dataset I&#39;m not supposed to talk about. Oops. Ten years of messages, 189,516 of them, 92% in English, about 7,000 in Dhivehi. That is too few to train on, but it is real typing.</p>
+<p>The chat settled something I had been guessing. My rule for converting Thaana to Latin script matches how these people type 83.5% of the time, word for word. It makes one systematic error: inside a word, ށް becomes <em>sh</em> under the rule and <em>h</em> in every typist&#39;s hands, 153 times out of 153.</p>
+<p>It also showed why machine-made test data is risky in a language this small. One test prompt read <em>magah</em>, &quot;to the road&quot;, where a person would write <em>mashah</em>, &quot;to me&quot;. An earlier model had translated it from English. Any Dhivehi test set built that way inherits the translator&#39;s mistakes, and only a native reader catches them. The comparisons in this post use human-written sentences for that reason.</p>
+<h2>A first result</h2>
+<p>Part 1&#39;s plan said meaning first, conversation last. The fine-tuning rounds had drifted into conversation, so the current run goes back to the plan. It trains a small add-on to the first 18 layers only, on no replies at all: just pairs of the same sentence in Thaana and in Latin. The pretrained model is the teacher. Training pulls the chat model&#39;s reading of each Latin sentence toward the pretrained model&#39;s reading of the Thaana one, and pushes it away from the other sentences in the batch, so different sentences stay apart. English is held in place, because English shares the Latin alphabet, and <em>mass</em>, <em>kon</em> and <em>hama</em> are English or Spanish words too.</p>
+<p>The first run took 15 minutes.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Before</th>
+<th>After 100 steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>My own Latin typing finds its sentence among 12</td>
+<td>6</td>
+<td><strong>12</strong></td>
+</tr>
+<tr>
+<td>Rule-converted Latin finds its sentence among 12</td>
+<td>2</td>
+<td><strong>9</strong></td>
+</tr>
+<tr>
+<td>Latin word → its English meaning, median rank</td>
+<td>~7,400</td>
+<td><strong>~410</strong></td>
+</tr>
+<tr>
+<td>Thaana word → its English meaning, median rank</td>
+<td>5</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p><em>Table 3. The Part 1 probes, rerun on the chat model with the add-on at half strength. &quot;Finds its sentence&quot; is Part 1&#39;s Table 2 test at layer 10.</em></p>
+<p>The Latin moved to where the Thaana already was, and the Thaana barely moved.</p>
+<p>It also broke something. English sentences that contain Dhivehi-looking words started to read as Dhivehi, and at full strength the model&#39;s code completions matched the untouched model&#39;s only 24 times in 50. Latin letters are shared, and pulling them toward Dhivehi pulls on English too.</p>
+<h2>Next</h2>
+<p>The next run adds English and code sentences that contain those words, held where they are. Then the swap test decides whether any of this is reading: put the trained model&#39;s state for the Latin <em>maheh</em> into the untouched model reading the Thaana sentence, and see if it says fish. If the rank moves and the swap does nothing, the run has moved a vector and the model still can&#39;t read. If Hindi and Russian shift as much as Dhivehi, the change is not about Dhivehi.</p>
+<p>Making it sound good comes after it can read. Part 2 will cover that.</p>
+<h2>Experiment notes</h2>
+<p><strong>Swap tests (activation patching).</strong> Gemma 4 26B-A4B-it and the pretrained 26B-A4B, bfloat16. Prompt: &quot;Translate this sentence into English. Reply with only the translation.&quot;, thinking off. The state is a decoder layer&#39;s output at the word&#39;s last token; &quot;whole word&quot; writes the donor&#39;s state onto every piece of the target word. Swaps between models write the pretrained model&#39;s states into the chat model at the same layer and position. Layers counted from 1.</p>
+<p><strong>Translation comparison.</strong> Both models 4-bit MLX, greedy, the same plain-text prompt with three example pairs written in the same script as the query, reply cut at the first newline. 150 lines of dialogue, evenly sampled from 2,927 questions and requests quoted in Nau-AI/dhivehi-corpus fiction; Latin by rule conversion with spelling variants measured on real typing. Judge: gpt-6-luna, YES / PARTIAL / NO against the Thaana original.</p>
+<p><strong>Word ranks (logit lens).</strong> The state at the word&#39;s last token goes through the final norm and the output embedding; best rank over layers 20–28 for the word&#39;s English meaning.</p>
+<p><strong>Fine-tuning.</strong> LoRA on the 26B chat model, on an M5 Max (MLX) and on W&amp;B serverless training. Echo is the share of the reply copied from the prompt, flagged at 0.5, on held-out prompts.</p>
+<p><strong>Script ban.</strong> Greedy decoding with every token containing a character outside Thaana, ASCII, digits and punctuation removed (108,186 of 262,144). The judge saw the Thaana original as the meaning key.</p>
+<p><strong>First alignment run.</strong> LoRA rank 16 on attention and dense MLP of layers 1–18, not the routed experts. Contrastive loss (temperature 0.05) at layers 7, 10 and 15 against the pretrained model&#39;s Thaana states, for whole sentences and for the words the two spellings link; a weaker pull of the chat model&#39;s own Thaana states toward the pretrained ones; KL to the untouched model on English prompts only. &quot;Half strength&quot; scales the add-on by 0.5.</p>
+<p><strong>Limits.</strong> The swap tests use one word with two meanings and two dozen sentences. Comparisons between the two models use translation, because a chat prompt suits only the chat model: given a plain transcript, the pretrained model copies the user&#39;s line back, and given few-shot examples, the chat model sometimes repeats an example. The judges are GPT models reading Dhivehi; the main one agreed with my own blind ratings on 10 of 14 pairs. Part 1 used 4-bit weights; every result rerun at full precision held, but scores don&#39;t transfer (one model drops from 22.7 to 15.1 chrF when compressed). The Latin test sentences are rule-converted from Thaana, matched to typists who spell more formally than comment sections. Novel dialogue is melodramatic.</p>
+<p><strong>Data.</strong> The chat dataset: names and user ids replaced by pseudonyms before processing, links and phone numbers removed, nothing published. Fiction from Nau-AI/dhivehi-corpus (research use). Evaluation sets are excluded from all training data.</p>
+</article></main>
+<footer class="site-footer"><span>Zayan</span><a href="https://github.com/im-zayan">GitHub</a></footer></body></html>
