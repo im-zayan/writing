@@ -7,7 +7,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2: write it in Thaana first","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-07","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2: write it in Thaana first</h1><p class="post-meta"><time datetime="2026-10-07">October 7, 2026</time><span aria-hidden="true"> · </span>5 min read</p></header><article><div class="summary"><p><strong>Summary.</strong> <a href="/writing/posts/where-gemma-keeps-dhivehi/">Part 1</a> found that Gemma 4 understands Dhivehi written in Thaana but not Dhivehi typed in Latin letters, which is how people actually text. <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Part 1.6</a> pulled the Latin closer. This part makes the model use what it already has: it rewrites each message in Thaana before answering. On 200 held-out Latin-typed chat messages, it now gets the gist of 87%, close to Gemini Flash&#39;s 91.5%, and fully understands 48%, against Flash&#39;s 69%. Flash is the best Dhivehi model we&#39;ve measured.</p></div>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2: write it in Thaana first</h1><p class="post-meta"><time datetime="2026-10-07">October 7, 2026</time><span aria-hidden="true"> · </span>5 min read</p></header><article><div class="summary"><p><strong>Summary.</strong> <a href="/writing/posts/where-gemma-keeps-dhivehi/">Part 1</a> found that Gemma 4 understands Dhivehi written in Thaana but not Dhivehi typed in Latin letters, which is how people actually text. <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Part 1.6</a> pulled the Latin closer. This part makes the model use what it already has: it rewrites each message in Thaana before answering. On 200 held-out Latin-typed chat messages, it gets the gist of 87%, close to Gemini Flash&#39;s 91.5%, and fully understands 48%, against Flash&#39;s 69%. Flash is the best Dhivehi model we&#39;ve measured.</p></div>
 <p>Most Dhivehi on phones is typed in Latin letters: <code>kn irakah tha</code>, <code>vvv reethi</code>, <code>mashah neynge</code>. Gemma 4 can&#39;t read it. It can read Thaana. So we taught it to rewrite your message in Thaana before answering.</p>
 <div class="p2-bars">
 <div class="p2-bar"><div class="l"><span>Gemma 4, as shipped</span><span><b>11.2%</b> · 42.5%</span></div><div class="track"><div class="gist" style="width:42.5%;background:#a9b0a5"></div><div class="full" style="width:11.2%;background:#a9b0a5"></div></div></div>
@@ -53,7 +53,7 @@ Plan:    ask which match, offer to check if they name the teams
 <script src="/writing/assets/part2.js" defer></script>
 
 <h2>Why it works</h2>
-<p>If this is right, the transliteration should decide everything. It does. When the model writes the right Thaana, the reply gets the gist every time. When it writes the wrong Thaana, 61% of the time. Its Thaana is right about 40% of the time so far, so that&#39;s the next thing to train.</p>
+<p>If this is right, the transliteration should decide everything. It does. When the model writes the right Thaana, the reply gets the gist every time. When it writes the wrong Thaana, 61% of the time. Its Thaana is right about 40% of the time, so that&#39;s the next thing to train.</p>
 <div class="p2-bars">
 <div class="p2-bar"><div class="l"><span>Right Thaana</span><span><b>gist every time</b></span></div><div class="track"><div class="full" style="width:100%;background:#34684c"></div></div></div>
 <div class="p2-bar"><div class="l"><span>Wrong Thaana</span><span><b>gist 61%</b></span></div><div class="track"><div class="full" style="width:61%;background:#b4553d"></div></div></div>
@@ -75,7 +75,7 @@ Plan:    ask which match, offer to check if they name the teams
 </table>
 
 <h2>Where it still trips</h2>
-<p>Someone typed <code>bin heylun</code> for <code>bin helun</code>. <em>Helun</em> is shaking, so <em>bin helun</em> is an earthquake. <em>Heylun</em> is waking up. Our model wrote exactly what was typed and explained how to clear land for building. Flash read it as an earthquake. The next training round teaches the model to doubt a reading that makes no sense:</p>
+<p>Someone typed <code>bin heylun</code> for <code>bin helun</code>. <em>Helun</em> is shaking, so <em>bin helun</em> is an earthquake. <em>Heylun</em> is waking up. Our model wrote exactly what was typed and explained how to clear land for building. Flash read it as an earthquake. The next round teaches the model to doubt a reading that makes no sense:</p>
 <pre><code>Thaana:       ބިން ހޭލުން އެހެނީ ކިހިނެއް
 Literal:      how does the earth wake up?
 Check:        odd
