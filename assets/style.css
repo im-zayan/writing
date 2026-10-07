@@ -91,3 +91,41 @@ hr { width: 72px; border: 0; border-top: 1px solid #b9c3b8; margin: 49px auto; }
   blockquote { break-inside: avoid; }
   a { color: inherit; }
 }
+/* Part 2 components (scoped p2-) */
+.p2-bars { display: grid; gap: 12px; margin: 30px 0 8px; font: 14px/1.3 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p2-bar .l { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+.p2-bar .track { height: 12px; background: var(--wash); border-radius: 2px; position: relative; }
+.p2-bar .gist, .p2-bar .full { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+.p2-bar .gist { opacity: .3; }
+.p2-cap { font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--muted); margin: 0 0 1.4em; }
+.p2-flow { margin: 30px 0; font: 14px/1.35 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p2-flow .lab { font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--muted); margin: 0 0 8px; }
+.p2-flow .row { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+.p2-flow .box { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 3px; padding: 10px 12px; background: #fff; }
+.p2-flow .box b { display: block; }
+.p2-flow .box span { color: var(--muted); font-size: 13px; }
+.p2-flow .box.on { border-color: var(--green); }
+.p2-flow .arr { flex: none; color: var(--green); font-size: 18px; }
+.p2-flow .lost { flex: 1.4; text-align: center; color: #b4553d; font-weight: 600; border-top: 2px dashed #b4553d; padding-top: 6px; }
+.p2-ex { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; margin: 30px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p2-msgs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.p2-chip { font: 13px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 7px 11px; border-radius: 99px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.p2-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.p2-ex input[type=range] { width: 100%; accent-color: var(--green); margin: 0; }
+.p2-ticks { display: grid; grid-template-columns: repeat(5, 1fr); font-size: 12px; line-height: 1.3; color: var(--muted); margin: 4px 0 14px; }
+.p2-ticks span { text-align: center; cursor: pointer; } .p2-ticks span:first-child { text-align: left; } .p2-ticks span:last-child { text-align: right; } .p2-ticks .on { color: var(--ink); font-weight: 600; }
+.p2-user { font: 15px/1.5 ui-monospace, Menlo, monospace; } .p2-user-en { font: italic 16px/1.5 Georgia, serif; color: var(--muted); margin-bottom: 12px; }
+.p2-who { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.p2-scratch { font: 13px/1.65 ui-monospace, Menlo, monospace; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; margin-bottom: 8px; }
+.p2-scratch .t, .p2-dv { font-family: 'Noto Sans Thaana', 'MV Faseyha', 'Faruma', sans-serif; color: var(--green); }
+.p2-reply { font: 17px/1.85 'Noto Sans Thaana', 'MV Faseyha', 'Faruma', sans-serif; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 7.5em; overflow: hidden; }
+.p2-reply.lat { font: 15px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; } .p2-reply.rtl { direction: rtl; text-align: right; } .p2-reply.open { max-height: none; }
+.p2-more { font-size: 13px; background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; cursor: pointer; }
+.p2-gloss { font: italic 18px/1.5 Georgia, serif; margin-top: 8px; }
+.p2-table { width: 100%; border-collapse: collapse; font: 15px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 22px 0; }
+.p2-table td { padding: 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.p2-table td:last-child { text-align: right; white-space: nowrap; padding-left: 14px; font-variant-numeric: tabular-nums; }
+.p2-table .why { color: var(--muted); font-size: 14px; }
+.p2-up { color: var(--green); font-weight: 600; } .p2-down { color: #b4553d; font-weight: 600; } .p2-flat { color: var(--muted); }
+.p2-chip:focus-visible, .p2-ex input:focus-visible, .p2-more:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+@media (max-width: 560px) { .p2-flow .row { flex-direction: column; align-items: stretch; } .p2-flow .arr { transform: rotate(90deg); align-self: center; } .p2-flow .lost { border-top: 0; border-left: 2px dashed #b4553d; padding: 4px 0 4px 10px; text-align: left; } }

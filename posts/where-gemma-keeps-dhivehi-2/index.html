@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does Gemma keep Dhivehi? Part 2: write it in Thaana first · Zayan</title><meta name="description" content="Gemma 4 can read Thaana but not Dhivehi typed in Latin letters. Making it rewrite each message in Thaana first took it from 11% to 62% on real chat messages. Gemini Flash gets 65%.">
+<link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2/"><link rel="stylesheet" href="/writing/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2: write it in Thaana first · Zayan"><meta property="og:description" content="Gemma 4 can read Thaana but not Dhivehi typed in Latin letters. Making it rewrite each message in Thaana first took it from 11% to 62% on real chat messages. Gemini Flash gets 65%."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2: write it in Thaana first","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-07","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2/"}</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2: write it in Thaana first</h1><p class="post-meta"><time datetime="2026-10-07">October 7, 2026</time><span aria-hidden="true"> · </span>4 min read</p></header><article><div class="summary"><p><strong>Summary.</strong> <a href="/writing/posts/where-gemma-keeps-dhivehi/">Part 1</a> found that Gemma 4 understands Dhivehi written in Thaana but not Dhivehi typed in Latin letters, which is how people actually text. <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Part 1.6</a> pulled the Latin closer. This part makes the model use what it already has: it rewrites each message in Thaana before answering. On 40 Latin-typed chat messages, it went from fully understanding 11% to 62%. Gemini Flash, the best Dhivehi model I&#39;ve found, gets 65%.</p></div>
+<p>Nobody texts in Thaana. People type <code>kn irakah tha</code>, <code>vvv reethi</code>, <code>mashah neynge</code>. Gemma 4 can&#39;t read that, but it can read Thaana. So I made it rewrite each message in Thaana before answering.</p>
+<div class="p2-bars">
+<div class="p2-bar"><div class="l"><span>Gemma 4, as shipped</span><span><b>11.2%</b> · 42.5%</span></div><div class="track"><div class="gist" style="width:42.5%;background:#a9b0a5"></div><div class="full" style="width:11.2%;background:#a9b0a5"></div></div></div>
+<div class="p2-bar"><div class="l"><span>+ synthetic chat</span><span><b>13.8%</b> · 67.5%</span></div><div class="track"><div class="gist" style="width:67.5%;background:#a9b0a5"></div><div class="full" style="width:13.8%;background:#a9b0a5"></div></div></div>
+<div class="p2-bar"><div class="l"><span>+ Flash-style thoughts</span><span><b>27.5%</b> · 53.8%</span></div><div class="track"><div class="gist" style="width:53.8%;background:#a9b0a5"></div><div class="full" style="width:27.5%;background:#a9b0a5"></div></div></div>
+<div class="p2-bar"><div class="l"><span>+ Thaana first</span><span><b>62.5%</b> · 87.5%</span></div><div class="track"><div class="gist" style="width:87.5%;background:#34684c"></div><div class="full" style="width:62.5%;background:#34684c"></div></div></div>
+<div class="p2-bar"><div class="l"><span>Gemini 3.7 Flash</span><span><b>65%</b> · 95%</span></div><div class="track"><div class="gist" style="width:95%;background:#3b5f92"></div><div class="full" style="width:65%;background:#3b5f92"></div></div></div>
+</div>
+<p class="p2-cap">40 Latin-typed chat messages, two replies each, graded against the Thaana original. Dark: understood. Light: got the gist.</p>
+
+<h2>Chat data taught it to sound Dhivehi</h2>
+<p>GPT-6.1 sol wrote 11,500 messages a Maldivian might send a chatbot, each with its Thaana, its English meaning and a reply. Another model retyped each message a few more ways, since people spell the same word differently.</p>
+<p>Gemma learned to sound Dhivehi. Thaana replies went from 20% to 95%, and Sinhala replies from 38 in 120 to one. It still didn&#39;t understand the messages. Ask about last night&#39;s football and it says late games ruin your sleep.</p>
+<h2>Flash&#39;s thinking taught it to guess</h2>
+<p>Flash shows a summary of its thinking. It names the language, glosses each word, notes what it can&#39;t know, then answers. I trained Gemma on 4,500 of these. Gemma learned to gloss, but glossed wrong. Glossing only helps if you know the words.</p>
+<h2>Writing it in Thaana first worked</h2>
+<p>Part 1 showed that Gemma understands Thaana: a Thaana sentence lands in the same place inside the model as its English translation. Latin-typed Dhivehi doesn&#39;t. The knowledge is there, but Gemma can&#39;t reach it from Latin letters in one step. So I gave it two:</p>
+<pre><code>Thaana:  ރޭގަ ފުޓުބޯޅަ މެޗުގެ ނަތީޖާއަކީ ކޮބާ
+Meaning: what was the football match result last night
+Plan:    ask which match, offer to check if they name the teams
+</code></pre>
+<div class="p2-flow" role="img" aria-label="Before: Latin-typed straight to meaning, mostly lost. After: Latin-typed, then Thaana in the scratchpad, then meaning.">
+<div class="lab">BEFORE</div>
+<div class="row"><div class="box"><b>Latin-typed</b><span>reyge futubalha…</span></div><div class="lost">one pass · mostly lost</div><div class="box"><b>Meaning</b><span>last night's result</span></div></div>
+<div class="lab">AFTER</div>
+<div class="row"><div class="box"><b>Latin-typed</b><span>reyge futubalha…</span></div><div class="arr">→</div><div class="box on"><b>Thaana</b><span>in the scratchpad</span></div><div class="arr">→</div><div class="box"><b>Meaning</b><span>last night's result</span></div></div>
+</div>
+
+<p>Every training message already had its Thaana and meaning, so these thoughts cost nothing. On the same data, they beat Flash-style thoughts by 31 points on getting the gist. Try it:</p>
+<div class="p2-ex" id="p2-ex">
+<div class="p2-msgs" role="group" aria-label="Message"></div>
+<input type="range" min="0" max="4" step="1" value="0" aria-label="Model">
+<div class="p2-ticks"><span>Shipped</span><span>+ chat</span><span>+ Flash thoughts</span><span>+ Thaana first</span><span>Flash</span></div>
+<div class="p2-body"></div>
+</div>
+<script src="/writing/assets/part2.js" defer></script>
+
+<h2>Why it works</h2>
+<p>If this is right, the Thaana it writes should decide the outcome. It does. With the right Thaana, it gets the gist every time. With the wrong Thaana, 61% of the time. Its Thaana is right about 40% of the time, so that&#39;s what to fix next.</p>
+<div class="p2-bars">
+<div class="p2-bar"><div class="l"><span>Right Thaana</span><span><b>gist every time</b></span></div><div class="track"><div class="full" style="width:100%;background:#34684c"></div></div></div>
+<div class="p2-bar"><div class="l"><span>Wrong Thaana</span><span><b>gist 61%</b></span></div><div class="track"><div class="full" style="width:61%;background:#b4553d"></div></div></div>
+</div>
+<p class="p2-cap">46 scratchpads with a known original. Right means a character match of 80+ out of 100.</p>
+
+<p>Most of the gain lives in the scratchpad. With thinking off, about a third of it remains.</p>
+<h2>Everything I tried</h2>
+<table class="p2-table">
+<tr><td>Thaana first, instead of Flash-style thoughts<div class="why">got the gist</div></td><td class="p2-up">+31</td></tr>
+<tr><td>Four times the learning rate<div class="why">fully understood</div></td><td class="p2-up">+22</td></tr>
+<tr><td>Half an epoch instead of a full one<div class="why">fully understood</div></td><td class="p2-up">+16</td></tr>
+<tr><td>Aligning Latin to Thaana inside the model (Part 1.6)<div class="why">got the gist</div></td><td class="p2-up">+14</td></tr>
+<tr><td>Mixing in English answers, adapter at half strength<div class="why">change in English answers (KL)</div></td><td class="p2-up">0.59 → 0.06</td></tr>
+<tr><td>Three Latin spellings per message instead of one<div class="why">fully understood</div></td><td class="p2-flat">no effect</td></tr>
+<tr><td>Flash's raw thoughts instead of cleaned ones<div class="why">fully understood</div></td><td class="p2-flat">no effect</td></tr>
+<tr><td>Dropping the “I can't check that” replies<div class="why">got the gist</div></td><td class="p2-flat">no effect</td></tr>
+<tr><td>Chat training on top of the aligned model<div class="why">fully understood</div></td><td class="p2-down">−14</td></tr>
+</table>
+
+<h2>Where it still fails</h2>
+<p>Typos break it. Someone typed <code>bin heylun</code> for <code>bin helun</code>. <em>Helun</em> means shaking, so <em>bin helun</em> is an earthquake. <em>Heylun</em> means waking up. My model wrote down exactly what was typed, then explained how to clear land for building. Flash read it as an earthquake. The next round teaches the model to check a reading that makes no sense:</p>
+<pre><code>Thaana:       ބިން ހޭލުން އެހެނީ ކިހިނެއް
+Literal:      how does the earth wake up?
+Check:        odd
+Likely meant: heylun → ހެލުން (shaking), earthquake
+Meaning:      how do earthquakes happen?
+</code></pre>
+<p>Shorthand is the same problem. <code>vvv reethi</code> is <em>varah varah varah reethi</em>, very very very pretty. My model read <code>vvv</code> as &quot;that&#39;s why&quot;.</p>
+<p>Both models also make things up. Asked the date, mine said 22 May 2025 and Flash said 30 March 2026. It was 7 October.</p>
+<h2>4-bit hides the gains</h2>
+<p>I run the model in 4-bit. At full precision, longer replies raised its score by 25 points. In 4-bit they added nothing: long replies looped and put Latin letters inside Thaana words. If you test a small language on a quantized model, check this first.</p>
+<h2>Caveats</h2>
+<ul>
+<li>40 messages is small. The real gap to Flash could be anywhere from −28 to +13 points. A 200-message test is running.</li>
+<li>The grader is gpt-6-luna. It agreed with my blind ratings about two thirds of the time.</li>
+<li>This only tests reading casual Latin-typed chat. Flash knows far more and writes better Dhivehi.</li>
+<li>Setup: Gemma 4 26B-A4B with a LoRA adapter; about 2,700 Thaana-first thinking rows, 4,300 synthetic chat rows, 1,500 fiction exchanges and 400 English replay rows; one epoch; every row checked for overlap with the test.</li>
+</ul>
+</article></main>
+<footer class="site-footer"><span>Zayan</span><a href="https://github.com/im-zayan">GitHub</a></footer></body></html>
