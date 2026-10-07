@@ -35,5 +35,33 @@
     root.querySelector('input').addEventListener('input', e => { si = +e.target.value; step(); });
     root.querySelectorAll('.p2-ticks span').forEach((x, i) => x.addEventListener('click', () => { si = i; step(); }));
     step();
+    // read-more: every reply, thought and judge trace, rendered on first open
+    const raw = document.getElementById('p2-raw');
+    if (!raw) return;
+    raw.addEventListener('toggle', () => {
+      if (!raw.open || raw.dataset.done) return;
+      raw.dataset.done = 1;
+      fetch(new URL('part2-raw.json', base)).then(r => r.json()).then(R => {
+        const pre = (t, dv) => `<pre${dv ? ' class="dv" lang="dv"' : ''}>${esc(t)}</pre>`;
+        const isDv = t => (t.match(TH) || []).length > (t.match(/[A-Za-z]/g) || []).length;
+        raw.querySelector('.p2-raw-body').innerHTML = ORDER.map(k => {
+          const m = D[k], j = R[k];
+          return `<details class="p2-raw-msg"><summary>${LBL[k]} · <code>${esc(m.latin)}</code></summary>
+            <div class="k">Thaana (meaning key)</div>${pre(m.thaana, true)}
+            <div class="k">English</div>${pre(m.en_user)}
+            ${ST.map((s, i) => {
+              const r = m[s];
+              return `<h4>${WHO[i]} <span>· astra: ${V[r.v]} · luna: ${V[r.luna]}</span></h4>
+                ${r.thought ? `<div class="k">Thinking</div>${pre(r.thought)}` : ''}
+                <div class="k">Reply</div>${pre(r.reply, isDv(r.reply))}
+                <div class="k">English</div>${pre(r.en || '')}
+                <div class="k">Astra's reason</div>${pre(r.astra.why)}`;
+            }).join('')}
+            <h4>Judge prompt <span>· replies shuffled, models unnamed: ${j.order.map(s => WHO[ST.indexOf(s)]).join(' / ')}</span></h4>${pre(j.prompt)}
+            <h4>Astra's raw output</h4>${pre(j.output)}
+          </details>`;
+        }).join('');
+      });
+    });
   });
 })();
