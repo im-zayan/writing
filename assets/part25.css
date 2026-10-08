@@ -90,3 +90,24 @@
 }
 
 .p25[data-enhanced] .p25-scorer-link { display: block; }
+.p25-history-bars { margin: 25px 0 10px; font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p25-history-row { margin: 15px 0; }
+.p25-history-row > div:first-child { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.p25-history-track { height: 13px; background: var(--wash); }
+.p25-history-fill { height: 100%; background: #8c9a88; }
+.p25-history-row--loop .p25-history-fill { background: #a6633e; }
+.p25-history-scale { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+.p25-study { margin: 26px 0; font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p25-study-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+.p25-study-pair > div { background: var(--wash); padding: 16px; }
+.p25-study-pair strong { display: block; font-size: 18px; font-weight: 600; }
+.p25-study-pair span { color: var(--muted); }
+.p25-study-vote { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.p25-study-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 22px 0; }
+.p25-study-steps strong { display: block; color: var(--green); font: 400 30px/1.2 Georgia, serif; margin-bottom: 6px; }
+.p25-study-steps span { display: block; }
+.p25-study-critics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 17px 0; border-block: 1px solid var(--line); }
+.p25-study-critics b { display: block; font-weight: 600; }
+.p25-study-critics span { display: block; color: var(--muted); font-size: 12px; }
+.p25-study-gate { margin-top: 18px; padding-left: 14px; border-left: 3px solid var(--green); }
+@media(max-width:650px) { .p25-study-critics { grid-template-columns: 1fr 1fr; } }

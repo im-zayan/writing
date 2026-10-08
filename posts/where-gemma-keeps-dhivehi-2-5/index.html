@@ -7,7 +7,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-08","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose</h1><p class="post-meta"><time datetime="2026-10-08">October 8, 2026</time><span aria-hidden="true"> · </span>11 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css?v=surprise-1">
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose</h1><p class="post-meta"><time datetime="2026-10-08">October 8, 2026</time><span aria-hidden="true"> · </span>13 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css?v=critic-history-1">
 <div class="p25" id="part25">
 
 <p>Earlier experiments got Gemma reading Latin-typed Dhivehi. It first <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">replied in Sinhala</a>, then <a href="/writing/posts/where-gemma-keeps-dhivehi-2/">in Dhivehi</a>. This time I tested continued pretraining (CPT): learning from more human-written Dhivehi.</p>
@@ -109,25 +109,50 @@
 <p class="p25-caption">Punctuation and spacing normalized. This checks overlap with our corpus; Gemma’s original pretraining data is unavailable.</p>
 
 <p>The search found no long matching passage.</p>
+<h2>We have used a critic before</h2>
+<p>Earlier GRPO work already paired a language-model score with Clef’s meaning check. One chat run used X4c to score replies. A later run used Nau for Latin-to-Thaana conversions. The new question is whether our CPT-trained PT model makes a better critic.</p>
+<p>A saved Nau check shows the trap. It ranked a repetition loop first among 100 model outputs. The loop was much easier to predict than the human reference:</p>
+<figure class="p25-history-bars" aria-label="Actual earlier Nau scores, converted to mean surprise in nats per token: repetition loop 0.37; human reference 5.26. Lower surprise incorrectly favors the loop.">
+<span class="p25-label">Earlier Nau check · measured scores</span>
+<div class="p25-history-row p25-history-row--loop"><div><span>Repetition loop</span><strong>0.37</strong></div><div class="p25-history-track"><div class="p25-history-fill" style="width:6.1667%"></div></div></div>
+<div class="p25-history-row"><div><span>Human reference</span><strong>5.26</strong></div><div class="p25-history-track"><div class="p25-history-fill" style="width:87.6667%"></div></div></div>
+<div class="p25-history-scale"><span>0</span><span>Surprise · nats/token</span><span>6</span></div>
+<figcaption>Lower means easier to predict, not better. Nau scored the output text alone, up to 256 tokens. This was a diagnostic check on older X4c outputs.</figcaption>
+</figure>
+
 <h2 id="next">Using it to judge word choices</h2>
 
 <p>The pretrained (PT) checkpoint read Dhivehi better than the chat-tuned version in <a href="/writing/posts/where-gemma-keeps-dhivehi-1-5/">our earlier tests</a>. We’re now running CPT on that checkpoint.</p>
 <p>If that works, I want to use it to score the chat model’s spelling and word choices. Give the PT model two ways to phrase the same sentence. Which one surprises it less? Those scores would help post-train the chat model with DPO or GRPO.</p>
 <p>The useful part is a cheap scoring pass. Feed it the candidate text and read the probability it assigns to each token. Candidates can share a batch. The PT model never has to generate an answer or write a critique.</p>
 <figure class="p25-scorer">
-<iframe id="p25-scorer-frame" src="/writing/assets/pt-surprise.html?v=theme-2" title="Interactive diagram: PT surprise scores, meaning checks, and DPO or GRPO training" loading="lazy" referrerpolicy="no-referrer"></iframe>
+<iframe id="p25-scorer-frame" src="/writing/assets/pt-surprise.html?v=blind-3" title="Interactive diagram: PT surprise scores, meaning checks, and DPO or GRPO training" loading="lazy" referrerpolicy="no-referrer"></iframe>
 <figcaption>Try turning off the meaning check: the fluent but wrong sentence wins. The probabilities are invented to explain the idea; they are not measurements from our PT run.</figcaption>
 </figure>
-<p class="p25-scorer-link"><a href="/writing/assets/pt-surprise.html?v=theme-2" target="_blank" rel="noopener">Open the diagrams full-screen</a></p>
+<p class="p25-scorer-link"><a href="/writing/assets/pt-surprise.html?v=blind-3" target="_blank" rel="noopener">Open the diagrams full-screen</a></p>
 <noscript><p>The proposed flow: compare candidate wording with the PT model, check meaning separately, then use preferences for DPO or a language score in GRPO. The PT scorer stays fixed; the chat model learns. The interactive diagrams require JavaScript.</p></noscript>
 
-<p>First I’ll check the PT model’s scores against my own corrections. Common spellings can be wrong, and better wording must preserve the meaning.</p>
+<h2>Test the critic before training with it</h2>
+<p>I’ll give Dhivehi readers pairs with the same intended meaning, hide their origins and shuffle A/B order. They’ll judge wording first, then meaning separately. The scorers get the same pairs and context.</p>
+<figure class="p25-study" aria-label="Planned blind comparison: readers see randomly ordered A and B without source labels; a 40-pair pilot precedes a frozen 200-pair test; compare Nau, stock PT, CPT-PT and a frequency baseline against native choices before training.">
+<span class="p25-label">Blind native-reader test · planned</span>
+<div class="p25-study-pair"><div><strong>A</strong><span>One wording</span></div><div><strong>B</strong><span>The other wording</span></div></div>
+<div class="p25-study-vote"><span>Prefer A</span><span>Prefer B</span><span>Same</span><span>Both bad</span></div>
+<div class="p25-study-steps"><div><strong>40 pairs</strong><span>Pilot the labels and rating screen</span></div><div><strong>200 pairs</strong><span>Fresh held-out test · target three readers per pair</span></div></div>
+<div class="p25-study-critics"><div><b>Nau</b><span>With shared context</span></div><div><b>Stock PT</b><span>Before CPT</span></div><div><b>CPT-PT</b><span>New critic</span></div><div><b>Frequency</b><span>Simple spelling baseline</span></div></div>
+<div class="p25-study-gate"><strong>Compare agreement with readers.</strong><br>Then test loops, copied prompts, rare valid words and fluent wrong answers.</div>
+<figcaption>All counts are proposed. Keep related sentences in one split. Compare each scorer’s A/B ranking, not raw scores across tokenizers.</figcaption>
+</figure>
+
+<p>If CPT-PT beats Nau on held-out choices and the combined checks reject the failure cases, I’ll try a small DPO run. Before GRPO, I’ll rank saved groups of replies and inspect the winners without training. A low-surprise answer still has to say the right thing.</p>
 <details class="p25-notes"><summary>Experiment notes and raw outputs</summary>
 
 <p><strong>Model.</strong> M1c uses hosted Gemma 4 26B-A4B-<strong>it</strong>, rank-1 LoRA, peak learning rate 2e-4, batch 32 and one pass through the data. Each training example pairs a prompt with a document passage; the service trains on the last assistant reply. This is a separate run from the plain-text continued pretraining on the base model. These samples come after M1c’s CPT stage, before further instruction tuning.</p>
 <p><strong>Data.</strong> 46,641 rows; 24.45 million target tokens, including 10% English. Mostly Dhivehi fiction and news, plus formal text, Wikipedia, Latin comments and sentences. Sources include Nau-AI’s research-use corpus, d3b4g’s corpora and sentence datasets. The data builder filters out evaluation material. This post contains no source passages or private chat messages.</p>
 <p><strong>Comparison.</strong> Four newly written synthetic openings. Both models receive “Continue this text” and the same opening in Gemma’s chat template, thinking off. Temperature 0.7, top-p 0.9, repetition penalty 1.1, seed 17, maximum 1,024 tokens. Both models stopped naturally on all four. No script ban. Excerpts preserve the first two non-empty lines; expand for the unedited output. My comments on prose and grammar are my reading as a Dhivehi speaker. The character count is a separate mechanical check.</p>
 <p><strong>Decoding.</strong> The eight adapted samples use the same four openings at temperatures 0.7 and 1.0. The greedy excerpt used a plain-text prompt; it is not a controlled comparison of the penalty alone. The matched stock-versus-ours comparison above holds the format and settings fixed.</p>
+<p><strong>Earlier critics.</strong> The first translation GRPO run used Clef and chrF. We also implemented a v3 reward with Nau naturalness capped at the reference’s score, but I found no saved run configuration selecting that recipe. Later chat GRPO used Nau likelihood conditioned on Latin input for conversion requests, with coverage and Clef checks. Another chat run used an X4c likelihood critic. The measured bar chart above comes from a separate unconditional Nau ranking audit; it is not evidence that training with Nau improved the model.</p>
+<p><strong>Blind test plan.</strong> Reuse the existing A/B rating interface in a separate study. Start with a 40-pair usability pilot, then freeze the scoring rules and a fresh 200-pair test. Keep calibration and test sentences—and their source documents—separate from each other and from CPT training. Target three independent native ratings per pair. Record naturalness, meaning preservation, ties and disagreements. Compare within-pair rankings for context-conditioned Nau, stock PT, CPT-PT and a simple frequency baseline, with paired confidence intervals. Keep Nau’s old unconditional score as a separate diagnostic. For small edits, score the edit and a fixed following span; keep whole-sentence scores as a secondary check. Use Clef or task checks separately for meaning. Test repetition, copying, truncation, rare words and changed numbers or negation. Length and tokenization can affect scores; choose normalization on calibration data only. Our older 40-pair translation-naturalness pack has 14 ratings and does not validate the new PT scorer.</p>
 <p><strong>Proposed scorer.</strong> The diagram uses seven one-word tokens and invented probabilities. Real Dhivehi splits into subword tokens. I’ll test length normalization and word-frequency effects against native corrections before using the scores. Low surprise alone does not establish correct spelling, meaning or facts. The PT scorer supplies one language-quality signal; the chat model still needs task checks. <a href="https://arxiv.org/abs/2109.06822">LM-Critic</a> used comparisons with local edits to judge grammar. <a href="https://arxiv.org/abs/2305.18290">DPO</a> trains on preferred/rejected pairs; <a href="https://arxiv.org/abs/2402.03300">GRPO</a> compares rewards within groups of sampled replies.</p>
 <p><strong>Copying check.</strong> I searched for exact five-word runs, ignoring punctuation and spacing, across the training targets and source documents. I then inspected the closest matches. A looser search using two-word runs found no convincing near-copy. This cannot rule out paraphrase or copying from Gemma’s original training data.</p>
 <p><a href="/writing/assets/part25-data.json">Four paired continuations and exact settings (JSON)</a> · <a href="/writing/assets/part25-sampling.json">All eight sampled adapted outputs (JSON)</a></p>
