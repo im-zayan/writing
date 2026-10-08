@@ -115,10 +115,10 @@
 <p>If that works, I want to use it to score the chat model’s spelling and word choices. Give the PT model two ways to phrase the same sentence. Which one surprises it less? Those scores would help post-train the chat model with DPO or GRPO.</p>
 <p>The useful part is a cheap scoring pass. Feed it the candidate text and read the probability it assigns to each token. Candidates can share a batch. The PT model never has to generate an answer or write a critique.</p>
 <figure class="p25-scorer">
-<iframe id="p25-scorer-frame" src="/writing/assets/pt-surprise.html" title="Interactive diagram: PT surprise scores, meaning checks, and DPO or GRPO training" loading="lazy" referrerpolicy="no-referrer"></iframe>
+<iframe id="p25-scorer-frame" src="/writing/assets/pt-surprise.html?v=theme-2" title="Interactive diagram: PT surprise scores, meaning checks, and DPO or GRPO training" loading="lazy" referrerpolicy="no-referrer"></iframe>
 <figcaption>Try turning off the meaning check: the fluent but wrong sentence wins. The probabilities are invented to explain the idea; they are not measurements from our PT run.</figcaption>
 </figure>
-<p class="p25-scorer-link"><a href="/writing/assets/pt-surprise.html" target="_blank" rel="noopener">Open the diagrams full-screen</a></p>
+<p class="p25-scorer-link"><a href="/writing/assets/pt-surprise.html?v=theme-2" target="_blank" rel="noopener">Open the diagrams full-screen</a></p>
 <noscript><p>The proposed flow: compare candidate wording with the PT model, check meaning separately, then use preferences for DPO or a language score in GRPO. The PT scorer stays fixed; the chat model learns. The interactive diagrams require JavaScript.</p></noscript>
 
 <p>First I’ll check the PT model’s scores against my own corrections. Common spellings can be wrong, and better wording must preserve the meaning.</p>
