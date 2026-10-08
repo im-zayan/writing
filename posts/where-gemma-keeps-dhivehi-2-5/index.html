@@ -1,26 +1,26 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Where does Gemma keep Dhivehi? Part 2.5: finding its voice · Zayan</title><meta name="description" content="First it answered in Sinhala. Then in Dhivehi. Now the prose is finding its voice: stock-versus-trained continuations, the loop, and a plan to use the model’s own sense of the language.">
+<title>Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose · Zayan</title><meta name="description" content="Earlier work got Gemma answering in Dhivehi. The adapted model writes more natural Dhivehi in these samples. Compare stock and trained outputs, and see the plan for judging word choices.">
 <link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"><link rel="stylesheet" href="/writing/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2.5: finding its voice · Zayan"><meta property="og:description" content="First it answered in Sinhala. Then in Dhivehi. Now the prose is finding its voice: stock-versus-trained continuations, the loop, and a plan to use the model’s own sense of the language."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.5: finding its voice","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-08","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"}</script>
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose · Zayan"><meta property="og:description" content="Earlier work got Gemma answering in Dhivehi. The adapted model writes more natural Dhivehi in these samples. Compare stock and trained outputs, and see the plan for judging word choices."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-08","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.5: finding its voice</h1><p class="post-meta"><time datetime="2026-10-08">October 8, 2026</time><span aria-hidden="true"> · </span>11 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css">
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose</h1><p class="post-meta"><time datetime="2026-10-08">October 8, 2026</time><span aria-hidden="true"> · </span>10 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css">
 <div class="p25" id="part25">
 
-<p>First it answered in Sinhala. Then our work on reading Latin-typed Dhivehi through Thaana got it answering in Dhivehi. Now I want the sentences themselves to sound right.</p>
-<p>After more human Dhivehi text, the prose, grammar and spelling look much better to me. Some of the story even makes sense. Have a look.</p>
+<p>Earlier experiments got Gemma reading Latin-typed Dhivehi. It first replied in Sinhala, then in Dhivehi. This time I trained it on more human-written Dhivehi to improve how it writes.</p>
+<p>The prose, grammar and spelling now look better to me. Parts of the story make sense too. Here are the results.</p>
 <div class="p25-route" aria-label="The series so far, across separate experiments">
 <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/"><small>Part 1.6</small><b>Read the meaning</b><em>Often answered in Sinhala</em></a>
 <a href="/writing/posts/where-gemma-keeps-dhivehi-2/"><small>Part 2</small><b>Answer in Dhivehi</b><em>Write it in Thaana first</em></a>
-<span class="p25-current"><small>Part 2.5</small><b>Find its voice</b><em>Prose, grammar, spelling</em></span>
-<a href="#next"><small>Next experiment</small><b>Judge the wording</b><em>Can its preferences help?</em></a>
+<span class="p25-current"><small>Part 2.5</small><b>Write better prose</b><em>Prose, grammar, spelling</em></span>
+<a href="#next"><small>Next experiment</small><b>Judge the wording</b><em>Compare word choices</em></a>
 </div>
 
-<h2>Same opening. Different prose.</h2>
-<p>I gave stock Gemma and our adapted model four short openings and asked them to continue. Same prompt, same sampling settings. The highlighted characters belong to other scripts. Wording and line breaks are unchanged.</p>
+<h2>Stock and trained, side by side</h2>
+<p>I gave both models the same four openings and settings. The highlights show letters from other scripts. The model outputs are unchanged.</p>
 <div class="p25-controls"><label for="p25-opening">Choose an opening<select id="p25-opening"><option value="story">Boat at the harbour</option><option value="dialogue">A walk to the sea</option><option value="description">After the rain</option><option value="explanation">Reading books</option></select></label><span class="p25-settings">Temperature 0.7 · top-p 0.9<br>Repetition penalty 1.1 · limit 1,024 tokens</span></div>
 
 <details class="p25-case" data-p25-case="story" open>
@@ -91,42 +91,41 @@
 <figcaption>One dot per opening. Counts letters and combining marks outside Thaana and ASCII. Four examples; this measures script consistency, not grammar.</figcaption>
 </figure>
 
-<p>Stock holds onto the scene more closely. Ours has more of the sound of Dhivehi fiction, but it can wander off into another story. The language is coming through. Keeping it attached to the opening is the next job.</p>
-<h2>Getting past the loop</h2>
-<p>At first I used greedy decoding. The model picked one sentence and kept writing it. More tokens bought more copies:</p>
+<p>Stock follows the opening more closely. Ours writes more natural Dhivehi, but often changes the scene or subject. Next it needs to keep the better prose while following the prompt.</p>
+<h2>Stopping the repetition</h2>
+<p>At first I used greedy decoding: always pick the most likely next token. The model repeated the same sentence. Raising the token limit did not help:</p>
 <div class="p25-loop"><span class="p25-label">Greedy · boat opening</span><div class="p25-loop-text"><p class="p25-dv" lang="dv" dir="rtl">އަބަދުވެސް ބަނދަރުގައި އިންތިޒާރު ކުރާނަން.
 އަބަދުވެސް ބަނދަރުގައި އިންތިޒާރު ކުރާނަން.
 އަބަދުވެސް ބަނދަރުގައި އިންތިޒާރު ކުރާނަން.</p></div><p class="p25-caption">Repeated excerpt from a plain-text completion. The full generation reached 1,024 tokens.</p></div>
 
-<p>Sampling helped, but one of two runs still looped. Then I added a repetition penalty of 1.1.</p>
+<p>I then let the model sample from several likely tokens. One of two runs still repeated itself. I added a repetition penalty of 1.1.</p>
 <div class="p25-meter"><strong>8 / 8</strong><span>stopped naturally<br>with sampling + repetition penalty 1.1</span></div>
 <p class="p25-caption">Four openings, temperatures 0.7 and 1.0, in the training-matched chat format. No exact repeated eight-word sequences. Shorter phrases and ideas still recur.</p>
 
-<p>That let me read the prose instead of the loop.</p>
-<h2>Was it copying a novel?</h2>
-<p>The writing felt familiar enough to check. I searched all eight sampled outputs against the training targets and the larger source corpus.</p>
+
+<h2>Did it copy the training text?</h2>
+<p>I checked all eight outputs for copied passages, searching both the training text and the larger source collection.</p>
 <div class="p25-audit"><div class="p25-stat"><strong>46,641</strong><span>training targets searched</span><span>No exact five-word matches</span></div><div class="p25-stat"><strong>1,018,845</strong><span>source documents searched</span><span>Longest exact match found: five words</span></div></div>
 <p class="p25-caption">Punctuation and spacing normalized. This checks overlap with our corpus; Gemma’s original pretraining data is unavailable.</p>
 
-<p>No long matching passage surfaced in the corpus. The prose still has the familiar sound of the fiction it learned from.</p>
-<h2 id="next">A feel for the language</h2>
+<p>The search found no long matching passage.</p>
+<h2 id="next">Using it to judge word choices</h2>
 
-<p>Next I want to use this model’s sense of Dhivehi to improve the assistant. Give it two spellings or two word choices in the same sentence. Which one surprises it less?</p>
+<p>Next I want to compare two spellings or word choices in the same sentence. Which one does the model expect? Its score could help train the assistant to write better Dhivehi.</p>
 <figure class="p25-next" aria-label="Proposed experiment: compare two wordings in the same context, score how surprising they are to the model, check against native-speaker corrections, then use preferences for DPO or a language-quality reward for GRPO.">
-<div class="p25-box"><b>Two wordings</b><span>Same context<br>Same intended meaning</span></div><span class="p25-arrow" aria-hidden="true">→</span><div class="p25-box"><b>Model surprise</b><span>Score each candidate<br>Check against my corrections</span></div>
-<div class="p25-destination"><div><b>DPO</b><span>Preferred wording vs rejected wording</span></div><div><b>GRPO</b><span>A language-quality signal in the reward</span></div></div>
-<figcaption style="grid-column:1/-1">The next experiment. No preference training or reward from these scores yet.</figcaption>
+<div class="p25-box"><b>Two wordings</b><span>Same context<br>Same intended meaning</span></div><span class="p25-arrow" aria-hidden="true">→</span><div class="p25-box"><b>Model surprise</b><span>Score each wording<br>Check against my corrections</span></div>
+<div class="p25-destination"><div><b>DPO</b><span>Preferred wording vs rejected wording</span></div><div><b>GRPO</b><span>Reward better wording</span></div></div>
+<figcaption style="grid-column:1/-1">Planned: use the scores to choose preferred answers for DPO, or reward better wording in GRPO.</figcaption>
 </figure>
 
-<p>First I’ll test whether its preferences agree with mine. A common spelling can still be wrong. A good sentence still has to mean the right thing.</p>
-<p>The earlier work got the model reading us. This work is giving it a voice. I want to keep that voice when we teach it what to do next.</p>
+<p>First I’ll check its scores against my own corrections. Common spellings can be wrong, and better wording must preserve the meaning.</p>
 <details class="p25-notes"><summary>Experiment notes and raw outputs</summary>
 
-<p><strong>Model.</strong> These samples use M1c: hosted Gemma 4 26B-A4B-<strong>it</strong>, adapted with rank-1 LoRA on document passages, peak learning rate 2e-4, batch 32, one pass. The service trains the last assistant turn, so this is corpus adaptation through chat-wrapped continuations. It is separate from the plain-text CPT run on the pretrained base. M1c’s later instruction-training stage has not started.</p>
-<p><strong>Data.</strong> 46,641 rows; 24.45 million target tokens, including 10% English. Mostly Dhivehi fiction and news, plus formal text, Wikipedia, Latin comments and sentences. Sources include Nau-AI’s research-use corpus, d3b4g’s corpora and sentence datasets. Evaluation material was filtered out. No source passages or private chat messages are published here.</p>
+<p><strong>Model.</strong> M1c uses hosted Gemma 4 26B-A4B-<strong>it</strong>, rank-1 LoRA, peak learning rate 2e-4, batch 32 and one pass through the data. Each training example pairs a prompt with a document passage; the service trains on the last assistant reply. This is a separate run from the plain-text continued pretraining on the base model. M1c’s next instruction-training stage has not started.</p>
+<p><strong>Data.</strong> 46,641 rows; 24.45 million target tokens, including 10% English. Mostly Dhivehi fiction and news, plus formal text, Wikipedia, Latin comments and sentences. Sources include Nau-AI’s research-use corpus, d3b4g’s corpora and sentence datasets. The data builder filters out evaluation material. This post contains no source passages or private chat messages.</p>
 <p><strong>Comparison.</strong> Four newly written synthetic openings. Both models receive “Continue this text” and the same opening in Gemma’s chat template, thinking off. Temperature 0.7, top-p 0.9, repetition penalty 1.1, seed 17, maximum 1,024 tokens. Both models stopped naturally on all four. No script ban. Excerpts preserve the first two non-empty lines; expand for the unedited output. My comments on prose and grammar are my reading as a Dhivehi speaker. The character count is a separate mechanical check.</p>
 <p><strong>Decoding.</strong> The eight adapted samples use the same four openings at temperatures 0.7 and 1.0. The greedy excerpt used a plain-text prompt; it is not a controlled comparison of the penalty alone. The matched stock-versus-ours comparison above holds the format and settings fixed.</p>
-<p><strong>Overlap check.</strong> Exact normalized five-word spans were searched across all training targets and train/validation source documents, followed by inspection of high-overlap candidates. A looser two-word retrieval pass did not surface a convincing near-copy. This does not test memorization from Gemma’s original training or rule out paraphrase.</p>
+<p><strong>Copying check.</strong> I searched for exact five-word runs, ignoring punctuation and spacing, across the training targets and source documents. I then inspected the closest matches. A looser search using two-word runs found no convincing near-copy. This cannot rule out paraphrase or copying from Gemma’s original training data.</p>
 <p><a href="/writing/assets/part25-data.json">Four paired continuations and exact settings (JSON)</a> · <a href="/writing/assets/part25-sampling.json">All eight sampled adapted outputs (JSON)</a></p>
 </details>
 </div>
