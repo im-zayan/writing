@@ -7,7 +7,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-08","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-5/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose</h1><p class="post-meta"><time datetime="2026-10-08">October 8, 2026</time><span aria-hidden="true"> · </span>11 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css">
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.5: better Dhivehi prose</h1><p class="post-meta"><time datetime="2026-10-08">October 8, 2026</time><span aria-hidden="true"> · </span>11 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css?v=surprise-1">
 <div class="p25" id="part25">
 
 <p>Earlier experiments got Gemma reading Latin-typed Dhivehi. It first <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">replied in Sinhala</a>, then <a href="/writing/posts/where-gemma-keeps-dhivehi-2/">in Dhivehi</a>. This time I tested continued pretraining (CPT): learning from more human-written Dhivehi.</p>
@@ -113,11 +113,13 @@
 
 <p>The pretrained (PT) checkpoint read Dhivehi better than the chat-tuned version in <a href="/writing/posts/where-gemma-keeps-dhivehi-1-5/">our earlier tests</a>. We’re now running CPT on that checkpoint.</p>
 <p>If that works, I want to use it to score the chat model’s spelling and word choices. Give the PT model two ways to phrase the same sentence. Which one surprises it less? Those scores would help post-train the chat model with DPO or GRPO.</p>
-<figure class="p25-next" aria-label="Proposed experiment: the PT model scores two wordings in the same context. Check its scores against native-speaker corrections, then use them to post-train the chat model with DPO preferences or a GRPO reward.">
-<div class="p25-box"><b>Chat-model candidates</b><span>Same context<br>Same intended meaning</span></div><span class="p25-arrow" aria-hidden="true">→</span><div class="p25-box"><b>PT model scores them</b><span>How surprising is each?<br>Check against my corrections</span></div>
-<div class="p25-destination"><div><b>Chat model: DPO</b><span>Learn from preferred and rejected wording</span></div><div><b>Chat model: GRPO</b><span>Use the PT score in its reward</span></div></div>
-<figcaption style="grid-column:1/-1">If the PT run works: it scores the language; the chat model receives the post-training.</figcaption>
+<p>The useful part is a cheap scoring pass. Feed it the candidate text and read the probability it assigns to each token. Candidates can share a batch. The PT model never has to generate an answer or write a critique.</p>
+<figure class="p25-scorer">
+<iframe id="p25-scorer-frame" src="/writing/assets/pt-surprise.html" title="Interactive diagram: PT surprise scores, meaning checks, and DPO or GRPO training" loading="lazy" referrerpolicy="no-referrer"></iframe>
+<figcaption>Try turning off the meaning check: the fluent but wrong sentence wins. The probabilities are invented to explain the idea; they are not measurements from our PT run.</figcaption>
 </figure>
+<p class="p25-scorer-link"><a href="/writing/assets/pt-surprise.html" target="_blank" rel="noopener">Open the diagrams full-screen</a></p>
+<noscript><p>The proposed flow: compare candidate wording with the PT model, check meaning separately, then use preferences for DPO or a language score in GRPO. The PT scorer stays fixed; the chat model learns. The interactive diagrams require JavaScript.</p></noscript>
 
 <p>First I’ll check the PT model’s scores against my own corrections. Common spellings can be wrong, and better wording must preserve the meaning.</p>
 <details class="p25-notes"><summary>Experiment notes and raw outputs</summary>
@@ -126,10 +128,11 @@
 <p><strong>Data.</strong> 46,641 rows; 24.45 million target tokens, including 10% English. Mostly Dhivehi fiction and news, plus formal text, Wikipedia, Latin comments and sentences. Sources include Nau-AI’s research-use corpus, d3b4g’s corpora and sentence datasets. The data builder filters out evaluation material. This post contains no source passages or private chat messages.</p>
 <p><strong>Comparison.</strong> Four newly written synthetic openings. Both models receive “Continue this text” and the same opening in Gemma’s chat template, thinking off. Temperature 0.7, top-p 0.9, repetition penalty 1.1, seed 17, maximum 1,024 tokens. Both models stopped naturally on all four. No script ban. Excerpts preserve the first two non-empty lines; expand for the unedited output. My comments on prose and grammar are my reading as a Dhivehi speaker. The character count is a separate mechanical check.</p>
 <p><strong>Decoding.</strong> The eight adapted samples use the same four openings at temperatures 0.7 and 1.0. The greedy excerpt used a plain-text prompt; it is not a controlled comparison of the penalty alone. The matched stock-versus-ours comparison above holds the format and settings fixed.</p>
+<p><strong>Proposed scorer.</strong> The diagram uses seven one-word tokens and invented probabilities. Real Dhivehi splits into subword tokens. I’ll test length normalization and word-frequency effects against native corrections before using the scores. Low surprise alone does not establish correct spelling, meaning or facts. The PT scorer supplies one language-quality signal; the chat model still needs task checks. <a href="https://arxiv.org/abs/2109.06822">LM-Critic</a> used comparisons with local edits to judge grammar. <a href="https://arxiv.org/abs/2305.18290">DPO</a> trains on preferred/rejected pairs; <a href="https://arxiv.org/abs/2402.03300">GRPO</a> compares rewards within groups of sampled replies.</p>
 <p><strong>Copying check.</strong> I searched for exact five-word runs, ignoring punctuation and spacing, across the training targets and source documents. I then inspected the closest matches. A looser search using two-word runs found no convincing near-copy. This cannot rule out paraphrase or copying from Gemma’s original training data.</p>
 <p><a href="/writing/assets/part25-data.json">Four paired continuations and exact settings (JSON)</a> · <a href="/writing/assets/part25-sampling.json">All eight sampled adapted outputs (JSON)</a></p>
 </details>
 </div>
-<script src="/writing/assets/part25.js" defer></script>
+<script src="/writing/assets/part25.js?v=surprise-1" defer></script>
 </article></main>
 <footer class="site-footer"><span>Zayan</span><a href="https://github.com/im-zayan">GitHub</a></footer></body></html>

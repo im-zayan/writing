@@ -6,7 +6,7 @@
   src: url('./fonts/noto-sans-thaana-regular.ttf') format('truetype');
 }
 .p25 { --p25-rust: #98492f; --p25-tint: #f5e8d5; }
-.p25-label, .p25-caption, .p25-controls, .p25-sample-title, .p25-stat, .p25-route, .p25-next, .p25-settings, .p25-meter {
+.p25-label, .p25-caption, .p25-controls, .p25-sample-title, .p25-stat, .p25-route, .p25-settings, .p25-meter {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 .p25-label { display: block; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
@@ -64,16 +64,12 @@
 .p25-stat { border-top: 1px solid var(--line); padding-top: 16px; }
 .p25-stat strong { display: block; font: 400 34px/1.2 Georgia, serif; margin-bottom: 8px; }
 .p25-stat span { display: block; font-size: 14px; line-height: 1.5; }
-.p25-next { margin: 28px 0 18px; display: grid; grid-template-columns: 1fr 24px 1fr; align-items: center; gap: 12px; }
-.p25-next .p25-box { padding: 15px 18px; background: var(--wash); }
-.p25-next .p25-box b { font-size: 15px; line-height: 1.4; display: block; }
-.p25-next .p25-box span { font-size: 13px; color: var(--muted); display: block; margin-top: 5px; line-height: 1.5; }
-.p25-next .p25-arrow { color: var(--green); text-align: center; }
-.p25-next .p25-destination { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid var(--line); padding-top: 15px; }
-.p25-next .p25-destination b { font-size: 16px; }
-.p25-next .p25-destination span { display: block; font-size: 13px; line-height: 1.5; color: var(--muted); }
 .p25-notes { font-size: 16px; line-height: 1.65; }
 .p25-notes p { margin-bottom: 16px; }
+.p25-scorer { display: none; margin: 28px 0; }
+.p25[data-enhanced] .p25-scorer { display: block; }
+.p25-scorer iframe { display: block; width: 100%; height: 960px; border: 0; }
+.p25-scorer-link { display: none; font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 12px 0; }
 @media(max-width:650px) {
   .p25-route { grid-template-columns: 1fr; gap: 22px; }
   .p25-pair { grid-template-columns: 1fr; gap: 24px; }
@@ -85,8 +81,6 @@
   .p25-scriptplot .p25-label { line-height: 1.5; }
   .p25-dotrow { gap: 9px; }
   .p25-dotrow .p25-rowlabel { width: 100px; }
-  .p25-next { gap: 8px; grid-template-columns: 1fr 18px 1fr; }
-  .p25-next .p25-box { padding: 13px 12px; }
 }
 @media print {
   .p25-controls { display: none !important; }
@@ -94,3 +88,5 @@
   .p25-full .p25-dv { display: block; }
   .p25-case { break-inside: auto; }
 }
+
+.p25[data-enhanced] .p25-scorer-link { display: block; }
