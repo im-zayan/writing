@@ -13,7 +13,7 @@
 .p25-caption { font-size: 14px; line-height: 1.55; color: var(--muted); margin: 12px 0 24px; }
 .p25 figcaption { font: 14px/1.55 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--muted); margin-top: 12px; }
 .p25 figure { margin: 28px 0; }
-.p25-route { padding: 24px 0; margin: 28px 0 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; border-block: 1px solid var(--line); }
+.p25-route { padding: 24px 0; margin: 28px 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-block: 1px solid var(--line); }
 .p25-route a, .p25-route span { text-decoration: none; }
 .p25-route small { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .p25-route b { font-size: 16px; line-height: 1.35; display: block; color: var(--ink); }
@@ -75,7 +75,7 @@
 .p25-notes { font-size: 16px; line-height: 1.65; }
 .p25-notes p { margin-bottom: 16px; }
 @media(max-width:650px) {
-  .p25-route { grid-template-columns: 1fr 1fr; gap: 22px 18px; }
+  .p25-route { grid-template-columns: 1fr; gap: 22px; }
   .p25-pair { grid-template-columns: 1fr; gap: 24px; }
   .p25-dv { font-size: 19px; line-height: 2; }
   .p25-opening { padding: 14px; }
