@@ -1,0 +1,116 @@
+{
+  "scope": "Exploratory saved checks; no new model runs. Keyword sense checks, model-judged understanding, and script counts are different metrics.",
+  "swap": {
+    "n": 19,
+    "counts": {
+      "pick_plain_la": 5,
+      "stock_plain_la": 0,
+      "stock_plain_th": 14,
+      "pick@3-15": 9,
+      "control@3-15": 6
+    },
+    "paired_gains": 4,
+    "paired_losses": 1,
+    "nominal_two_sided_sign_p": 0.375,
+    "layers_code_zero_based": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "steering": [
+    {
+      "condition": "none",
+      "n": 150,
+      "thaana_script": 37,
+      "understood_or_partial": 25,
+      "repetition_flags": 12,
+      "judge_counts_raw": {
+        "PARTIAL": 20,
+        "YES": 5,
+        "NO": 125
+      }
+    },
+    {
+      "condition": "dvsi_gen@22x1",
+      "n": 150,
+      "thaana_script": 64,
+      "understood_or_partial": 19,
+      "repetition_flags": 50,
+      "judge_counts_raw": {
+        "NO": 131,
+        "PARTIAL": 18,
+        "YES": 1
+      }
+    },
+    {
+      "condition": "dvsi_gen@22x2",
+      "n": 150,
+      "thaana_script": 113,
+      "understood_or_partial": 2,
+      "repetition_flags": 109,
+      "judge_counts_raw": {
+        "NO": 148,
+        "PARTIAL": 2
+      }
+    },
+    {
+      "condition": "shuf@22x2",
+      "n": 150,
+      "thaana_script": 86,
+      "understood_or_partial": 3,
+      "repetition_flags": 90,
+      "judge_counts_raw": {
+        "NO": 147,
+        "YES": 2,
+        "PARTIAL": 1
+      }
+    }
+  ],
+  "steering_norms": {
+    "layers": [
+      22
+    ],
+    "alphas": [
+      1.0,
+      2.0
+    ],
+    "norm": {
+      "22": 105.36942291259766
+    },
+    "vnorm": {
+      "dv_si": {
+        "22": 35.261131286621094
+      },
+      "dv_en": {
+        "22": 79.06627655029297
+      },
+      "dvsi_gen": {
+        "22": 29.5329532623291
+      },
+      "dven_gen": {
+        "22": 56.77823257446289
+      }
+    },
+    "wall_s": 1430
+  },
+  "source_sha256": {
+    "climb/w6/understanding/run2_swap.json": "d54c988b2951a36480efbe5558aa6b7e9efdde7daa794b56525eabaf00721393",
+    "climb/w6/langdec/steer_judge_table.json": "fcea5e21950c40d659b3a61b656d869478fb093f279824a81304d937a685bcdc",
+    "climb/w6/langdec/steer_judge_meta.json": "49dac7aae3646cd507b6ddf468a3266cd4706b053ca3656b67bbbdc268444b68",
+    "climb/scriptban/judged_ld_judge_adapter_none.jsonl": "73d111aba1b7727a22d8578e24b29470b7045964bc2c5785a1aa348ca6fed52c",
+    "climb/scriptban/judged_ld_judge_adapter_dvsi_genL22x1.jsonl": "adc1fd5df8003d9678d352e756aa886e0ac5bdec121c1d7f496aa29b71a85c75",
+    "climb/scriptban/judged_ld_judge_adapter_dvsi_genL22x2.jsonl": "c5b2bb828b3ad61d59ae3de34146b9333b2bce981f1516b4bec50acb43898aa0",
+    "climb/scriptban/judged_ld_judge_adapter_shufL22x2.jsonl": "a0b34191b47717d94565463c933729ea52d4c517ac13c197aa6bb71a5158e2b1"
+  }
+}
