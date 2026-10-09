@@ -20,3 +20,11 @@
 .p27-architecture img { display:block; width:100%; height:auto; }
 .p27-architecture figcaption { font:14px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--muted); margin-top:12px; }
 .p27-equation { display:flex; flex-wrap:wrap; gap:8px 16px; font:18px/1.8 Georgia,serif; padding:18px 0; border-block:1px solid var(--line); margin:24px 0; }
+
+.p27-example { border-left: 3px solid var(--green); padding: 4px 0 4px 20px; margin: 24px 0; }
+.p27-example p { margin: 12px 0; }
+.p27-example span { display:block; font: 13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--muted); margin-bottom:4px; }
+.p27-example strong { font-weight: 500; }
+.p27-evidence, .p27-methods { padding-block:16px; border-block:1px solid var(--line); margin:24px 0 32px; }
+.p27-evidence > summary, .p27-methods > summary { color:var(--green); font-size:16px; line-height:1.5; min-height:32px; }
+.p27-evidence[open] > summary, .p27-methods[open] > summary { margin-bottom:20px; }
