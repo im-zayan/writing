@@ -7,7 +7,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.7: an idea to try next","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-09","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-7/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.7: an idea to try next</h1><p class="post-meta"><time datetime="2026-10-09">October 9, 2026</time><span aria-hidden="true"> · </span>13 min read</p></header><article><p>All of this has brought me back to an earlier experiment, with a more specific question.</p>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.7: an idea to try next</h1><p class="post-meta"><time datetime="2026-10-09">October 9, 2026</time><span aria-hidden="true"> · </span>14 min read</p></header><article><p>All of this has brought me back to an earlier experiment, with a more specific question.</p>
 <p><a href="/writing/posts/where-gemma-keeps-dhivehi-2-6/">The last run</a> got better at predicting held-out Dhivehi. Its paragraphs still fell apart. More training helped the loss, but did not tell us which part of the model needed help.</p>
 <p>Reading <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-gemma-4">Maarten Grootendorst’s visual guide to Gemma 4</a> made me wonder whether we could look more closely at the experts.</p>
 <p>Our Gemma has 128 routed experts in each of its 30 layers. It selects eight per token, alongside an always-active shared expert. Each routed expert is a small feedforward network with about six million parameters. Our current run adapts attention and the shared feedforward path; the routed-expert weights and router weights stay frozen.</p>
@@ -35,7 +35,34 @@
 </figure>
 
 <p>Overwriting only the last piece with the English fish state favors fish through layer 12. Overwriting every piece extends that to layer 18. These boundaries belong to this sentence and this intervention; they do not establish a universal cutoff for understanding.</p>
-<p>Then <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Part 1.6</a> trained an adapter to align Latin Dhivehi with the pretrained model’s Thaana representations. Retrieval improved, but replies often came out in Sinhala. We also ran output-language patching and steering experiments. Changing the apparent language of an answer did not by itself establish better meaning or grammar.</p>
+<h3>An early intervention already helped</h3>
+<p>In <a href="/writing/posts/where-gemma-keeps-dhivehi-1-6/">Part 1.6</a>, we changed the early layers and improved Latin-Dhivehi understanding without training the model on Dhivehi replies. Here is what that meant.</p>
+<p>The frozen pretrained model read a sentence in Thaana. The chat model read the same sentence in Latin Dhivehi. A rank-16 LoRA adapter changed attention and the shared feedforward network in layers 1–18. The routed experts stayed frozen.</p>
+<p>At layers 7, 10 and 15, a contrastive loss pulled the chat model’s Latin representations toward the teacher’s Thaana representations, for both whole sentences and linked words. It pushed unrelated examples apart. A weaker loss also aligned the chat model’s Thaana states with the teacher, while an English KL loss discouraged changes to its existing English predictions.</p>
+<p>There was no next-token training on Dhivehi answers. After changing how it represented the input, we let its existing generation machinery answer.</p>
+<table>
+<thead>
+<tr>
+<th>Earlier check</th>
+<th align="right">Before</th>
+<th align="right">After</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Matching meanings for my 12 Latin examples</td>
+<td align="right">6/12</td>
+<td align="right">12/12</td>
+</tr>
+<tr>
+<td>Intended sense preserved in the later state-swap test</td>
+<td align="right">6/19</td>
+<td align="right">9/19</td>
+</tr>
+</tbody></table>
+<p>The first row is the first run’s step-100 adapter at half strength. The second is a separate test of the second run’s selected checkpoint: its Latin word state was placed into the untouched model reading the Thaana sentence. The denominators and tests differ; these are small probes, not a general comprehension benchmark.</p>
+<p>The replies showed better understanding, but often came out in Sinhala or romanized Sinhala. Thaana representations were already close to Sinhala in our measurements. Alignment may have made that route more accessible, but we did not identify a specific Sinhala circuit.</p>
+<p>The first run also damaged some English and code cases. A second run added English, Spanish and code examples containing look-alike words, held their representations close to stock, and added code to the prediction-preservation loss. Its selected checkpoint passed the tested English checks. That is the run used for the 9/19 swap result.</p>
+<p>We also ran output-language patching and steering experiments. Changing the apparent language of an answer did not by itself establish better meaning or grammar.</p>
 <h3>The improvement crossed into other languages</h3>
 <p>The same alignment adapter also improved the match between romanized Arabic and Arabic script: <strong>32.5% → 65%</strong>. Hindi went from 77.5% to 97.5%; Thai from 13.8% to 33.8%. Here are all 19 non-Dhivehi language rows in that saved comparison, including Greek’s small decline and Russian’s unchanged score.</p>
 <figure class="p27-figure">
@@ -79,7 +106,7 @@
 <p>First, reuse the earlier representation and patching probes, then add fresh matched examples. Record which experts receive tokens, and with what weights. Compare stock pretrained Gemma, our CPT checkpoint and the chat-tuned model. Keep reading the input separate from generating the answer.</p>
 <p>An expert lighting up for Thaana would only be a clue. It could be responding to the script, a common token or the topic. It would not yet be a “Dhivehi expert.”</p>
 <p>Next, change a small part of the computation. Suppress a candidate expert’s contribution, or replace an activation with one from a matched successful example. Check whether the effect is specific: did understanding change, did the reply switch language, or did the wording improve? Compare against random-expert interventions, watch for general damage, and repeat on fresh examples.</p>
-<p>The result I would like to find is a separation: an early intervention restores understanding of Latin Dhivehi; a later one changes the reply language while preserving its meaning. Grammar may turn out to depend on a different, overlapping set of components. Those are hypotheses to test.</p>
+<p>We already have evidence that changing early representations can improve Latin-Dhivehi understanding. The next question is which computations produced that gain, and whether we can preserve it while changing the reply language and improving grammar. A clean separation between those roles remains a hypothesis to test.</p>
 <p>If we can find a repeatable effect, we can try training the parts it points to. If we cannot, we will have learned something about the limits of treating whole experts as units of language ability.</p>
 <p>That is where this has landed: a better question for the next experiment. We have already probed and intervened on whole-layer representations. What remains is the expert-level map and the targeted tests of routing and expert contributions.</p>
 <style>
