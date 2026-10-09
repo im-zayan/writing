@@ -11,7 +11,7 @@
 <p><a href="/writing/posts/where-gemma-keeps-dhivehi-2-6/">The last run</a> got better at predicting held-out Dhivehi. Its paragraphs still fell apart. More training helped the loss, but did not tell us which part of the model needed help.</p>
 <p>Reading <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-gemma-4">Maarten Grootendorst’s visual guide to Gemma 4</a> made me wonder whether we could look more closely at the experts.</p>
 <p>Our Gemma has 128 routed experts in each of its 30 layers. It selects eight per token, alongside an always-active shared expert. Each routed expert is a small feedforward network with about six million parameters. Our current run adapts attention and the shared feedforward path; the routed-expert weights and router weights stay frozen.</p>
-<p>Could we find the parts that turn Dhivehi into a representation the rest of the model can use? Then the parts that turn that representation into an answer—and choose its language, spelling and grammar?</p>
+<p>Could we find the parts that turn Dhivehi into a representation the rest of the model can use? Then the parts that turn that representation into an answer and choose its language, spelling and grammar?</p>
 <link rel="stylesheet" href="/writing/assets/part27.css?v=1">
 
 <h2>We have already tested representations</h2>
@@ -43,7 +43,7 @@
 <figcaption>FLORES-200: 40 sentences per language, mechanically romanized with uroman. Score averages retrieval in both directions, choosing each model’s best layer within layers 4–20; chance is 2.5%. Open circles: stock chat model. Filled circles: the first alignment run, step 100 at half adapter strength. These are representation matches, not translation or grammar scores.</figcaption>
 </figure>
 
-<p>For Arabic, the selected layer moved from 10 to 18. Its native-script↔English retrieval stayed at 100%. A later alignment checkpoint scored 51.2% on the Arabic script bridge—still above stock, below the first run’s 65%. The gain was not monotonic.</p>
+<p>For Arabic, the selected layer moved from 10 to 18. Its native-script↔English retrieval stayed at 100%. A later alignment checkpoint scored 51.2% on the Arabic script bridge. That was still above stock, but below the first run’s 65%. The gain was not monotonic.</p>
 <p>This suggests that the adapter changed something useful for matching scripts across languages. We had not established the cause with a mismatched-pair training control. It is another reason to inspect the computation before calling the change Dhivehi-specific.</p>
 <details class="p27-notes"><summary>Chart data and limits</summary><p>The charts use saved experiments, with no new model run. The retrieval map comes from the stock rerun of Part 1’s 13-meaning test; “Latin Arabic” there uses the hand-written romanizations from that test. The transfer chart is a separate FLORES test using uroman. Do not compare their percentages as one benchmark. The adapter in the transfer chart is the earlier representation-alignment adapter, not the CPT checkpoint from Part 2.6. Best-layer selection is exploratory, not a held-out layer choice. The patch explorer covers one target and three donor conditions; it does not locate expert identities or demonstrate grammatical correction.</p><p><a href="/writing/assets/part27-evidence.json">Download the plotted measurements and source-file hashes</a></p></details>
 
