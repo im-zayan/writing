@@ -1,0 +1,4 @@
+.p26 table { display: table; width: 100%; table-layout: fixed; }
+.p26 table th, .p26 table td:first-child { white-space: normal; overflow-wrap: anywhere; }
+.p26 table th:first-child { width: 52%; }
+.p26 table td, .p26 table th { padding: 10px 6px; }

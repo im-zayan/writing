@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does Gemma keep Dhivehi? Part 2.6: a little progress · Zayan</title><meta name="description" content="The pretrained model gets better at predicting held-out Dhivehi. Reading its continuations shows how much is still missing.">
+<link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-6/"><link rel="stylesheet" href="/writing/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2.6: a little progress · Zayan"><meta property="og:description" content="The pretrained model gets better at predicting held-out Dhivehi. Reading its continuations shows how much is still missing."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-6/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.6: a little progress","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-09","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-6/"}</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.6: a little progress</h1><p class="post-meta"><time datetime="2026-10-09">October 9, 2026</time><span aria-hidden="true"> · </span>7 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part25.css?v=critic-history-1">
+<link rel="stylesheet" href="/writing/assets/part26.css">
+<div class="p25 p26">
+
+<p>The new run is better at predicting held-out Dhivehi. It still writes bad paragraphs.</p>
+<p>In <a href="/writing/posts/where-gemma-keeps-dhivehi-2-5/">Part 2.5</a>, I tried more Dhivehi training on Gemma’s chat-tuned checkpoint. This run starts from the pretrained checkpoint: Gemma before chat tuning. The two runs have different starting points, prompts and training setups. These results are not a direct comparison with M1c from the last post.</p>
+<p>I paused the new run at step 1,300, checked it against stock PT, then resumed training.</p>
+<h2>What moved</h2>
+<p>Loss measures how surprised the model is by the next token in human-written text. Lower is better at that prediction task.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th align="right">Stock PT</th>
+<th align="right">PT after CPT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dhivehi loss · 24 passages</td>
+<td align="right">1.532</td>
+<td align="right"><strong>1.348</strong></td>
+</tr>
+<tr>
+<td>English loss · 20 passages</td>
+<td align="right">1.582</td>
+<td align="right"><strong>1.473</strong></td>
+</tr>
+<tr>
+<td>Original spelling preferred over a corrupted version</td>
+<td align="right">24/24</td>
+<td align="right">24/24</td>
+</tr>
+<tr>
+<td>Original word order preferred over swapped words</td>
+<td align="right">20/24</td>
+<td align="right">22/24</td>
+</tr>
+</tbody></table>
+<p>The Dhivehi passages cover fiction, news and formal writing. Their source documents were excluded from this CPT training, and the passages are separate from the validation sequences scored during the run. That does not tell us whether Google’s original pretraining contained them.</p>
+<p>English loss also fell on this small panel. That is encouraging, but it is not a broad test of English ability. An input audit found three Russian passages and one code-only item in the original English set; the table excludes them.</p>
+<p>The spelling test was too easy. Stock already got every pair right. The word-order test moved by two pairs. These are artificial corruptions, not a native-reader grammar benchmark.</p>
+<h2>Read the outputs</h2>
+<p>The numbers looked better than the writing. Here are all four Dhivehi continuation pairs. Each pair used the same opening and sampling settings. The opening is described in English; the source passage is omitted. The generated text is unchanged, including errors and stray markup.</p>
+<details class="p25-case"><summary>Coffee scene</summary>
+<div class="p25-opening"><span class="p25-label">Opening · paraphrase</span><p>A character offers to make coffee; another reacts with surprise.</p></div>
+<div class="p25-pair">
+<section class="p25-sample p25-sample--stock"><div class="p25-sample-title"><strong>Stock PT</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl">&lt;|image&gt;&lt;blockquote&gt;&lt;strong&gt;&quot;ތިޔައީ ޑްރޯން؟&quot;&lt;/strong&gt;&lt;/blockquote&gt;</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl">
+
+<p>&lt;|image&gt;&lt;blockquote&gt;&lt;strong&gt;&quot;ތިޔައީ ޑްރޯން؟&quot;&lt;/strong&gt;&lt;/blockquote&gt;</p>
+<p>ބުނެވުނީމާ ބަލަން މަސައްކަތް ކުރިއަށް ގޮސްފިއެވެ. މުޅިން ކުއްލިއަކަށް ދޫންޏާއި ޚިޔާލުދަމުވާ ސާމާނުގެ އިތުރުން ރޭހެއްގައި އައިޒަނަށް ފެނިފައި ހުރި ވަޞީފާއެވެ. އަދި އެ ނޫންވެސް ތަކެއްޗެވެ.</p>
+<p>އަވަހަށް ގޮސްގެން އައިޒަންގެ ޓީޝާޓް ގޮޅިގަޑުގައި އަރާގަމުގައި ބައިބައިކޮށްލުމުން ކުރިން އައިޒަން ދައްކާދިން މަންޒަރު އައިޒަންއަށް ނުފެންނައެވެ. އައިޒަންގެ ކޯއްޗެއް އުޅޭތީވެސް މިމަނިކު ފެނުނީ ރޮނގުރަތިއެކެވެ. ވަޞީފާއާއި ހައިރާންވާނެ އެއްވެސް ސަބަބެއް ނެތެވެ.</p>
+<p>&lt;blockquote&gt;&lt;strong&gt;&quot;ހަލަ! ގޭގައި ވިޔަފާރި ކުރަމުންދާ އަޅުގަނޑުގެ މަސައްކަތް ހުއްޓުމަކަށް ނައިސް ކުރިއަށް ދާތީ މަރުޙަބާ!&quot;&lt;/strong&gt;&lt;/blockquote&gt;</p>
+<p>އިންޒާރުގެ ގޮތުގައި ކޮށިކޮށް ބުނެލާފައި އައިޒަންގެ ފޯނު ޖީބުގައި ވަނީ &quot;ޗެމްޕިއަން&quot; މެސެ</div></details></section></p>
+<section class="p25-sample p25-sample--ours"><div class="p25-sample-title"><strong>PT after CPT · step 1,300</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl"> &quot;މައްސަލައެއް އަޅުގަނޑުގެ މޫނަށް ބަލާލާނީ... އިތުރު ކުރިން މިއަދު މަދެކިޔާ މީހެއް ސައިއަޅުވައިފިން ދޯ!&quot;</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl"> &quot;މައްސަލައެއް އަޅުގަނޑުގެ މޫނަށް ބަލާލާނީ... އިތުރު ކުރިން މިއަދު މަދެކިޔާ މީހެއް ސައިއަޅުވައިފިން ދޯ!&quot;
+&quot;ޕްރޮޓޯ ކަލޭތަ..؟ ޔޫ ކޭން ގޯ.. ޔޫ ރިކޮންސެއިލް..&quot; ހަމަ އަމާޒުވެއްޖެއެވެ. އެކަން ނައިނާއަށް ފާހަގަކުރެވުމުން އައިޒަންގެ ނޭވާ ތުރުތުރު އަޅަން ފެށިއެވެ. &quot;މި ބުނީ... މިބުނީ...&quot; އިސްޖަހާލައިގެން ހުރި އައިޒަން މަޑުމައިތިރިވެލިއެވެ.
+&quot;އައި އީޓް މައި ސައިންޗަރ!&quot; ދައްކައިދިން ކޮފީ ޖޯޑާއި އެކު ނައިނާ ފިޔަތައްޕުޅަށް ވަދެގެން ދިޔައެވެ. ނަމަވެސް އެއްވެސް ވަރަކަށް އައިޒަން ކޮފީ ތައްޓެއްގައި އަޅައިލާކަށް ހިތެއް ނޭދުނެވެ. ގާތުގައި އިނީ ރަނގަޅު މީހުންކަން އެނގުމާއިއެކު، ކުރިއަށްވުރެ ބާރު ސްޕީޑްއެއްގައި މަސައްކަތްކުރުމުގެ ނިޔަތުގައި އޭނާ ސޯފާގައި އޮށޯވެލިއެވެ.
+&quot;މައިބްރޯ.. ހައު އާ ޔ</div></details></section>
+</div><p class="p25-observation">CPT keeps the characters and coffee, but fills the dialogue with English written in Thaana. Later it says “އައި އީޓް މައި ސައިންޗަރ!” Stock also loses the scene and emits image and HTML markers.</p></details>
+
+<details class="p25-case" open><summary>Hospital ward</summary>
+<div class="p25-opening"><span class="p25-label">Opening · paraphrase</span><p>Police are moving around the ward where a character is staying.</p></div>
+<div class="p25-pair">
+<section class="p25-sample p25-sample--stock"><div class="p25-sample-title"><strong>Stock PT</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl"> އިރުއޮއްސެން ގާތްވެފައިވާތީ، އަނބުރާ ރޭޕް އެކިއުޒޭޝަން ބަޔަށް ކައިރި ކުރަމުންދިޔަތަނެވެ. ނޫސްވެރިންތަކެއް މަޖާފުޅުކުރަމުން ދިޔަ މިލިޓްރީ ޚާނާއާއިގަޔަށް ވަދެގެން އިތުރު ދެ ފުލުހަކު އައިސް މޭޒުގެ ހުރަހުގައި ތިބި ސިފައިންނާ ވާހަކަ ދައްކަމުން ދިޔައެވެ.</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl"> އިރުއޮއްސެން ގާތްވެފައިވާތީ، އަނބުރާ ރޭޕް އެކިއުޒޭޝަން ބަޔަށް ކައިރި ކުރަމުންދިޔަތަނެވެ. ނޫސްވެރިންތަކެއް މަޖާފުޅުކުރަމުން ދިޔަ މިލިޓްރީ ޚާނާއާއިގަޔަށް ވަދެގެން އިތުރު ދެ ފުލުހަކު އައިސް މޭޒުގެ ހުރަހުގައި ތިބި ސިފައިންނާ ވާހަކަ ދައްކަމުން ދިޔައެވެ.
+
+<p>އެވަރުންވީ އިރަށް، އެއްޗެއް ގަޑިއަކަށް އަޅައި ކޮމަންޑަރ ރިޕޯޓް ކުރީގެ ބޭރުގައި ތިބި ނޫސްވެސިންނާއި، ހަރުކަށި މަޖާފުޅުކުރަމުންދިޔަ ފަޅުގަނޑުގެތެރަށް ވަޑައިގެންނެވި ޚަބަރުވެރިޔާއަށް އަތުގައި ފޮޓޯގަލެރީއެއް އޮތް މޮބައިލް ފޯނު ދައްކަމުން ސައިޓް ގޮވާލުމުން އެވަގުތަކީ އަހަންމަސަފައެވެ. އެވަގުތަކީ ކޮއްޕާތަކެއްގައި ބޭސްޖަހާފައި ހިއްލާފައި ހުރުމުން ނޫނީ، މަޝްގޫލުތަކުގެ ތެރެއިން ވަކިވިއަކަށް ނޫޅޭ ޚަރުގެންޑީއާއި</div></details></section></p>
+<section class="p25-sample p25-sample--ours"><div class="p25-sample-title"><strong>PT after CPT · step 1,300</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl"> އިއްޔެއަށްވުރެ މިއަދުވެސް އެބޭފުޅުންގެ ސަމާލުކަން ބޮޑުވެފައިވާ ކަހަލައެވެ.</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl"> އިއްޔެއަށްވުރެ މިއަދުވެސް އެބޭފުޅުންގެ ސަމާލުކަން ބޮޑުވެފައިވާ ކަހަލައެވެ.
+&quot;ސަބަބެއްނެތް ހިޒް ހައިނެސް އަޅުގަނޑުމެންނާއި ނުލައި މިތާ ރޭވިކޮށްފަ މަޖުބޫރު ކުރަނީ.&quot; ފުލުހެއް ބުނެލީ އޭނާއާއި ޖުވޭރިޔާ ދެމީހުންނަށް ބަލަހައްޓައިގެން ތިބެއެވެ. މާޔޫސް ގޮތަކަށް އެދެމީހުންވެސް ކާކު މަރުވާނަމަ؟
+&quot;ސޯ.. އިޓްސް ސޯ ހާމް..&quot; އަނެއްފުލުސްހުގެ އަޑުގައި ވަނީ ނުރުހުމެވެ. &quot;ވިޒިޓިންގް ޓައިމް މިވަނީ.&quot; އޭނާ ބުނެލީ ފުރަތަމަ ފުލުސްހާއި ދިމާލަށެވެ. &quot;އޭނައަށް ހަމަޖެހުމެއް ގެންނަން މަސައްކަތް ކުރާތި އެއްޗެއް ގަނެދީފަ ކޮންމެސްވެސް ކުޑަކޮށް އުޅުން ރަނގަޅުވާނެ.. ޔޫ ނޯ&quot;
+ދުރުގައި ތިބި މީހަކު އިތުރު ސަމާލުކަމެއް ނުދީ ހަރަކާތްތެރިވަމުންދިޔައެވެ. އަޒްލ</div></details></section>
+</div><p class="p25-observation">CPT starts with a plausible sentence about the officers paying more attention. Then comes disconnected dialogue, “His Highness” and more transliterated English. The improvement lasts about a sentence.</p></details>
+
+<details class="p25-case"><summary>Film news</summary>
+<div class="p25-opening"><span class="p25-label">Opening · paraphrase</span><p>An opening announces a big night for the audience awaiting a film by Nahula.</p></div>
+<div class="p25-pair">
+<section class="p25-sample p25-sample--stock"><div class="p25-sample-title"><strong>Stock PT</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl"> މިއަދު ހަވީރު އެގޭގައި ބޭއްވި ސިއްރު ތަހުނިޔާ އިބާދަތުގައި ޝަރަފީ ބައިވެރިވަނީ، މަޖީދީ މަގު އަދި ހުރަފާ މަގުގެ ގުޅުމުގައިވާ “ދަ ކަލަންޑަރު” ގައެވެ.</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl"> މިއަދު ހަވީރު އެގޭގައި ބޭއްވި ސިއްރު ތަހުނިޔާ އިބާދަތުގައި ޝަރަފީ ބައިވެރިވަނީ، މަޖީދީ މަގު އަދި ހުރަފާ މަގުގެ ގުޅުމުގައިވާ “ދަ ކަލަންޑަރު” ގައެވެ.
+
+<p>ލީޑް ރޯލް އަދާ ކުރައްވާ ފާތުމަތު ނަޖުމާގެ ކުޑަ ދަނޑިގޮށް އަށް ވަސަކުންތެރިއެއްކަމަށް މީސްމީޑިޔާއިން އެންމެ ފުރަތަމަ ސިފަ ކުރުމާއި އެކު މިކުއްޖާގެ ޕާފޯމަންސް ބަލައިލުމުގެ އިންތިޒާރުގައި ހުންނާނެ މީހުން ގިނަވެއެވެ. އިބާދުތުގައި ޝަރަފްގެ ތިރީ މަދަރުސާގެ ދަރިވަރު ނަޔާނީ އަދާ ކުރާ ރޯލް ވަރަށްގޮން ނޫނޭ ބުނެވޭތީ މިއީ “އިންޓެލިޖެންޓް” ކުޑަކުއްޖެއްކަމަށް މިނެޓްގެ އެންމެ ފުރަތަމަ ޕްރޮމޯ އާއި އެކު ހީވި ނަމަވެސް، ވާހަކައިގައިވާ ސިފައިގައި މައްސަލައެއް ނުޖެހޭނެ އެވެ.</p>
+<p>&lt;|image&gt;&lt;|image&gt;</p>
+<p>ފިލްމުގެ އިބާދުތުގައި ޝަރަފ</div></details></section></p>
+<section class="p25-sample p25-sample--ours"><div class="p25-sample-title"><strong>PT after CPT · step 1,300</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl"> އެވަރުން ސިނަމާއެއްގައި އިނީސްޓަލް އަޅައިގެން ގައުމުގެ ސިނާމާ ތަރައްގީ ހަދާ ކުޅޭ މޮޅު ޕްރޮޑިއުސަރު ފާތުމަތު ނަހުލާ ވާހަކަ ލިޔެފައިވާ &quot;މޫން&quot; ގެ ޝޯވިންގ ވަނިއްޔެވެ.</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl"> އެވަރުން ސިނަމާއެއްގައި އިނީސްޓަލް އަޅައިގެން ގައުމުގެ ސިނާމާ ތަރައްގީ ހަދާ ކުޅޭ މޮޅު ޕްރޮޑިއުސަރު ފާތުމަތު ނަހުލާ ވާހަކަ ލިޔެފައިވާ &quot;މޫން&quot; ގެ ޝޯވިންގ ވަނިއްޔެވެ.
+މިއީ ނަހުލާއާއި، ހުޒާމް އިބްރާހިމްގެ އުފަން ދަރިފުޅަށް އެކަނިވެރި މައިން ބަފައިންގެ ގޮތުން ބަލާ ދެވިފައިވާ ތަޖުރިބާ އެވެ. އަދި މި ރޭ ސިނަމާގައި ކުރައްވަނީ ފާތުމަތު ނަހުލާ އަކީ ކިޔެވުމުގެ ޙަރަދުތައް 100% ތައުލީމީ ފުރުސަތު 2024 ގެ ދަށުން ހޯއްދަވައިދެއްވުމަށް ވަޢުދުވެފައިވާ، ދިވެހި ކުޑަކުދިންގެ މުސްތަގްބަލަށްޓަކައި މަސައްކަތް ކުރައްވާ ބޭފުޅެއްގެ ގޮތުގައި ސިނަމާއާއި އަރިހުން އެވަނީ ރަން އިނާމު ހާސިލުކުރެވިފައެވެ.
+&quot;މޫން&quot;، މި ނަމުގެ އޮޅުވުމެއް ފުނިޖެހިފާ ވާހަކަ އެއްގައި ތަރީފަޔ</div></details></section>
+</div><p class="p25-observation">CPT keeps Nahula and cinema at first. Read further and it wanders into a child, education costs and a 2024 scholarship-like passage. The sentences stop building on each other.</p></details>
+
+<details class="p25-case"><summary>Sports news</summary>
+<div class="p25-opening"><span class="p25-label">Opening · paraphrase</span><p>A tournament has been postponed; a new date will be announced.</p></div>
+<div class="p25-pair">
+<section class="p25-sample p25-sample--stock"><div class="p25-sample-title"><strong>Stock PT</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl">ގެ އިންތިޒާމްތަކުގެ ރައީސު އޮކްޓޯބަރު މަހުގެ ހަވަނަ ދުވަހު އދަލްޖާއިދު ސޮއެޑު އިޢުލާން ކުރައްވާފައިވަނީ އެއާއެން ވަގުތެވެ.</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl">ގެ އިންތިޒާމްތަކުގެ ރައީސު އޮކްޓޯބަރު މަހުގެ ހަވަނަ ދުވަހު އދަލްޖާއިދު ސޮއެޑު އިޢުލާން ކުރައްވާފައިވަނީ އެއާއެން ވަގުތެވެ.
+
+<p>&quot; ގަތަރުގައި މި ބޭއްވި މުބާރާތަކީ އާސިޔާ ސަރަހައްދުން އަޅުގަނޑުމެން ބައިވެރިވެ ތާރީޚުގައި ފުރަތަމަ ފަހަރަށް އަންހެން ކުޅުންތެރިންނާއި، ޒުވާން ކުޅުންތެރިންގެ ބައިވެރިވުމާ އެކު ބޭއްވި މުބާރާތެއް.&quot; ހުލްމާފޮޓޯއާއި ދިން އިންޓަރވިއުގަ އިޢުލާން ކުރައްވަމުން އޮކްޓޯބަރު މަހުގެ ގާދަލަކީ މި މުބާރާތް ނޫސް ތަކާއި ގުޅޭ ވަސީލަތަކުން އަޅުގަނޑުމެންގެ ރަށްރަށުގައި އިޝްތިހާރު ކުރުން ޤައުމީ ފުޓްބޯޅަ އެސޯސިއޭޝަންތަކުގެ ބައިވެރިންނާއި ގުޅޭ ހަމަތަކާއި އެއްގޮތަށް މުބާރާތެއް ފެށިގެން ދިޔުމެވެ.</p>
+<p>އެކެމޭޗުޕްޖީގައި އދަލްޖާއިދު ސޮއެޑުގެ ވާހަކައިގެ</div></details></section></p>
+<section class="p25-sample p25-sample--ours"><div class="p25-sample-title"><strong>PT after CPT · step 1,300</strong><small>384 tokens · length limit</small></div><p class="p25-dv" lang="dv" dir="rtl">ގެ އޮގަނައިޒިންގ ކޮމެޓީއަށް ރައީސް ނަޝީދު ފާޅުގައި އެދިވަޑައިގަތެވެ.</p><details class="p25-full"><summary>Full continuation</summary><div class="p25-dv" lang="dv" dir="rtl">ގެ އޮގަނައިޒިންގ ކޮމެޓީއަށް ރައީސް ނަޝީދު ފާޅުގައި އެދިވަޑައިގަތެވެ.
+ސަރުކާރާއި ސިޔާސީ ޕާޓީތަކުގެ އިތުރުން، ސამოޖެހީ ހަރަކާތްތަކާއި މަދަނީ ޖަމިއްޔާތައް ބައިވެރިވާ މި މުބާރާތުގައި ކުރިން ވަނީ ދެފަހަރު ބާއްވާފައެވެ.
+ލަންކާއާއި މާލޭގައި އަމަލު ކުރަމުން އަންނަ &quot;އޯޕަނެސް&quot; ތިއޮރީގެ ދަށުން ރައްޔިތުން ހޫނު ކެމްޕޭނެއް ކުރިޔަށްގެންގޮސްފައިވާއިރު، އެ ސިޔާސަތުގެ އަޑު އިވިވަޑައި ނުގަންނަވާ ކަމަށް ވެދާނެ ކަމުގައި ބާރަށު ދާއިރާގެ މެމްބަރު އިބްރާހިމް ވަޙީދު (އިބްރާ) ވިދާޅުވެއްޖެއެވެ.
+ފުލުހުން މަގުމަތިން ފެންނާތީ ޓްރެފިކް ހުރަހެއް ނެތި ދިއުން ތަރުހީބު ކުރައްވައެވެ. ރައީސް އެދިވަޑައި ގަތީ، އޭރުގައި ސިޔާސީ ޕާޓީތަކުގައި ބޭފުޅުން ކޮށްފައިވާ އެއްބަސްވުންތަކަށް އިހު</div></details></section>
+</div><p class="p25-observation">CPT moves from the tournament to political parties, campaigning, a parliamentary member and traffic. It also inserts Georgian letters into “ސამოޖެހީ”. The broken thread of meaning matters more than the stray script.</p></details>
+
+<p>Both models reach the 384-token limit on every Dhivehi opening. Neither triggers the strong-repetition check. They can avoid a loop and still write nonsense.</p>
+<p>CPT seems to have picked up some of the shape of stories and news. It sometimes starts more plausibly. It has not shown that it can keep a paragraph together.</p>
+<h2>What this buys us</h2>
+<p>A little progress: better prediction of held-out text, a small improvement on word-order corruptions, and some better openings. There is still a large gap between those results and useful writing.</p>
+<p>The next question from Part 2.5 remains open: can this model judge a small wording change better than it can write a whole paragraph? That needs the blind native-reader comparison. These checks do not validate it as a spelling or grammar reward for the chat model.</p>
+<details class="p25-notes"><summary>Run and measurement notes</summary>
+
+<p><strong>Checkpoint.</strong> Local CPT on pretrained Gemma 4 26B-A4B, using a 4-bit base and rank-64 LoRA across all 30 layers. Step 1,300, about 42.6 million training tokens processed. This is an intermediate checkpoint.</p>
+<p><strong>Loss.</strong> Mean per-passage token negative log-likelihood, in nats. Paired bootstrap intervals for the CPT-minus-stock difference: Dhivehi −0.227 to −0.148; English −0.151 to −0.071 (95%, 10,000 resamples). These intervals describe sampling uncertainty within these small panels, not general language competence.</p>
+<p><strong>Corruptions.</strong> Twenty-four spelling pairs and 24 word-order pairs. Character- and token-normalized scoring give the same preference counts. The word-order gain’s paired interval includes zero.</p>
+<p><strong>Generation.</strong> Plain-text continuation with BOS, without a chat template. Temperature 0.7, top-p 0.9, repetition penalty 1.1, repetition context 128, maximum 384 new tokens. Seeds match within each pair. The six continuations per model comprise four Dhivehi, one English and one Spanish; the Spanish item was initially mislabeled English. Both non-Dhivehi continuations stopped naturally. None of the six outputs per model triggered the strong-repetition flag.</p>
+<p><strong>Reading.</strong> The comments above are a qualitative inspection of these samples, not blinded ratings. The source openings and reference passages remain outside this public export. The downloadable sample file contains model continuations and paraphrased scene descriptions only. No training-corpus copying audit has been run on these new outputs.</p>
+<p><a href="/writing/assets/part26-outputs.json">Four paired model outputs and sampling settings (JSON)</a> · <a href="/writing/assets/part26-metrics.json">Audited checkpoint metrics (JSON)</a></p>
+</details>
+</div>
+</article></main>
+<footer class="site-footer"><span>Zayan</span><a href="https://github.com/im-zayan">GitHub</a></footer></body></html>

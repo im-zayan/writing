@@ -1,0 +1,124 @@
+{
+  "scope": "small checkpoint diagnostic; controlled corruptions are not native-rated grammar gold",
+  "paired_bootstrap_replicates": 10000,
+  "metrics": {
+    "dhivehi_heldout": {
+      "n": 24,
+      "stock_nll": 1.5322788556416829,
+      "cpt_nll": 1.348275171199315,
+      "stock_ppl": 4.628712981238504,
+      "cpt_ppl": 3.8507778667343464,
+      "delta_nll": -0.1840036844423678,
+      "delta_nll_ci95": [
+        -0.22690163629761115,
+        -0.1479915563309783
+      ]
+    },
+    "spelling_pair": {
+      "n": 24,
+      "character": {
+        "stock_prefers_original": 24,
+        "cpt_prefers_original": 24,
+        "delta_percentage_points": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "ties": [
+          0,
+          0
+        ]
+      },
+      "token": {
+        "stock_prefers_original": 24,
+        "cpt_prefers_original": 24,
+        "delta_percentage_points": 0.0,
+        "delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "ties": [
+          0,
+          0
+        ]
+      }
+    },
+    "word_order_pair": {
+      "n": 24,
+      "character": {
+        "stock_prefers_original": 20,
+        "cpt_prefers_original": 22,
+        "delta_percentage_points": 8.333333333333334,
+        "delta_ci95": [
+          0.0,
+          20.833333333333332
+        ],
+        "ties": [
+          0,
+          0
+        ]
+      },
+      "token": {
+        "stock_prefers_original": 20,
+        "cpt_prefers_original": 22,
+        "delta_percentage_points": 8.333333333333334,
+        "delta_ci95": [
+          0.0,
+          20.833333333333332
+        ],
+        "ties": [
+          0,
+          0
+        ]
+      }
+    },
+    "continuation": {
+      "n": 6,
+      "stock": {
+        "stopped": 2,
+        "hit_limit": 4,
+        "loop_flags": 0,
+        "mean_repeated_token_8gram_share": 0.011494252873563218
+      },
+      "cpt": {
+        "stopped": 2,
+        "hit_limit": 4,
+        "loop_flags": 0,
+        "mean_repeated_token_8gram_share": 0.003978779840848806
+      }
+    },
+    "english_retention_original_mixed_panel": {
+      "n": 24,
+      "stock_nll": 1.5845836774014495,
+      "cpt_nll": 1.4988637052565492,
+      "stock_ppl": 4.877260442038653,
+      "cpt_ppl": 4.47659944281179,
+      "delta_nll": -0.08571997214490024,
+      "delta_nll_ci95": [
+        -0.12624869513204834,
+        -0.04896380270412733
+      ]
+    },
+    "english_retention_audited": {
+      "n": 20,
+      "stock_nll": 1.5819323706916044,
+      "cpt_nll": 1.4726590286585741,
+      "stock_ppl": 4.864346455737107,
+      "cpt_ppl": 4.360815271071442,
+      "delta_ci95": [
+        -0.1505437689896286,
+        -0.07106348991999238
+      ],
+      "excluded": {
+        "en_02": "Russian text",
+        "en_08": "Russian text",
+        "en_21": "Russian text",
+        "en_16": "code-only text"
+      },
+      "continuation_label_correction": {
+        "en_cont_02": "Spanish, not English"
+      },
+      "scope": "post-hoc input-language audit; original output files retained unchanged; English panel includes math/programming instructions"
+    }
+  }
+}
