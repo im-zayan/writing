@@ -1,0 +1,17 @@
+.p27-figure { margin: 32px 0; }
+.p27-figure img { display: block; width: 100%; height: auto; }
+.p27-figure figcaption, .p27-patch figcaption, .p27-notes { font: 14px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color: var(--muted); }
+.p27-patch { margin: 36px 0; padding: 24px 0; border-block: 1px solid var(--line); }
+.p27-kicker { font: 12px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.p27-patch h3 { margin: 8px 0 22px; }
+.p27-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.p27-controls label, .p27-range { font: 14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+.p27-controls select { display: block; width: 100%; min-width: 0; margin-top: 8px; padding: 10px 6px; font-size: 16px; background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+.p27-range { display: block; margin: 22px 0; }
+.p27-range input { display: block; width: 100%; margin-top: 12px; accent-color: var(--green); min-height: 32px; }
+.p27-flow { display: grid; grid-template-columns: 1fr 30px 1fr; gap: 12px; align-items: center; margin: 24px 0; }
+.p27-flow small { display: block; font: 13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+.p27-flow strong { display: block; font-size: 34px; font-weight: 400; color: var(--green); }
+.p27-readout { font: 14px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height: 45px; }
+.p27-notes { margin: 24px 0; }
+@media(max-width:550px) { .p27-controls { grid-template-columns: 1fr; } }

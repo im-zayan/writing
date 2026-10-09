@@ -1,0 +1,1445 @@
+{
+  "retrieval": {
+    "n": 13,
+    "layers": [
+      1,
+      4,
+      7,
+      10,
+      16,
+      25,
+      30
+    ],
+    "rows": {
+      "English": [
+        0.385,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.077
+      ],
+      "Hindi": [
+        0.615,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.615
+      ],
+      "Arabic": [
+        0.462,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.615
+      ],
+      "Russian": [
+        0.846,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.769
+      ],
+      "Japanese": [
+        0.385,
+        1.0,
+        1.0,
+        1.0,
+        0.615,
+        1.0,
+        0.154
+      ],
+      "Latin Hindi": [
+        0.462,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.615
+      ],
+      "Latin Arabic": [
+        0.077,
+        0.385,
+        0.769,
+        0.846,
+        0.538,
+        0.769,
+        0.077
+      ],
+      "Thaana": [
+        0.077,
+        0.538,
+        1.0,
+        1.0,
+        0.692,
+        0.615,
+        0.077
+      ],
+      "Latin Dhivehi": [
+        0.154,
+        0.231,
+        0.231,
+        0.231,
+        0.077,
+        0.077,
+        0.077
+      ]
+    }
+  },
+  "transfer": {
+    "Sinhala": {
+      "stock": {
+        "nat_lat": 0.425,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.838,
+        "nat_lat_layer": 10,
+        "nat_en": 0.988
+      }
+    },
+    "Pashto": {
+      "stock": {
+        "nat_lat": 0.175,
+        "nat_lat_layer": 4,
+        "nat_en": 0.875
+      },
+      "aligned": {
+        "nat_lat": 0.537,
+        "nat_lat_layer": 10,
+        "nat_en": 0.95
+      }
+    },
+    "Sindhi": {
+      "stock": {
+        "nat_lat": 0.25,
+        "nat_lat_layer": 4,
+        "nat_en": 0.938
+      },
+      "aligned": {
+        "nat_lat": 0.587,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      }
+    },
+    "Arabic": {
+      "stock": {
+        "nat_lat": 0.325,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.65,
+        "nat_lat_layer": 18,
+        "nat_en": 1.0
+      }
+    },
+    "Marathi": {
+      "stock": {
+        "nat_lat": 0.625,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.95,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      }
+    },
+    "Tigrinya": {
+      "stock": {
+        "nat_lat": 0.138,
+        "nat_lat_layer": 18,
+        "nat_en": 0.75
+      },
+      "aligned": {
+        "nat_lat": 0.412,
+        "nat_lat_layer": 10,
+        "nat_en": 0.812
+      }
+    },
+    "Nepali": {
+      "stock": {
+        "nat_lat": 0.75,
+        "nat_lat_layer": 11,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 1.0,
+        "nat_lat_layer": 19,
+        "nat_en": 1.0
+      }
+    },
+    "Amharic": {
+      "stock": {
+        "nat_lat": 0.15,
+        "nat_lat_layer": 4,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.375,
+        "nat_lat_layer": 12,
+        "nat_en": 1.0
+      }
+    },
+    "Thai": {
+      "stock": {
+        "nat_lat": 0.138,
+        "nat_lat_layer": 9,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.338,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      }
+    },
+    "Hindi": {
+      "stock": {
+        "nat_lat": 0.775,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.975,
+        "nat_lat_layer": 9,
+        "nat_en": 1.0
+      }
+    },
+    "Georgian": {
+      "stock": {
+        "nat_lat": 0.65,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.825,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      }
+    },
+    "Tajik": {
+      "stock": {
+        "nat_lat": 0.762,
+        "nat_lat_layer": 11,
+        "nat_en": 0.975
+      },
+      "aligned": {
+        "nat_lat": 0.925,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      }
+    },
+    "Lao": {
+      "stock": {
+        "nat_lat": 0.15,
+        "nat_lat_layer": 5,
+        "nat_en": 0.975
+      },
+      "aligned": {
+        "nat_lat": 0.312,
+        "nat_lat_layer": 11,
+        "nat_en": 1.0
+      }
+    },
+    "Korean": {
+      "stock": {
+        "nat_lat": 0.463,
+        "nat_lat_layer": 18,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.625,
+        "nat_lat_layer": 18,
+        "nat_en": 1.0
+      }
+    },
+    "Burmese": {
+      "stock": {
+        "nat_lat": 0.075,
+        "nat_lat_layer": 5,
+        "nat_en": 0.95
+      },
+      "aligned": {
+        "nat_lat": 0.225,
+        "nat_lat_layer": 8,
+        "nat_en": 0.962
+      }
+    },
+    "Kyrgyz": {
+      "stock": {
+        "nat_lat": 0.812,
+        "nat_lat_layer": 10,
+        "nat_en": 0.988
+      },
+      "aligned": {
+        "nat_lat": 0.95,
+        "nat_lat_layer": 11,
+        "nat_en": 1.0
+      }
+    },
+    "Khmer": {
+      "stock": {
+        "nat_lat": 0.138,
+        "nat_lat_layer": 5,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.263,
+        "nat_lat_layer": 9,
+        "nat_en": 1.0
+      }
+    },
+    "Russian": {
+      "stock": {
+        "nat_lat": 1.0,
+        "nat_lat_layer": 8,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 1.0,
+        "nat_lat_layer": 11,
+        "nat_en": 1.0
+      }
+    },
+    "Greek": {
+      "stock": {
+        "nat_lat": 0.688,
+        "nat_lat_layer": 20,
+        "nat_en": 1.0
+      },
+      "aligned": {
+        "nat_lat": 0.675,
+        "nat_lat_layer": 10,
+        "nat_en": 1.0
+      }
+    }
+  },
+  "patch": {
+    "variant": "all",
+    "readout": "next token after fixed prefix What kind of",
+    "donors": {
+      "en_curry": {
+        "label": "English fish",
+        "variants": {
+          "last": [
+            {
+              "layer": 1,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -16.789
+            },
+            {
+              "layer": 2,
+              "top": "mah",
+              "fish_logp": -2.006,
+              "month_logp": -16.741
+            },
+            {
+              "layer": 3,
+              "top": "mah",
+              "fish_logp": -9.71,
+              "month_logp": -23.069
+            },
+            {
+              "layer": 4,
+              "top": "mah",
+              "fish_logp": -8.394,
+              "month_logp": -24.597
+            },
+            {
+              "layer": 5,
+              "top": "mah",
+              "fish_logp": -9.9,
+              "month_logp": -19.759
+            },
+            {
+              "layer": 6,
+              "top": "mah",
+              "fish_logp": -5.506,
+              "month_logp": -19.913
+            },
+            {
+              "layer": 7,
+              "top": "fish",
+              "fish_logp": -0.001,
+              "month_logp": -16.564
+            },
+            {
+              "layer": 8,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -14.141
+            },
+            {
+              "layer": 9,
+              "top": "fish",
+              "fish_logp": -0.013,
+              "month_logp": -4.388
+            },
+            {
+              "layer": 10,
+              "top": "fish",
+              "fish_logp": -0.266,
+              "month_logp": -1.454
+            },
+            {
+              "layer": 11,
+              "top": "fish",
+              "fish_logp": -0.576,
+              "month_logp": -0.826
+            },
+            {
+              "layer": 12,
+              "top": "fish",
+              "fish_logp": -0.576,
+              "month_logp": -0.826
+            },
+            {
+              "layer": 13,
+              "top": "month",
+              "fish_logp": -3.469,
+              "month_logp": -0.032
+            },
+            {
+              "layer": 14,
+              "top": "month",
+              "fish_logp": -5.007,
+              "month_logp": -0.007
+            },
+            {
+              "layer": 15,
+              "top": "month",
+              "fish_logp": -5.753,
+              "month_logp": -0.003
+            },
+            {
+              "layer": 16,
+              "top": "month",
+              "fish_logp": -9.375,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 17,
+              "top": "month",
+              "fish_logp": -11.813,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 18,
+              "top": "month",
+              "fish_logp": -9.063,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 19,
+              "top": "month",
+              "fish_logp": -8.25,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 20,
+              "top": "month",
+              "fish_logp": -8.375,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 21,
+              "top": "month",
+              "fish_logp": -8.688,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 22,
+              "top": "month",
+              "fish_logp": -9.188,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 23,
+              "top": "month",
+              "fish_logp": -9.25,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 24,
+              "top": "month",
+              "fish_logp": -10.375,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 25,
+              "top": "month",
+              "fish_logp": -10.594,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 26,
+              "top": "month",
+              "fish_logp": -10.844,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 27,
+              "top": "month",
+              "fish_logp": -11.219,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 28,
+              "top": "month",
+              "fish_logp": -10.656,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 29,
+              "top": "month",
+              "fish_logp": -13.344,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 30,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            }
+          ],
+          "all": [
+            {
+              "layer": 1,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -25.109
+            },
+            {
+              "layer": 2,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -25.969
+            },
+            {
+              "layer": 3,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -27.0
+            },
+            {
+              "layer": 4,
+              "top": "fish",
+              "fish_logp": 0.0,
+              "month_logp": -30.375
+            },
+            {
+              "layer": 5,
+              "top": "fish",
+              "fish_logp": 0.0,
+              "month_logp": -29.688
+            },
+            {
+              "layer": 6,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -29.062
+            },
+            {
+              "layer": 7,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -29.0
+            },
+            {
+              "layer": 8,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -32.75
+            },
+            {
+              "layer": 9,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -29.625
+            },
+            {
+              "layer": 10,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -18.703
+            },
+            {
+              "layer": 11,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -17.547
+            },
+            {
+              "layer": 12,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -15.5
+            },
+            {
+              "layer": 13,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -18.406
+            },
+            {
+              "layer": 14,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -18.0
+            },
+            {
+              "layer": 15,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -17.938
+            },
+            {
+              "layer": 16,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -14.063
+            },
+            {
+              "layer": 17,
+              "top": "fish",
+              "fish_logp": -0.0,
+              "month_logp": -8.25
+            },
+            {
+              "layer": 18,
+              "top": "fish",
+              "fish_logp": -0.006,
+              "month_logp": -5.069
+            },
+            {
+              "layer": 19,
+              "top": "month",
+              "fish_logp": -1.858,
+              "month_logp": -0.17
+            },
+            {
+              "layer": 20,
+              "top": "month",
+              "fish_logp": -4.08,
+              "month_logp": -0.017
+            },
+            {
+              "layer": 21,
+              "top": "month",
+              "fish_logp": -4.388,
+              "month_logp": -0.013
+            },
+            {
+              "layer": 22,
+              "top": "month",
+              "fish_logp": -5.566,
+              "month_logp": -0.004
+            },
+            {
+              "layer": 23,
+              "top": "month",
+              "fish_logp": -5.94,
+              "month_logp": -0.003
+            },
+            {
+              "layer": 24,
+              "top": "month",
+              "fish_logp": -8.813,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 25,
+              "top": "month",
+              "fish_logp": -9.563,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 26,
+              "top": "month",
+              "fish_logp": -10.188,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 27,
+              "top": "month",
+              "fish_logp": -10.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 28,
+              "top": "month",
+              "fish_logp": -8.688,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 29,
+              "top": "month",
+              "fish_logp": -12.75,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 30,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            }
+          ]
+        }
+      },
+      "en_book": {
+        "label": "English book",
+        "variants": {
+          "last": [
+            {
+              "layer": 1,
+              "top": "book",
+              "fish_logp": -14.861,
+              "month_logp": -2.814
+            },
+            {
+              "layer": 2,
+              "top": "mah",
+              "fish_logp": -15.242,
+              "month_logp": -7.141
+            },
+            {
+              "layer": 3,
+              "top": "math",
+              "fish_logp": -16.999,
+              "month_logp": -8.311
+            },
+            {
+              "layer": 4,
+              "top": "math",
+              "fish_logp": -17.03,
+              "month_logp": -7.623
+            },
+            {
+              "layer": 5,
+              "top": "book",
+              "fish_logp": -14.472,
+              "month_logp": -0.972
+            },
+            {
+              "layer": 6,
+              "top": "book",
+              "fish_logp": -12.717,
+              "month_logp": -1.217
+            },
+            {
+              "layer": 7,
+              "top": "book",
+              "fish_logp": -17.326,
+              "month_logp": -0.951
+            },
+            {
+              "layer": 8,
+              "top": "book",
+              "fish_logp": -22.383,
+              "month_logp": -4.976
+            },
+            {
+              "layer": 9,
+              "top": "book",
+              "fish_logp": -21.614,
+              "month_logp": -2.239
+            },
+            {
+              "layer": 10,
+              "top": "month",
+              "fish_logp": -17.35,
+              "month_logp": -0.35
+            },
+            {
+              "layer": 11,
+              "top": "month",
+              "fish_logp": -16.946,
+              "month_logp": -0.039
+            },
+            {
+              "layer": 12,
+              "top": "month",
+              "fish_logp": -17.904,
+              "month_logp": -0.014
+            },
+            {
+              "layer": 13,
+              "top": "month",
+              "fish_logp": -19.563,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 14,
+              "top": "month",
+              "fish_logp": -19.594,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 15,
+              "top": "month",
+              "fish_logp": -19.129,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 16,
+              "top": "month",
+              "fish_logp": -18.977,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 17,
+              "top": "month",
+              "fish_logp": -18.751,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 18,
+              "top": "month",
+              "fish_logp": -16.234,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 19,
+              "top": "month",
+              "fish_logp": -15.047,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 20,
+              "top": "month",
+              "fish_logp": -14.281,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 21,
+              "top": "month",
+              "fish_logp": -14.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 22,
+              "top": "month",
+              "fish_logp": -14.563,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 23,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 24,
+              "top": "month",
+              "fish_logp": -14.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 25,
+              "top": "month",
+              "fish_logp": -14.031,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 26,
+              "top": "month",
+              "fish_logp": -14.063,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 27,
+              "top": "month",
+              "fish_logp": -13.969,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 28,
+              "top": "month",
+              "fish_logp": -13.938,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 29,
+              "top": "month",
+              "fish_logp": -13.656,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 30,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            }
+          ],
+          "all": [
+            {
+              "layer": 1,
+              "top": "book",
+              "fish_logp": -19.883,
+              "month_logp": -21.758
+            },
+            {
+              "layer": 2,
+              "top": "book",
+              "fish_logp": -25.313,
+              "month_logp": -26.188
+            },
+            {
+              "layer": 3,
+              "top": "book",
+              "fish_logp": -26.188,
+              "month_logp": -26.625
+            },
+            {
+              "layer": 4,
+              "top": "book",
+              "fish_logp": -27.375,
+              "month_logp": -28.625
+            },
+            {
+              "layer": 5,
+              "top": "book",
+              "fish_logp": -29.375,
+              "month_logp": -30.063
+            },
+            {
+              "layer": 6,
+              "top": "book",
+              "fish_logp": -29.188,
+              "month_logp": -29.813
+            },
+            {
+              "layer": 7,
+              "top": "book",
+              "fish_logp": -30.438,
+              "month_logp": -30.75
+            },
+            {
+              "layer": 8,
+              "top": "book",
+              "fish_logp": -28.75,
+              "month_logp": -28.688
+            },
+            {
+              "layer": 9,
+              "top": "book",
+              "fish_logp": -30.625,
+              "month_logp": -31.188
+            },
+            {
+              "layer": 10,
+              "top": "book",
+              "fish_logp": -25.719,
+              "month_logp": -26.281
+            },
+            {
+              "layer": 11,
+              "top": "book",
+              "fish_logp": -25.406,
+              "month_logp": -24.406
+            },
+            {
+              "layer": 12,
+              "top": "book",
+              "fish_logp": -24.032,
+              "month_logp": -21.243
+            },
+            {
+              "layer": 13,
+              "top": "book",
+              "fish_logp": -24.125,
+              "month_logp": -22.813
+            },
+            {
+              "layer": 14,
+              "top": "book",
+              "fish_logp": -23.406,
+              "month_logp": -21.805
+            },
+            {
+              "layer": 15,
+              "top": "book",
+              "fish_logp": -23.203,
+              "month_logp": -20.235
+            },
+            {
+              "layer": 16,
+              "top": "book",
+              "fish_logp": -22.61,
+              "month_logp": -19.172
+            },
+            {
+              "layer": 17,
+              "top": "book",
+              "fish_logp": -20.844,
+              "month_logp": -8.938
+            },
+            {
+              "layer": 18,
+              "top": "book",
+              "fish_logp": -17.297,
+              "month_logp": -3.11
+            },
+            {
+              "layer": 19,
+              "top": "month",
+              "fish_logp": -15.431,
+              "month_logp": -0.009
+            },
+            {
+              "layer": 20,
+              "top": "month",
+              "fish_logp": -13.532,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 21,
+              "top": "month",
+              "fish_logp": -13.813,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 22,
+              "top": "month",
+              "fish_logp": -14.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 23,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 24,
+              "top": "month",
+              "fish_logp": -15.781,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 25,
+              "top": "month",
+              "fish_logp": -14.813,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 26,
+              "top": "month",
+              "fish_logp": -14.719,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 27,
+              "top": "month",
+              "fish_logp": -14.61,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 28,
+              "top": "month",
+              "fish_logp": -14.141,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 29,
+              "top": "month",
+              "fish_logp": -13.75,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 30,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            }
+          ]
+        }
+      },
+      "en_month": {
+        "label": "English month",
+        "variants": {
+          "last": [
+            {
+              "layer": 1,
+              "top": "month",
+              "fish_logp": -24.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 2,
+              "top": "month",
+              "fish_logp": -26.188,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 3,
+              "top": "month",
+              "fish_logp": -25.906,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 4,
+              "top": "month",
+              "fish_logp": -24.219,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 5,
+              "top": "month",
+              "fish_logp": -22.75,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 6,
+              "top": "month",
+              "fish_logp": -23.188,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 7,
+              "top": "month",
+              "fish_logp": -26.375,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 8,
+              "top": "month",
+              "fish_logp": -28.062,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 9,
+              "top": "month",
+              "fish_logp": -28.75,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 10,
+              "top": "month",
+              "fish_logp": -24.531,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 11,
+              "top": "month",
+              "fish_logp": -23.375,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 12,
+              "top": "month",
+              "fish_logp": -22.703,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 13,
+              "top": "month",
+              "fish_logp": -24.125,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 14,
+              "top": "month",
+              "fish_logp": -23.062,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 15,
+              "top": "month",
+              "fish_logp": -22.609,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 16,
+              "top": "month",
+              "fish_logp": -21.523,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 17,
+              "top": "month",
+              "fish_logp": -18.578,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 18,
+              "top": "month",
+              "fish_logp": -16.125,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 19,
+              "top": "month",
+              "fish_logp": -13.531,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 20,
+              "top": "month",
+              "fish_logp": -12.75,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 21,
+              "top": "month",
+              "fish_logp": -12.531,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 22,
+              "top": "month",
+              "fish_logp": -12.656,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 23,
+              "top": "month",
+              "fish_logp": -12.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 24,
+              "top": "month",
+              "fish_logp": -13.75,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 25,
+              "top": "month",
+              "fish_logp": -13.969,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 26,
+              "top": "month",
+              "fish_logp": -13.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 27,
+              "top": "month",
+              "fish_logp": -13.656,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 28,
+              "top": "month",
+              "fish_logp": -13.813,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 29,
+              "top": "month",
+              "fish_logp": -13.719,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 30,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            }
+          ],
+          "all": [
+            {
+              "layer": 1,
+              "top": "month",
+              "fish_logp": -19.781,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 2,
+              "top": "month",
+              "fish_logp": -25.125,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 3,
+              "top": "month",
+              "fish_logp": -23.648,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 4,
+              "top": "month",
+              "fish_logp": -24.0,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 5,
+              "top": "month",
+              "fish_logp": -26.5,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 6,
+              "top": "month",
+              "fish_logp": -26.656,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 7,
+              "top": "month",
+              "fish_logp": -27.0,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 8,
+              "top": "month",
+              "fish_logp": -26.219,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 9,
+              "top": "month",
+              "fish_logp": -28.312,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 10,
+              "top": "month",
+              "fish_logp": -29.812,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 11,
+              "top": "month",
+              "fish_logp": -30.812,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 12,
+              "top": "month",
+              "fish_logp": -30.562,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 13,
+              "top": "month",
+              "fish_logp": -30.5,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 14,
+              "top": "month",
+              "fish_logp": -30.5,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 15,
+              "top": "month",
+              "fish_logp": -29.875,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 16,
+              "top": "month",
+              "fish_logp": -28.5,
+              "month_logp": 0.0
+            },
+            {
+              "layer": 17,
+              "top": "month",
+              "fish_logp": -23.266,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 18,
+              "top": "month",
+              "fish_logp": -19.516,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 19,
+              "top": "month",
+              "fish_logp": -15.063,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 20,
+              "top": "month",
+              "fish_logp": -12.625,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 21,
+              "top": "month",
+              "fish_logp": -12.063,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 22,
+              "top": "month",
+              "fish_logp": -12.813,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 23,
+              "top": "month",
+              "fish_logp": -12.188,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 24,
+              "top": "month",
+              "fish_logp": -14.406,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 25,
+              "top": "month",
+              "fish_logp": -14.406,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 26,
+              "top": "month",
+              "fish_logp": -13.406,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 27,
+              "top": "month",
+              "fish_logp": -13.25,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 28,
+              "top": "month",
+              "fish_logp": -13.625,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 29,
+              "top": "month",
+              "fish_logp": -13.563,
+              "month_logp": -0.0
+            },
+            {
+              "layer": 30,
+              "top": "month",
+              "fish_logp": -14.094,
+              "month_logp": -0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "sources": {
+    "climb/w6/understanding/part1_stock.json": "5ff4b283aeb5375380f5780b2c5556ec82d9d7df250cf304d887840c9c279e48",
+    "climb/w6/understanding/part1_u100h.json": "38fa815ca05d7a6349946cff967ed99d38ab0f62ad07da9bcc83622caf20b57b",
+    "causal_patch_a26b_bf16.json": "e7bb077b97c3b8818702e96a64e952b67787b8c2bc0dd447efcf63bf87843e3f"
+  }
+}
