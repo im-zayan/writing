@@ -7,17 +7,14 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.9: subtracting the average","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-10","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-9/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.9: subtracting the average</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>10 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part29.css">
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.9: subtracting the average</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>9 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part29.css">
 <div class="p29">
 
-<p>Subtracting an average raised Gemma’s sentence-matching score from 17% to 46%. I did not change its weights.</p>
-<p>I want Gemma to read ordinary Dhivehi messages and write useful replies. Dhivehi, the language of the Maldives, uses Thaana script. People also type it in Latin letters, which Gemma reads much less well.</p>
-<p>In <a href="/writing/posts/where-gemma-keeps-dhivehi-2-8/">Part 2.8</a>, extra Dhivehi training improved translation, but the Latin results were still poor. This time I changed how I compared the model’s internal states.</p>
-<h2>Find the matching sentence</h2>
-<p>A language model turns text into lists of numbers called states. Each layer changes those states. I took them from one layer and averaged across each sentence, leaving one list of 2,816 numbers per sentence.</p>
-<p>I asked whether the Latin and Thaana forms of a sentence had similar states.</p>
-<p>The test has 512 Latin sentences and their Thaana versions. For each Latin sentence, I pick the closest of the 512 Thaana states. I count a success only if it belongs to the matching sentence. A random choice would get about <strong>0.2%</strong> right.</p>
-<p>The model does not write a translation here. A correct match shows a useful link between the two forms, but does not prove that it understands every word.</p>
+<p>The <a href="/writing/posts/where-gemma-keeps-dhivehi-2-8/">CPT run</a> improved translation, but Latin Dhivehi was still weak. I kept both checkpoints fixed and went back to cross-script matching, this time with an unpaired map from Latin to Thaana.</p>
+<p>The map failed. A simpler step worked much better: subtracting each script’s average raised stock Gemma’s matching score from 17% to 46%.</p>
+<h2>A new matching test</h2>
+<p>I used a new bank of 512 Latin/Thaana pairs. At a fixed layer, I averaged the states across each sentence, then picked the closest Thaana state for each Latin input. Only the correct sentence in first place counted. A random choice would get about <strong>0.2%</strong> right.</p>
+<p>This score measures matching among those 512 choices. I tested translation separately below.</p>
 <h2>Subtract each script’s average</h2>
 <p>I first collected states from 1,024 other sentences in each script. The Latin and Thaana groups used different examples, so this step had no matching pairs to learn from.</p>
 <p>I found each group’s average state and subtracted it from every state in that script. I then compared their directions, giving each the same length. The raw-state comparison used equal lengths too; only the subtraction was new.</p>
@@ -25,7 +22,7 @@
 <p>The two groups may sit in different parts of the space. Centering puts their averages at the same point. I can then compare how each sentence differs from its own average, without knowing the matching pairs.</p>
 <p>The average may reflect script, style, length or topic. This test does not tell me which caused the gain.</p>
 <h2>Centering helped</h2>
-<p>I compared the original pretrained model with the step-1,800 model from the last post. The second had received continued pretraining, or CPT: extra Dhivehi text to predict, before the training that makes a model act like an assistant.</p>
+<p>Here are stock PT and the same step-1,800 CPT checkpoint, both at layer 9.</p>
 <figure class="p29-figure">
 <picture><source media="(max-width:650px)" srcset="/writing/assets/part29-centering-mobile.svg" width="320" height="662"><img src="/writing/assets/part29-centering.svg" width="691" height="461" alt="At layer 9, raw states find the correct match 17.19% of the time for stock PT and 17.97% for CPT. Centering raises this to 46.29% and 50.78%. Unpaired Rosetta averages 0.26% and 0.33%. A map using 64 known pairs with identity regularization reaches 47.46% and 51.37%." loading="lazy"></picture>
 <figcaption>Correct matches among 512 choices at layer 9. The Latin sentences come from a formal paired dataset, not casual messages. The unpaired-map scores average three random seeds; all three are near chance.</figcaption>
@@ -42,7 +39,7 @@
 <p>This run used fewer examples and less computation than the paper’s main setup. With only 1,024 sentences per group in 2,816 dimensions, many directions have little data to guide them. I do not know which part caused the failure. This map did not help.</p>
 <h2>Messages people type</h2>
 <p>The main dataset does not say how each Latin sentence was made. Formal text may miss the spelling changes and shortcuts in ordinary messages.</p>
-<p>I checked 64 public comments typed in Latin letters, using the same maps without refitting. Nau, another model, had produced their Thaana versions. A person had not checked these targets for this test.</p>
+<p>I checked 64 public comments typed in Latin letters, using the same maps without refitting. Nau had produced their Thaana versions. A person had not checked these targets for this test.</p>
 <figure class="p29-figure">
 <picture><source media="(max-width:650px)" srcset="/writing/assets/part29-natural-mobile.svg" width="320" height="554"><img src="/writing/assets/part29-natural.svg" width="691" height="367" alt="On 64 typed Latin comments paired with Nau-generated Thaana, centering raises correct counterpart retrieval from 14.06% to 40.62% for stock PT, 14.06% to 45.31% for CPT, and 9.38% to 34.38% for the chat model. The unpaired maps average 2.60%, 2.60%, and 1.56%, near the 1.56% chance rate." loading="lazy"></picture>
 <figcaption>Typed Latin matched to Nau’s Thaana at layer 9. The targets may be wrong. These comments come from a collection used in our training work, so I cannot treat them as unseen. Each query has 64 choices, not 512. These percentages measure matching, not translation accuracy.</figcaption>
