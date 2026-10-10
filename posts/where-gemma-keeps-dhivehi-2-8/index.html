@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed · Zayan</title><meta name="description" content="The run is done. Gemma translates better, including Latin Dhivehi. Its meaning tests and internal probes tell a messier story.">
+<link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-8/"><link rel="stylesheet" href="/writing/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed · Zayan"><meta property="og:description" content="The run is done. Gemma translates better, including Latin Dhivehi. Its meaning tests and internal probes tell a messier story."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-8/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-10","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-8/"}</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>10 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part28.css">
+<div class="p28">
+
+<p>The extra Dhivehi training helped Gemma translate. The final model improved on all four main translation tests: into and out of Dhivehi, in both Thaana and Latin letters.</p>
+<p>It also chose “Yes” for every item in a test asking whether two sentences meant the same thing.</p>
+<p>I’m trying to make Gemma, a language model, read ordinary Dhivehi messages and write useful replies. Dhivehi is the language of the Maldives. It has its own script, Thaana, but people often type it in Latin letters. Gemma has struggled most with that second form.</p>
+<p>In <a href="/writing/posts/where-gemma-keeps-dhivehi-2-6/">Part 2.6</a>, I paused a training run to read its outputs. This was <em>continued pretraining</em>, or CPT: giving the pretrained model more text and training it to predict the next piece. It was still a text completer, without the later training that makes a model behave like an assistant.</p>
+<p>That run has now finished at step 1,800. I compared the final model with the unchanged pretrained checkpoint across our earlier tests. The expert-tracing proposal in <a href="/writing/posts/where-gemma-keeps-dhivehi-2-7/">Part 2.7</a> is still a proposal; these are results from the text-training run.</p>
+<h2>Translation improved</h2>
+<p>For each main direction, both models saw the same 2,016 test items. I gave them three worked translation examples, then a new sentence. The prompts and generation settings matched.</p>
+<p>The first score is <em>chrF++</em>. It compares letter and word fragments in the output with a reference translation. Higher means closer wording, on a scale from 0 to 100. It is not the percentage of sentences translated correctly.</p>
+<figure class="p28-figure">
+<picture><source media="(max-width:650px)" srcset="/writing/assets/part28-translation-mobile.svg" width="320" height="461"><img src="/writing/assets/part28-translation.svg" width="691" height="374" alt="Translation scores before and after continued pretraining. English to Thaana rises from 34.13 to 36.56; Thaana to English from 45.17 to 45.87; English to Latin Dhivehi from 9.91 to 10.93; Latin Dhivehi to English from 22.33 to 23.31. A separate 1,500-item English-to-Dhivehi set rises from 43.33 to 46.22." loading="lazy"></picture>
+<figcaption>The four main directions use 2,016 items each. The separate devtest set has 1,500. Each comparison uses the same items before and after training. The Latin forms are made by a fixed transliteration rule; they do not cover all the spelling variation of real messages.</figcaption>
+</figure>
+
+<p>English to Thaana rose from <strong>34.13 to 36.56</strong>. The reverse direction rose less, from <strong>45.17 to 45.87</strong>. Both Latin directions improved too, from much lower starting scores. The separate English-to-Dhivehi test gave the same broad result.</p>
+<p>For these five comparisons, the paired 95% intervals for the gain all stayed above zero. That is evidence for a gain on these sets. It does not make the low Latin scores good, or tell us whether a paragraph will stay coherent.</p>
+<h2>A second check on meaning</h2>
+<p>Matching a reference’s wording is only one way to judge a translation. I also used Clef, a separate model judge, to compare each source sentence with the generated translation. It scores faithfulness and flags missing or added content.</p>
+<p>This check mostly supports the translation result. The largest faithfulness gain was for English to Latin Dhivehi: <strong>24.10 to 34.95</strong> on the judge’s 0–100 score. The judge also flagged fewer omissions and additions. These are automated scores, not ratings from native readers.</p>
+<figure class="p28-figure">
+<picture><source media="(max-width:650px)" srcset="/writing/assets/part28-clef-mobile.svg" width="320" height="418"><img src="/writing/assets/part28-clef.svg" width="691" height="374" alt="Changes in the automated judge’s faithfulness score. English to Thaana gains 1.45 points; Thaana to English gains 0.39 with an interval crossing zero; English to Latin Dhivehi gains 10.85; Latin Dhivehi to English gains 3.97; the separate devtest gains 1.45." loading="lazy"></picture>
+<figcaption>Change in Clef’s mean faithfulness score, with 95% paired item-bootstrap intervals. A bar crossing zero leaves the direction uncertain on this test. These are model-judge estimates, not human accuracy.</figcaption>
+</figure>
+
+<p>I checked two simple ways the Latin result could mislead us. Neither model switched into Thaana on this test. Some outputs copied the English source, but removing every pair where either model copied the whole source still left a <strong>10.40-point</strong> gain. That does not catch partial copying, and Latin letters alone do not prove the output is Dhivehi.</p>
+<p>There is a tradeoff in the reverse Latin direction. The judge found more faithful translations and fewer omissions, but its added-content flags rose from <strong>4.96% to 7.79%</strong>. The model preserved more of the source while also adding things more often.</p>
+<p>For native-script Dhivehi to English, the judge’s small gain was inconclusive. Its interval crossed zero. The two measures agree on several improvements; they do not agree that every gain is clear.</p>
+<h2>It chose Yes every time</h2>
+<p>The reading tests gave a less tidy answer.</p>
+<p>On 2,070 multiple-choice questions, the final model got <strong>1,343 right</strong>, up from <strong>1,301</strong>. That is 62.85% to 64.88%. There were 161 newly correct answers and 119 newly wrong ones: a small net gain, spread across many changes.</p>
+<p>The same-meaning test went the other way. It contains 100 pairs that mean the same thing and 100 that do not. With Thaana input, stock Gemma got <strong>154 out of 200</strong> right. After training, it favored “Yes” on all 200 and scored <strong>100 out of 200</strong>. The Latin version also ended at 50%.</p>
+<p>True matches still tended to get a stronger preference for “Yes” than false matches, much as they had before training. Our fixed rule picks Yes whenever its score is higher than No’s. After training, all 200 pairs met that rule, including every pair with different meanings.</p>
+<figure class="p28-figure">
+<picture><source media="(max-width:650px)" srcset="/writing/assets/part28-same-meaning-mobile.svg" width="320" height="562"><img src="/writing/assets/part28-same-meaning.svg" width="691" height="418" alt="Saved Yes-minus-No scores for 200 Thaana sentence pairs. After training, all pairs lie on the Yes side of the zero boundary, including the 100 pairs labeled different in meaning. The matching pairs still tend to receive higher scores." loading="lazy"></picture>
+<figcaption>Each point is a saved score for one sentence pair, colored by its known label. A positive score selects Yes. The plot shows the original decision boundary; no new threshold has been fitted to rescue the result.</figcaption>
+</figure>
+
+<p>The model’s answers were worse on this task. The surviving ranking is a clue about the failure, not a replacement for those answers. I cannot infer from the 50% score alone that it lost every useful distinction between the pairs. Nor can I call the task solved because a different scoring rule might help.</p>
+<h2>What changed inside</h2>
+<p>I also reran the internal probes from the earlier posts.</p>
+<p>A <em>logit lens</em> takes a state from inside the model and reads it through the model’s word-prediction machinery. Here, I ask how highly it ranks a chosen English word for the intended Dhivehi meaning. A lower rank puts that word nearer the top of the list. It does not show what the model would understand or say in every context.</p>
+<p>On 37 paired Thaana cases, the median best-layer rank improved from <strong>114 to 57</strong>. But 17 cases improved and 16 got worse; four tied. The middle number moved more cleanly than the individual cases did.</p>
+<p>On those same <strong>37 cases in Latin letters</strong>, the median improved from <strong>11,277 to 9,882</strong>. That is a better rank, but the target word is still far down the list. Other tests of sentence similarity and word sense stayed nearly flat or moved in both directions.</p>
+<p>There was also a small improvement in matching the internal states of the same sentence across scripts. That fits some better connection between Thaana and Latin spellings. It does not establish that the model has learned to choose the right sense of an ambiguous word. The state-swap tests were mixed too.</p>
+<h2>A large gain with many blank answers</h2>
+<p>One result needed a closer look before I could put much weight on it. On 1,134 passage questions, an answer-overlap score called F1 rose from <strong>0.133 to 0.384</strong> on its 0–1 scale. It rewards words shared with the reference answer and penalizes missing or extra words.</p>
+<p>The unchanged model had returned an empty answer on <strong>732</strong> questions. After training, that fell to <strong>129</strong>.</p>
+<p>On the 392 questions where both models produced a nonempty answer, F1 moved from <strong>0.380 to 0.410</strong>. That subset is not a fair replacement test: selecting it changes which questions we are judging. It does show why the large full-set gain needs care. The score mixes answer quality with whether the model produced any answer at all.</p>
+<h2>What I have now</h2>
+<p>The finished checkpoint is a more useful translation model on these tests. The gains include Latin Dhivehi, where the starting model was much weaker. I would keep it as a baseline for the next experiments.</p>
+<p>The rest is uneven. Reading scores improved a little. Some internal word ranks improved. A simple meaning decision broke.</p>
+<p>The question from the last post still matters: which changes help the model use the sentence’s meaning? More text has given us a better checkpoint to study. We still need to trace the useful changes and test whether they hold when the wording, task or script changes.</p>
+<details class="p28-notes" id="full-results"><summary>Full scores and uncertainty</summary>
+
+<p>The downloads contain <strong>214 paired metric rows</strong>, many drawn from the same items. They are not 214 independent benchmarks, and I have not combined them into an overall score.</p>
+<p><a href="/writing/assets/part28-results.json">Aggregate results and chart data (JSON)</a> · <a href="/writing/assets/part28-scorecard.csv">All paired metric rows (CSV)</a></p>
+<table>
+<thead>
+<tr>
+<th>Translation test</th>
+<th align="right">Stock</th>
+<th align="right">Final</th>
+<th align="right">Gain · 95% interval</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>English → Thaana · 2,016</td>
+<td align="right">34.13</td>
+<td align="right">36.56</td>
+<td align="right">+2.42 · [1.94, 2.90]</td>
+</tr>
+<tr>
+<td>Thaana → English · 2,016</td>
+<td align="right">45.17</td>
+<td align="right">45.87</td>
+<td align="right">+0.70 · [0.35, 1.08]</td>
+</tr>
+<tr>
+<td>English → Latin · 2,016</td>
+<td align="right">9.91</td>
+<td align="right">10.93</td>
+<td align="right">+1.02 · [0.78, 1.26]</td>
+</tr>
+<tr>
+<td>Latin → English · 2,016</td>
+<td align="right">22.33</td>
+<td align="right">23.31</td>
+<td align="right">+0.98 · [0.53, 1.50]</td>
+</tr>
+<tr>
+<td>English → Thaana devtest · 1,500</td>
+<td align="right">43.33</td>
+<td align="right">46.22</td>
+<td align="right">+2.89 · [2.11, 3.64]</td>
+</tr>
+</tbody></table>
+<p>These are corpus chrF++ scores. Deltas use the unrounded values, so they may differ from subtracting the displayed numbers. Smaller development, government and Nau sets are reported separately in the download. They were less uniform: Nau Dhivehi→English fell from 60.22 to 58.96, with a gain interval of −2.59 to +0.02.</p>
+<p>Clef’s English→Thaana faithfulness rose from 83.68 to 85.13; its devtest score rose from 86.27 to 87.72. Their gain intervals were [0.33, 2.55] and [0.42, 2.40]. Native Dhivehi→English rose from 86.64 to 87.03, with [−0.15, 0.95]. Latin→English rose from 48.99 to 52.96, with [2.91, 5.07]. English→Latin’s gain interval was [9.45, 12.22].</p>
+<p>The 2,070-question multiple-choice gain was 2.03 percentage points, with a paired 95% interval of [0.44, 3.62]. The smaller 400-question core test was less clear: Thaana 65.50%→67.00%, Latin 54.00%→52.75%; both gain intervals crossed zero.</p>
+<p>For the same-meaning test, ranking AUC was 0.8353→0.8298 in Thaana and 0.8054→0.8258 in Latin. This asks how often a true match has a higher Yes preference than a false match. It is a later analysis of saved scores, with no fitted decision threshold. Both final fixed-choice accuracies remain 50%.</p>
+<p>The script-matching probe used 200 held-out Latin/Thaana pairs. Average retrieval across the middle third of layers rose from 13.82% to 16.68% for Latin→Thaana and 8.95% to 12.18% for Thaana→Latin. The best Latin→Thaana layer slipped from 32.5% to 31.5%. Reporting the middle-layer mean alone would hide that.</p>
+<p>The English distribution guard measured KL divergence of 0.1193 nats across 11,374 tokens in 48 rows, above its preset 0.10 limit. A separate retention check found 85.56% item-mean agreement on the top token while following stock-model answers. These measure changes in predictions, not whether the changed answers are correct.</p>
+</details>
+
+<details class="p28-notes" id="methods"><summary>Models, prompts and limits</summary>
+
+<p><strong>Models.</strong> Both arms use the same local 4-bit pretrained Gemma 4 26B-A4B and tokenizer. The final arm adds the step-1,800, rank-64 adapter at scale 0.5 across all 30 decoder layers. The adapter targets attention and the shared feed-forward networks; this run did not directly train the routed experts. It is a different setup from the chat-model alignment experiments in Part 2.7.</p>
+<p><strong>Generation.</strong> The main translations use plain three-example prompts, greedy generation, a 256-token limit and batches of 64. Scores use the first nonempty line obtained by stripping the whole response and taking its first line. Many raw continuations reached the token limit; that does not by itself show that the scored first line was cut off. The Latin inputs or references come from the fixed Thaana-to-Latin conversion used by the benchmark. They are not a fresh sample of typed messages.</p>
+<p><strong>Choices.</strong> The main multiple-choice score selects the highest-scoring answer token, A through D. The same-meaning test compares the next-token scores for Yes and No. “Chose Yes” describes that fixed score comparison; it does not count a freely generated explanation. Generated-letter accuracy is recorded separately in the download.</p>
+<p><strong>Judging.</strong> Clef scores the same first-line translations. Faithfulness is the mean saved judge score multiplied by 100; missing-content, added-content and facts-kept rates count per-item scores at least 0.5. The five paired tasks contain 19,128 judged outputs in total. This differs from older chat experiments that sent whole responses to the judge. Model judges can be wrong, especially in a language with limited evaluation data; these results need native-reader checking before being treated as human quality.</p>
+<p><strong>Uncertainty.</strong> Translation and Clef intervals use 1,000 paired item-bootstrap draws: the same sampled items enter both model scores. The full multiple-choice interval uses 10,000. The intervals are exploratory, with no correction for testing many metrics. They describe variation across these items in one training run, not variation across independently trained models.</p>
+<p><strong>Question answering.</strong> The full QA source is a dataset shard labeled <code>squad/train</code>. That label does not establish whether these rows were held out from either model. The CPT data build used a lexical exclusion filter, but the saved aggregate record does not prove every question was excluded. The original model’s pretraining exposure is also unknown. The 392-row nonempty subset is a descriptive check, not a causal adjustment or a new headline score.</p>
+<p><strong>Chat and script checks.</strong> I retained the older chat-template tests as format diagnostics. These checkpoints have not been trained for the assistant role. Script checks are particularly easy to overread: a strict Dhivehi-output heuristic rose from 1/100 to 82/100, but every one of those 82 final outputs reached the short token cap, and 61 were dominated by one repeated token. That score does not show useful answers. The separate conversation judges and other format checks remain in the aggregate table.</p>
+<p><strong>Coverage.</strong> I reran the available translation, choice, QA, representation, lens, state-swap and retention tests. One older concept-matching probe could not run because its original reference bank was missing. I have not replaced that missing result with a zero or rebuilt the reference to make a new comparison. Some small probes use examples chosen during earlier experiments; they remain diagnostics rather than independent tests of generalization.</p>
+<p><strong>Public data.</strong> The downloads contain scores, settings and hashes of the saved source artifacts. They omit source passages, private messages and raw judging sessions. Historical chat-model runs are context for the series, not the paired baseline for this checkpoint.</p>
+</details>
+</div>
+</article></main>
+<footer class="site-footer"><span>Zayan</span><a href="https://github.com/im-zayan">GitHub</a></footer></body></html>

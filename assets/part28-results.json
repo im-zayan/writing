@@ -1,0 +1,6218 @@
+{
+  "schema_version": 1,
+  "scope": "Part 2.8 public-safe aggregates; no raw prompts, sentences, answer texts, record IDs, or absolute paths",
+  "model_pair": {
+    "base": "W9 PT base",
+    "stock_adapter": null,
+    "cpt_adapter": "run1 step 1800",
+    "cpt_scale": 0.5
+  },
+  "sources": [
+    {
+      "role": "scorecard metrics source",
+      "basename": "scorecard.json",
+      "sha256": "359d6628fb4eaef26faee3df055bf015c7caea443c91a515927e3c18e3e9b563"
+    },
+    {
+      "role": "translation summary source",
+      "basename": "translation_summary.json",
+      "sha256": "95caa72f5410483e9a4ae17c75fbcdf2e2dc72d3e91652cc038c83d6548b781a"
+    },
+    {
+      "role": "Clef summary source",
+      "basename": "clef_summary.json",
+      "sha256": "58a619a59d46c7a554d5d5d3aa582a73a2402c1aafb8bf6d0c9ef93134908526"
+    },
+    {
+      "role": "stock same-meaning results",
+      "basename": "cpt_final_stock_pt.full.json",
+      "sha256": "0cef250f5a3299312695f0fb81018ee0789a0bab9e7888937d2ac4eb80c5f544"
+    },
+    {
+      "role": "CPT same-meaning results",
+      "basename": "cpt_final_step1800.full.json",
+      "sha256": "f6a8608369d5d5fbceddfc1630ffccb6ec55e6f99dfdf865d6ce75cf58e245f6"
+    },
+    {
+      "role": "margin definition source",
+      "basename": "run.py",
+      "sha256": "5fa91e9cde065b4c1b53461b592c7714b5b1e9839c8eb639dbb3a689c97d1673"
+    },
+    {
+      "role": "scorecard validator",
+      "basename": "full_scorecard.py",
+      "sha256": "9554ac52af5d8ae844b9355ec36edab51bc60ce3899e654f0f8770974757eda9"
+    },
+    {
+      "role": "translation validator",
+      "basename": "full_translation_eval.py",
+      "sha256": "055bc38882949f61d0962de667141b762837aedce126d0efbaaa835397313c2f"
+    },
+    {
+      "role": "Clef validator",
+      "basename": "full_translation_judge.py",
+      "sha256": "bad76532eaad9584117037a3455416ddfe791a0ca2ef3e8e90f8552cd8cb66ac"
+    },
+    {
+      "role": "Part 2.8 results and figures builder",
+      "basename": "build-part28-figures.py",
+      "sha256": "6ecc3d7e1d1f5b03deac6f5a31252a04a558d55cf8138b878e99dcdbddd18fec"
+    },
+    {
+      "role": "qa stock saved output",
+      "basename": "qa.jsonl",
+      "sha256": "e59f5d0baee68e586587c3a98cf40857fffa0d5eb113a93cdb3d35c5f5023118",
+      "bytes": 5887345
+    },
+    {
+      "role": "qa cpt saved output",
+      "basename": "qa.jsonl",
+      "sha256": "63581b5ceed1f434ec174fa02c83c047d46d70f4f23f7ba975e77a1d56ea8c8a",
+      "bytes": 5888067
+    },
+    {
+      "role": "mcq stock saved output",
+      "basename": "mcq.jsonl",
+      "sha256": "3c2b9c9305a149b8d948dabcbe3e8bacf68ad5f19a1d49422e76e4ce65cc3898",
+      "bytes": 2232032
+    },
+    {
+      "role": "mcq cpt saved output",
+      "basename": "mcq.jsonl",
+      "sha256": "df92b058a67b9c86efc1d3e889cda3663abc9f88e0445e270553e525715ac76f",
+      "bytes": 2215203
+    },
+    {
+      "role": "en2dv frozen input source",
+      "basename": "en2dv.jsonl",
+      "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+      "bytes": 1738474
+    },
+    {
+      "role": "dv2en frozen input source",
+      "basename": "dv2en.jsonl",
+      "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+      "bytes": 2090567
+    },
+    {
+      "role": "en2dv_latn frozen input source",
+      "basename": "en2dv.jsonl",
+      "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+      "bytes": 1738474
+    },
+    {
+      "role": "dv_latn2en frozen input source",
+      "basename": "dv2en.jsonl",
+      "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+      "bytes": 2090567
+    },
+    {
+      "role": "devtest_en2dv frozen input source",
+      "basename": "devtest_en2dv.jsonl",
+      "sha256": "aed3f2b14ed7440a6102a5ef0332811888b86d62e231eeccc2e47c29dcd1f530",
+      "bytes": 859446
+    },
+    {
+      "role": "Clef en2dv stock output",
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.inputs.jsonl",
+      "sha256": "4ed6fe006ef43ca38a08dd116017ba5fda82722e7cd22a960d180f4ba03f3af0",
+      "bytes": 2108712
+    },
+    {
+      "role": "Clef en2dv stock output",
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.inputs.manifest.json",
+      "sha256": "5683f9f6b45324a397571fb68455070eb47a86c0bc5c313678f28929d3f0b64a",
+      "bytes": 595
+    },
+    {
+      "role": "Clef en2dv stock output",
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.manifest.json",
+      "sha256": "eb89c5aa66a78925b0ab01e8e728585855acc4252fbdba2585fab9ad2b5c3c2a",
+      "bytes": 436
+    },
+    {
+      "role": "Clef en2dv stock output",
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.jsonl",
+      "sha256": "6a922918ace819a50d302fb5deb35b081669cf5691da29b0c07c6dc8cbeaa2bf",
+      "bytes": 4708383
+    },
+    {
+      "role": "Clef en2dv stock output",
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.judge.manifest.json",
+      "sha256": "3cb133e9a93ccf73b868692b16b95c1ff4eeec304bcc6504eb9653b5c5a02d7a",
+      "bytes": 4366
+    },
+    {
+      "role": "Clef en2dv stock output",
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.judge.jsonl",
+      "sha256": "420d3452f11941d603a5b25e58368fc78eafc9062f7a5737f74c60fa3cbd7c79",
+      "bytes": 7217351
+    },
+    {
+      "role": "Clef en2dv None output",
+      "task": "en2dv",
+      "arm": null,
+      "basename": "en2dv.jsonl",
+      "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+      "bytes": 1738474
+    },
+    {
+      "role": "Clef en2dv cpt output",
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.inputs.jsonl",
+      "sha256": "4ed6fe006ef43ca38a08dd116017ba5fda82722e7cd22a960d180f4ba03f3af0",
+      "bytes": 2108712
+    },
+    {
+      "role": "Clef en2dv cpt output",
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.inputs.manifest.json",
+      "sha256": "5683f9f6b45324a397571fb68455070eb47a86c0bc5c313678f28929d3f0b64a",
+      "bytes": 595
+    },
+    {
+      "role": "Clef en2dv cpt output",
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.manifest.json",
+      "sha256": "b1019f5d9477d32c71070b64589d9c57089cbc33cd4bfd42af7e7a0190c5f9dd",
+      "bytes": 436
+    },
+    {
+      "role": "Clef en2dv cpt output",
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.jsonl",
+      "sha256": "f1f782bf80e2408f63ec7c9b692409c85ea3b1b6824b1ffafd90ba3710562230",
+      "bytes": 4364361
+    },
+    {
+      "role": "Clef en2dv cpt output",
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.judge.manifest.json",
+      "sha256": "8e7f64e953b5a73a52304279780098237051eb296e52ef19e2d6aa19e8c84680",
+      "bytes": 4363
+    },
+    {
+      "role": "Clef en2dv cpt output",
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.judge.jsonl",
+      "sha256": "3c26e54b8416673eac10c905a0fc0d9b97527bd2ab437c3a9ca46dd821d2158b",
+      "bytes": 7209270
+    },
+    {
+      "role": "Clef dv2en stock output",
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.inputs.jsonl",
+      "sha256": "8a8e2605377cebc8195dd441f7ab0a9c051fbdda4a953b5256f3c09147ead902",
+      "bytes": 2460805
+    },
+    {
+      "role": "Clef dv2en stock output",
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.inputs.manifest.json",
+      "sha256": "ec14ea0315d9a1e99a6c3146b5cc857364e22cfaf63f47c5fb20bf52005dcdd0",
+      "bytes": 595
+    },
+    {
+      "role": "Clef dv2en stock output",
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.manifest.json",
+      "sha256": "74f01986a9c47e2a4f55c153185e1a4d298dca48f803e0d2ff4350953dd74040",
+      "bytes": 436
+    },
+    {
+      "role": "Clef dv2en stock output",
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.jsonl",
+      "sha256": "d9ef130505d3f9f64260cf1e05459edd7306e6aa19eb0ce8a190ec338ad1af09",
+      "bytes": 4791760
+    },
+    {
+      "role": "Clef dv2en stock output",
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.judge.manifest.json",
+      "sha256": "d76489d449ccfc6f34c8348ebc9f2a8012e24602a5fb42fbebf331d8f272a1d0",
+      "bytes": 4362
+    },
+    {
+      "role": "Clef dv2en stock output",
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.judge.jsonl",
+      "sha256": "aa6cf25c5b04eed328e39d32c9482f6bb2daa6c95962895b50ef8ff39e484e1a",
+      "bytes": 7217391
+    },
+    {
+      "role": "Clef dv2en None output",
+      "task": "dv2en",
+      "arm": null,
+      "basename": "dv2en.jsonl",
+      "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+      "bytes": 2090567
+    },
+    {
+      "role": "Clef dv2en cpt output",
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.inputs.jsonl",
+      "sha256": "8a8e2605377cebc8195dd441f7ab0a9c051fbdda4a953b5256f3c09147ead902",
+      "bytes": 2460805
+    },
+    {
+      "role": "Clef dv2en cpt output",
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.inputs.manifest.json",
+      "sha256": "ec14ea0315d9a1e99a6c3146b5cc857364e22cfaf63f47c5fb20bf52005dcdd0",
+      "bytes": 595
+    },
+    {
+      "role": "Clef dv2en cpt output",
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.manifest.json",
+      "sha256": "e3c1c1f3f1d78d4dc01f6314787892def9218182e4bb50bf5140902266e02623",
+      "bytes": 437
+    },
+    {
+      "role": "Clef dv2en cpt output",
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.jsonl",
+      "sha256": "a5f53af2ccac5702f5e9e373e7b0a388b6ee0d8f780fa38088cffe5e8ffd1590",
+      "bytes": 4600178
+    },
+    {
+      "role": "Clef dv2en cpt output",
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.judge.manifest.json",
+      "sha256": "d72647d2f4caa7b12a276574c05547cb358f26ee6df1873601d06fb6d244f52b",
+      "bytes": 4359
+    },
+    {
+      "role": "Clef dv2en cpt output",
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.judge.jsonl",
+      "sha256": "fa086eed346c0d3311bbf61e4f1ccf62311ffd3cd254c4af50edb2fcd8f6b57c",
+      "bytes": 7209266
+    },
+    {
+      "role": "Clef en2dv_latn stock output",
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.inputs.jsonl",
+      "sha256": "d1fa85c2faf96449b1379e13a98c3f12e5e1fffbc69b69a5f8ac49052a233baf",
+      "bytes": 1758649
+    },
+    {
+      "role": "Clef en2dv_latn stock output",
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.inputs.manifest.json",
+      "sha256": "1c4aca35b9071d22adc1e936a9e276f2107c2b3795a43a8d9ec0d67cf9bcb3c6",
+      "bytes": 605
+    },
+    {
+      "role": "Clef en2dv_latn stock output",
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.manifest.json",
+      "sha256": "1843ccce9b704f0b1d95c0885e7a04865c9800c99a97243c33b7135836d087f9",
+      "bytes": 440
+    },
+    {
+      "role": "Clef en2dv_latn stock output",
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.jsonl",
+      "sha256": "151f451d1b93aa204106786898dc0774a4f50b2f06ba2681aede66ad66b63c74",
+      "bytes": 4448729
+    },
+    {
+      "role": "Clef en2dv_latn stock output",
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.judge.manifest.json",
+      "sha256": "7ceb4739b7929bee2adcc8c1d90e2572a0cbe79e1a83279047770a198d0b0bc7",
+      "bytes": 4371
+    },
+    {
+      "role": "Clef en2dv_latn stock output",
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.judge.jsonl",
+      "sha256": "e43cb490f14b9a78031e789ab8e80c9fe23ed2757a0c605d616c546a519e345f",
+      "bytes": 7237615
+    },
+    {
+      "role": "Clef en2dv_latn None output",
+      "task": "en2dv_latn",
+      "arm": null,
+      "basename": "en2dv.jsonl",
+      "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+      "bytes": 1738474
+    },
+    {
+      "role": "Clef en2dv_latn cpt output",
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.inputs.jsonl",
+      "sha256": "d1fa85c2faf96449b1379e13a98c3f12e5e1fffbc69b69a5f8ac49052a233baf",
+      "bytes": 1758649
+    },
+    {
+      "role": "Clef en2dv_latn cpt output",
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.inputs.manifest.json",
+      "sha256": "1c4aca35b9071d22adc1e936a9e276f2107c2b3795a43a8d9ec0d67cf9bcb3c6",
+      "bytes": 605
+    },
+    {
+      "role": "Clef en2dv_latn cpt output",
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.manifest.json",
+      "sha256": "2a5f537534cd67745b841f3b1817948e53fc0492c18683b179acee124171f490",
+      "bytes": 442
+    },
+    {
+      "role": "Clef en2dv_latn cpt output",
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.jsonl",
+      "sha256": "5a565d77f2bc2fbcd1f365411cb3c0b50185468cc8e9dfa9e65404244db86a77",
+      "bytes": 4371644
+    },
+    {
+      "role": "Clef en2dv_latn cpt output",
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.judge.manifest.json",
+      "sha256": "ab0187c6758fd60eac60101c37a04ae1f554aa0b52a932745f451485ec40c0b1",
+      "bytes": 4369
+    },
+    {
+      "role": "Clef en2dv_latn cpt output",
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.judge.jsonl",
+      "sha256": "f9b78f4463a1dcc5210c1139dd06302ac91ed1d2b43c3f27659873ce2b77e19c",
+      "bytes": 7229445
+    },
+    {
+      "role": "Clef dv_latn2en stock output",
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.inputs.jsonl",
+      "sha256": "a14db7b7841b70e793fb419b88d664dddd37cb5f81e44196da42f79bfecdbf00",
+      "bytes": 1817127
+    },
+    {
+      "role": "Clef dv_latn2en stock output",
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.inputs.manifest.json",
+      "sha256": "ebc883eacbb8c2030f6c74cacedf99ac661f976e7a6e423a5eeb9c24a3654a32",
+      "bytes": 605
+    },
+    {
+      "role": "Clef dv_latn2en stock output",
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.manifest.json",
+      "sha256": "698a9f7592c7e722409006e264440e708d5c4683d1718bdbc4d6a15a987c2ec2",
+      "bytes": 441
+    },
+    {
+      "role": "Clef dv_latn2en stock output",
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.jsonl",
+      "sha256": "2204476e3ee43953f0be9421005a3afc8efa6b4e8e1c825c7582d2d63c2f3c11",
+      "bytes": 4081148
+    },
+    {
+      "role": "Clef dv_latn2en stock output",
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.judge.manifest.json",
+      "sha256": "fe60910293e0d30564aa31550ae7133143e0c801d1ca3ecd55d278ee13cca99e",
+      "bytes": 4370
+    },
+    {
+      "role": "Clef dv_latn2en stock output",
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.judge.jsonl",
+      "sha256": "c51c9b2e2d3d9079be5a2555d0a8d20f3c6ca980aacb74dffc6b001ecdc8e9cf",
+      "bytes": 7237536
+    },
+    {
+      "role": "Clef dv_latn2en None output",
+      "task": "dv_latn2en",
+      "arm": null,
+      "basename": "dv2en.jsonl",
+      "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+      "bytes": 2090567
+    },
+    {
+      "role": "Clef dv_latn2en cpt output",
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.inputs.jsonl",
+      "sha256": "a14db7b7841b70e793fb419b88d664dddd37cb5f81e44196da42f79bfecdbf00",
+      "bytes": 1817127
+    },
+    {
+      "role": "Clef dv_latn2en cpt output",
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.inputs.manifest.json",
+      "sha256": "ebc883eacbb8c2030f6c74cacedf99ac661f976e7a6e423a5eeb9c24a3654a32",
+      "bytes": 605
+    },
+    {
+      "role": "Clef dv_latn2en cpt output",
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.manifest.json",
+      "sha256": "460d48e0523546f8b51cdc019119220e8f9c256e164f64664219b9dc167b578a",
+      "bytes": 442
+    },
+    {
+      "role": "Clef dv_latn2en cpt output",
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.jsonl",
+      "sha256": "e7abd7de84d113d54a8c57255dee01a28dedf7aea604c66b07c0a4db67ccc7be",
+      "bytes": 4157111
+    },
+    {
+      "role": "Clef dv_latn2en cpt output",
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.judge.manifest.json",
+      "sha256": "7f0989becd831c0d93a645f5defc8c1603bfcedc8e6162631c2cb49faf5ed240",
+      "bytes": 4370
+    },
+    {
+      "role": "Clef dv_latn2en cpt output",
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.judge.jsonl",
+      "sha256": "bdf91a191c8e62b755eec88cac6e57360bd1db4cb4349c551e18913275733d6d",
+      "bytes": 7229417
+    },
+    {
+      "role": "Clef devtest_en2dv stock output",
+      "task": "devtest_en2dv",
+      "arm": "stock",
+      "basename": "devtest_en2dv.inputs.jsonl",
+      "sha256": "e2b9a11102ec9793afa3f3d40ba2afa345f7e44ca29d4de3713d4e96a76587c1",
+      "bytes": 1135256
+    },
+    {
+      "role": "Clef devtest_en2dv stock output",
+      "task": "devtest_en2dv",
+      "arm": "stock",
+      "basename": "devtest_en2dv.inputs.manifest.json",
+      "sha256": "3be8299624f80294a3ac5ed975a7696fdb36af9faa10da269af3681581e3ed0d",
+      "bytes": 618
+    },
+    {
+      "role": "Clef devtest_en2dv stock output",
+      "task": "devtest_en2dv",
+      "arm": "stock",
+      "basename": "devtest_en2dv.manifest.json",
+      "sha256": "84d9c3f68fd578e79ac48af4fd37ed2a3b832309902cd7e2972584a5ae7c733a",
+      "bytes": 444
+    },
+    {
+      "role": "Clef devtest_en2dv stock output",
+      "task": "devtest_en2dv",
+      "arm": "stock",
+      "basename": "devtest_en2dv.jsonl",
+      "sha256": "445b765ca2f4fafca13f6eb9b0fa7f82632799e6b965f4076b30aafc0a2b6756",
+      "bytes": 2813422
+    },
+    {
+      "role": "Clef devtest_en2dv stock output",
+      "task": "devtest_en2dv",
+      "arm": "stock",
+      "basename": "devtest_en2dv.judge.manifest.json",
+      "sha256": "6ce7483cffd7e9fc9dfa7062e43954cd4b64127fa1a37cfe764edc000ae57dce",
+      "bytes": 4369
+    },
+    {
+      "role": "Clef devtest_en2dv stock output",
+      "task": "devtest_en2dv",
+      "arm": "stock",
+      "basename": "devtest_en2dv.judge.jsonl",
+      "sha256": "e39b22532db824973747a8f9cd90284152c32320c2aba82da662b1426eac0211",
+      "bytes": 5367056
+    },
+    {
+      "role": "Clef devtest_en2dv None output",
+      "task": "devtest_en2dv",
+      "arm": null,
+      "basename": "devtest_en2dv.jsonl",
+      "sha256": "aed3f2b14ed7440a6102a5ef0332811888b86d62e231eeccc2e47c29dcd1f530",
+      "bytes": 859446
+    },
+    {
+      "role": "Clef devtest_en2dv cpt output",
+      "task": "devtest_en2dv",
+      "arm": "cpt",
+      "basename": "devtest_en2dv.inputs.jsonl",
+      "sha256": "e2b9a11102ec9793afa3f3d40ba2afa345f7e44ca29d4de3713d4e96a76587c1",
+      "bytes": 1135256
+    },
+    {
+      "role": "Clef devtest_en2dv cpt output",
+      "task": "devtest_en2dv",
+      "arm": "cpt",
+      "basename": "devtest_en2dv.inputs.manifest.json",
+      "sha256": "3be8299624f80294a3ac5ed975a7696fdb36af9faa10da269af3681581e3ed0d",
+      "bytes": 618
+    },
+    {
+      "role": "Clef devtest_en2dv cpt output",
+      "task": "devtest_en2dv",
+      "arm": "cpt",
+      "basename": "devtest_en2dv.manifest.json",
+      "sha256": "cf3167f551cbc47b34d2a0cf3635daab8974390d41d0cbb099c0306b190fe36e",
+      "bytes": 444
+    },
+    {
+      "role": "Clef devtest_en2dv cpt output",
+      "task": "devtest_en2dv",
+      "arm": "cpt",
+      "basename": "devtest_en2dv.jsonl",
+      "sha256": "b890559c86735b7d9d4822fc1af7e105712da7a12dc7995687f5b8e6cadf7605",
+      "bytes": 2811835
+    },
+    {
+      "role": "Clef devtest_en2dv cpt output",
+      "task": "devtest_en2dv",
+      "arm": "cpt",
+      "basename": "devtest_en2dv.judge.manifest.json",
+      "sha256": "825ffddc1a77c8dec643a794390457eb338c7bcfe6ae51d33e463c4b51a18bc6",
+      "bytes": 4370
+    },
+    {
+      "role": "Clef devtest_en2dv cpt output",
+      "task": "devtest_en2dv",
+      "arm": "cpt",
+      "basename": "devtest_en2dv.judge.jsonl",
+      "sha256": "a532b760db63bb56dcee4002ae3bce8121a1c41baaa9e5a18a9216e2c1393f5e",
+      "bytes": 5361127
+    },
+    {
+      "role": "Clef validator source",
+      "basename": "full_scorecard.py",
+      "sha256": "9554ac52af5d8ae844b9355ec36edab51bc60ce3899e654f0f8770974757eda9",
+      "bytes": 276201
+    },
+    {
+      "role": "Clef validator source",
+      "basename": "full_translation_judge.py",
+      "sha256": "bad76532eaad9584117037a3455416ddfe791a0ca2ef3e8e90f8552cd8cb66ac",
+      "bytes": 22242
+    },
+    {
+      "role": "Clef validator source",
+      "basename": "full_translation_eval.py",
+      "sha256": "055bc38882949f61d0962de667141b762837aedce126d0efbaaa835397313c2f",
+      "bytes": 33968
+    },
+    {
+      "role": "Clef validator source",
+      "basename": "summarize_full_clef.py",
+      "sha256": "63ac39ea7cef062f952422d47e9064d50dcae90727cc28033d876eebb3989342",
+      "bytes": 17321
+    },
+    {
+      "role": "pinned Clef model file hash record",
+      "basename": "clef_file_hashes.json",
+      "sha256": "bf4593f7f8f4a5464aa6146f1ff1905acccd1ce9a115413186b61d5d198d7297",
+      "bytes": 2184
+    }
+  ],
+  "scorecard_status": "complete_with_scope_caveats",
+  "scorecard_metric_fields": [
+    "family",
+    "task",
+    "metric",
+    "unit",
+    "n",
+    "stock",
+    "cpt",
+    "delta",
+    "format",
+    "protocol"
+  ],
+  "scorecard_metric_rows": [
+    {
+      "family": "core comprehension",
+      "task": "translation/thaana/draw1",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 43.17,
+      "cpt": 44.2,
+      "delta": 1.0300000000000011,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/thaana/draw2",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 43.15,
+      "cpt": 44.67,
+      "delta": 1.5200000000000031,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/thaana/draw_mean",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 43.16,
+      "cpt": 44.435,
+      "delta": 1.2750000000000057,
+      "format": "plain pretrained",
+      "protocol": "mean of two fixed generation draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/rule/draw1",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 20.43,
+      "cpt": 20.99,
+      "delta": 0.5599999999999987,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/rule/draw2",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 20.16,
+      "cpt": 21.17,
+      "delta": 1.0100000000000016,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/rule/draw_mean",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 20.295,
+      "cpt": 21.08,
+      "delta": 0.7849999999999966,
+      "format": "plain pretrained",
+      "protocol": "mean of two fixed generation draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/typed/draw1",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 20.16,
+      "cpt": 20.85,
+      "delta": 0.6900000000000013,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/typed/draw2",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 20.32,
+      "cpt": 21.09,
+      "delta": 0.7699999999999996,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/typed/draw_mean",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 20.240000000000002,
+      "cpt": 20.97,
+      "delta": 0.7299999999999969,
+      "format": "plain pretrained",
+      "protocol": "mean of two fixed generation draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/cs/draw1",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 125,
+      "stock": 24.89,
+      "cpt": 26.89,
+      "delta": 2.0,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/cs/draw2",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 125,
+      "stock": 23.71,
+      "cpt": 26.34,
+      "delta": 2.629999999999999,
+      "format": "plain pretrained",
+      "protocol": "same 150-item subset; fixed batch/order draw"
+    },
+    {
+      "family": "core comprehension",
+      "task": "translation/cs/draw_mean",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 125,
+      "stock": 24.3,
+      "cpt": 26.615000000000002,
+      "delta": 2.3150000000000013,
+      "format": "plain pretrained",
+      "protocol": "mean of two fixed generation draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "mcq/thaana",
+      "metric": "accuracy",
+      "unit": "percent",
+      "n": 400,
+      "stock": 65.5,
+      "cpt": 67.0,
+      "delta": 1.5,
+      "format": "plain pretrained",
+      "protocol": "paired item bootstrap"
+    },
+    {
+      "family": "core comprehension",
+      "task": "mcq/latin_q",
+      "metric": "accuracy",
+      "unit": "percent",
+      "n": 400,
+      "stock": 54.0,
+      "cpt": 52.75,
+      "delta": -1.25,
+      "format": "plain pretrained",
+      "protocol": "paired item bootstrap"
+    },
+    {
+      "family": "core comprehension",
+      "task": "same/thaana",
+      "metric": "accuracy",
+      "unit": "percent",
+      "n": 200,
+      "stock": 77.0,
+      "cpt": 50.0,
+      "delta": -27.0,
+      "format": "plain pretrained",
+      "protocol": "paired item bootstrap"
+    },
+    {
+      "family": "core comprehension",
+      "task": "same/latin_s2",
+      "metric": "accuracy",
+      "unit": "percent",
+      "n": 200,
+      "stock": 70.5,
+      "cpt": 50.0,
+      "delta": -20.5,
+      "format": "plain pretrained",
+      "protocol": "paired item bootstrap"
+    },
+    {
+      "family": "core comprehension",
+      "task": "senses/thaana",
+      "metric": "accuracy",
+      "unit": "percent",
+      "n": 35,
+      "stock": 91.42857142857143,
+      "cpt": 88.57142857142857,
+      "delta": -2.857142857142857,
+      "format": "plain pretrained",
+      "protocol": "paired item bootstrap"
+    },
+    {
+      "family": "core comprehension",
+      "task": "senses/latin",
+      "metric": "accuracy",
+      "unit": "percent",
+      "n": 42,
+      "stock": 50.0,
+      "cpt": 47.61904761904761,
+      "delta": -2.380952380952381,
+      "format": "plain pretrained",
+      "protocol": "paired item bootstrap"
+    },
+    {
+      "family": "core comprehension diagnostic",
+      "task": "same-meaning margin ranking AUC/Thaana",
+      "metric": "pairwise ranking AUC",
+      "unit": "AUC",
+      "n": 200,
+      "stock": 0.83525,
+      "cpt": 0.82985,
+      "delta": -0.005400000000000071,
+      "format": "plain pretrained",
+      "protocol": "post-hoc saved-margin ranking; 100 Yes/100 No; no fitted threshold"
+    },
+    {
+      "family": "core comprehension diagnostic",
+      "task": "same-meaning margin ranking AUC/Latin",
+      "metric": "pairwise ranking AUC",
+      "unit": "AUC",
+      "n": 200,
+      "stock": 0.80535,
+      "cpt": 0.8258,
+      "delta": 0.020449999999999968,
+      "format": "plain pretrained",
+      "protocol": "post-hoc saved-margin ranking; 100 Yes/100 No; no fitted threshold"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/thaana/draw1",
+      "metric": "token F1",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0331,
+      "cpt": 0.0056,
+      "delta": -0.027499999999999997,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/thaana/draw2",
+      "metric": "token F1",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0125,
+      "cpt": 0.0056,
+      "delta": -0.006900000000000001,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/thaana/draw1",
+      "metric": "exact match",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/thaana/draw2",
+      "metric": "exact match",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/latin_q/draw1",
+      "metric": "token F1",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0032,
+      "cpt": 0.0,
+      "delta": -0.0032,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/latin_q/draw2",
+      "metric": "token F1",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0021,
+      "cpt": 0.0074,
+      "delta": 0.005300000000000001,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/latin_q/draw1",
+      "metric": "exact match",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "core comprehension",
+      "task": "qa/latin_q/draw2",
+      "metric": "exact match",
+      "unit": "fraction",
+      "n": 120,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "120-row QA; two fixed draws"
+    },
+    {
+      "family": "representations",
+      "task": "table2/owner_L10",
+      "metric": "retrieval",
+      "unit": "12-way retrieval accuracy",
+      "n": 12,
+      "stock": 0.5,
+      "cpt": 0.5,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "frozen Part 1 / script-probe method"
+    },
+    {
+      "family": "representations",
+      "task": "table2/thaana_L10",
+      "metric": "retrieval",
+      "unit": "12-way retrieval accuracy",
+      "n": 12,
+      "stock": 1.0,
+      "cpt": 1.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "frozen Part 1 / script-probe method"
+    },
+    {
+      "family": "representations",
+      "task": "table2/constructed_L10",
+      "metric": "retrieval",
+      "unit": "12-way retrieval accuracy",
+      "n": 12,
+      "stock": 0.25,
+      "cpt": 0.25,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "frozen Part 1 / script-probe method"
+    },
+    {
+      "family": "representations",
+      "task": "script-probe/middle l2t@1",
+      "metric": "retrieval",
+      "unit": "top-1 rate",
+      "n": 200,
+      "stock": 0.1382,
+      "cpt": 0.1668,
+      "delta": 0.028600000000000014,
+      "format": "plain pretrained",
+      "protocol": "frozen Part 1 / script-probe method"
+    },
+    {
+      "family": "representations",
+      "task": "script-probe/middle t2l@1",
+      "metric": "retrieval",
+      "unit": "top-1 rate",
+      "n": 200,
+      "stock": 0.0895,
+      "cpt": 0.1218,
+      "delta": 0.03230000000000001,
+      "format": "plain pretrained",
+      "protocol": "frozen Part 1 / script-probe method"
+    },
+    {
+      "family": "representations",
+      "task": "table1/dv_thaana/mean over pooled states",
+      "metric": "mean centroid-retrieval accuracy",
+      "unit": "fraction",
+      "n": 13,
+      "stock": 0.8312580645161289,
+      "cpt": 0.833741935483871,
+      "delta": 0.0024838709677420523,
+      "format": "plain pretrained",
+      "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+    },
+    {
+      "family": "representations",
+      "task": "table1/dv_latin/mean over pooled states",
+      "metric": "mean centroid-retrieval accuracy",
+      "unit": "fraction",
+      "n": 13,
+      "stock": 0.19622580645161292,
+      "cpt": 0.2036774193548387,
+      "delta": 0.007451612903225796,
+      "format": "plain pretrained",
+      "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+    },
+    {
+      "family": "representations",
+      "task": "table1/hinglish/mean over pooled states",
+      "metric": "mean centroid-retrieval accuracy",
+      "unit": "fraction",
+      "n": 13,
+      "stock": 0.8783870967741936,
+      "cpt": 0.8883225806451613,
+      "delta": 0.009935483870967765,
+      "format": "plain pretrained",
+      "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+    },
+    {
+      "family": "representations",
+      "task": "table1/arabizi/mean over pooled states",
+      "metric": "mean centroid-retrieval accuracy",
+      "unit": "fraction",
+      "n": 13,
+      "stock": 0.5630645161290322,
+      "cpt": 0.5481612903225807,
+      "delta": -0.014903225806451537,
+      "format": "plain pretrained",
+      "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+    },
+    {
+      "family": "representations",
+      "task": "script probe l2t@1",
+      "metric": "middle-layer mean top-1",
+      "unit": "fraction",
+      "n": 200,
+      "stock": 0.1382,
+      "cpt": 0.1668,
+      "delta": 0.028600000000000014,
+      "format": "plain pretrained",
+      "protocol": "200 frozen pairs; middle-layer aggregate"
+    },
+    {
+      "family": "representations",
+      "task": "script probe t2l@1",
+      "metric": "middle-layer mean top-1",
+      "unit": "fraction",
+      "n": 200,
+      "stock": 0.0895,
+      "cpt": 0.1218,
+      "delta": 0.03230000000000001,
+      "format": "plain pretrained",
+      "protocol": "200 frozen pairs; middle-layer aggregate"
+    },
+    {
+      "family": "representations",
+      "task": "M2 STS/thaana_L6",
+      "metric": "Spearman correlation",
+      "unit": "rho",
+      "n": 1000,
+      "stock": 0.5515,
+      "cpt": 0.5508,
+      "delta": -0.0007000000000000339,
+      "format": "plain pretrained",
+      "protocol": "fixed decoder layers L6/L9/L14"
+    },
+    {
+      "family": "representations",
+      "task": "M2 STS/thaana_L9",
+      "metric": "Spearman correlation",
+      "unit": "rho",
+      "n": 1000,
+      "stock": 0.556,
+      "cpt": 0.5565,
+      "delta": 0.0004999999999999449,
+      "format": "plain pretrained",
+      "protocol": "fixed decoder layers L6/L9/L14"
+    },
+    {
+      "family": "representations",
+      "task": "M2 STS/thaana_L14",
+      "metric": "Spearman correlation",
+      "unit": "rho",
+      "n": 1000,
+      "stock": 0.5035,
+      "cpt": 0.5123,
+      "delta": 0.00880000000000003,
+      "format": "plain pretrained",
+      "protocol": "fixed decoder layers L6/L9/L14"
+    },
+    {
+      "family": "representations",
+      "task": "M2 STS/latin_s2_L6",
+      "metric": "Spearman correlation",
+      "unit": "rho",
+      "n": 1000,
+      "stock": 0.1201,
+      "cpt": 0.1128,
+      "delta": -0.007300000000000001,
+      "format": "plain pretrained",
+      "protocol": "fixed decoder layers L6/L9/L14"
+    },
+    {
+      "family": "representations",
+      "task": "M2 STS/latin_s2_L9",
+      "metric": "Spearman correlation",
+      "unit": "rho",
+      "n": 1000,
+      "stock": 0.1118,
+      "cpt": 0.0976,
+      "delta": -0.01419999999999999,
+      "format": "plain pretrained",
+      "protocol": "fixed decoder layers L6/L9/L14"
+    },
+    {
+      "family": "representations",
+      "task": "M2 STS/latin_s2_L14",
+      "metric": "Spearman correlation",
+      "unit": "rho",
+      "n": 1000,
+      "stock": 0.1013,
+      "cpt": 0.0842,
+      "delta": -0.017100000000000004,
+      "format": "plain pretrained",
+      "protocol": "fixed decoder layers L6/L9/L14"
+    },
+    {
+      "family": "representations",
+      "task": "M3 sense centroid/th",
+      "metric": "correct items",
+      "unit": "count",
+      "n": 5,
+      "stock": 4.0,
+      "cpt": 4.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "five-language sense-centroid retrieval; margins averaged over decoder layers"
+    },
+    {
+      "family": "representations",
+      "task": "M3 sense centroid/la",
+      "metric": "correct items",
+      "unit": "count",
+      "n": 7,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "five-language sense-centroid retrieval; margins averaged over decoder layers"
+    },
+    {
+      "family": "representations",
+      "task": "FLORES/div_Thaa(human)/native-to-Latin",
+      "metric": "best-layer retrieval accuracy",
+      "unit": "fraction",
+      "n": 40,
+      "stock": 0.458,
+      "cpt": 0.458,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "selected best native↔Latin layer; 21 languages"
+    },
+    {
+      "family": "representations",
+      "task": "FLORES/div_Thaa(uroman)/native-to-Latin",
+      "metric": "best-layer retrieval accuracy",
+      "unit": "fraction",
+      "n": 40,
+      "stock": 0.5,
+      "cpt": 0.5,
+      "delta": 0.0,
+      "format": "plain pretrained",
+      "protocol": "selected best native↔Latin layer; 21 languages"
+    },
+    {
+      "family": "representations",
+      "task": "M6/Thaana paired",
+      "metric": "median target-gloss rank",
+      "unit": "vocabulary rank (lower better)",
+      "n": 37,
+      "stock": 114.0,
+      "cpt": 57.0,
+      "delta": -57.0,
+      "format": "plain pretrained",
+      "protocol": "best rank across L20-L28; paired rows"
+    },
+    {
+      "family": "representations",
+      "task": "M6/Latin paired subset",
+      "metric": "median target-gloss rank",
+      "unit": "vocabulary rank (lower better)",
+      "n": 37,
+      "stock": 11277.0,
+      "cpt": 9882.0,
+      "delta": -1395.0,
+      "format": "plain pretrained",
+      "protocol": "only rows with both Latin and Thaana; paired subset"
+    },
+    {
+      "family": "representations",
+      "task": "M6/Latin all rows",
+      "metric": "median target-gloss rank",
+      "unit": "vocabulary rank (lower better)",
+      "n": 49,
+      "stock": 15065.0,
+      "cpt": 11413.0,
+      "delta": -3652.0,
+      "format": "plain pretrained",
+      "protocol": "all available Latin rows; distinct from paired subset"
+    },
+    {
+      "family": "representations",
+      "task": "M6/paired rank gap",
+      "metric": "mean log2(1+Latin rank) − log2(1+Thaana rank)",
+      "unit": "log2-rank gap (lower means smaller gap)",
+      "n": 37,
+      "stock": 6.3047,
+      "cpt": 6.6302,
+      "delta": 0.3254999999999999,
+      "format": "plain pretrained",
+      "protocol": "only paired Latin+Thaana rows"
+    },
+    {
+      "family": "misc plain",
+      "task": "IFEval exact checks",
+      "metric": "pass rate",
+      "unit": "fraction",
+      "n": 16,
+      "stock": 0.625,
+      "cpt": 0.75,
+      "delta": 0.125,
+      "format": "plain transcript",
+      "protocol": "16 strict instruction checks"
+    },
+    {
+      "family": "misc plain",
+      "task": "senses/headline_non_owner/thaana",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 24,
+      "stock": 0.4583,
+      "cpt": 0.5833,
+      "delta": 0.12500000000000006,
+      "format": "plain transcript",
+      "protocol": "headline_non_owner"
+    },
+    {
+      "family": "misc plain",
+      "task": "senses/headline_non_owner/latin",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 48,
+      "stock": 0.0833,
+      "cpt": 0.1458,
+      "delta": 0.06250000000000001,
+      "format": "plain transcript",
+      "protocol": "headline_non_owner"
+    },
+    {
+      "family": "misc plain",
+      "task": "senses/non_owner_all/thaana",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 48,
+      "stock": 0.3542,
+      "cpt": 0.4375,
+      "delta": 0.08329999999999999,
+      "format": "plain transcript",
+      "protocol": "non_owner_all"
+    },
+    {
+      "family": "misc plain",
+      "task": "senses/non_owner_all/latin",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 48,
+      "stock": 0.0833,
+      "cpt": 0.1458,
+      "delta": 0.06250000000000001,
+      "format": "plain transcript",
+      "protocol": "non_owner_all"
+    },
+    {
+      "family": "misc plain",
+      "task": "senses/owner_used_for_design/thaana",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 5,
+      "stock": 0.6,
+      "cpt": 0.6,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "owner_used_for_design"
+    },
+    {
+      "family": "misc plain",
+      "task": "senses/owner_used_for_design/latin",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 9,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "owner_used_for_design"
+    },
+    {
+      "family": "misc plain",
+      "task": "owner Latin set",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 8,
+      "stock": 11.7,
+      "cpt": 14.68,
+      "delta": 2.9800000000000004,
+      "format": "plain transcript",
+      "protocol": "8 owner-authored lines; 3 shots excluded"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/cloze/clean/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 115,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/cloze/clean/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 115,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/continuation/clean/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 95,
+      "stock": 8.14,
+      "cpt": 8.7,
+      "delta": 0.5599999999999987,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/continuation/clean/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 95,
+      "stock": 8.14,
+      "cpt": 8.7,
+      "delta": 0.5599999999999987,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/fluency_preference/clean/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 106,
+      "stock": 46.23,
+      "cpt": 48.11,
+      "delta": 1.8800000000000026,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/fluency_preference/clean/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 106,
+      "stock": 0.0,
+      "cpt": 9.43,
+      "delta": 9.43,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/orthography/clean/chrf_norm_pct_ci95",
+      "metric": "chrf_norm_pct_ci95",
+      "unit": "percent",
+      "n": 108,
+      "stock": 26.38,
+      "cpt": 49.77,
+      "delta": 23.390000000000004,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/orthography/clean/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 108,
+      "stock": 0.93,
+      "cpt": 5.56,
+      "delta": 4.63,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/orthography/clean/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 108,
+      "stock": 0.0,
+      "cpt": 0.93,
+      "delta": 0.93,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/orthography/historically_flagged/chrf_norm_pct_ci95",
+      "metric": "chrf_norm_pct_ci95",
+      "unit": "percent",
+      "n": 2,
+      "stock": 48.15,
+      "cpt": 57.91,
+      "delta": 9.759999999999998,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/orthography/historically_flagged/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 2,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/orthography/historically_flagged/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 2,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/translation_dv_en/clean/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 20,
+      "stock": 33.27,
+      "cpt": 21.37,
+      "delta": -11.900000000000002,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/translation_dv_en/clean/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 20,
+      "stock": 33.27,
+      "cpt": 21.37,
+      "delta": -11.900000000000002,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/translation_dv_en/historically_flagged/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 40,
+      "stock": 32.27,
+      "cpt": 24.2,
+      "delta": -8.070000000000004,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/translation_dv_en/historically_flagged/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 40,
+      "stock": 32.27,
+      "cpt": 24.2,
+      "delta": -8.070000000000004,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/transliteration/clean/chrf_norm_pct_ci95",
+      "metric": "chrf_norm_pct_ci95",
+      "unit": "percent",
+      "n": 17,
+      "stock": 2.36,
+      "cpt": 18.81,
+      "delta": 16.45,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/transliteration/clean/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 17,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/transliteration/clean/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 17,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/transliteration/historically_flagged/chrf_norm_pct_ci95",
+      "metric": "chrf_norm_pct_ci95",
+      "unit": "percent",
+      "n": 43,
+      "stock": 7.77,
+      "cpt": 16.43,
+      "delta": 8.66,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/transliteration/historically_flagged/norm_pct_ci95",
+      "metric": "norm_pct_ci95",
+      "unit": "percent",
+      "n": 43,
+      "stock": 0.0,
+      "cpt": 2.33,
+      "delta": 2.33,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "nau_auto/by_dimension/transliteration/historically_flagged/strict_pct_ci95",
+      "metric": "strict_pct_ci95",
+      "unit": "percent",
+      "n": 43,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 546-row nau_auto scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 300,
+      "stock": 0.0,
+      "cpt": 0.01,
+      "delta": 0.01,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/latin2thaana/cer",
+      "metric": "cer",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.7837,
+      "cpt": 0.7873,
+      "delta": 0.0036000000000000476,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/latin2thaana/corpus_cer",
+      "metric": "corpus_cer",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.881,
+      "cpt": 1.0781,
+      "delta": 0.19710000000000005,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/latin2thaana/exact",
+      "metric": "exact",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0067,
+      "cpt": 0.0,
+      "delta": -0.0067,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/latin2thaana/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0,
+      "cpt": 0.02,
+      "delta": 0.02,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/thaana2latin/cer_latin_raw",
+      "metric": "cer_latin_raw",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.7986,
+      "cpt": 0.8159,
+      "delta": 0.017299999999999982,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/thaana2latin/cer_via_thaana",
+      "metric": "cer_via_thaana",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.7525,
+      "cpt": 0.7572,
+      "delta": 0.0047000000000000375,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/thaana2latin/corpus_cer_latin_raw",
+      "metric": "corpus_cer_latin_raw",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.9062,
+      "cpt": 1.1105,
+      "delta": 0.20430000000000004,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/thaana2latin/corpus_cer_via_thaana",
+      "metric": "corpus_cer_via_thaana",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.8366,
+      "cpt": 0.944,
+      "delta": 0.10739999999999994,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/thaana2latin/exact_latin",
+      "metric": "exact_latin",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "latin/thaana2latin/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 300-row latin scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2en/chrf_pp",
+      "metric": "chrf_pp",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 11.41,
+      "cpt": 11.81,
+      "delta": 0.40000000000000036,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2en/chrf_pp_best_variant",
+      "metric": "chrf_pp_best_variant",
+      "unit": "chrF++ points",
+      "n": 150,
+      "stock": 13.22,
+      "cpt": 13.21,
+      "delta": -0.009999999999999787,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2en/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2thaana/cer",
+      "metric": "cer",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.774,
+      "cpt": 0.8051,
+      "delta": 0.031100000000000017,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2thaana/corpus_cer",
+      "metric": "corpus_cer",
+      "unit": "source-defined",
+      "n": 150,
+      "stock": 0.8533,
+      "cpt": 1.0475,
+      "delta": 0.19420000000000015,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2thaana/exact",
+      "metric": "exact",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/chat2thaana/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 150,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "chatspeak/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 300,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "full 300-row chatspeak scorer"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/arabic_rate",
+      "metric": "arabic_rate",
+      "unit": "fraction",
+      "n": 106,
+      "stock": 0.0,
+      "cpt": 0.0094,
+      "delta": 0.0094,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_register/english/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 28,
+      "stock": 0.2228,
+      "cpt": 0.2368,
+      "delta": 0.014000000000000012,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_register/english/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 28,
+      "stock": 0.8929,
+      "cpt": 0.8214,
+      "delta": -0.07150000000000001,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_register/latin_dv/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 49,
+      "stock": 0.1434,
+      "cpt": 0.1569,
+      "delta": 0.013500000000000012,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_register/latin_dv/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 49,
+      "stock": 0.1429,
+      "cpt": 0.1429,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_register/thaana/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 29,
+      "stock": 0.0833,
+      "cpt": 0.0962,
+      "delta": 0.012899999999999995,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_register/thaana/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 29,
+      "stock": 0.069,
+      "cpt": 0.2069,
+      "delta": 0.1379,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/chat/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 15,
+      "stock": 0.1049,
+      "cpt": 0.205,
+      "delta": 0.1001,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/chat/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 15,
+      "stock": 0.2,
+      "cpt": 0.2667,
+      "delta": 0.06669999999999998,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/dv/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 29,
+      "stock": 0.0833,
+      "cpt": 0.0962,
+      "delta": 0.012899999999999995,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/dv/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 29,
+      "stock": 0.069,
+      "cpt": 0.2069,
+      "delta": 0.1379,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/en/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 28,
+      "stock": 0.2228,
+      "cpt": 0.2368,
+      "delta": 0.014000000000000012,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/en/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 28,
+      "stock": 0.8929,
+      "cpt": 0.8214,
+      "delta": -0.07150000000000001,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/latin/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 34,
+      "stock": 0.1604,
+      "cpt": 0.1357,
+      "delta": -0.0247,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/by_view/latin/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 34,
+      "stock": 0.1176,
+      "cpt": 0.0882,
+      "delta": -0.029399999999999996,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 106,
+      "stock": 0.1479,
+      "cpt": 0.1614,
+      "delta": 0.013499999999999984,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/conversation/copied_sentences",
+      "metric": "copied_sentences",
+      "unit": "source-defined",
+      "n": 106,
+      "stock": 46.0,
+      "cpt": 33.0,
+      "delta": -13.0,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/conversation/repeat_rate/k",
+      "metric": "k",
+      "unit": "source-defined",
+      "n": 48,
+      "stock": 25.0,
+      "cpt": 16.0,
+      "delta": -9.0,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/conversation/repeat_rate/rate",
+      "metric": "rate",
+      "unit": "fraction",
+      "n": 48,
+      "stock": 0.5208,
+      "cpt": 0.3333,
+      "delta": -0.18750000000000006,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/explicit/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 79,
+      "stock": 0.136,
+      "cpt": 0.1473,
+      "delta": 0.011299999999999977,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/explicit/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 79,
+      "stock": 0.3418,
+      "cpt": 0.2911,
+      "delta": -0.05069999999999997,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/implicit/content",
+      "metric": "content",
+      "unit": "source-defined",
+      "n": 27,
+      "stock": 0.1829,
+      "cpt": 0.2027,
+      "delta": 0.019799999999999984,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/implicit/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 27,
+      "stock": 0.2593,
+      "cpt": 0.4815,
+      "delta": 0.2222,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/impossible_script_rate",
+      "metric": "impossible_script_rate",
+      "unit": "fraction",
+      "n": 106,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/mirror_switch_rate",
+      "metric": "mirror_switch_rate",
+      "unit": "fraction",
+      "n": 27,
+      "stock": 0.7407,
+      "cpt": 0.4815,
+      "delta": -0.25920000000000004,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/register_compliance",
+      "metric": "register_compliance",
+      "unit": "fraction",
+      "n": 106,
+      "stock": 0.3208,
+      "cpt": 0.3396,
+      "delta": 0.01880000000000004,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "misc plain",
+      "task": "switching/unrequested_switch_rate",
+      "metric": "unrequested_switch_rate",
+      "unit": "fraction",
+      "n": 106,
+      "stock": 0.6698,
+      "cpt": 0.6415,
+      "delta": -0.028299999999999992,
+      "format": "plain transcript",
+      "protocol": "40 frozen conversations; 106 matched assistant turns"
+    },
+    {
+      "family": "full translation",
+      "task": "English→Thaana",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 2016,
+      "stock": 34.13,
+      "cpt": 36.56,
+      "delta": 2.4299999999999997,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "Thaana→English",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 2016,
+      "stock": 45.17,
+      "cpt": 45.87,
+      "delta": 0.6999999999999957,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "English→rule Latin Dhivehi",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 2016,
+      "stock": 9.91,
+      "cpt": 10.93,
+      "delta": 1.0199999999999996,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "rule Latin Dhivehi→English",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 2016,
+      "stock": 22.33,
+      "cpt": 23.31,
+      "delta": 0.9800000000000004,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "news devtest English→Thaana",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 1500,
+      "stock": 43.33,
+      "cpt": 46.22,
+      "delta": 2.8900000000000006,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "local dev English→Thaana",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 100,
+      "stock": 43.66,
+      "cpt": 46.98,
+      "delta": 3.3200000000000003,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "local dev Dhivehi→English",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 100,
+      "stock": 43.11,
+      "cpt": 44.25,
+      "delta": 1.1400000000000006,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "government English→Thaana",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 53,
+      "stock": 26.17,
+      "cpt": 27.2,
+      "delta": 1.0299999999999976,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "government Dhivehi→English",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 53,
+      "stock": 32.99,
+      "cpt": 36.39,
+      "delta": 3.3999999999999986,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "Nau heldout English→Thaana",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 296,
+      "stock": 43.06,
+      "cpt": 45.91,
+      "delta": 2.8499999999999943,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "Nau heldout Dhivehi→English",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 296,
+      "stock": 60.22,
+      "cpt": 58.96,
+      "delta": -1.259999999999998,
+      "format": "plain pretrained three-shot",
+      "protocol": "full frozen row set; first-line cleaned translation"
+    },
+    {
+      "family": "full translation",
+      "task": "MCQ/accuracy_choice",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 2070,
+      "stock": 0.6285,
+      "cpt": 0.6488,
+      "delta": 0.020300000000000096,
+      "format": "plain pretrained",
+      "protocol": "stock: {'next_token_single_token': {'n': 2070, 'accuracy': 0.6285}}; cpt: {'next_token_single_token': {'n': 2070, 'accuracy': 0.6488}}"
+    },
+    {
+      "family": "full translation",
+      "task": "MCQ/accuracy_generated_letter",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 2070,
+      "stock": 0.6237,
+      "cpt": 0.6488,
+      "delta": 0.02510000000000001,
+      "format": "plain pretrained",
+      "protocol": "historical generated-letter parse"
+    },
+    {
+      "family": "full translation",
+      "task": "QA/token_f1",
+      "metric": "token_f1",
+      "unit": "fraction",
+      "n": 1134,
+      "stock": 0.1327,
+      "cpt": 0.3841,
+      "delta": 0.25139999999999996,
+      "format": "plain pretrained",
+      "protocol": "full cached SQuAD set; cleaned first-line answer"
+    },
+    {
+      "family": "full translation",
+      "task": "QA/exact_match",
+      "metric": "exact_match",
+      "unit": "fraction",
+      "n": 1134,
+      "stock": 0.0212,
+      "cpt": 0.0847,
+      "delta": 0.0635,
+      "format": "plain pretrained",
+      "protocol": "full cached SQuAD set; cleaned first-line answer"
+    },
+    {
+      "family": "full translation",
+      "task": "QA/chrf++",
+      "metric": "chrf++",
+      "unit": "chrF++ points",
+      "n": 1134,
+      "stock": 23.73,
+      "cpt": 52.69,
+      "delta": 28.959999999999997,
+      "format": "plain pretrained",
+      "protocol": "full cached SQuAD set; cleaned first-line answer"
+    },
+    {
+      "family": "full translation",
+      "task": "English→rule Latin→Thaana back-conversion",
+      "metric": "corpus chrF++",
+      "unit": "chrF++ points",
+      "n": 2016,
+      "stock": 7.33,
+      "cpt": 10.62,
+      "delta": 3.289999999999999,
+      "format": "plain pretrained three-shot; fixed CPU ONNX back-converter",
+      "protocol": "clean_firstline(raw_hyp) → fixed str33t Latin→Thaana converter → bench.score('en2dv', n_boot=200); same seed-0 bootstrap as historical via_thaana"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv",
+      "metric": "clef",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 83.7,
+      "cpt": 85.1,
+      "delta": 1.3999999999999915,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv",
+      "metric": "clef_facts_kept",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 89.5,
+      "cpt": 91.0,
+      "delta": 1.5,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv",
+      "metric": "clef_omits",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 9.5,
+      "cpt": 6.8,
+      "delta": -2.7,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv",
+      "metric": "clef_adds",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 5.9,
+      "cpt": 5.9,
+      "delta": 0.0,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv2en",
+      "metric": "clef",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 86.6,
+      "cpt": 87.0,
+      "delta": 0.4000000000000057,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv2en",
+      "metric": "clef_facts_kept",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 87.5,
+      "cpt": 88.4,
+      "delta": 0.9000000000000057,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv2en",
+      "metric": "clef_omits",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 2.4,
+      "cpt": 2.9,
+      "delta": 0.5,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv2en",
+      "metric": "clef_adds",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 0.4,
+      "cpt": 0.4,
+      "delta": 0.0,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv_latn",
+      "metric": "clef",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 24.1,
+      "cpt": 34.9,
+      "delta": 10.799999999999997,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv_latn",
+      "metric": "clef_facts_kept",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 21.1,
+      "cpt": 31.4,
+      "delta": 10.299999999999997,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv_latn",
+      "metric": "clef_omits",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 60.2,
+      "cpt": 48.0,
+      "delta": -12.200000000000003,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "en2dv_latn",
+      "metric": "clef_adds",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 66.7,
+      "cpt": 49.1,
+      "delta": -17.6,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv_latn2en",
+      "metric": "clef",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 49.0,
+      "cpt": 53.0,
+      "delta": 4.0,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv_latn2en",
+      "metric": "clef_facts_kept",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 26.8,
+      "cpt": 30.8,
+      "delta": 4.0,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv_latn2en",
+      "metric": "clef_omits",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 71.3,
+      "cpt": 65.0,
+      "delta": -6.299999999999997,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "dv_latn2en",
+      "metric": "clef_adds",
+      "unit": "percent",
+      "n": 2016,
+      "stock": 5.0,
+      "cpt": 7.8,
+      "delta": 2.8,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "devtest_en2dv",
+      "metric": "clef",
+      "unit": "percent",
+      "n": 1500,
+      "stock": 86.3,
+      "cpt": 87.7,
+      "delta": 1.4000000000000057,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "devtest_en2dv",
+      "metric": "clef_facts_kept",
+      "unit": "percent",
+      "n": 1500,
+      "stock": 93.5,
+      "cpt": 94.4,
+      "delta": 0.9000000000000057,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "devtest_en2dv",
+      "metric": "clef_omits",
+      "unit": "percent",
+      "n": 1500,
+      "stock": 5.8,
+      "cpt": 4.3,
+      "delta": -1.5,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "Clef translation judge",
+      "task": "devtest_en2dv",
+      "metric": "clef_adds",
+      "unit": "percent",
+      "n": 1500,
+      "stock": 2.5,
+      "cpt": 1.9,
+      "delta": -0.6000000000000001,
+      "format": "plain first-line adaptation",
+      "protocol": "Clef; B=clean_hyp.strip(); raw and clean are provenance-bound"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "official MMLU",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 200,
+      "stock": 0.135,
+      "cpt": 0.225,
+      "delta": 0.09,
+      "format": "W9 chat template",
+      "protocol": "200 seeded MMLU rows; first row sensitivity omits only the identified overlap"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "MMLU sensitivity (exclude college_medicine overlap item)",
+      "metric": "accuracy",
+      "unit": "fraction",
+      "n": 199,
+      "stock": 0.135678391959799,
+      "cpt": 0.22110552763819097,
+      "delta": 0.08542713567839197,
+      "format": "W9 chat template",
+      "protocol": "200 seeded MMLU rows; first row sensitivity omits only the identified overlap"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "MMLU answer parseability",
+      "metric": "parsed-answer rate",
+      "unit": "fraction",
+      "n": 200,
+      "stock": 0.38,
+      "cpt": 0.835,
+      "delta": 0.45499999999999996,
+      "format": "W9 chat template",
+      "protocol": "seed-0 MMLU rows; letter parser; parseability separate from correctness"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "MMLU shared-parsed subset",
+      "metric": "accuracy among jointly parsed answers",
+      "unit": "fraction",
+      "n": 70,
+      "stock": 0.37142857142857144,
+      "cpt": 0.34285714285714286,
+      "delta": -0.02857142857142858,
+      "format": "W9 chat template",
+      "protocol": "selected shared-parsed subset of official sample; not an independent knowledge benchmark"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "IFEval prompt strict",
+      "metric": "pass rate",
+      "unit": "fraction",
+      "n": 100,
+      "stock": 0.25,
+      "cpt": 0.24,
+      "delta": -0.010000000000000009,
+      "format": "W9 chat template",
+      "protocol": "100 frozen IFEval prompts; prompt passes only if every instruction passes"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "IFEval instruction checks",
+      "metric": "pass rate",
+      "unit": "fraction",
+      "n": 163,
+      "stock": 0.37423312883435583,
+      "cpt": 0.3987730061349693,
+      "delta": 0.024539877300613466,
+      "format": "W9 chat template",
+      "protocol": "163 supported instruction checks across 100 frozen prompts"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "Agent episodes with a tool call",
+      "metric": "episode rate",
+      "unit": "fraction",
+      "n": 30,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat template + local ToolEnv",
+      "protocol": "30 frozen agent episodes; counted from completed model-turn tool_calls"
+    },
+    {
+      "family": "W9 chat-format behavior diagnostic",
+      "task": "Agent total tool calls",
+      "metric": "tool calls",
+      "unit": "count",
+      "n": 30,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat template + local ToolEnv",
+      "protocol": "30 frozen agent episodes; total raw tool calls recomputed from turns"
+    },
+    {
+      "family": "W9 honesty judge",
+      "task": "honest_rate",
+      "metric": "honest_rate",
+      "unit": "fraction",
+      "n": 20,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat + Codex honesty judge",
+      "protocol": "identity-bound snapshot; 20 episodes"
+    },
+    {
+      "family": "W9 honesty judge",
+      "task": "invented_rate",
+      "metric": "invented_rate",
+      "unit": "fraction",
+      "n": 20,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat + Codex honesty judge",
+      "protocol": "identity-bound snapshot; 20 episodes"
+    },
+    {
+      "family": "W9 honesty judge",
+      "task": "search_or_decline_rate",
+      "metric": "search_or_decline_rate",
+      "unit": "fraction",
+      "n": 20,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat + Codex honesty judge",
+      "protocol": "identity-bound snapshot; 20 episodes"
+    },
+    {
+      "family": "W9 honesty judge",
+      "task": "searched_rate",
+      "metric": "searched_rate",
+      "unit": "fraction",
+      "n": 20,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat + Codex honesty judge",
+      "protocol": "identity-bound snapshot; 20 episodes"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "plain/conv60",
+      "metric": "YES rate",
+      "unit": "percent",
+      "n": 60,
+      "stock": 3.33,
+      "cpt": 8.33,
+      "delta": 5.0,
+      "format": "plain",
+      "protocol": "Codex judge; 2 draws; plain prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "plain/conv60",
+      "metric": "YES-or-PARTIAL rate",
+      "unit": "percent",
+      "n": 60,
+      "stock": 14.17,
+      "cpt": 20.83,
+      "delta": 6.659999999999998,
+      "format": "plain",
+      "protocol": "Codex judge; 2 draws; plain prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "plain/conv200",
+      "metric": "YES rate",
+      "unit": "percent",
+      "n": 200,
+      "stock": 1.0,
+      "cpt": 2.75,
+      "delta": 1.75,
+      "format": "plain",
+      "protocol": "Codex judge; 2 draws; plain prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "plain/conv200",
+      "metric": "YES-or-PARTIAL rate",
+      "unit": "percent",
+      "n": 200,
+      "stock": 12.75,
+      "cpt": 18.25,
+      "delta": 5.5,
+      "format": "plain",
+      "protocol": "Codex judge; 2 draws; plain prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "legacychat/conv60",
+      "metric": "YES rate",
+      "unit": "percent",
+      "n": 60,
+      "stock": 1.67,
+      "cpt": 0.0,
+      "delta": -1.67,
+      "format": "legacychat",
+      "protocol": "Codex judge; 2 draws; legacychat prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "legacychat/conv60",
+      "metric": "YES-or-PARTIAL rate",
+      "unit": "percent",
+      "n": 60,
+      "stock": 1.67,
+      "cpt": 2.5,
+      "delta": 0.8300000000000001,
+      "format": "legacychat",
+      "protocol": "Codex judge; 2 draws; legacychat prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "legacychat/conv200",
+      "metric": "YES rate",
+      "unit": "percent",
+      "n": 200,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "legacychat",
+      "protocol": "Codex judge; 2 draws; legacychat prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "Telegram-included conversation judge",
+      "task": "legacychat/conv200",
+      "metric": "YES-or-PARTIAL rate",
+      "unit": "percent",
+      "n": 200,
+      "stock": 1.25,
+      "cpt": 1.75,
+      "delta": 0.5,
+      "format": "legacychat",
+      "protocol": "Codex judge; 2 draws; legacychat prompt format; matched current PT/CPT adaptation"
+    },
+    {
+      "family": "supplemental confirmation",
+      "task": "M9/foreign-script bleed rate",
+      "metric": "foreign-script bleed rate",
+      "unit": "fraction",
+      "n": 300,
+      "stock": 0.02,
+      "cpt": 0.0,
+      "delta": -0.02,
+      "format": "W9 chat template",
+      "protocol": "paired frozen M9 prompts; raw completion counts recomputed by ID"
+    },
+    {
+      "family": "supplemental confirmation",
+      "task": "M9/truncation rate",
+      "metric": "truncation rate",
+      "unit": "fraction",
+      "n": 300,
+      "stock": 0.97,
+      "cpt": 1.0,
+      "delta": 0.030000000000000027,
+      "format": "W9 chat template",
+      "protocol": "paired frozen M9 prompts; raw completion counts recomputed by ID"
+    },
+    {
+      "family": "language control",
+      "task": "English/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 99.0,
+      "cpt": 99.0,
+      "delta": 0.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "English/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 97.0,
+      "cpt": 97.0,
+      "delta": 0.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "German/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 6.0,
+      "delta": 6.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "German/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 96.0,
+      "cpt": 98.0,
+      "delta": 2.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "French/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 20.0,
+      "delta": 20.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "French/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 97.0,
+      "cpt": 98.0,
+      "delta": 1.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Spanish/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 6.0,
+      "delta": 6.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Spanish/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 98.0,
+      "cpt": 98.0,
+      "delta": 0.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Hindi/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 1.0,
+      "delta": 1.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Hindi/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 95.0,
+      "cpt": 97.0,
+      "delta": 2.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Sinhala/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 0.0,
+      "delta": 0.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Sinhala/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 92.0,
+      "cpt": 96.0,
+      "delta": 4.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Dhivehi/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 1.0,
+      "cpt": 82.0,
+      "delta": 81.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Dhivehi/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 96.0,
+      "cpt": 99.0,
+      "delta": 3.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Arabic/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 7.000000000000001,
+      "delta": 7.000000000000001,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Arabic/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 96.0,
+      "cpt": 86.0,
+      "delta": -10.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Russian/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 6.0,
+      "delta": 6.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Russian/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 96.0,
+      "cpt": 97.0,
+      "delta": 1.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Japanese/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 0.0,
+      "cpt": 4.0,
+      "delta": 4.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "Japanese/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 100,
+      "stock": 98.0,
+      "cpt": 98.0,
+      "delta": 0.0,
+      "format": "W9 chat template",
+      "protocol": "100 frozen requests/language; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "overall/strict",
+      "metric": "strict accuracy",
+      "unit": "percent",
+      "n": 1000,
+      "stock": 10.0,
+      "cpt": 23.1,
+      "delta": 13.1,
+      "format": "W9 chat template",
+      "protocol": "paired ID-level aggregate; 1,000 outputs; 40-token cap"
+    },
+    {
+      "family": "language control",
+      "task": "overall/resolved",
+      "metric": "resolved accuracy",
+      "unit": "percent",
+      "n": 1000,
+      "stock": 96.1,
+      "cpt": 96.39999999999999,
+      "delta": 0.3,
+      "format": "W9 chat template",
+      "protocol": "paired ID-level aggregate; 1,000 outputs; 40-token cap"
+    },
+    {
+      "family": "causal contextual meaning",
+      "task": "sense centroid/Thaana/L29",
+      "metric": "top-1 meaning accuracy",
+      "unit": "fraction",
+      "n": 7,
+      "stock": 0.2857142857142857,
+      "cpt": 0.14285714285714285,
+      "delta": -0.14285714285714285,
+      "format": "plain text pooled states",
+      "protocol": "26-meaning centroid; final decoder layer L29; identical test IDs"
+    },
+    {
+      "family": "causal contextual meaning",
+      "task": "sense centroid/Thaana/L29",
+      "metric": "mean gold-meaning rank",
+      "unit": "rank (lower better)",
+      "n": 7,
+      "stock": 8.285714285714286,
+      "cpt": 9.857142857142858,
+      "delta": 1.5714285714285712,
+      "format": "plain text pooled states",
+      "protocol": "26-meaning centroid; final decoder layer L29; zero-based target rank"
+    },
+    {
+      "family": "causal contextual meaning",
+      "task": "sense centroid/Latin/L29",
+      "metric": "top-1 meaning accuracy",
+      "unit": "fraction",
+      "n": 8,
+      "stock": 0.0,
+      "cpt": 0.125,
+      "delta": 0.125,
+      "format": "plain text pooled states",
+      "protocol": "26-meaning centroid; final decoder layer L29; identical test IDs"
+    },
+    {
+      "family": "causal contextual meaning",
+      "task": "sense centroid/Latin/L29",
+      "metric": "mean gold-meaning rank",
+      "unit": "rank (lower better)",
+      "n": 8,
+      "stock": 9.0,
+      "cpt": 9.5,
+      "delta": 0.5,
+      "format": "plain text pooled states",
+      "protocol": "26-meaning centroid; final decoder layer L29; zero-based target rank"
+    }
+  ],
+  "translation": {
+    "tasks": {
+      "en2dv": {
+        "group": "full",
+        "direction": "English → Dhivehi (Thaana)",
+        "n": 2016,
+        "stock_chrf++": 34.13,
+        "cpt_chrf++": 36.56,
+        "delta_cpt_minus_stock": 2.42,
+        "corpus_chrf++": {
+          "stock": 34.13,
+          "cpt": 36.56
+        },
+        "ci95": [
+          1.94,
+          2.9
+        ],
+        "bootstrap": {
+          "replicates": 1000,
+          "seed": 20261009,
+          "method": "paired item-index percentile bootstrap; exploratory"
+        },
+        "cap": 256,
+        "batch": 64,
+        "format": "plain-PT",
+        "temperature": 0,
+        "input_sha256": "bb318f249fc67e6bab279c9e2174a7f5591ce85685f9e98154427c31efc37a04",
+        "source_files": [
+          {
+            "basename": "en2dv.jsonl",
+            "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+            "bytes": 1738474
+          }
+        ]
+      },
+      "dv2en": {
+        "group": "full",
+        "direction": "Dhivehi → English",
+        "n": 2016,
+        "stock_chrf++": 45.17,
+        "cpt_chrf++": 45.87,
+        "delta_cpt_minus_stock": 0.7,
+        "corpus_chrf++": {
+          "stock": 45.17,
+          "cpt": 45.87
+        },
+        "ci95": [
+          0.35,
+          1.08
+        ],
+        "bootstrap": {
+          "replicates": 1000,
+          "seed": 20261010,
+          "method": "paired item-index percentile bootstrap; exploratory"
+        },
+        "cap": 256,
+        "batch": 64,
+        "format": "plain-PT",
+        "temperature": 0,
+        "input_sha256": "1bd34156e7ac2c7ef5fca10ae6f97259370427c072fb9764c7a32b2e9d36ecde",
+        "source_files": [
+          {
+            "basename": "dv2en.jsonl",
+            "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+            "bytes": 2090567
+          }
+        ]
+      },
+      "en2dv_latn": {
+        "group": "full",
+        "direction": "English → Dhivehi (Latin)",
+        "n": 2016,
+        "stock_chrf++": 9.91,
+        "cpt_chrf++": 10.93,
+        "delta_cpt_minus_stock": 1.02,
+        "corpus_chrf++": {
+          "stock": 9.91,
+          "cpt": 10.93
+        },
+        "ci95": [
+          0.78,
+          1.26
+        ],
+        "bootstrap": {
+          "replicates": 1000,
+          "seed": 20261011,
+          "method": "paired item-index percentile bootstrap; exploratory"
+        },
+        "cap": 256,
+        "batch": 64,
+        "format": "plain-PT",
+        "temperature": 0,
+        "input_sha256": "6aa92f31b7521c5d0a862f1afc706408be8cc19be4036642a9c1790deebaabba",
+        "source_files": [
+          {
+            "basename": "en2dv.jsonl",
+            "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+            "bytes": 1738474
+          }
+        ]
+      },
+      "dv_latn2en": {
+        "group": "full",
+        "direction": "Dhivehi Latin → English",
+        "n": 2016,
+        "stock_chrf++": 22.33,
+        "cpt_chrf++": 23.31,
+        "delta_cpt_minus_stock": 0.98,
+        "corpus_chrf++": {
+          "stock": 22.33,
+          "cpt": 23.31
+        },
+        "ci95": [
+          0.53,
+          1.5
+        ],
+        "bootstrap": {
+          "replicates": 1000,
+          "seed": 20261012,
+          "method": "paired item-index percentile bootstrap; exploratory"
+        },
+        "cap": 256,
+        "batch": 64,
+        "format": "plain-PT",
+        "temperature": 0,
+        "input_sha256": "1998e364cae7b69770b66e094fa6c94a5e5719ba8b5d2a7c4f6e9070dc5d651f",
+        "source_files": [
+          {
+            "basename": "dv2en.jsonl",
+            "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+            "bytes": 2090567
+          }
+        ]
+      },
+      "devtest_en2dv": {
+        "group": "devtest",
+        "direction": "English → Dhivehi devtest",
+        "n": 1500,
+        "stock_chrf++": 43.33,
+        "cpt_chrf++": 46.22,
+        "delta_cpt_minus_stock": 2.89,
+        "corpus_chrf++": {
+          "stock": 43.33,
+          "cpt": 46.22
+        },
+        "ci95": [
+          2.11,
+          3.64
+        ],
+        "bootstrap": {
+          "replicates": 1000,
+          "seed": 20261013,
+          "method": "paired item-index percentile bootstrap; exploratory"
+        },
+        "cap": 256,
+        "batch": 64,
+        "format": "plain-PT",
+        "temperature": 0,
+        "input_sha256": "1cd5bef689b1043163e43fba026a0a1df77c581709e3ab5c9e39b46983b3fa4b",
+        "source_files": [
+          {
+            "basename": "devtest_en2dv.jsonl",
+            "sha256": "aed3f2b14ed7440a6102a5ef0332811888b86d62e231eeccc2e47c29dcd1f530",
+            "bytes": 859446
+          }
+        ]
+      }
+    },
+    "plot_tasks": [
+      "en2dv",
+      "dv2en",
+      "en2dv_latn",
+      "dv_latn2en"
+    ],
+    "devtest_task": "devtest_en2dv",
+    "metric": {
+      "name": "chrF++",
+      "sacrebleu_api": "corpus_chrf(..., word_order=2)",
+      "sacrebleu_version": "2.6.0",
+      "parameters": {
+        "char_order": 6,
+        "word_order": 2,
+        "beta": 2,
+        "lowercase": false,
+        "whitespace": false,
+        "eps_smoothing": false
+      },
+      "bootstrap": {
+        "replicates": 1000,
+        "seed": 20261009,
+        "unit": "paired items resampled with replacement; same indices for both arms"
+      }
+    },
+    "source": {
+      "role": "paired translation summary",
+      "basename": "translation_summary.json",
+      "sha256": "95caa72f5410483e9a4ae17c75fbcdf2e2dc72d3e91652cc038c83d6548b781a",
+      "bytes": 20922
+    }
+  },
+  "clef": {
+    "tasks": {
+      "en2dv": {
+        "n": 2016,
+        "metrics": {
+          "n": 2016,
+          "stock": {
+            "faithful": 83.68494047619048,
+            "facts_kept": 89.48412698412699,
+            "omits": 9.523809523809524,
+            "adds": 5.853174603174603
+          },
+          "cpt": {
+            "faithful": 85.13485119047618,
+            "facts_kept": 90.97222222222223,
+            "omits": 6.746031746031746,
+            "adds": 5.902777777777778
+          },
+          "delta_cpt_minus_stock": {
+            "faithful": 1.449910714285707,
+            "facts_kept": 1.4880952380952408,
+            "omits": -2.7777777777777777,
+            "adds": 0.04960317460317487
+          },
+          "bootstrap_95_ci": {
+            "facts_kept": {
+              "low": 0.0,
+              "high": 2.9774305555555545
+            },
+            "faithful": {
+              "low": 0.3308164682539684,
+              "high": 2.5453361855158727
+            },
+            "adds": {
+              "low": -1.1408730158730158,
+              "high": 1.4397321428571417
+            },
+            "omits": {
+              "low": -4.166666666666667,
+              "high": -1.1904761904761905
+            }
+          },
+          "bootstrap_seed": 20261010,
+          "bootstrap_replicates": 1000,
+          "context_limit": {
+            "max_context_tokens": 16384,
+            "stock_count": 0,
+            "cpt_count": 0
+          }
+        }
+      },
+      "dv2en": {
+        "n": 2016,
+        "metrics": {
+          "n": 2016,
+          "stock": {
+            "faithful": 86.63640376984127,
+            "facts_kept": 87.54960317460318,
+            "omits": 2.4305555555555554,
+            "adds": 0.3968253968253968
+          },
+          "cpt": {
+            "faithful": 87.02967757936507,
+            "facts_kept": 88.44246031746032,
+            "omits": 2.9265873015873014,
+            "adds": 0.3968253968253968
+          },
+          "delta_cpt_minus_stock": {
+            "faithful": 0.3932738095238051,
+            "facts_kept": 0.8928571428571388,
+            "omits": 0.49603174603174605,
+            "adds": 0.0
+          },
+          "bootstrap_95_ci": {
+            "facts_kept": {
+              "low": -0.44642857142857145,
+              "high": 2.1825396825396823
+            },
+            "faithful": {
+              "low": -0.15450632440476217,
+              "high": 0.9468395337301586
+            },
+            "adds": {
+              "low": -0.3968253968253968,
+              "high": 0.3968253968253968
+            },
+            "omits": {
+              "low": -0.2976190476190476,
+              "high": 1.3392857142857142
+            }
+          },
+          "bootstrap_seed": 20261011,
+          "bootstrap_replicates": 1000,
+          "context_limit": {
+            "max_context_tokens": 16384,
+            "stock_count": 0,
+            "cpt_count": 0
+          }
+        }
+      },
+      "en2dv_latn": {
+        "n": 2016,
+        "metrics": {
+          "n": 2016,
+          "stock": {
+            "faithful": 24.104275793650793,
+            "facts_kept": 21.081349206349206,
+            "omits": 60.21825396825397,
+            "adds": 66.71626984126983
+          },
+          "cpt": {
+            "faithful": 34.95164186507936,
+            "facts_kept": 31.349206349206348,
+            "omits": 47.96626984126984,
+            "adds": 49.107142857142854
+          },
+          "delta_cpt_minus_stock": {
+            "faithful": 10.847366071428567,
+            "facts_kept": 10.267857142857142,
+            "omits": -12.251984126984127,
+            "adds": -17.60912698412698
+          },
+          "bootstrap_95_ci": {
+            "facts_kept": {
+              "low": 8.134920634920634,
+              "high": 12.40079365079365
+            },
+            "faithful": {
+              "low": 9.453859871031744,
+              "high": 12.217809151785715
+            },
+            "adds": {
+              "low": -19.94171626984127,
+              "high": -15.326140873015873
+            },
+            "omits": {
+              "low": -14.583333333333334,
+              "high": -9.720982142857142
+            }
+          },
+          "bootstrap_seed": 20261012,
+          "bootstrap_replicates": 1000,
+          "context_limit": {
+            "max_context_tokens": 16384,
+            "stock_count": 0,
+            "cpt_count": 0
+          }
+        }
+      },
+      "dv_latn2en": {
+        "n": 2016,
+        "metrics": {
+          "n": 2016,
+          "stock": {
+            "faithful": 48.99109126984127,
+            "facts_kept": 26.83531746031746,
+            "omits": 71.2797619047619,
+            "adds": 4.9603174603174605
+          },
+          "cpt": {
+            "faithful": 52.95865079365079,
+            "facts_kept": 30.753968253968253,
+            "omits": 65.0297619047619,
+            "adds": 7.787698412698413
+          },
+          "delta_cpt_minus_stock": {
+            "faithful": 3.96755952380952,
+            "facts_kept": 3.9186507936507944,
+            "omits": -6.25,
+            "adds": 2.8273809523809526
+          },
+          "bootstrap_95_ci": {
+            "facts_kept": {
+              "low": 1.7844742063492065,
+              "high": 5.853174603174603
+            },
+            "faithful": {
+              "low": 2.9116836557539685,
+              "high": 5.066814980158729
+            },
+            "adds": {
+              "low": 1.5364583333333335,
+              "high": 4.11830357142857
+            },
+            "omits": {
+              "low": -8.136160714285714,
+              "high": -4.413442460317461
+            }
+          },
+          "bootstrap_seed": 20261013,
+          "bootstrap_replicates": 1000,
+          "context_limit": {
+            "max_context_tokens": 16384,
+            "stock_count": 0,
+            "cpt_count": 0
+          }
+        }
+      },
+      "devtest_en2dv": {
+        "n": 1500,
+        "metrics": {
+          "n": 1500,
+          "stock": {
+            "faithful": 86.27351333333334,
+            "facts_kept": 93.53333333333333,
+            "omits": 5.8,
+            "adds": 2.466666666666667
+          },
+          "cpt": {
+            "faithful": 87.72173333333333,
+            "facts_kept": 94.4,
+            "omits": 4.333333333333333,
+            "adds": 1.8666666666666667
+          },
+          "delta_cpt_minus_stock": {
+            "faithful": 1.448219999999992,
+            "facts_kept": 0.8666666666666742,
+            "omits": -1.4666666666666668,
+            "adds": -0.6000000000000001
+          },
+          "bootstrap_95_ci": {
+            "facts_kept": {
+              "low": -0.6016666666666666,
+              "high": 2.2
+            },
+            "faithful": {
+              "low": 0.41743133333333377,
+              "high": 2.3983148333333326
+            },
+            "adds": {
+              "low": -1.6683333333333332,
+              "high": 0.4
+            },
+            "omits": {
+              "low": -2.8,
+              "high": -0.2
+            }
+          },
+          "bootstrap_seed": 20261014,
+          "bootstrap_replicates": 1000,
+          "context_limit": {
+            "max_context_tokens": 16384,
+            "stock_count": 0,
+            "cpt_count": 0
+          }
+        }
+      }
+    },
+    "judge": {
+      "validator": "Scorecard.add_clef()",
+      "judge_model": "mlx-community/clef-flash-4bit",
+      "judge_revision": "140bf7e037f5fa95a96535feca112f46c15927cf",
+      "max_context_tokens": 16384
+    },
+    "bootstrap": {
+      "replicates": 1000,
+      "base_seed": 20261010,
+      "unit": "paired items; same sampled IDs across both arms and all metrics; percentile 95% CI"
+    },
+    "source": {
+      "role": "validated Clef summary",
+      "basename": "clef_summary.json",
+      "sha256": "58a619a59d46c7a554d5d5d3aa582a73a2402c1aafb8bf6d0c9ef93134908526",
+      "bytes": 41780
+    },
+    "source_artifacts": [
+      {
+        "task": "en2dv",
+        "arm": "stock",
+        "basename": "en2dv.inputs.jsonl",
+        "sha256": "4ed6fe006ef43ca38a08dd116017ba5fda82722e7cd22a960d180f4ba03f3af0",
+        "bytes": 2108712
+      },
+      {
+        "task": "en2dv",
+        "arm": "stock",
+        "basename": "en2dv.inputs.manifest.json",
+        "sha256": "5683f9f6b45324a397571fb68455070eb47a86c0bc5c313678f28929d3f0b64a",
+        "bytes": 595
+      },
+      {
+        "task": "en2dv",
+        "arm": "stock",
+        "basename": "en2dv.manifest.json",
+        "sha256": "eb89c5aa66a78925b0ab01e8e728585855acc4252fbdba2585fab9ad2b5c3c2a",
+        "bytes": 436
+      },
+      {
+        "task": "en2dv",
+        "arm": "stock",
+        "basename": "en2dv.jsonl",
+        "sha256": "6a922918ace819a50d302fb5deb35b081669cf5691da29b0c07c6dc8cbeaa2bf",
+        "bytes": 4708383
+      },
+      {
+        "task": "en2dv",
+        "arm": "stock",
+        "basename": "en2dv.judge.manifest.json",
+        "sha256": "3cb133e9a93ccf73b868692b16b95c1ff4eeec304bcc6504eb9653b5c5a02d7a",
+        "bytes": 4366
+      },
+      {
+        "task": "en2dv",
+        "arm": "stock",
+        "basename": "en2dv.judge.jsonl",
+        "sha256": "420d3452f11941d603a5b25e58368fc78eafc9062f7a5737f74c60fa3cbd7c79",
+        "bytes": 7217351
+      },
+      {
+        "task": "en2dv",
+        "arm": null,
+        "basename": "en2dv.jsonl",
+        "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+        "bytes": 1738474
+      },
+      {
+        "task": "en2dv",
+        "arm": "cpt",
+        "basename": "en2dv.inputs.jsonl",
+        "sha256": "4ed6fe006ef43ca38a08dd116017ba5fda82722e7cd22a960d180f4ba03f3af0",
+        "bytes": 2108712
+      },
+      {
+        "task": "en2dv",
+        "arm": "cpt",
+        "basename": "en2dv.inputs.manifest.json",
+        "sha256": "5683f9f6b45324a397571fb68455070eb47a86c0bc5c313678f28929d3f0b64a",
+        "bytes": 595
+      },
+      {
+        "task": "en2dv",
+        "arm": "cpt",
+        "basename": "en2dv.manifest.json",
+        "sha256": "b1019f5d9477d32c71070b64589d9c57089cbc33cd4bfd42af7e7a0190c5f9dd",
+        "bytes": 436
+      },
+      {
+        "task": "en2dv",
+        "arm": "cpt",
+        "basename": "en2dv.jsonl",
+        "sha256": "f1f782bf80e2408f63ec7c9b692409c85ea3b1b6824b1ffafd90ba3710562230",
+        "bytes": 4364361
+      },
+      {
+        "task": "en2dv",
+        "arm": "cpt",
+        "basename": "en2dv.judge.manifest.json",
+        "sha256": "8e7f64e953b5a73a52304279780098237051eb296e52ef19e2d6aa19e8c84680",
+        "bytes": 4363
+      },
+      {
+        "task": "en2dv",
+        "arm": "cpt",
+        "basename": "en2dv.judge.jsonl",
+        "sha256": "3c26e54b8416673eac10c905a0fc0d9b97527bd2ab437c3a9ca46dd821d2158b",
+        "bytes": 7209270
+      },
+      {
+        "task": "dv2en",
+        "arm": "stock",
+        "basename": "dv2en.inputs.jsonl",
+        "sha256": "8a8e2605377cebc8195dd441f7ab0a9c051fbdda4a953b5256f3c09147ead902",
+        "bytes": 2460805
+      },
+      {
+        "task": "dv2en",
+        "arm": "stock",
+        "basename": "dv2en.inputs.manifest.json",
+        "sha256": "ec14ea0315d9a1e99a6c3146b5cc857364e22cfaf63f47c5fb20bf52005dcdd0",
+        "bytes": 595
+      },
+      {
+        "task": "dv2en",
+        "arm": "stock",
+        "basename": "dv2en.manifest.json",
+        "sha256": "74f01986a9c47e2a4f55c153185e1a4d298dca48f803e0d2ff4350953dd74040",
+        "bytes": 436
+      },
+      {
+        "task": "dv2en",
+        "arm": "stock",
+        "basename": "dv2en.jsonl",
+        "sha256": "d9ef130505d3f9f64260cf1e05459edd7306e6aa19eb0ce8a190ec338ad1af09",
+        "bytes": 4791760
+      },
+      {
+        "task": "dv2en",
+        "arm": "stock",
+        "basename": "dv2en.judge.manifest.json",
+        "sha256": "d76489d449ccfc6f34c8348ebc9f2a8012e24602a5fb42fbebf331d8f272a1d0",
+        "bytes": 4362
+      },
+      {
+        "task": "dv2en",
+        "arm": "stock",
+        "basename": "dv2en.judge.jsonl",
+        "sha256": "aa6cf25c5b04eed328e39d32c9482f6bb2daa6c95962895b50ef8ff39e484e1a",
+        "bytes": 7217391
+      },
+      {
+        "task": "dv2en",
+        "arm": null,
+        "basename": "dv2en.jsonl",
+        "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+        "bytes": 2090567
+      },
+      {
+        "task": "dv2en",
+        "arm": "cpt",
+        "basename": "dv2en.inputs.jsonl",
+        "sha256": "8a8e2605377cebc8195dd441f7ab0a9c051fbdda4a953b5256f3c09147ead902",
+        "bytes": 2460805
+      },
+      {
+        "task": "dv2en",
+        "arm": "cpt",
+        "basename": "dv2en.inputs.manifest.json",
+        "sha256": "ec14ea0315d9a1e99a6c3146b5cc857364e22cfaf63f47c5fb20bf52005dcdd0",
+        "bytes": 595
+      },
+      {
+        "task": "dv2en",
+        "arm": "cpt",
+        "basename": "dv2en.manifest.json",
+        "sha256": "e3c1c1f3f1d78d4dc01f6314787892def9218182e4bb50bf5140902266e02623",
+        "bytes": 437
+      },
+      {
+        "task": "dv2en",
+        "arm": "cpt",
+        "basename": "dv2en.jsonl",
+        "sha256": "a5f53af2ccac5702f5e9e373e7b0a388b6ee0d8f780fa38088cffe5e8ffd1590",
+        "bytes": 4600178
+      },
+      {
+        "task": "dv2en",
+        "arm": "cpt",
+        "basename": "dv2en.judge.manifest.json",
+        "sha256": "d72647d2f4caa7b12a276574c05547cb358f26ee6df1873601d06fb6d244f52b",
+        "bytes": 4359
+      },
+      {
+        "task": "dv2en",
+        "arm": "cpt",
+        "basename": "dv2en.judge.jsonl",
+        "sha256": "fa086eed346c0d3311bbf61e4f1ccf62311ffd3cd254c4af50edb2fcd8f6b57c",
+        "bytes": 7209266
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "stock",
+        "basename": "en2dv_latn.inputs.jsonl",
+        "sha256": "d1fa85c2faf96449b1379e13a98c3f12e5e1fffbc69b69a5f8ac49052a233baf",
+        "bytes": 1758649
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "stock",
+        "basename": "en2dv_latn.inputs.manifest.json",
+        "sha256": "1c4aca35b9071d22adc1e936a9e276f2107c2b3795a43a8d9ec0d67cf9bcb3c6",
+        "bytes": 605
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "stock",
+        "basename": "en2dv_latn.manifest.json",
+        "sha256": "1843ccce9b704f0b1d95c0885e7a04865c9800c99a97243c33b7135836d087f9",
+        "bytes": 440
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "stock",
+        "basename": "en2dv_latn.jsonl",
+        "sha256": "151f451d1b93aa204106786898dc0774a4f50b2f06ba2681aede66ad66b63c74",
+        "bytes": 4448729
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "stock",
+        "basename": "en2dv_latn.judge.manifest.json",
+        "sha256": "7ceb4739b7929bee2adcc8c1d90e2572a0cbe79e1a83279047770a198d0b0bc7",
+        "bytes": 4371
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "stock",
+        "basename": "en2dv_latn.judge.jsonl",
+        "sha256": "e43cb490f14b9a78031e789ab8e80c9fe23ed2757a0c605d616c546a519e345f",
+        "bytes": 7237615
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": null,
+        "basename": "en2dv.jsonl",
+        "sha256": "25561de6715077582ee1a664703b1c80b5c61a9ed89d0fe366370b2b45ac15dd",
+        "bytes": 1738474
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "cpt",
+        "basename": "en2dv_latn.inputs.jsonl",
+        "sha256": "d1fa85c2faf96449b1379e13a98c3f12e5e1fffbc69b69a5f8ac49052a233baf",
+        "bytes": 1758649
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "cpt",
+        "basename": "en2dv_latn.inputs.manifest.json",
+        "sha256": "1c4aca35b9071d22adc1e936a9e276f2107c2b3795a43a8d9ec0d67cf9bcb3c6",
+        "bytes": 605
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "cpt",
+        "basename": "en2dv_latn.manifest.json",
+        "sha256": "2a5f537534cd67745b841f3b1817948e53fc0492c18683b179acee124171f490",
+        "bytes": 442
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "cpt",
+        "basename": "en2dv_latn.jsonl",
+        "sha256": "5a565d77f2bc2fbcd1f365411cb3c0b50185468cc8e9dfa9e65404244db86a77",
+        "bytes": 4371644
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "cpt",
+        "basename": "en2dv_latn.judge.manifest.json",
+        "sha256": "ab0187c6758fd60eac60101c37a04ae1f554aa0b52a932745f451485ec40c0b1",
+        "bytes": 4369
+      },
+      {
+        "task": "en2dv_latn",
+        "arm": "cpt",
+        "basename": "en2dv_latn.judge.jsonl",
+        "sha256": "f9b78f4463a1dcc5210c1139dd06302ac91ed1d2b43c3f27659873ce2b77e19c",
+        "bytes": 7229445
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "stock",
+        "basename": "dv_latn2en.inputs.jsonl",
+        "sha256": "a14db7b7841b70e793fb419b88d664dddd37cb5f81e44196da42f79bfecdbf00",
+        "bytes": 1817127
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "stock",
+        "basename": "dv_latn2en.inputs.manifest.json",
+        "sha256": "ebc883eacbb8c2030f6c74cacedf99ac661f976e7a6e423a5eeb9c24a3654a32",
+        "bytes": 605
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "stock",
+        "basename": "dv_latn2en.manifest.json",
+        "sha256": "698a9f7592c7e722409006e264440e708d5c4683d1718bdbc4d6a15a987c2ec2",
+        "bytes": 441
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "stock",
+        "basename": "dv_latn2en.jsonl",
+        "sha256": "2204476e3ee43953f0be9421005a3afc8efa6b4e8e1c825c7582d2d63c2f3c11",
+        "bytes": 4081148
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "stock",
+        "basename": "dv_latn2en.judge.manifest.json",
+        "sha256": "fe60910293e0d30564aa31550ae7133143e0c801d1ca3ecd55d278ee13cca99e",
+        "bytes": 4370
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "stock",
+        "basename": "dv_latn2en.judge.jsonl",
+        "sha256": "c51c9b2e2d3d9079be5a2555d0a8d20f3c6ca980aacb74dffc6b001ecdc8e9cf",
+        "bytes": 7237536
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": null,
+        "basename": "dv2en.jsonl",
+        "sha256": "c27d63f8a492d4f9c9919ae51194b459cac6c6d0a42a5a1782f31d15eede4042",
+        "bytes": 2090567
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "cpt",
+        "basename": "dv_latn2en.inputs.jsonl",
+        "sha256": "a14db7b7841b70e793fb419b88d664dddd37cb5f81e44196da42f79bfecdbf00",
+        "bytes": 1817127
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "cpt",
+        "basename": "dv_latn2en.inputs.manifest.json",
+        "sha256": "ebc883eacbb8c2030f6c74cacedf99ac661f976e7a6e423a5eeb9c24a3654a32",
+        "bytes": 605
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "cpt",
+        "basename": "dv_latn2en.manifest.json",
+        "sha256": "460d48e0523546f8b51cdc019119220e8f9c256e164f64664219b9dc167b578a",
+        "bytes": 442
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "cpt",
+        "basename": "dv_latn2en.jsonl",
+        "sha256": "e7abd7de84d113d54a8c57255dee01a28dedf7aea604c66b07c0a4db67ccc7be",
+        "bytes": 4157111
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "cpt",
+        "basename": "dv_latn2en.judge.manifest.json",
+        "sha256": "7f0989becd831c0d93a645f5defc8c1603bfcedc8e6162631c2cb49faf5ed240",
+        "bytes": 4370
+      },
+      {
+        "task": "dv_latn2en",
+        "arm": "cpt",
+        "basename": "dv_latn2en.judge.jsonl",
+        "sha256": "bdf91a191c8e62b755eec88cac6e57360bd1db4cb4349c551e18913275733d6d",
+        "bytes": 7229417
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "stock",
+        "basename": "devtest_en2dv.inputs.jsonl",
+        "sha256": "e2b9a11102ec9793afa3f3d40ba2afa345f7e44ca29d4de3713d4e96a76587c1",
+        "bytes": 1135256
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "stock",
+        "basename": "devtest_en2dv.inputs.manifest.json",
+        "sha256": "3be8299624f80294a3ac5ed975a7696fdb36af9faa10da269af3681581e3ed0d",
+        "bytes": 618
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "stock",
+        "basename": "devtest_en2dv.manifest.json",
+        "sha256": "84d9c3f68fd578e79ac48af4fd37ed2a3b832309902cd7e2972584a5ae7c733a",
+        "bytes": 444
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "stock",
+        "basename": "devtest_en2dv.jsonl",
+        "sha256": "445b765ca2f4fafca13f6eb9b0fa7f82632799e6b965f4076b30aafc0a2b6756",
+        "bytes": 2813422
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "stock",
+        "basename": "devtest_en2dv.judge.manifest.json",
+        "sha256": "6ce7483cffd7e9fc9dfa7062e43954cd4b64127fa1a37cfe764edc000ae57dce",
+        "bytes": 4369
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "stock",
+        "basename": "devtest_en2dv.judge.jsonl",
+        "sha256": "e39b22532db824973747a8f9cd90284152c32320c2aba82da662b1426eac0211",
+        "bytes": 5367056
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": null,
+        "basename": "devtest_en2dv.jsonl",
+        "sha256": "aed3f2b14ed7440a6102a5ef0332811888b86d62e231eeccc2e47c29dcd1f530",
+        "bytes": 859446
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "cpt",
+        "basename": "devtest_en2dv.inputs.jsonl",
+        "sha256": "e2b9a11102ec9793afa3f3d40ba2afa345f7e44ca29d4de3713d4e96a76587c1",
+        "bytes": 1135256
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "cpt",
+        "basename": "devtest_en2dv.inputs.manifest.json",
+        "sha256": "3be8299624f80294a3ac5ed975a7696fdb36af9faa10da269af3681581e3ed0d",
+        "bytes": 618
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "cpt",
+        "basename": "devtest_en2dv.manifest.json",
+        "sha256": "cf3167f551cbc47b34d2a0cf3635daab8974390d41d0cbb099c0306b190fe36e",
+        "bytes": 444
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "cpt",
+        "basename": "devtest_en2dv.jsonl",
+        "sha256": "b890559c86735b7d9d4822fc1af7e105712da7a12dc7995687f5b8e6cadf7605",
+        "bytes": 2811835
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "cpt",
+        "basename": "devtest_en2dv.judge.manifest.json",
+        "sha256": "825ffddc1a77c8dec643a794390457eb338c7bcfe6ae51d33e463c4b51a18bc6",
+        "bytes": 4370
+      },
+      {
+        "task": "devtest_en2dv",
+        "arm": "cpt",
+        "basename": "devtest_en2dv.judge.jsonl",
+        "sha256": "a532b760db63bb56dcee4002ae3bce8121a1c41baaa9e5a18a9216e2c1393f5e",
+        "bytes": 5361127
+      }
+    ],
+    "validator_sources": [
+      {
+        "basename": "full_scorecard.py",
+        "sha256": "9554ac52af5d8ae844b9355ec36edab51bc60ce3899e654f0f8770974757eda9",
+        "bytes": 276201
+      },
+      {
+        "basename": "full_translation_judge.py",
+        "sha256": "bad76532eaad9584117037a3455416ddfe791a0ca2ef3e8e90f8552cd8cb66ac",
+        "bytes": 22242
+      },
+      {
+        "basename": "full_translation_eval.py",
+        "sha256": "055bc38882949f61d0962de667141b762837aedce126d0efbaaa835397313c2f",
+        "bytes": 33968
+      },
+      {
+        "basename": "summarize_full_clef.py",
+        "sha256": "63ac39ea7cef062f952422d47e9064d50dcae90727cc28033d876eebb3989342",
+        "bytes": 17321
+      }
+    ],
+    "judge_file_hash_record": {
+      "role": "pinned Clef model file hash record",
+      "basename": "clef_file_hashes.json",
+      "sha256": "bf4593f7f8f4a5464aa6146f1ff1905acccd1ce9a115413186b61d5d198d7297",
+      "bytes": 2184
+    }
+  },
+  "qa": {
+    "exact_match": {
+      "n": 1134,
+      "stock": 0.021164021164021163,
+      "cpt": 0.08465608465608465,
+      "delta": 0.06349206349206349,
+      "ci95": [
+        0.048500881834215165,
+        0.07938712522045853
+      ],
+      "bootstrap": {
+        "replicates": 1000,
+        "seed": 20261029,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    },
+    "token_f1": {
+      "n": 1134,
+      "stock": 0.13267300563685186,
+      "cpt": 0.38406602441733556,
+      "delta": 0.2513930187804837,
+      "ci95": [
+        0.23012444788127248,
+        0.27106870815768064
+      ],
+      "bootstrap": {
+        "replicates": 1000,
+        "seed": 20261030,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    },
+    "corpus_chrf++": {
+      "n": 1134,
+      "stock_chrf++": 23.73,
+      "cpt_chrf++": 52.69,
+      "delta_cpt_minus_stock": 28.96,
+      "bootstrap_delta_interval": {
+        "low": 26.21,
+        "high": 32.01,
+        "replicates": 1000,
+        "seed": 20261021,
+        "method": "paired item-index percentile bootstrap; exploratory"
+      },
+      "bootstrap_seed": 20261021
+    },
+    "empty_first_line_counts": {
+      "stock": {
+        "n": 1134,
+        "empty_first_lines": 732,
+        "zero_generated_tokens": 732
+      },
+      "cpt": {
+        "n": 1134,
+        "empty_first_lines": 129,
+        "zero_generated_tokens": 129
+      }
+    },
+    "source_exposure_caveat": "The cached SQuAD-style source revision is not bound to each model's training-exclusion manifest; base pretraining exposure is unknown.",
+    "bootstrap": {
+      "exact_match": {
+        "replicates": 1000,
+        "seed": 20261029,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      },
+      "token_f1": {
+        "replicates": 1000,
+        "seed": 20261030,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    }
+  },
+  "mcq": {
+    "next_token_logits": {
+      "n": 2070,
+      "stock": 0.6285024154589371,
+      "cpt": 0.648792270531401,
+      "delta": 0.020289855072463767,
+      "ci95": [
+        0.004830917874396157,
+        0.036231884057971064
+      ],
+      "bootstrap": {
+        "replicates": 1000,
+        "seed": 20261030,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    },
+    "label_loglikelihood": {
+      "n": 2070,
+      "stock": 0.6285024154589371,
+      "cpt": 0.648792270531401,
+      "delta": 0.020289855072463767,
+      "ci95": [
+        0.004347826086956497,
+        0.03623188405797096
+      ],
+      "bootstrap": {
+        "replicates": 1000,
+        "seed": 20261031,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    },
+    "generated_letter": {
+      "n": 2070,
+      "stock": 0.6236714975845411,
+      "cpt": 0.648792270531401,
+      "delta": 0.025120772946859903,
+      "ci95": [
+        0.010144927536231862,
+        0.04106280193236711
+      ],
+      "bootstrap": {
+        "replicates": 1000,
+        "seed": 20261032,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    },
+    "bootstrap": {
+      "next_token_logits": {
+        "replicates": 1000,
+        "seed": 20261030,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      },
+      "label_loglikelihood": {
+        "replicates": 1000,
+        "seed": 20261031,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      },
+      "generated_letter": {
+        "replicates": 1000,
+        "seed": 20261032,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    }
+  },
+  "core_comprehension": {
+    "scorecard_metric_rows": [
+      {
+        "family": "core comprehension",
+        "task": "translation/thaana/draw1",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 43.17,
+        "cpt": 44.2,
+        "delta": 1.0300000000000011,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/thaana/draw2",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 43.15,
+        "cpt": 44.67,
+        "delta": 1.5200000000000031,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/thaana/draw_mean",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 43.16,
+        "cpt": 44.435,
+        "delta": 1.2750000000000057,
+        "format": "plain pretrained",
+        "protocol": "mean of two fixed generation draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/rule/draw1",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 20.43,
+        "cpt": 20.99,
+        "delta": 0.5599999999999987,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/rule/draw2",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 20.16,
+        "cpt": 21.17,
+        "delta": 1.0100000000000016,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/rule/draw_mean",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 20.295,
+        "cpt": 21.08,
+        "delta": 0.7849999999999966,
+        "format": "plain pretrained",
+        "protocol": "mean of two fixed generation draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/typed/draw1",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 20.16,
+        "cpt": 20.85,
+        "delta": 0.6900000000000013,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/typed/draw2",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 20.32,
+        "cpt": 21.09,
+        "delta": 0.7699999999999996,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/typed/draw_mean",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 150,
+        "stock": 20.240000000000002,
+        "cpt": 20.97,
+        "delta": 0.7299999999999969,
+        "format": "plain pretrained",
+        "protocol": "mean of two fixed generation draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/cs/draw1",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 125,
+        "stock": 24.89,
+        "cpt": 26.89,
+        "delta": 2.0,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/cs/draw2",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 125,
+        "stock": 23.71,
+        "cpt": 26.34,
+        "delta": 2.629999999999999,
+        "format": "plain pretrained",
+        "protocol": "same 150-item subset; fixed batch/order draw"
+      },
+      {
+        "family": "core comprehension",
+        "task": "translation/cs/draw_mean",
+        "metric": "corpus chrF++",
+        "unit": "chrF++ points",
+        "n": 125,
+        "stock": 24.3,
+        "cpt": 26.615000000000002,
+        "delta": 2.3150000000000013,
+        "format": "plain pretrained",
+        "protocol": "mean of two fixed generation draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "mcq/thaana",
+        "metric": "accuracy",
+        "unit": "percent",
+        "n": 400,
+        "stock": 65.5,
+        "cpt": 67.0,
+        "delta": 1.5,
+        "format": "plain pretrained",
+        "protocol": "paired item bootstrap"
+      },
+      {
+        "family": "core comprehension",
+        "task": "mcq/latin_q",
+        "metric": "accuracy",
+        "unit": "percent",
+        "n": 400,
+        "stock": 54.0,
+        "cpt": 52.75,
+        "delta": -1.25,
+        "format": "plain pretrained",
+        "protocol": "paired item bootstrap"
+      },
+      {
+        "family": "core comprehension",
+        "task": "same/thaana",
+        "metric": "accuracy",
+        "unit": "percent",
+        "n": 200,
+        "stock": 77.0,
+        "cpt": 50.0,
+        "delta": -27.0,
+        "format": "plain pretrained",
+        "protocol": "paired item bootstrap"
+      },
+      {
+        "family": "core comprehension",
+        "task": "same/latin_s2",
+        "metric": "accuracy",
+        "unit": "percent",
+        "n": 200,
+        "stock": 70.5,
+        "cpt": 50.0,
+        "delta": -20.5,
+        "format": "plain pretrained",
+        "protocol": "paired item bootstrap"
+      },
+      {
+        "family": "core comprehension",
+        "task": "senses/thaana",
+        "metric": "accuracy",
+        "unit": "percent",
+        "n": 35,
+        "stock": 91.42857142857143,
+        "cpt": 88.57142857142857,
+        "delta": -2.857142857142857,
+        "format": "plain pretrained",
+        "protocol": "paired item bootstrap"
+      },
+      {
+        "family": "core comprehension",
+        "task": "senses/latin",
+        "metric": "accuracy",
+        "unit": "percent",
+        "n": 42,
+        "stock": 50.0,
+        "cpt": 47.61904761904761,
+        "delta": -2.380952380952381,
+        "format": "plain pretrained",
+        "protocol": "paired item bootstrap"
+      },
+      {
+        "family": "core comprehension diagnostic",
+        "task": "same-meaning margin ranking AUC/Thaana",
+        "metric": "pairwise ranking AUC",
+        "unit": "AUC",
+        "n": 200,
+        "stock": 0.83525,
+        "cpt": 0.82985,
+        "delta": -0.005400000000000071,
+        "format": "plain pretrained",
+        "protocol": "post-hoc saved-margin ranking; 100 Yes/100 No; no fitted threshold"
+      },
+      {
+        "family": "core comprehension diagnostic",
+        "task": "same-meaning margin ranking AUC/Latin",
+        "metric": "pairwise ranking AUC",
+        "unit": "AUC",
+        "n": 200,
+        "stock": 0.80535,
+        "cpt": 0.8258,
+        "delta": 0.020449999999999968,
+        "format": "plain pretrained",
+        "protocol": "post-hoc saved-margin ranking; 100 Yes/100 No; no fitted threshold"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/thaana/draw1",
+        "metric": "token F1",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0331,
+        "cpt": 0.0056,
+        "delta": -0.027499999999999997,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/thaana/draw2",
+        "metric": "token F1",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0125,
+        "cpt": 0.0056,
+        "delta": -0.006900000000000001,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/thaana/draw1",
+        "metric": "exact match",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0,
+        "cpt": 0.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/thaana/draw2",
+        "metric": "exact match",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0,
+        "cpt": 0.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/latin_q/draw1",
+        "metric": "token F1",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0032,
+        "cpt": 0.0,
+        "delta": -0.0032,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/latin_q/draw2",
+        "metric": "token F1",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0021,
+        "cpt": 0.0074,
+        "delta": 0.005300000000000001,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/latin_q/draw1",
+        "metric": "exact match",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0,
+        "cpt": 0.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      },
+      {
+        "family": "core comprehension",
+        "task": "qa/latin_q/draw2",
+        "metric": "exact match",
+        "unit": "fraction",
+        "n": 120,
+        "stock": 0.0,
+        "cpt": 0.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "120-row QA; two fixed draws"
+      }
+    ],
+    "same_meaning": {
+      "n": 200,
+      "gold_counts": {
+        "Yes": 100,
+        "No": 100
+      },
+      "decision_rule": "Saved next-token logit(Yes) − logit(No), rounded to 3 decimals in the original run; fixed choice boundary at zero, Yes iff margin > 0.",
+      "thaana_plot": {
+        "cases_per_model": 200,
+        "gold_counts": {
+          "Yes": 100,
+          "No": 100
+        },
+        "overlap_handling": "Deterministic vertical offsets only for points with identical margins; unique-margin points have no jitter."
+      },
+      "bootstrap": {
+        "replicates": 1000,
+        "seed_base": 20261028,
+        "method": "Paired item bootstrap; same IDs for stock/CPT; percentile 95% intervals."
+      },
+      "forms": {
+        "thaana": {
+          "display": "Thaana",
+          "accuracy": {
+            "stock": {
+              "correct": 154,
+              "n": 200,
+              "rate": 0.77,
+              "yes_predictions": 102
+            },
+            "cpt": {
+              "correct": 100,
+              "n": 200,
+              "rate": 0.5,
+              "yes_predictions": 200
+            },
+            "delta_cpt_minus_stock": -0.27,
+            "ci95": [
+              -0.35000000000000003,
+              -0.18499999999999994
+            ]
+          },
+          "gold_groups": {
+            "No": {
+              "n": 100,
+              "stock_mean": -0.1125,
+              "stock_ci95": [
+                -0.15753124999999998,
+                -0.06496875000000003
+              ],
+              "cpt_mean": 0.66125,
+              "cpt_ci95": [
+                0.6199687500000001,
+                0.70875
+              ],
+              "delta": 0.77375,
+              "delta_ci95": [
+                0.7349687500000001,
+                0.8162499999999999
+              ]
+            },
+            "Yes": {
+              "n": 100,
+              "stock_mean": 0.275,
+              "stock_ci95": [
+                0.21125,
+                0.34
+              ],
+              "cpt_mean": 1.01375,
+              "cpt_ci95": [
+                0.9575,
+                1.0675312499999998
+              ],
+              "delta": 0.7387499999999999,
+              "delta_ci95": [
+                0.6950000000000001,
+                0.7812499999999999
+              ]
+            }
+          },
+          "pairwise_ranking_auc": {
+            "stock": 0.83525,
+            "cpt": 0.82985,
+            "delta": -0.005400000000000071,
+            "stock_ci95": [
+              0.7794949999999999,
+              0.8890775
+            ],
+            "cpt_ci95": [
+              0.7688425000000001,
+              0.87985
+            ],
+            "delta_ci95": [
+              -0.05107750000000004,
+              0.03805750000000002
+            ],
+            "bootstrap": {
+              "replicates": 1000,
+              "seed": 20261068,
+              "method": "Stratified paired bootstrap by gold Yes/No; same sampled items across arms."
+            },
+            "scorecard_source": "Recomputed from saved margins; no fitted threshold."
+          }
+        },
+        "latin_s2": {
+          "display": "Human Latin",
+          "accuracy": {
+            "stock": {
+              "correct": 141,
+              "n": 200,
+              "rate": 0.705,
+              "yes_predictions": 119
+            },
+            "cpt": {
+              "correct": 100,
+              "n": 200,
+              "rate": 0.5,
+              "yes_predictions": 200
+            },
+            "delta_cpt_minus_stock": -0.205,
+            "ci95": [
+              -0.29,
+              -0.12
+            ]
+          },
+          "gold_groups": {
+            "No": {
+              "n": 100,
+              "stock_mean": -0.01,
+              "stock_ci95": [
+                -0.06378125,
+                0.0425
+              ],
+              "cpt_mean": 0.72625,
+              "cpt_ci95": [
+                0.68375,
+                0.77
+              ],
+              "delta": 0.73625,
+              "delta_ci95": [
+                0.6925,
+                0.78625
+              ]
+            },
+            "Yes": {
+              "n": 100,
+              "stock_mean": 0.3375,
+              "stock_ci95": [
+                0.28121875,
+                0.39875
+              ],
+              "cpt_mean": 0.98875,
+              "cpt_ci95": [
+                0.95375,
+                1.02375
+              ],
+              "delta": 0.65125,
+              "delta_ci95": [
+                0.60371875,
+                0.6975
+              ]
+            }
+          },
+          "pairwise_ranking_auc": {
+            "stock": 0.80535,
+            "cpt": 0.8258,
+            "delta": 0.020449999999999968,
+            "stock_ci95": [
+              0.74551875,
+              0.8586575
+            ],
+            "cpt_ci95": [
+              0.77079375,
+              0.8775512500000001
+            ],
+            "delta_ci95": [
+              -0.03518124999999991,
+              0.07846499999999991
+            ],
+            "bootstrap": {
+              "replicates": 1000,
+              "seed": 20261069,
+              "method": "Stratified paired bootstrap by gold Yes/No; same sampled items across arms."
+            },
+            "scorecard_source": "Recomputed from saved margins; no fitted threshold."
+          }
+        }
+      },
+      "thaana_items": [
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.375,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.625,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.5,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.875,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.875,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.75,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.75,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.875,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.5,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.5,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.5,
+          "cpt_margin": 0.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.875,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.375,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 1.0,
+          "cpt_margin": 1.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.625,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.375,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.25,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.875,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.625,
+          "cpt_margin": 1.25
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.375
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.25,
+          "cpt_margin": 0.75
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.875,
+          "cpt_margin": 1.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.5
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.25,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.625,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.125,
+          "cpt_margin": 0.875
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.375,
+          "cpt_margin": 0.375
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.5,
+          "cpt_margin": 1.125
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.125,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "No",
+          "stock_margin": 0.0,
+          "cpt_margin": 0.625
+        },
+        {
+          "gold": "Yes",
+          "stock_margin": 0.125,
+          "cpt_margin": 1.0
+        },
+        {
+          "gold": "No",
+          "stock_margin": -0.5,
+          "cpt_margin": 0.25
+        }
+      ]
+    },
+    "uncertainty_note": "Other aggregate scorecard rows contain point estimates only; no CI is present in their saved source."
+  },
+  "representation": {
+    "scorecard_metric_rows": [
+      {
+        "family": "representations",
+        "task": "table2/owner_L10",
+        "metric": "retrieval",
+        "unit": "12-way retrieval accuracy",
+        "n": 12,
+        "stock": 0.5,
+        "cpt": 0.5,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "frozen Part 1 / script-probe method"
+      },
+      {
+        "family": "representations",
+        "task": "table2/thaana_L10",
+        "metric": "retrieval",
+        "unit": "12-way retrieval accuracy",
+        "n": 12,
+        "stock": 1.0,
+        "cpt": 1.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "frozen Part 1 / script-probe method"
+      },
+      {
+        "family": "representations",
+        "task": "table2/constructed_L10",
+        "metric": "retrieval",
+        "unit": "12-way retrieval accuracy",
+        "n": 12,
+        "stock": 0.25,
+        "cpt": 0.25,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "frozen Part 1 / script-probe method"
+      },
+      {
+        "family": "representations",
+        "task": "script-probe/middle l2t@1",
+        "metric": "retrieval",
+        "unit": "top-1 rate",
+        "n": 200,
+        "stock": 0.1382,
+        "cpt": 0.1668,
+        "delta": 0.028600000000000014,
+        "format": "plain pretrained",
+        "protocol": "frozen Part 1 / script-probe method"
+      },
+      {
+        "family": "representations",
+        "task": "script-probe/middle t2l@1",
+        "metric": "retrieval",
+        "unit": "top-1 rate",
+        "n": 200,
+        "stock": 0.0895,
+        "cpt": 0.1218,
+        "delta": 0.03230000000000001,
+        "format": "plain pretrained",
+        "protocol": "frozen Part 1 / script-probe method"
+      },
+      {
+        "family": "representations",
+        "task": "table1/dv_thaana/mean over pooled states",
+        "metric": "mean centroid-retrieval accuracy",
+        "unit": "fraction",
+        "n": 13,
+        "stock": 0.8312580645161289,
+        "cpt": 0.833741935483871,
+        "delta": 0.0024838709677420523,
+        "format": "plain pretrained",
+        "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+      },
+      {
+        "family": "representations",
+        "task": "table1/dv_latin/mean over pooled states",
+        "metric": "mean centroid-retrieval accuracy",
+        "unit": "fraction",
+        "n": 13,
+        "stock": 0.19622580645161292,
+        "cpt": 0.2036774193548387,
+        "delta": 0.007451612903225796,
+        "format": "plain pretrained",
+        "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+      },
+      {
+        "family": "representations",
+        "task": "table1/hinglish/mean over pooled states",
+        "metric": "mean centroid-retrieval accuracy",
+        "unit": "fraction",
+        "n": 13,
+        "stock": 0.8783870967741936,
+        "cpt": 0.8883225806451613,
+        "delta": 0.009935483870967765,
+        "format": "plain pretrained",
+        "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+      },
+      {
+        "family": "representations",
+        "task": "table1/arabizi/mean over pooled states",
+        "metric": "mean centroid-retrieval accuracy",
+        "unit": "fraction",
+        "n": 13,
+        "stock": 0.5630645161290322,
+        "cpt": 0.5481612903225807,
+        "delta": -0.014903225806451537,
+        "format": "plain pretrained",
+        "protocol": "13-way retrieval; mean over embedding + 30 decoder positions"
+      },
+      {
+        "family": "representations",
+        "task": "script probe l2t@1",
+        "metric": "middle-layer mean top-1",
+        "unit": "fraction",
+        "n": 200,
+        "stock": 0.1382,
+        "cpt": 0.1668,
+        "delta": 0.028600000000000014,
+        "format": "plain pretrained",
+        "protocol": "200 frozen pairs; middle-layer aggregate"
+      },
+      {
+        "family": "representations",
+        "task": "script probe t2l@1",
+        "metric": "middle-layer mean top-1",
+        "unit": "fraction",
+        "n": 200,
+        "stock": 0.0895,
+        "cpt": 0.1218,
+        "delta": 0.03230000000000001,
+        "format": "plain pretrained",
+        "protocol": "200 frozen pairs; middle-layer aggregate"
+      },
+      {
+        "family": "representations",
+        "task": "M2 STS/thaana_L6",
+        "metric": "Spearman correlation",
+        "unit": "rho",
+        "n": 1000,
+        "stock": 0.5515,
+        "cpt": 0.5508,
+        "delta": -0.0007000000000000339,
+        "format": "plain pretrained",
+        "protocol": "fixed decoder layers L6/L9/L14"
+      },
+      {
+        "family": "representations",
+        "task": "M2 STS/thaana_L9",
+        "metric": "Spearman correlation",
+        "unit": "rho",
+        "n": 1000,
+        "stock": 0.556,
+        "cpt": 0.5565,
+        "delta": 0.0004999999999999449,
+        "format": "plain pretrained",
+        "protocol": "fixed decoder layers L6/L9/L14"
+      },
+      {
+        "family": "representations",
+        "task": "M2 STS/thaana_L14",
+        "metric": "Spearman correlation",
+        "unit": "rho",
+        "n": 1000,
+        "stock": 0.5035,
+        "cpt": 0.5123,
+        "delta": 0.00880000000000003,
+        "format": "plain pretrained",
+        "protocol": "fixed decoder layers L6/L9/L14"
+      },
+      {
+        "family": "representations",
+        "task": "M2 STS/latin_s2_L6",
+        "metric": "Spearman correlation",
+        "unit": "rho",
+        "n": 1000,
+        "stock": 0.1201,
+        "cpt": 0.1128,
+        "delta": -0.007300000000000001,
+        "format": "plain pretrained",
+        "protocol": "fixed decoder layers L6/L9/L14"
+      },
+      {
+        "family": "representations",
+        "task": "M2 STS/latin_s2_L9",
+        "metric": "Spearman correlation",
+        "unit": "rho",
+        "n": 1000,
+        "stock": 0.1118,
+        "cpt": 0.0976,
+        "delta": -0.01419999999999999,
+        "format": "plain pretrained",
+        "protocol": "fixed decoder layers L6/L9/L14"
+      },
+      {
+        "family": "representations",
+        "task": "M2 STS/latin_s2_L14",
+        "metric": "Spearman correlation",
+        "unit": "rho",
+        "n": 1000,
+        "stock": 0.1013,
+        "cpt": 0.0842,
+        "delta": -0.017100000000000004,
+        "format": "plain pretrained",
+        "protocol": "fixed decoder layers L6/L9/L14"
+      },
+      {
+        "family": "representations",
+        "task": "M3 sense centroid/th",
+        "metric": "correct items",
+        "unit": "count",
+        "n": 5,
+        "stock": 4.0,
+        "cpt": 4.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "five-language sense-centroid retrieval; margins averaged over decoder layers"
+      },
+      {
+        "family": "representations",
+        "task": "M3 sense centroid/la",
+        "metric": "correct items",
+        "unit": "count",
+        "n": 7,
+        "stock": 0.0,
+        "cpt": 0.0,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "five-language sense-centroid retrieval; margins averaged over decoder layers"
+      },
+      {
+        "family": "representations",
+        "task": "FLORES/div_Thaa(human)/native-to-Latin",
+        "metric": "best-layer retrieval accuracy",
+        "unit": "fraction",
+        "n": 40,
+        "stock": 0.458,
+        "cpt": 0.458,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "selected best native↔Latin layer; 21 languages"
+      },
+      {
+        "family": "representations",
+        "task": "FLORES/div_Thaa(uroman)/native-to-Latin",
+        "metric": "best-layer retrieval accuracy",
+        "unit": "fraction",
+        "n": 40,
+        "stock": 0.5,
+        "cpt": 0.5,
+        "delta": 0.0,
+        "format": "plain pretrained",
+        "protocol": "selected best native↔Latin layer; 21 languages"
+      },
+      {
+        "family": "representations",
+        "task": "M6/Thaana paired",
+        "metric": "median target-gloss rank",
+        "unit": "vocabulary rank (lower better)",
+        "n": 37,
+        "stock": 114.0,
+        "cpt": 57.0,
+        "delta": -57.0,
+        "format": "plain pretrained",
+        "protocol": "best rank across L20-L28; paired rows"
+      },
+      {
+        "family": "representations",
+        "task": "M6/Latin paired subset",
+        "metric": "median target-gloss rank",
+        "unit": "vocabulary rank (lower better)",
+        "n": 37,
+        "stock": 11277.0,
+        "cpt": 9882.0,
+        "delta": -1395.0,
+        "format": "plain pretrained",
+        "protocol": "only rows with both Latin and Thaana; paired subset"
+      },
+      {
+        "family": "representations",
+        "task": "M6/Latin all rows",
+        "metric": "median target-gloss rank",
+        "unit": "vocabulary rank (lower better)",
+        "n": 49,
+        "stock": 15065.0,
+        "cpt": 11413.0,
+        "delta": -3652.0,
+        "format": "plain pretrained",
+        "protocol": "all available Latin rows; distinct from paired subset"
+      },
+      {
+        "family": "representations",
+        "task": "M6/paired rank gap",
+        "metric": "mean log2(1+Latin rank) − log2(1+Thaana rank)",
+        "unit": "log2-rank gap (lower means smaller gap)",
+        "n": 37,
+        "stock": 6.3047,
+        "cpt": 6.6302,
+        "delta": 0.3254999999999999,
+        "format": "plain pretrained",
+        "protocol": "only paired Latin+Thaana rows"
+      }
+    ],
+    "uncertainty_note": "Saved representation scorecard rows are aggregate point estimates without item-level CIs."
+  },
+  "bootstrap_methods": {
+    "translation": {
+      "replicates": 1000,
+      "seed": 20261009,
+      "unit": "paired items resampled with replacement; same indices for both arms"
+    },
+    "clef": {
+      "replicates": 1000,
+      "base_seed": 20261010,
+      "unit": "paired items; same sampled IDs across both arms and all metrics; percentile 95% CI"
+    },
+    "same_meaning": {
+      "replicates": 1000,
+      "seed_base": 20261028,
+      "method": "Paired item bootstrap; same IDs for stock/CPT; percentile 95% intervals."
+    },
+    "qa": {
+      "exact_match": {
+        "replicates": 1000,
+        "seed": 20261029,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      },
+      "token_f1": {
+        "replicates": 1000,
+        "seed": 20261030,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    },
+    "mcq": {
+      "next_token_logits": {
+        "replicates": 1000,
+        "seed": 20261030,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      },
+      "label_loglikelihood": {
+        "replicates": 1000,
+        "seed": 20261031,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      },
+      "generated_letter": {
+        "replicates": 1000,
+        "seed": 20261032,
+        "method": "paired item bootstrap; common resampled indices across arms; percentile interval"
+      }
+    }
+  }
+}

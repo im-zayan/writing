@@ -1,0 +1,19 @@
+.p28-figure { margin: 34px 0 26px; }
+.p28-figure img { display: block; width: 100%; height: auto; }
+.p28-figure figcaption { margin-top: 12px; font: 14px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--muted); }
+.p28-notes { margin: 28px 0; padding-block: 18px; font: 15px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p28-notes > summary { min-height: 32px; font-size: 16px; }
+.p28-notes[open] > summary { margin-bottom: 22px; }
+.p28-notes p { margin-bottom: 18px; }
+.p28 table { display: table; width: 100%; table-layout: fixed; }
+.p28 th, .p28 td { padding: 10px 7px; overflow-wrap: anywhere; }
+.p28 th, .p28 td:first-child { white-space: normal; }
+.p28 th:first-child { width: 37%; }
+.p28 th:last-child { width: 31%; }
+.p28 th:nth-child(2), .p28 th:nth-child(3) { width: 16%; }
+@media (max-width: 550px) {
+  .p28-notes { font-size: 14px; }
+  .p28 table { font-size: 12px; line-height: 1.45; }
+  .p28 th, .p28 td { padding: 9px 4px; }
+  .p28-figure { margin-block: 30px 24px; }
+}
