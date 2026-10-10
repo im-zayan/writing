@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "example_label": "weather probe",
+  "source_latin": "miadhu moosun varah hoonu.",
+  "source_thaana": "މިއަދު މޫސުން ވަރަށް ހޫނު.",
+  "intended_gloss": "The weather is very hot today.",
+  "provenance": "Nau-generated Thaana from English; dictionary Latin with rule fallback; not human parallel gold",
+  "not_gold": true,
+  "interpretation_note": "Nau-generated Thaana and dictionary Latin; not human parallel gold. Retrieved output correspondence is illustrative, not accuracy.",
+  "token_count_note": "saved_token_count is the length of the saved token_ids sequence; token ID values are omitted.",
+  "conditions": [
+    {
+      "condition": "clean_latin",
+      "text": "It will be very difficult.",
+      "saved_token_count": 7,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "clean_thaana",
+      "text": "The weather is very hot today.",
+      "saved_token_count": 8,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "noop_latin",
+      "text": "It will be very difficult.",
+      "saved_token_count": 7,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "centered_identity",
+      "text": "It will be very difficult.",
+      "saved_token_count": 7,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "unpaired_wp",
+      "text": "I am very happy.",
+      "saved_token_count": 6,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "supervised_regularized",
+      "text": "It will be very beautiful.",
+      "saved_token_count": 7,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "oracle_thaana",
+      "text": "The weather is very beautiful.",
+      "saved_token_count": 7,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    },
+    {
+      "condition": "shuffled_oracle",
+      "text": "I am going to the market.",
+      "saved_token_count": 8,
+      "max_new_tokens": 48,
+      "cap_reached": false,
+      "status": "complete"
+    }
+  ],
+  "sources": [
+    {
+      "role": "frozen public weather-probe text",
+      "basename": "probes.json",
+      "sha256": "24c236fac7d0ec80b6a7109368912220fddd3b9caa7d7fcaa53399a2e2927899",
+      "bytes": 7045
+    },
+    {
+      "role": "saved unaltered weather-probe outputs",
+      "basename": "results.json",
+      "sha256": "da2a6399e2b57cd54142cb5ead873ad613d674ce4fc514e8898eadffd886f12b",
+      "bytes": 78243
+    },
+    {
+      "role": "generation diagnostic metrics",
+      "basename": "metrics.json",
+      "sha256": "f00f73061d562534237b82bdc37274cc833089c668e45021038bd683098e6764",
+      "bytes": 10873
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+.p29-figure { margin: 34px 0 26px; }
+.p29-figure img { display: block; width: 100%; height: auto; }
+.p29-figure figcaption, .p29-caption { margin-top: 12px; font: 14px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--muted); }
+.p29-notes { margin: 28px 0; padding-block: 18px; font: 15px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p29-notes > summary { min-height: 32px; font-size: 16px; }
+.p29-notes[open] > summary { margin-bottom: 22px; }
+.p29-notes p { margin-bottom: 18px; }
+.p29 table { display: table; width: 100%; table-layout: fixed; }
+.p29 th, .p29 td { padding: 10px 8px; overflow-wrap: anywhere; }
+.p29 th, .p29 td:first-child { white-space: normal; }
+.p29 th:first-child { width: 54%; }
+.p29 th:nth-child(2), .p29 th:nth-child(3) { width: 23%; }
+.p29 [lang="dv"] { font-family: 'Noto Sans Thaana', 'MV Faseyha', 'Faruma', sans-serif; line-height: 1.9; unicode-bidi: isolate; }
+.p29-traces { margin: 28px 0 16px; border-top: 1px solid var(--line); }
+.p29-trace { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr); gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.p29-trace h3 { margin: 0; color: var(--muted); font: 600 14px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p29-trace p { margin: 0; font-size: 19px; line-height: 1.55; white-space: pre-wrap; }
+@media (max-width: 550px) {
+  .p29-notes { font-size: 14px; }
+  .p29 table { font-size: 13px; line-height: 1.45; }
+  .p29 th, .p29 td { padding: 9px 5px; }
+  .p29-trace { grid-template-columns: 1fr; gap: 6px; padding-block: 17px; }
+  .p29-trace p { font-size: 18px; }
+}
