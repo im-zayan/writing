@@ -6,7 +6,7 @@
   "intended_gloss": "The weather is very hot today.",
   "provenance": "Nau-generated Thaana from English; dictionary Latin with rule fallback; not human parallel gold",
   "not_gold": true,
-  "interpretation_note": "Nau-generated Thaana and dictionary Latin; not human parallel gold. Retrieved output correspondence is illustrative, not accuracy.",
+  "interpretation_note": "One selected case from earlier Nau and dictionary probes. The source pair has no new human review.",
   "token_count_note": "saved_token_count is the length of the saved token_ids sequence; token ID values are omitted.",
   "conditions": [
     {

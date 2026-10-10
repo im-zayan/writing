@@ -46785,9 +46785,9 @@
     {
       "role": "Part 2.9 plotting/export builder",
       "basename": "build-part29-figures.py",
-      "sha256": "9ef3cb98a0cf82e528130dba54bec45c0702dcc5fde80255b31935b8cc8ff978",
-      "bytes": 41727
+      "sha256": "75cec4a6de4ebc774e62ec6337a8c14bf338449cd566fbe099020d5df9f6f6e7",
+      "bytes": 41717
     }
   ],
-  "figure_source_sha256": "25d89f6299db776b855d78de4c1b77742d53442541f3a15e125ec56056a1e942"
+  "figure_source_sha256": "de31ac3cf7315018848c8bbdd4f3c99c44f0bb66f9b7eef7dae93ce548bb1aed"
 }

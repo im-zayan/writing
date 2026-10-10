@@ -1,55 +1,45 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Where does Gemma keep Dhivehi? Part 2.9: subtracting the average · Zayan</title><meta name="description" content="Subtracting each script’s average state made sentence matching much better. The learned map failed, and better matching did not become better translation.">
+<title>Where does Gemma keep Dhivehi? Part 2.9: subtracting the average · Zayan</title><meta name="description" content="Results from centering and Unpaired Rosetta: sentence matching, typed comments and a translation test.">
 <link rel="canonical" href="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-9/"><link rel="stylesheet" href="/writing/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="Zayan" href="/writing/feed.xml"><link rel="icon" href="/writing/assets/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2.9: subtracting the average · Zayan"><meta property="og:description" content="Subtracting each script’s average state made sentence matching much better. The learned map failed, and better matching did not become better translation."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-9/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
+<meta property="og:type" content="article"><meta property="og:title" content="Where does Gemma keep Dhivehi? Part 2.9: subtracting the average · Zayan"><meta property="og:description" content="Results from centering and Unpaired Rosetta: sentence matching, typed comments and a translation test."><meta property="og:url" content="https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-9/"><meta property="og:site_name" content="Zayan"><meta name="twitter:card" content="summary">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.9: subtracting the average","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-10","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-9/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.9: subtracting the average</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>9 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part29.css">
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.9: subtracting the average</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>8 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part29.css">
 <div class="p29">
 
-<p>The <a href="/writing/posts/where-gemma-keeps-dhivehi-2-8/">CPT run</a> improved translation, but Latin Dhivehi was still weak. I kept both checkpoints fixed and went back to cross-script matching, this time with an unpaired map from Latin to Thaana.</p>
-<p>The map failed. A simpler step worked much better: subtracting each script’s average raised stock Gemma’s matching score from 17% to 46%.</p>
-<h2>A new matching test</h2>
-<p>I used a new bank of 512 Latin/Thaana pairs. At a fixed layer, I averaged the states across each sentence, then picked the closest Thaana state for each Latin input. Only the correct sentence in first place counted. A random choice would get about <strong>0.2%</strong> right.</p>
-<p>This score measures matching among those 512 choices. I tested translation separately below.</p>
-<h2>Subtract each script’s average</h2>
-<p>I first collected states from 1,024 other sentences in each script. The Latin and Thaana groups used different examples, so this step had no matching pairs to learn from.</p>
-<p>I found each group’s average state and subtracted it from every state in that script. I then compared their directions, giving each the same length. The raw-state comparison used equal lengths too; only the subtraction was new.</p>
-<p>That is <em>centering</em>: describe each sentence by how it differs from its group’s average.</p>
-<p>The two groups may sit in different parts of the space. Centering puts their averages at the same point. I can then compare how each sentence differs from its own average, without knowing the matching pairs.</p>
-<p>The average may reflect script, style, length or topic. This test does not tell me which caused the gain.</p>
-<h2>Centering helped</h2>
-<p>Here are stock PT and the same step-1,800 CPT checkpoint, both at layer 9.</p>
+<p>After the <a href="/writing/posts/where-gemma-keeps-dhivehi-2-8/">CPT comparison</a>, I tested <a href="https://dominik-schnaus.github.io/unpaired-rosetta/">Unpaired Rosetta</a> on the Latin and Thaana states. I kept the stock PT and step-1,800 CPT weights fixed.</p>
+<p>I fitted a map between the scripts using separate groups of sentences. I also tested centering on its own.</p>
+<h2>Test setup</h2>
+<p>The new test used 512 Latin/Thaana pairs. I averaged each sentence’s source-token states at layer 9. For each Latin state, I selected the closest of the 512 Thaana states. The score counts how often the paired sentence came first. A random choice would get about <strong>0.2%</strong> right.</p>
+<p>The fitting data had 1,024 Latin sentences and 1,024 Thaana sentences. The two groups contained different examples. I kept the test pairs separate.</p>
+<h2>Centering</h2>
+<p>I calculated an average state for each script. I subtracted the Latin average from each Latin state, and the Thaana average from each Thaana state. I then scaled each state to unit length and compared their directions. I used the same scaling for the raw states.</p>
+<p><em>Centering</em> expresses each state relative to its script’s fitting average. Script, length, style and topic can all affect that average.</p>
+<h2>Matching results</h2>
 <figure class="p29-figure">
 <picture><source media="(max-width:650px)" srcset="/writing/assets/part29-centering-mobile.svg" width="320" height="662"><img src="/writing/assets/part29-centering.svg" width="691" height="461" alt="At layer 9, raw states find the correct match 17.19% of the time for stock PT and 17.97% for CPT. Centering raises this to 46.29% and 50.78%. Unpaired Rosetta averages 0.26% and 0.33%. A map using 64 known pairs with identity regularization reaches 47.46% and 51.37%." loading="lazy"></picture>
-<figcaption>Correct matches among 512 choices at layer 9. The Latin sentences come from a formal paired dataset, not casual messages. The unpaired-map scores average three random seeds; all three are near chance.</figcaption>
+<figcaption>Correct first matches at layer 9, with 512 choices per query. The test uses formal sentence pairs. The Rosetta values are the means of three seeds. Each supervised map uses 64 known pairs.</figcaption>
 </figure>
 
-<p>Centering raised the original model’s score from <strong>17.19% to 46.29%</strong>, and CPT from <strong>17.97% to 50.78%</strong>. Resampling the test sentences put both gains well above zero. The results section below gives the intervals.</p>
-<p>I also used 64 separate known pairs to learn a map, while keeping it close to the original coordinates. It reached <strong>47.46%</strong> and <strong>51.37%</strong>. Those small gains over centering were uncertain.</p>
-<p>A learned map now has a stronger baseline to beat.</p>
-<h2>The unpaired map failed here</h2>
-<p><a href="https://dominik-schnaus.github.io/unpaired-rosetta/">Unpaired Rosetta</a> prompted this experiment. Its authors show that separately trained models can sometimes arrange related content in similar ways. Their method uses that shape to match two sets of states without known pairs.</p>
-<p>I tried their code on Latin Dhivehi and Thaana. Both sets came from the same model, unlike the paper’s separately trained models. Rosetta also centers the states, then learns a shared rotation or reflection between the sets.</p>
-<p>Its three runs found <strong>0, 2 and 2</strong> correct matches out of 512 for the original model, and <strong>0, 3 and 2</strong> for CPT. Centering alone had scored about 46% and 51%.</p>
-<p>The second layer, also chosen before the test, gave the same result.</p>
-<p>This run used fewer examples and less computation than the paper’s main setup. With only 1,024 sentences per group in 2,816 dimensions, many directions have little data to guide them. I do not know which part caused the failure. This map did not help.</p>
-<h2>Messages people type</h2>
-<p>The main dataset does not say how each Latin sentence was made. Formal text may miss the spelling changes and shortcuts in ordinary messages.</p>
-<p>I checked 64 public comments typed in Latin letters, using the same maps without refitting. Nau had produced their Thaana versions. A person had not checked these targets for this test.</p>
+<p>Centering raised the stock PT score from <strong>17.19% to 46.29%</strong>. The CPT score rose from <strong>17.97% to 50.78%</strong>. The paired 95% intervals for both gains were above zero.</p>
+<p>I also fitted a map with 64 known pairs and an identity term that favors the original coordinates. It scored <strong>47.46%</strong> for stock PT and <strong>51.37%</strong> for CPT. The intervals for these gains over centering included zero.</p>
+<p>Rosetta also centers the states, then fits a shared rotation or reflection. Across three seeds, it found <strong>0, 2 and 2</strong> correct matches out of 512 for stock PT. For CPT, the counts were <strong>0, 3 and 2</strong>. At layer 14, Rosetta also scored near chance.</p>
+<p>The authors tested models trained separately. I ran both scripts through the same checkpoint. I used fewer examples and fewer iterations than the main paper experiments. Each fitting group had 1,024 sentences for states with 2,816 dimensions.</p>
+<h2>Typed comments</h2>
+<p>I next applied the saved maps to 64 public comments typed in Latin letters. I used their existing Nau-generated Thaana versions as targets. These targets may contain translation errors. The comments also come from a collection used in our training work.</p>
 <figure class="p29-figure">
 <picture><source media="(max-width:650px)" srcset="/writing/assets/part29-natural-mobile.svg" width="320" height="554"><img src="/writing/assets/part29-natural.svg" width="691" height="367" alt="On 64 typed Latin comments paired with Nau-generated Thaana, centering raises correct counterpart retrieval from 14.06% to 40.62% for stock PT, 14.06% to 45.31% for CPT, and 9.38% to 34.38% for the chat model. The unpaired maps average 2.60%, 2.60%, and 1.56%, near the 1.56% chance rate." loading="lazy"></picture>
-<figcaption>Typed Latin matched to Nau’s Thaana at layer 9. The targets may be wrong. These comments come from a collection used in our training work, so I cannot treat them as unseen. Each query has 64 choices, not 512. These percentages measure matching, not translation accuracy.</figcaption>
+<figcaption>Layer 9 results for 64 typed comments and their Nau-generated Thaana targets. The score counts matches to those targets. The targets may contain errors, and the models may have seen these comments during training.</figcaption>
 </figure>
 
-<p>Centering helped the original pretrained model, CPT and the stock chat model. The unpaired maps stayed near chance. Maps guided by the 64 formal-text pairs did not consistently beat centering here either.</p>
-<h2>The translation patch did not help</h2>
-<p>I then asked the stock chat model to translate.</p>
-<p>I fitted a separate map inside the translation prompt. Then I changed the state at the last Latin source token after layer 9 and let the model continue. I tried centering, the learned map and several controls. The other states still came from Latin input.</p>
-<p>Here is a saved case from our earlier Nau/dictionary tests. The intended meaning is “The weather is very hot today.” The inputs were <span lang="dv-Latn">miadhu moosun varah hoonu.</span> and <span lang="dv" dir="rtl">މިއަދު މޫސުން ވަރަށް ހޫނު.</span></p>
+<p>At layer 9, centering raised the matching score from <strong>14.06% to 40.62%</strong> for stock PT, <strong>14.06% to 45.31%</strong> for CPT, and <strong>9.38% to 34.38%</strong> for stock IT. Rosetta’s three-seed means were <strong>2.60%</strong>, <strong>2.60%</strong> and <strong>1.56%</strong>. With 64 choices, chance is <strong>1.56%</strong>.</p>
+<h2>Translation</h2>
+<p>I used stock IT for the translation test. I fitted a separate map from states inside the translation prompt. For each Latin input, I replaced the last source-token state after layer 9. The other prompt states still came from Latin input.</p>
+<p>I tested the centering control, the learned map and several controls. The centering control also restores the scale and mean of the Thaana fitting states.</p>
+<p>Here is one saved weather case from the earlier Nau/dictionary tests. The intended meaning is “The weather is very hot today.” The inputs were <span lang="dv-Latn">miadhu moosun varah hoonu.</span> and <span lang="dv" dir="rtl">މިއަދު މޫސުން ވަރަށް ހޫނު.</span></p>
 <div class="p29-traces" aria-label="Saved translations of the weather example">
 <div class="p29-trace"><h3>Full Thaana input</h3><p>The weather is very hot today.</p></div>
 <div class="p29-trace"><h3>Full Latin input</h3><p>It will be very difficult.</p></div>
@@ -58,17 +48,15 @@
 <div class="p29-trace"><h3>Latin with the matching Thaana state</h3><p>The weather is very beautiful.</p></div>
 </div>
 
-<p class="p29-caption">Unchanged saved outputs. All five stopped before the 48-token limit. I chose this case to show a partial change; the counts below use all 17 probes. <a href="/writing/assets/part29-example.json">Download the case and all eight conditions</a>.</p>
+<p class="p29-caption">These are the saved outputs. All five stopped before the 48-token limit. I selected this case to show the effect of the state changes. The scores use all 17 probes. <a href="/writing/assets/part29-example.json">Download this case and all eight conditions</a>.</p>
 
-<p>The last condition uses the actual state from the matching Thaana prompt. This <em>oracle</em> control needs the Thaana version in advance. Even with that help, it says “beautiful” instead of “hot.”</p>
-<p>Two language-model reviewers read all 17 reused probes with the condition labels hidden. Each judged <strong>12</strong> full Thaana outputs to match the supplied English meaning, <strong>one</strong> for clean Latin and <strong>zero</strong> for the unpaired map. Centering also had one. Some references are ambiguous; these counts are not native-speaker ratings.</p>
-<p>The oracle improved some partial answers, but still had only one full match. Closer wording did not mean it had fixed translation.</p>
-<p>The rest of the model still had the Latin prompt’s states. This test does not tell me whether a broader change would help.</p>
-<p>Centering is a useful baseline for comparing scripts. It has not given me a better Latin translator.</p>
+<p>The <em>oracle</em> control uses the actual state from the matching Thaana prompt. It requires the Thaana version in advance.</p>
+<p>Two language-model reviewers scored all 17 reused probes against the supplied English references. I hid the condition labels. Each counted <strong>12</strong> full matches for Thaana input, <strong>one</strong> for Latin input, <strong>one</strong> for the centering control and <strong>zero</strong> for Rosetta. The reviewers also flagged ambiguous source meanings and reference errors.</p>
+<p>The oracle control had <strong>one</strong> full match. One reviewer gave it four partial matches; the other gave it five.</p>
 <details class="p29-notes" id="results"><summary>More results and uncertainty</summary>
 
 <p><a href="/writing/assets/part29-results.json">Aggregate results and chart data (JSON)</a> · <a href="/writing/assets/part29-metrics.csv">Metric rows (CSV)</a></p>
-<p>The primary scores use 512 matched test pairs. Layer 9 is the main result; layer 14 was a second fixed check. Both use the mean of source-token states. All layer indices start at zero.</p>
+<p>The main matching test has 512 paired sentences. I chose layers 9 and 14 before the run. Both use mean source-token states. Layer numbers start at zero.</p>
 <table>
 <thead>
 <tr>
@@ -88,32 +76,43 @@
 <td align="right">39.84%</td>
 </tr>
 <tr>
-<td>Unpaired map, three-seed mean</td>
+<td>Rosetta, three-seed mean</td>
 <td align="right">0.20%</td>
 <td align="right">0.07%</td>
 </tr>
 <tr>
-<td>64 pairs, identity-regularized</td>
+<td>64 pairs with an identity term</td>
 <td align="right">35.35%</td>
 <td align="right">39.84%</td>
 </tr>
 </tbody></table>
-<p>At layer 9, the centering gain is <strong>29.10 percentage points</strong> for stock PT, with a paired 95% interval of <strong>25.00 to 33.20</strong>, and <strong>32.81 points</strong> for CPT, with <strong>28.52 to 37.11</strong>. The 64-pair regularized map adds 1.17 points over centering for stock PT, with an interval of −2.34 to +4.49, and 0.59 for CPT, with −2.93 to +3.91.</p>
-<p>I drew 2,000 paired bootstrap samples of the queries, keeping all candidate sentences fixed. The intervals cover query variation on this bank, not variation between banks. I report the three unpaired-map seeds separately and make no correction for multiple comparisons.</p>
-<p>The downloads include both directions, layer 14, shuffled-anchor controls and the other ranking scores. FOSCTTM is the fraction of wrong candidates ranked ahead of the right match. Lower is better; it is not accuracy.</p>
-<p>I also compared the geometry on 128 separate paired validation examples across all 31 saved axes, including the embedding baseline. At layer 9, mean-pooled CKA was 0.475 for stock PT, 0.501 for CPT and 0.463 for the chat model. CKA compares the arrangement of matched examples within the two sets. After a linear adjustment for log token count, the values were 0.464, 0.487 and 0.431. Shared structure survived that adjustment, but did not make this unpaired fit succeed. The finite-sample null was above zero: stock PT had a shuffled-label mean of 0.211. There were 100 permutations per layer.</p>
-<p>A separate English/Sinhala control used 197 test candidates. Its centered layer-9 matching scores were 98.48% for stock PT and CPT, and 96.95% for the chat model. These were different examples, with a different candidate count; they are not a matched-difficulty comparison with Dhivehi. That control used 100 known pairs for its supervised maps and did not run the unpaired solver.</p>
-<p>For generation, mean sentence chrF was 20.33 for clean Latin, 73.97 for clean Thaana, 20.50 for the centering control, 17.61 for the unpaired map and 34.69 for the matching-Thaana oracle. chrF measures character-fragment overlap with the reference. The unpaired map’s change from clean Latin was −2.71, with a paired 95% interval of −7.20 to +1.31. The oracle’s change was +14.36, with +5.02 to +25.17. The raw example and meaning ratings show why that latter gain is not full recovery.</p>
+<p>At layer 9, centering added <strong>29.10 percentage points</strong> for stock PT, with a paired 95% interval of <strong>25.00 to 33.20</strong>. It added <strong>32.81 points</strong> for CPT, with <strong>28.52 to 37.11</strong>.</p>
+<p>The 64-pair map with an identity term added 1.17 points over centering for stock PT. Its interval was −2.34 to +4.49. For CPT, the gain was 0.59 points, with −2.93 to +3.91.</p>
+<p>I used 2,000 paired bootstrap samples of the queries. Each sample kept the full candidate bank fixed. The intervals therefore apply to this bank. The 95% intervals are unadjusted for multiple comparisons. The downloads report each Rosetta seed separately.</p>
+<p>The downloads also include both matching directions, layer 14, shuffled-pair controls and other ranking scores. FOSCTTM counts the fraction of wrong candidates ranked above the paired target. Lower values mean fewer wrong candidates ahead of it.</p>
+<p><strong>Geometry.</strong> I used 128 separate validation pairs and saved 31 axes, including the embedding baseline. At layer 9, mean-pooled CKA was 0.475 for stock PT, 0.501 for CPT and 0.463 for stock IT. CKA measures how similarly the two sets arrange matched examples.</p>
+<p>After a linear adjustment for log token count, the values were 0.464, 0.487 and 0.431. For stock PT, shuffled labels gave a mean CKA of 0.211. I used 100 label permutations per layer.</p>
+<p><strong>English/Sinhala control.</strong> This bank had 197 candidates per query. Centered layer-9 scores were 98.48% for stock PT and CPT, and 96.95% for stock IT. The examples and candidate count differ from the Dhivehi test. This control used 100 known pairs for supervised maps. I ran raw, centered and supervised methods on this bank.</p>
+<p><strong>Generation scores.</strong> Mean sentence chrF was 20.33 for clean Latin, 73.97 for clean Thaana, 20.50 for the centering control, 17.61 for Rosetta and 34.69 for the oracle. chrF measures character-fragment overlap with the reference.</p>
+<p>Rosetta changed the mean score by −2.71 from clean Latin, with a paired 95% interval of −7.20 to +1.31. The oracle changed it by +14.36, with +5.02 to +25.17. The meaning ratings above record full and partial matches separately.</p>
 </details>
 
 <details class="p29-notes" id="methods"><summary>Data, models and method</summary>
 
-<p><strong>Data.</strong> The formal bank comes from <a href="https://huggingface.co/datasets/alakxender/dhivehi-transliteration-pairs">alakxender/dhivehi-transliteration-pairs</a>. I used 1,024 fitting rows per script from different pairs, 64 separate paired anchors, 128 validation pairs and 512 test pairs. The dataset does not say how every Latin row was made. I screened the test set for exact matches and contained phrases in available training texts and earlier probes. That can miss paraphrases and repeated stories. I do not know what the original model saw during pretraining.</p>
-<p><strong>Models.</strong> I used Gemma 4 26B-A4B checkpoints with default 4-bit quantization and 8-bit overrides for some modules. CPT adds the step-1,800 adapter at scale 0.5 to the pretrained checkpoint. Generation uses the separate stock instruction-tuned checkpoint. I computed means and maps for each model and trained no model weights in this experiment.</p>
-<p><strong>Centering and maps.</strong> Means come only from the two unpaired fitting pools. Both raw and centered rows are normalized to unit length before cosine comparison; the centered version subtracts the fitting mean first. The official <a href="https://github.com/dominik-schnaus/unpaired-rosetta/tree/fdfad84ea488f29702a61a455be71622c4ff5d49">Unpaired Rosetta code</a> is pinned at that commit. I used 30 clusters, 10 restarts, batch size 512, 30 refinement iterations and seeds 42, 1337 and 20261010. There is no dimension reduction. This is a reduced-compute application of the method, not a replication of the paper’s main settings. The paired baselines are separate Procrustes fits; the identity-regularized version adds an identity matrix to the normalized anchor cross-covariance before taking its polar factor. The shuffled version permutes the anchor correspondences.</p>
-<p><strong>Generation patch.</strong> Its map uses the last source-token state in the exact English-translation chat template, with thinking disabled. It uses the same fitting rows and separate anchors, not the 17 probes. The mapped direction is restored with the target fitting mean and median fitting-state radius. The centering control uses the identity rotation with that same restoration; it is not just subtracting a vector and passing the result onward. Only the last source-token residual after layer 9 changes during prefill. Earlier cached states and other positions stay as computed from Latin. Greedy decoding stops at a genuine end token or 48 new tokens. Replacing a state with itself reproduced the clean output exactly on all 17 cases.</p>
-<p><strong>Probes and ratings.</strong> Five cases reuse short sense probes; twelve use Nau-generated Thaana and Latin made with a dictionary and rules. They are not a new human-checked test. Two language-model reviewers saw 86 distinct outputs under shuffled labels. I showed duplicate strings once. They agreed on 83 ratings and flagged fish/month ambiguity, a location mismatch and an English gender choice. The weather case illustrates a partial change; it does not stand in for the full set.</p>
-<p><strong>Numerics.</strong> A preliminary check found that padding and batch shape could change the saved states, so all study inference ran one unpadded input at a time with floating parameters in float32. The quantized integer weights were unchanged. Two paired-control fits failed an orthogonality check because their float32 singular-value decompositions returned invalid factors. I recomputed those same factors in float64 and kept the failed originals and repair records. The data, shuffle and regularizer stayed fixed; none of the unpaired maps changed. Independent checks reproduced the retrieval calculation from saved states and verified the generation outputs, identities and ratings.</p>
+<p><strong>Data.</strong> The formal bank comes from <a href="https://huggingface.co/datasets/alakxender/dhivehi-transliteration-pairs">alakxender/dhivehi-transliteration-pairs</a>. I used 1,024 fitting rows per script from different underlying pairs. I kept separate groups of 64 paired anchors, 128 validation pairs and 512 test pairs.</p>
+<p>The dataset does not describe how every Latin row was made. I screened test items for exact matches and contained phrases in available training texts and earlier probes. This filter can miss paraphrases and repeated stories. The original model’s pretraining data are unknown.</p>
+<p><strong>Models.</strong> I used Gemma 4 26B-A4B checkpoints with default 4-bit quantization and 8-bit overrides for some modules. CPT uses the step-1,800 adapter at scale 0.5. The translation test uses stock IT. I computed separate means and maps for each model and kept all model weights fixed.</p>
+<p><strong>Centering and maps.</strong> All means come from the two unpaired fitting groups. I scale both raw and centered rows to unit length before cosine comparison. For the centered rows, I subtract the fitting mean first.</p>
+<p>I used the official <a href="https://github.com/dominik-schnaus/unpaired-rosetta/tree/fdfad84ea488f29702a61a455be71622c4ff5d49">Unpaired Rosetta code</a> at that commit. The settings were 30 clusters, 10 restarts, batch size 512 and 30 refinement iterations. The seeds were 42, 1337 and 20261010. I kept all 2,816 dimensions.</p>
+<p>The paired maps use separate Procrustes fits. For the map with an identity term, I add an identity matrix to the normalized anchor cross-covariance, then take its polar factor. The shuffled control uses the same procedure after shuffling the anchor matches.</p>
+<p><strong>Generation patch.</strong> I fitted the generation map on the last source-token state in the English-translation chat template, with thinking disabled. It uses the same fitting rows and separate anchors. I kept the 17 generation probes outside those groups.</p>
+<p>To restore a mapped direction to a state, I multiply it by the median centered-state norm from the Thaana fitting group. I then add that group’s mean. The centering control uses this same procedure with the identity rotation.</p>
+<p>The patch replaces the last source-token residual after layer 9 during prefill. Earlier cached states and other positions retain their Latin context. I used greedy decoding with a limit of 48 new tokens. Decoding stops at an end token or the limit. Replacing a state with itself reproduced the clean output on all 17 cases.</p>
+<p><strong>Probes and ratings.</strong> Five cases reuse short sense probes. Twelve use Nau-generated Thaana and Latin from a dictionary and rules. The references have not received a new human review.</p>
+<p>Two language-model reviewers saw 86 distinct outputs with shuffled labels. I showed duplicate strings once. The reviewers agreed on 83 ratings. They flagged fish/month ambiguity, a location mismatch and an English gender choice. I selected the weather case for display; the aggregate counts include all 17 cases.</p>
+<p><strong>Numerics.</strong> A preliminary check found that padding and batch shape could change the saved states. I therefore ran each input separately, without padding, and used float32 floating parameters. The quantized integer weights stayed fixed.</p>
+<p>Two paired-control maps failed the orthogonality check. Their float32 singular-value decompositions returned invalid factors. I recomputed those factors in float64 and kept the original files and repair records. The data, shuffle and regularizer stayed fixed. All Rosetta maps passed the original check.</p>
+<p>Independent checks reproduced the matching scores from saved states and verified the generated outputs, file identities and ratings.</p>
 </details>
 </div>
 </article></main>
