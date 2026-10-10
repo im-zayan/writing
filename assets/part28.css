@@ -11,6 +11,25 @@
 .p28 th:first-child { width: 37%; }
 .p28 th:last-child { width: 31%; }
 .p28 th:nth-child(2), .p28 th:nth-child(3) { width: 16%; }
+.p28-trace-context { margin: 26px 0; border-left: 3px solid var(--green); padding: 4px 0 4px 18px; }
+.p28-trace-context span, .p28-trace-label { display: block; font: 12px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--muted); }
+.p28-trace-context p { margin: 8px 0; }
+.p28-trace-case { margin: 22px 0; }
+.p28-trace-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-top: 22px; }
+.p28-trace-arm { min-width: 0; border-top: 2px solid var(--line); padding-top: 14px; }
+.p28-trace-arm--cpt { border-color: var(--green); }
+.p28-trace-arm h3 { font: 600 16px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0 0 5px; }
+.p28-trace-meta, .p28-trace-observation { font: 13px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--muted); }
+.p28-trace-meta { margin: 0 0 16px; }
+.p28-scored { white-space: pre-wrap; overflow-wrap: anywhere; unicode-bidi: plaintext; font: 15px/1.75 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.p28-scored[lang="dv"] { font: 18px/1.9 'Noto Sans Thaana', 'MV Faseyha', 'Faruma', sans-serif; }
+.p28-raw-details { margin: 18px 0 0; padding-block: 12px; }
+.p28-raw-details summary { font-size: 13px; }
+.p28-raw { white-space: pre-wrap; overflow-wrap: anywhere; unicode-bidi: plaintext; max-height: 27rem; overflow-y: auto; font: 14px/1.75 'Noto Sans Thaana', 'MV Faseyha', -apple-system, sans-serif; padding: 14px; }
+.p28-raw[lang="dv"] { font-size: 17px; }
+.p28-raw:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.p28-trace-observation { margin: 20px 0 0; }
+@media (max-width: 600px) { .p28-trace-pair { grid-template-columns: 1fr; gap: 24px; } }
 @media (max-width: 550px) {
   .p28-notes { font-size: 14px; }
   .p28 table { font-size: 12px; line-height: 1.45; }

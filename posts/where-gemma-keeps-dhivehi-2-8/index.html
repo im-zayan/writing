@@ -7,7 +7,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed","author":{"@type":"Person","name":"Zayan"},"datePublished":"2026-10-10","url":"https://im-zayan.github.io/writing/posts/where-gemma-keeps-dhivehi-2-8/"}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/writing/">Zayan</a><nav aria-label="Main"><a href="/writing/">Writing</a><a href="/writing/feed.xml">RSS</a></nav></header>
-<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>10 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part28.css">
+<main id="main"><header class="post-header"><h1>Where does Gemma keep Dhivehi? Part 2.8: what the extra training changed</h1><p class="post-meta"><time datetime="2026-10-10">October 10, 2026</time><span aria-hidden="true"> · </span>16 min read</p></header><article><link rel="stylesheet" href="/writing/assets/part28.css?v=traces-1">
 <div class="p28">
 
 <p>The extra Dhivehi training helped Gemma translate. The final model improved on all four main translation tests: into and out of Dhivehi, in both Thaana and Latin letters.</p>
@@ -25,6 +25,262 @@
 
 <p>English to Thaana rose from <strong>34.13 to 36.56</strong>. The reverse direction rose less, from <strong>45.17 to 45.87</strong>. Both Latin directions improved too, from much lower starting scores. The separate English-to-Dhivehi test gave the same broad result.</p>
 <p>For these five comparisons, the paired 95% intervals for the gain all stayed above zero. That is evidence for a gain on these sets. It does not make the low Latin scores good, or tell us whether a paragraph will stay coherent.</p>
+<!-- part28-traces:start -->
+
+<p><a id="raw-traces"></a></p>
+<h2>Read the saved outputs</h2>
+<p>Here is the first case in the saved input order, shown in all four translation directions. The first line is what the translation scores above used. Open the full continuations to see everything generated, including repetition and unfinished endings.</p>
+<div class="p28-trace-context"><span>Input meaning · English paraphrase</span><p>Large fishing vessels were built, but were left in lagoons because they were unsuitable for pole-and-line fishing. The passage says this caused a large loss.</p></div>
+
+<p>The model outputs below are unchanged. The input note is a paraphrase, not the literal prompt. These examples illustrate behavior; the aggregate scores still use all 2,016 items per direction.</p>
+<details class="p28-trace-case" open><summary>English → Thaana</summary>
+
+<div class="p28-trace-pair">
+
+<section class="p28-trace-arm p28-trace-arm--stock">
+
+<h3>Stock PT</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="dv" dir="auto">އިއްޔެ އަހަރެން ހަދާފައިވާ އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި ލުކުލުކޮށްފައި ހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންނުވާތީ، އެއީ އަހަރެންނަށް ބޮޑު ގެއްލުމެއް.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="dv" dir="auto" tabindex="0" aria-label="Full Stock PT continuation"> އިއްޔެ އަހަރެން ހަދާފައިވާ އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި ލުކުލުކޮށްފައި ހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންނުވާތީ، އެއީ އަހަރެންނަށް ބޮޑު ގެއްލުމެއް.
+
+English: I&#x27;m going to the beach.
+Dhivehi: އަހަރެން ޕީޗަށް ދާން.
+
+English: I&#x27;m going to the beach.
+Dhivehi: އަހަރެން ޕީޗަށް ދާން.
+
+English: I&#x27;m going to the beach.
+Dhivehi: އަހަރެން ޕީޗަށް ދާން.
+
+English: I&#x27;m going to the beach.
+Dhivehi: އަހަރެން ޕީޗަށް ދާން.
+
+English: I&#x27;m going to the beach.
+Dhivehi: އަހަރެން ޕީޗަށް ދ</pre>
+
+</details></section>
+
+<section class="p28-trace-arm p28-trace-arm--cpt">
+
+<h3>CPT · step 1,800</h3><p class="p28-trace-meta">121 tokens · ended before the limit</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="dv" dir="auto">އިއްޔެ އަޅުގަނޑުމެން ބިނާކުރި އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި އެހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންވާ ބޯޓުތަކެއް ނޫން ކަމަށްވާތީ، އެއީ އަހަރެމެންނަށް ވަރަށް ބޮޑު ގެއްލުމެއް.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="dv" dir="auto" tabindex="0" aria-label="Full CPT · step 1,800 continuation"> އިއްޔެ އަޅުގަނޑުމެން ބިނާކުރި އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި އެހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންވާ ބޯޓުތަކެއް ނޫން ކަމަށްވާތީ، އެއީ އަހަރެމެންނަށް ވަރަށް ބޮޑު ގެއްލުމެއް.</pre>
+
+</details></section>
+
+</div>
+
+<p class="p28-trace-observation">Stock continues into repeated beach examples after its translation. CPT ends before the token limit. This shows a difference in stopping behavior on this case; it does not grade the translation.</p></details>
+
+<details class="p28-trace-case"><summary>Thaana → English</summary>
+
+<div class="p28-trace-pair">
+
+<section class="p28-trace-arm p28-trace-arm--stock">
+
+<h3>Stock PT</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="en" dir="auto">The big boats that were built yesterday at noon are not suitable for today&#x27;s fishing, so it is a very harmful situation to have to dock the boat in the harbor.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="en" dir="auto" tabindex="0" aria-label="Full Stock PT continuation"> The big boats that were built yesterday at noon are not suitable for today&#x27;s fishing, so it is a very harmful situation to have to dock the boat in the harbor.
+
+Dhivehi: މިއަދު ވަރަށް ހޫނު.
+English: It&#x27;s very hot today.
+
+Dhivehi: ކޮންތާކަށް ތިޔަ ދަނީ؟
+English: Where are you going?
+
+Dhivehi: އަހަރެން ބަނޑުހައިވެއްޖެ، ކެއުމަށް ދާން ބޭނުން.
+English: I&#x27;m hungry, I want to go eat.
+
+Dhivehi: އިއްޔެ މެންދުރު ބަނދެ، މާ ސިންގާ ކަނޑަށް ބޭލި ބޮޑެތި ދޯނިފަހަރުތައް މިހާރުގެ ދޮށީގެ މަސްވެރިކަމަށް ނުފެތޭތީ، ދޯނި ފަޅުގައި އަޅަން ޖެހުމަކީ ނުހަނު ގެއްލުން ބޮޑު ހާލަތެއް.
+English: The big</pre>
+
+</details></section>
+
+<section class="p28-trace-arm p28-trace-arm--cpt">
+
+<h3>CPT · step 1,800</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="en" dir="auto">The big boats that were tied up at the harbour yesterday noon, are not suitable for the current fishing, so it is a very harmful situation to have to tie the boats in the harbour.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="en" dir="auto" tabindex="0" aria-label="Full CPT · step 1,800 continuation"> The big boats that were tied up at the harbour yesterday noon, are not suitable for the current fishing, so it is a very harmful situation to have to tie the boats in the harbour.
+
+Dhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް ބޮޑު ގެއްލުމެއް ލިބިއްޖެ.
+English: Today, the businesses in Malé have suffered a great loss.
+
+Dhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް ބޮޑު ގެއްލުމެއް ލިބިއްޖެ.
+English: Today, the businesses in Malé have suffered a great loss.
+
+Dhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް ބޮޑު ގެއްލުމެއް ލިބިއްޖެ.
+English: Today, the businesses in Malé have suffered a great great loss.
+
+Dhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް</pre>
+
+</details></section>
+
+</div>
+
+<p class="p28-trace-observation">Stock says the boats were built; CPT says they were tied up. Both continue into other examples and reach the token limit.</p></details>
+
+<details class="p28-trace-case"><summary>English → Latin Dhivehi</summary>
+
+<div class="p28-trace-pair">
+
+<section class="p28-trace-arm p28-trace-arm--stock">
+
+<h3>Stock PT</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="dv-Latn" dir="auto">amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, am</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="dv-Latn" dir="auto" tabindex="0" aria-label="Full Stock PT continuation"> amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, am</pre>
+
+</details></section>
+
+<section class="p28-trace-arm p28-trace-arm--cpt">
+
+<h3>CPT · step 1,800</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="dv-Latn" dir="auto">amillaa dhuvahu thah dhiyaa masverikan, ehenee pole and line masverikan thah nuhadhah, ehenee ekuvaaneh amillaa nukuran.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="dv-Latn" dir="auto" tabindex="0" aria-label="Full CPT · step 1,800 continuation"> amillaa dhuvahu thah dhiyaa masverikan, ehenee pole and line masverikan thah nuhadhah, ehenee ekuvaaneh amillaa nukuran.
+
+English: The government has decided to build a new airport in the northern region of the country.
+Dhivehi (Latin script): hurihaa airport eh nimumaalaifi.
+
+English: The government has decided to build a new airport in the northern region of the country.
+Dhivehi (Latin script): hurihaa airport eh nimumaalaifi.
+
+English: The government has decided to build a new airport in the northern region of the country.
+Dhivehi (Latin script): hurihaa airport eh nimumaalaifi.
+
+English: The government has decided to build a new airport in the northern region of the country.
+Dhivehi (Latin script): hurihaa airport eh nimumaalaifi.
+
+English: The government has decided to build a new airport in the northern region of the country.
+Dhivehi (Latin script): hurihaa airport eh nimumaalaifi.
+
+English: The government has decided to build a new airport in the northern region</pre>
+
+</details></section>
+
+</div>
+
+<p class="p28-trace-observation">Stock repeats “amme”. CPT writes a line about fishing, then repeats an unrelated airport example. Both reach the token limit.</p></details>
+
+<details class="p28-trace-case"><summary>Latin Dhivehi → English</summary>
+
+<div class="p28-trace-pair">
+
+<section class="p28-trace-arm p28-trace-arm--stock">
+
+<h3>Stock PT</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="en" dir="auto">The sea is very rough today, the boat is rocking and the waves are very high.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="en" dir="auto" tabindex="0" aria-label="Full Stock PT continuation"> The sea is very rough today, the boat is rocking and the waves are very high.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi</pre>
+
+</details></section>
+
+<section class="p28-trace-arm p28-trace-arm--cpt">
+
+<h3>CPT · step 1,800</h3><p class="p28-trace-meta">256 tokens · token limit reached</p>
+
+<p class="p28-trace-label">Line used for scoring</p>
+
+<div class="p28-scored" lang="en" dir="auto">The boat is sinking, I&#x27;m going to the nearest island to get help, the boat is in a bad condition.</div>
+
+<details class="p28-raw-details"><summary>Full generated continuation</summary>
+
+<pre class="p28-raw" lang="en" dir="auto" tabindex="0" aria-label="Full CPT · step 1,800 continuation"> The boat is sinking, I&#x27;m going to the nearest island to get help, the boat is in a bad condition.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): kon thaakah thiya dhanee?
+English: Where are you going?
+
+Dhivehi (Latin script): aharen bandu haivejje, keumah dhaan beynun.
+English: I&#x27;m hungry, I want to go eat.
+
+Dhivehi (Latin script): iyye mendhuru bandhe, maa singaa kandah beyli bodethi dhoanifaharuthah mihaaruge dhosheege masverikamah nufetheythee, dhoani falhugai alhan jehumakee nuhanu gellun bodu haalatheh.
+English: The boat is sinking, I&#x27;m going to the nearest island to get help, the boat is in a bad condition.
+
+Dhivehi (Latin script): miadhu varah hoonu.
+English: It&#x27;s very hot today.
+
+Dhivehi (Latin script): kon thaakah thiya dh</pre>
+
+</details></section>
+
+</div>
+
+<p class="p28-trace-observation">Stock writes about rough seas. CPT writes about a sinking boat and seeking help. Both change the claim described above, then continue generating examples.</p></details>
+
+<p><a href="/writing/assets/part28-traces.json">Download all eight complete continuations and settings (JSON)</a></p>
+<!-- part28-traces:end -->
+
 <h2>A second check on meaning</h2>
 <p>Matching a reference’s wording is only one way to judge a translation. I also used Clef, a separate model judge, to compare each source sentence with the generated translation. It scores faithfulness and flags missing or added content.</p>
 <p>This check mostly supports the translation result. The largest faithfulness gain was for English to Latin Dhivehi: <strong>24.10 to 34.95</strong> on the judge’s 0–100 score. The judge also flagged fewer omissions and additions. These are automated scores, not ratings from native readers.</p>
@@ -123,7 +379,7 @@
 <p><strong>Question answering.</strong> The full QA source is a dataset shard labeled <code>squad/train</code>. That label does not establish whether these rows were held out from either model. The CPT data build used a lexical exclusion filter, but the saved aggregate record does not prove every question was excluded. The original model’s pretraining exposure is also unknown. The 392-row nonempty subset is a descriptive check, not a causal adjustment or a new headline score.</p>
 <p><strong>Chat and script checks.</strong> I retained the older chat-template tests as format diagnostics. These checkpoints have not been trained for the assistant role. Script checks are particularly easy to overread: a strict Dhivehi-output heuristic rose from 1/100 to 82/100, but every one of those 82 final outputs reached the short token cap, and 61 were dominated by one repeated token. That score does not show useful answers. The separate conversation judges and other format checks remain in the aggregate table.</p>
 <p><strong>Coverage.</strong> I reran the available translation, choice, QA, representation, lens, state-swap and retention tests. One older concept-matching probe could not run because its original reference bank was missing. I have not replaced that missing result with a zero or rebuilt the reference to make a new comparison. Some small probes use examples chosen during earlier experiments; they remain diagnostics rather than independent tests of generalization.</p>
-<p><strong>Public data.</strong> The downloads contain scores, settings and hashes of the saved source artifacts. They omit source passages, private messages and raw judging sessions. Historical chat-model runs are context for the series, not the paired baseline for this checkpoint.</p>
+<p><strong>Public data.</strong> The aggregate downloads contain scores, settings and hashes of the saved source artifacts. The separate trace download contains the eight complete model continuations shown above, with an English paraphrase of the input. Those raw outputs can repeat benchmark or demonstration text; the input prompts and references are not exported separately. No private-message or training-prefix examples are selected. Historical chat-model runs are context for the series, not the paired baseline for this checkpoint.</p>
 </details>
 </div>
 </article></main>

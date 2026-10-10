@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "selection": "First frozen input item, matched across all four main translation directions. One benchmark case in four forms; not four independent items or a quality-selected sample.",
+  "input_description": {
+    "kind": "English paraphrase, not the literal prompt",
+    "text": "Large fishing vessels were built, but were left in lagoons because they were unsuitable for pole-and-line fishing. The passage says this caused a large loss."
+  },
+  "protocol": {
+    "format": "plain-PT",
+    "examples": 3,
+    "temperature": 0,
+    "max_new_tokens": 256,
+    "batch": 64,
+    "cpt_step": 1800,
+    "cpt_scale": 0.5
+  },
+  "text_policy": "raw_hyp is the complete saved decoded output, unchanged. It may repeat benchmark or demonstration text. Input prompts and separate references are not exported. No private-message or training-prefix examples are selected.",
+  "sources": [
+    {
+      "task": "en2dv",
+      "arm": "stock",
+      "basename": "en2dv.jsonl",
+      "sha256": "6a922918ace819a50d302fb5deb35b081669cf5691da29b0c07c6dc8cbeaa2bf"
+    },
+    {
+      "task": "en2dv",
+      "arm": "cpt",
+      "basename": "en2dv.jsonl",
+      "sha256": "f1f782bf80e2408f63ec7c9b692409c85ea3b1b6824b1ffafd90ba3710562230"
+    },
+    {
+      "task": "dv2en",
+      "arm": "stock",
+      "basename": "dv2en.jsonl",
+      "sha256": "d9ef130505d3f9f64260cf1e05459edd7306e6aa19eb0ce8a190ec338ad1af09"
+    },
+    {
+      "task": "dv2en",
+      "arm": "cpt",
+      "basename": "dv2en.jsonl",
+      "sha256": "a5f53af2ccac5702f5e9e373e7b0a388b6ee0d8f780fa38088cffe5e8ffd1590"
+    },
+    {
+      "task": "en2dv_latn",
+      "arm": "stock",
+      "basename": "en2dv_latn.jsonl",
+      "sha256": "151f451d1b93aa204106786898dc0774a4f50b2f06ba2681aede66ad66b63c74"
+    },
+    {
+      "task": "en2dv_latn",
+      "arm": "cpt",
+      "basename": "en2dv_latn.jsonl",
+      "sha256": "5a565d77f2bc2fbcd1f365411cb3c0b50185468cc8e9dfa9e65404244db86a77"
+    },
+    {
+      "task": "dv_latn2en",
+      "arm": "stock",
+      "basename": "dv_latn2en.jsonl",
+      "sha256": "2204476e3ee43953f0be9421005a3afc8efa6b4e8e1c825c7582d2d63c2f3c11"
+    },
+    {
+      "task": "dv_latn2en",
+      "arm": "cpt",
+      "basename": "dv_latn2en.jsonl",
+      "sha256": "e7abd7de84d113d54a8c57255dee01a28dedf7aea604c66b07c0a4db67ccc7be"
+    }
+  ],
+  "cases": [
+    {
+      "task": "en2dv",
+      "label": "English → Thaana",
+      "target_language": "dv",
+      "arms": {
+        "stock": {
+          "scored_first_line": "އިއްޔެ އަހަރެން ހަދާފައިވާ އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި ލުކުލުކޮށްފައި ހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންނުވާތީ، އެއީ އަހަރެންނަށް ބޮޑު ގެއްލުމެއް.",
+          "raw_hyp": " އިއްޔެ އަހަރެން ހަދާފައިވާ އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި ލުކުލުކޮށްފައި ހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންނުވާތީ، އެއީ އަހަރެންނަށް ބޮޑު ގެއްލުމެއް.\n\nEnglish: I'm going to the beach.\nDhivehi: އަހަރެން ޕީޗަށް ދާން.\n\nEnglish: I'm going to the beach.\nDhivehi: އަހަރެން ޕީޗަށް ދާން.\n\nEnglish: I'm going to the beach.\nDhivehi: އަހަރެން ޕީޗަށް ދާން.\n\nEnglish: I'm going to the beach.\nDhivehi: އަހަރެން ޕީޗަށް ދާން.\n\nEnglish: I'm going to the beach.\nDhivehi: އަހަރެން ޕީޗަށް ދ",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "ace926611939b257b4f2943b3ca19a18668eae2a0d815fe48c83e9f28812129e"
+        },
+        "cpt": {
+          "scored_first_line": "އިއްޔެ އަޅުގަނޑުމެން ބިނާކުރި އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި އެހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންވާ ބޯޓުތަކެއް ނޫން ކަމަށްވާތީ، އެއީ އަހަރެމެންނަށް ވަރަށް ބޮޑު ގެއްލުމެއް.",
+          "raw_hyp": " އިއްޔެ އަޅުގަނޑުމެން ބިނާކުރި އެ ބޮޑެތި މަސްބޯޓުތައް، މިހާރު ލަގޫނުތަކުގައި އެހުރީ، އެއީ ލައިން މަސްވެރިކަމަށް އެކަށީގެންވާ ބޯޓުތަކެއް ނޫން ކަމަށްވާތީ، އެއީ އަހަރެމެންނަށް ވަރަށް ބޮޑު ގެއްލުމެއް.",
+          "generated_tokens": 121,
+          "hit_limit": false,
+          "raw_hyp_sha256": "e18b918b20f5fdf544732de5b7ebb7783a3da9a9d42c1a79e8da5beaf84235d5"
+        }
+      },
+      "observation": "Stock continues into repeated beach examples after its translation. CPT ends before the token limit. This shows a difference in stopping behavior on this case; it does not grade the translation."
+    },
+    {
+      "task": "dv2en",
+      "label": "Thaana → English",
+      "target_language": "en",
+      "arms": {
+        "stock": {
+          "scored_first_line": "The big boats that were built yesterday at noon are not suitable for today's fishing, so it is a very harmful situation to have to dock the boat in the harbor.",
+          "raw_hyp": " The big boats that were built yesterday at noon are not suitable for today's fishing, so it is a very harmful situation to have to dock the boat in the harbor.\n\nDhivehi: މިއަދު ވަރަށް ހޫނު.\nEnglish: It's very hot today.\n\nDhivehi: ކޮންތާކަށް ތިޔަ ދަނީ؟\nEnglish: Where are you going?\n\nDhivehi: އަހަރެން ބަނޑުހައިވެއްޖެ، ކެއުމަށް ދާން ބޭނުން.\nEnglish: I'm hungry, I want to go eat.\n\nDhivehi: އިއްޔެ މެންދުރު ބަނދެ، މާ ސިންގާ ކަނޑަށް ބޭލި ބޮޑެތި ދޯނިފަހަރުތައް މިހާރުގެ ދޮށީގެ މަސްވެރިކަމަށް ނުފެތޭތީ، ދޯނި ފަޅުގައި އަޅަން ޖެހުމަކީ ނުހަނު ގެއްލުން ބޮޑު ހާލަތެއް.\nEnglish: The big",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "52c676e273f9f52369b4a7e8b8c53afbae52207212da688acf8538e6117f6dad"
+        },
+        "cpt": {
+          "scored_first_line": "The big boats that were tied up at the harbour yesterday noon, are not suitable for the current fishing, so it is a very harmful situation to have to tie the boats in the harbour.",
+          "raw_hyp": " The big boats that were tied up at the harbour yesterday noon, are not suitable for the current fishing, so it is a very harmful situation to have to tie the boats in the harbour.\n\nDhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް ބޮޑު ގެއްލުމެއް ލިބިއްޖެ.\nEnglish: Today, the businesses in Malé have suffered a great loss.\n\nDhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް ބޮޑު ގެއްލުމެއް ލިބިއްޖެ.\nEnglish: Today, the businesses in Malé have suffered a great loss.\n\nDhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް ބޮޑު ގެއްލުމެއް ލިބިއްޖެ.\nEnglish: Today, the businesses in Malé have suffered a great great loss.\n\nDhivehi: މިއަދު މާލޭގެ ވިޔަފާރިތަކަށް ވަރަށް",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "0f9b91c83a953094bfad7a6b385523f64fb157fc8354dd193bd46f41b22d7d51"
+        }
+      },
+      "observation": "Stock says the boats were built; CPT says they were tied up. Both continue into other examples and reach the token limit."
+    },
+    {
+      "task": "en2dv_latn",
+      "label": "English → Latin Dhivehi",
+      "target_language": "dv-Latn",
+      "arms": {
+        "stock": {
+          "scored_first_line": "amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, am",
+          "raw_hyp": " amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, amme, am",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "2a7efd6bccdacbbbec38729489a49e1b1100ce850f3ce98d071cc589fc4283be"
+        },
+        "cpt": {
+          "scored_first_line": "amillaa dhuvahu thah dhiyaa masverikan, ehenee pole and line masverikan thah nuhadhah, ehenee ekuvaaneh amillaa nukuran.",
+          "raw_hyp": " amillaa dhuvahu thah dhiyaa masverikan, ehenee pole and line masverikan thah nuhadhah, ehenee ekuvaaneh amillaa nukuran.\n\nEnglish: The government has decided to build a new airport in the northern region of the country.\nDhivehi (Latin script): hurihaa airport eh nimumaalaifi.\n\nEnglish: The government has decided to build a new airport in the northern region of the country.\nDhivehi (Latin script): hurihaa airport eh nimumaalaifi.\n\nEnglish: The government has decided to build a new airport in the northern region of the country.\nDhivehi (Latin script): hurihaa airport eh nimumaalaifi.\n\nEnglish: The government has decided to build a new airport in the northern region of the country.\nDhivehi (Latin script): hurihaa airport eh nimumaalaifi.\n\nEnglish: The government has decided to build a new airport in the northern region of the country.\nDhivehi (Latin script): hurihaa airport eh nimumaalaifi.\n\nEnglish: The government has decided to build a new airport in the northern region",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "d068cf69a1441fad25d88e5d93e7d44c0a78277fcf89d44ee7c4f8ce0a2f4bd2"
+        }
+      },
+      "observation": "Stock repeats “amme”. CPT writes a line about fishing, then repeats an unrelated airport example. Both reach the token limit."
+    },
+    {
+      "task": "dv_latn2en",
+      "label": "Latin Dhivehi → English",
+      "target_language": "en",
+      "arms": {
+        "stock": {
+          "scored_first_line": "The sea is very rough today, the boat is rocking and the waves are very high.",
+          "raw_hyp": " The sea is very rough today, the boat is rocking and the waves are very high.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "6c4ca74056c08280afd9b26d3b8994ac79a658c3b925daa1e9bfe9d2a6c9fd2e"
+        },
+        "cpt": {
+          "scored_first_line": "The boat is sinking, I'm going to the nearest island to get help, the boat is in a bad condition.",
+          "raw_hyp": " The boat is sinking, I'm going to the nearest island to get help, the boat is in a bad condition.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): kon thaakah thiya dhanee?\nEnglish: Where are you going?\n\nDhivehi (Latin script): aharen bandu haivejje, keumah dhaan beynun.\nEnglish: I'm hungry, I want to go eat.\n\nDhivehi (Latin script): iyye mendhuru bandhe, maa singaa kandah beyli bodethi dhoanifaharuthah mihaaruge dhosheege masverikamah nufetheythee, dhoani falhugai alhan jehumakee nuhanu gellun bodu haalatheh.\nEnglish: The boat is sinking, I'm going to the nearest island to get help, the boat is in a bad condition.\n\nDhivehi (Latin script): miadhu varah hoonu.\nEnglish: It's very hot today.\n\nDhivehi (Latin script): kon thaakah thiya dh",
+          "generated_tokens": 256,
+          "hit_limit": true,
+          "raw_hyp_sha256": "b79b3cc74d7f2dd3f74cb270964874bb55920a11ee0e68c5cf0aa86394581330"
+        }
+      },
+      "observation": "Stock writes about rough seas. CPT writes about a sinking boat and seeking help. Both change the claim described above, then continue generating examples."
+    }
+  ]
+}
